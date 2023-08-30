@@ -4,7 +4,7 @@ import fastifyCors from '@fastify/cors';
 import { initDataSources } from '@itaaj/data-sources';
 import { registerRoutes } from '../routes';
 
-const { PORT, DATABASE_CONNECTION } = process.env;
+const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
     origin: '*',
 };
@@ -38,7 +38,7 @@ const main = async () => {
         { prefix: 'api/v1' },
     );
 
-    server.listen({port: Number(PORT)}, (err, address) => {
+    server.listen({port: Number(PORT), host: HOST}, (err, address) => {
         if (err) {
             server.log.error(err);
             process.exit(1);

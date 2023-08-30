@@ -28,8 +28,8 @@ export const loginGoogle = async (id: string) => {
   
      const {email, photo, name, last_name} = await verifyGoogle(id);
 
-     const result = await getDbInstance().select().from(users)
-     .where(and(eq(users.email, email)));
+     const result = await getDbInstance().select().from(users!)
+     .where(and(eq(users!.email, email!)));
 
      const user = result[0]
     

@@ -1,7 +1,7 @@
 import { getDbInstance } from '@itaaj/data-sources/src/postgresql';
 import { User, users } from '@itaaj/entities';
 import { compare } from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import { and, eq } from 'drizzle-orm';
 
 const { JWT_SECRET } = process.env;
@@ -9,7 +9,7 @@ const { JWT_SECRET } = process.env;
 export const login = async ({email, password }: Partial<User>) => {
     
      const result = await getDbInstance().select().from(users)
-     .where(and(eq(users.email, email)));
+     .where(and(eq(users!.email, email!)));
 
      const user = result[0]
       console.log(user)

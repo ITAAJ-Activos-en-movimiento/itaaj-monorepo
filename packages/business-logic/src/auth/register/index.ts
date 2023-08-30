@@ -1,7 +1,7 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
 import { User, users } from "@itaaj/entities"
 import { genSaltSync, hashSync } from "bcrypt";
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 const { JWT_SECRET } = process.env;
 
@@ -25,5 +25,5 @@ export const registerUser = async (data: User): Promise<UserToken | Error> => {
     
     const token = jwt.sign({id: result[0].id}, JWT_SECRET!, {expiresIn: '5d'});
 
-    return token;
+    return {token};
 }
