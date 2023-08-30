@@ -37,7 +37,7 @@ export const loginGoogle = async (id: string) => {
         const data = {
             name,
             email,
-            last_name,
+            lastname: last_name,
             photo,
             password: ':P',
             username: '',
