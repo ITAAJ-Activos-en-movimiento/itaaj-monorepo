@@ -1,0 +1,15 @@
+.section{
+    width: min(1150px, 90%);
+    margin-inline: auto;
+    margin-block: 6rem;
+}
+
+.section h2{
+    text-align: center;
+}
+
+.section img{
+    margin-inline: auto;
+    margin-block: 6rem;
+    margin-top: 4rem;
+}

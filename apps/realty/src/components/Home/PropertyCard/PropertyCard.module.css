@@ -1,0 +1,28 @@
+.options{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.picture{
+    border-radius: 1.5rem;
+    overflow: hidden;
+    height: 16rem;
+    margin-bottom: 1.5rem;
+}
+
+.picture img{
+    height: 100%;
+}
+
+.info{
+    font-size: 1.3rem;
+    display: flex;
+    gap: .8rem;
+}
+
+.phone{
+    border-inline: 1px solid rgba(0,0,0,0.2);
+    padding-inline: 1.5rem;
+}

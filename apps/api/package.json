@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server/index.ts",
+    "migrate": "drizzle-kit generate:pg"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "@itaaj/business-logic": "workspace:*",
+    "@itaaj/data-sources": "workspace:*",
+    "@itaaj/entities": "workspace:*",
+    "dotenv": "^16.3.1",
+    "drizzle-kit": "^0.19.12",
+    "drizzle-orm": "^0.28.2",
+    "fastify": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.10.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  }
+}

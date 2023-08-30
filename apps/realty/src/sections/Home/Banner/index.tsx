@@ -1,0 +1,91 @@
+import React from 'react'
+import styles from './Banner.module.css'
+import { Search } from 'react-feather'
+import Image from 'next/image'
+import Link from 'next/link'
+
+const Banner = () => {
+  return (
+    <section className={styles.section}>
+      <div className={styles.container_banner}></div>
+      <div className={styles.search}>
+        <div className={styles.content}>
+          <h2>Todos tenemos un sitio</h2>
+          <ul>
+            <li>Comprar</li>
+            <li>Obra nueva</li>
+            <li>Portafolio</li>
+          </ul>
+
+          <div className={styles.params}>
+            <select name="" id="">
+              <option value="">Viviendas</option>
+            </select>
+            <div>
+              <input type="search" placeholder='Buscar propiedades en estados, etc...' />
+              <button><Search size={20} /> <span>Buscar</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div className={styles.options}>
+          <h2>Te acompañamos en todo el proceso</h2>
+          <div className={styles.boxs}>
+            <Link className={styles.box} href="/blockchain">
+                <Image
+                  src="/blockchain.png"
+                  width={48}
+                  height={48}
+                  alt="Tecnologia Blockchain"
+                />
+                <h3>Tecnología Blockchain</h3>
+            </Link>
+            <Link className={styles.box} href='/deals'> 
+              <Image
+                src="/investment.png"
+                width={48}
+                height={48}
+                alt="Invierte"
+              />
+
+              <h3>Portafolio de desarrolladores</h3>
+            </Link>
+            <div className={styles.box}>
+              <Image
+                src="/value.png"
+                width={48}
+                height={48}
+                alt="Valora tu casa"
+              />
+              <h3>Valora tu casa</h3>
+            </div>
+            <div className={styles.box}>
+              <Image
+                src="/value.png"
+                width={48}
+                height={48}
+                alt="Valora tu casa"
+              />
+              <h3>Caltula tu hipoteca</h3>
+            </div>
+          
+            
+            <div className={styles.box}>
+              <Image
+                src="/guarantee.png"
+                width={48}
+                height={48}
+                alt="Invierte"
+              />
+
+              <h3>Protege tu casa</h3>
+            </div>
+          </div>
+        </div>
+    </section>
+  )
+}
+
+export default Banner

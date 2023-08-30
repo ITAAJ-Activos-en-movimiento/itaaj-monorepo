@@ -1,0 +1,10 @@
+.divider{
+    background: linear-gradient(90deg, rgb(99, 107, 197), rgba(30, 219, 207, 0.5));
+    border: 0px;
+    border-radius: 8px;
+    height: 8px;
+    margin: 24px 0px;
+    padding: 0px;
+    width: 144px;
+    margin-top: 2rem;
+}

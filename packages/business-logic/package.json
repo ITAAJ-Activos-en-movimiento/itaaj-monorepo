@@ -1,0 +1,25 @@
+{
+  "name": "@itaaj/business-logic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@itaaj/data-sources": "workspace:^",
+    "@itaaj/entities": "workspace:^",
+    "bcrypt": "^5.1.0",
+    "drizzle-orm": "^0.28.2",
+    "google-auth-library": "^9.0.0",
+    "jsonwebtoken": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.2"
+  }
+}
