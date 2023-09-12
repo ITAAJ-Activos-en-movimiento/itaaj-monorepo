@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1691978140092,
-      "tag": "0000_exotic_spiral",
-      "breakpoints": false
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1692042291698,
-      "tag": "0001_wise_stone_men",
-      "breakpoints": false
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1693404924826,
-      "tag": "0002_colorful_quentin_quire",
+      "when": 1694386927170,
+      "tag": "0000_useful_menace",
       "breakpoints": false
     }
   ]

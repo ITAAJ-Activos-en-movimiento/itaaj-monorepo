@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.container form{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    border-radius: 1rem;
+    padding: 4rem;
+    width: 40rem;
+}
+
+.container form p{
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-top: 4rem;
+}
+
+.container form input{
+    border: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 2rem;
+    height:4rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.container form button{
+    width: 100%;
+    border-radius: 1rem;
+    height: 4rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    background-color: #0c0f24;
+    color: #fff;
+}

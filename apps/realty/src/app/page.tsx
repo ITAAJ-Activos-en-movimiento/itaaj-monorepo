@@ -8,7 +8,6 @@ const Header = dynamic(() => import('../components/Layout/Header'), { ssr: false
 export default function Home() {
   return (
     <>
-      <Header />
     <main className={styles.main}>
     <Banner />
     <Exclusive />
@@ -17,7 +16,6 @@ export default function Home() {
     <Way />
     <Questions />
     </main>
-    <Footer />
     </>
     
   )

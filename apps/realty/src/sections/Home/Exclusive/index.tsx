@@ -18,7 +18,7 @@ const Exclusive:NextPage = () => {
 
     const fetchData =  async() => {
         const data = await fetch(
-            'https://itaaj-api.onrender.com/api/v1/properties',
+            'https://itaaj-api-v0.onrender.com/api/v1/properties',
             {
               method: 'GET',
               headers: {

@@ -93,6 +93,9 @@ importers:
       react-redux:
         specifier: ^8.1.2
         version: 8.1.2(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      react-router-dom:
+        specifier: ^6.15.0
+        version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: ^18.2.15
@@ -195,7 +198,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       jsonwebtoken:
-        specifier: ^9.0.1
+        specifier: 9.0.1
         version: 9.0.1
     devDependencies:
       '@types/bcrypt':
@@ -984,6 +987,11 @@ packages:
       redux: 4.2.1
       redux-thunk: 2.4.2(redux@4.2.1)
       reselect: 4.1.8
+    dev: false
+
+  /@remix-run/router@1.8.0:
+    resolution: {integrity: sha512-mrfKqIHnSZRyIzBcanNJmVQELTnX+qagEDlcKO90RgRBVOZGSGvZKeDihTRfWcqoDn5N/NkUcwWTccnpN18Tfg==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@rushstack/eslint-patch@1.2.0:
@@ -5061,6 +5069,29 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       shallow-equal: 1.2.1
+    dev: false
+
+  /react-router-dom@6.15.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-aR42t0fs7brintwBGAv2+mGlCtgtFQeOzK0BM1/OiqEzRejOZtpMZepvgkscpMUnKb8YO84G7s3LsHnnDNonbQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.15.0(react@18.2.0)
+    dev: false
+
+  /react-router@6.15.0(react@18.2.0):
+    resolution: {integrity: sha512-NIytlzvzLwJkCQj2HLefmeakxxWHWAP+02EGqWEZy+DgfHHKQMUoBBjUQLOtFInBMhWtb3hiUy6MfFgwLjXhqg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.8.0
+      react: 18.2.0
     dev: false
 
   /react@17.0.2:
