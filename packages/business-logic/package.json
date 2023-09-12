@@ -13,10 +13,13 @@
   "dependencies": {
     "@itaaj/data-sources": "workspace:^",
     "@itaaj/entities": "workspace:^",
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "drizzle-orm": "^0.28.2",
     "google-auth-library": "^9.0.0",
-    "jsonwebtoken": "9.0.1"
+    "gpt3-tokenizer": "^1.1.5",
+    "jsonwebtoken": "9.0.1",
+    "openai": "^4.6.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

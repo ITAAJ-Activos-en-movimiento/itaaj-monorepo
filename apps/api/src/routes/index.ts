@@ -5,11 +5,13 @@ import {
 import { healthCheckRoute } from './health-check';
 import usersRoutes from './users';
 import authRoutes from './auth';
+import aiRoutes from './ai';
   
   const routes: RouteOptions[] = [
     healthCheckRoute,
     ...authRoutes,
-    ...usersRoutes
+    ...usersRoutes,
+    ...aiRoutes
   ];
   
   export const registerRoutes = (fastify: FastifyInstance) => {
