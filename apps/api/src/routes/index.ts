@@ -6,12 +6,14 @@ import { healthCheckRoute } from './health-check';
 import usersRoutes from './users';
 import authRoutes from './auth';
 import aiRoutes from './ai';
+import leadsRoutes from './leads';
   
   const routes: RouteOptions[] = [
     healthCheckRoute,
     ...authRoutes,
     ...usersRoutes,
-    ...aiRoutes
+    ...aiRoutes,
+    ...leadsRoutes
   ];
   
   export const registerRoutes = (fastify: FastifyInstance) => {

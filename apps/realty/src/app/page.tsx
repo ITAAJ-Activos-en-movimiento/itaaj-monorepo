@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import dynamic from 'next/dynamic'
-import { Banner, Exclusive, General, Publish, Questions, Way } from '@/sections'
+import { Banner, Exclusive, General, MostSearched, Publish, Questions, Way } from '@/sections'
 import { Footer } from '@/components'
  
 const Header = dynamic(() => import('../components/Layout/Header'), { ssr: false })
@@ -15,6 +15,7 @@ export default function Home() {
     <General />
     <Way />
     <Questions />
+    <MostSearched />
     </main>
     </>
     

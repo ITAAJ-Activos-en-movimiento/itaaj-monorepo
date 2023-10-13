@@ -1,11 +1,11 @@
-.container{
+.container {
     min-height: 90vh;
     width: min(90%, 800px);
     margin-inline: auto;
     position: relative;
 }
 
-.header h2{
+.header h2 {
     font-weight: 600;
     margin-top: 2rem;
     text-align: center;
@@ -14,7 +14,7 @@
     padding-bottom: 1rem;
 }
 
-.container .input{
+.container .input {
     border: 1px solid rgba(0, 0, 0, .1);
     padding: 1rem;
     height: 4.5rem;
@@ -29,11 +29,11 @@
     padding-right: 0;
 }
 
-.container .input input{
+.container .input input {
     width: 100%;
 }
 
-.container .input button{
+.container .input button {
     background-color: var(--main-color);
     color: #fff;
     width: 10rem;
@@ -41,22 +41,23 @@
     border-radius: 1rem;
 }
 
-.messages{
+.messages {
     height: 70vh;
     overflow-y: auto;
 }
-.message{
+
+.message {
     margin-top: 2rem;
     display: flex;
     gap: 1rem;
 }
 
-.message p{
+.message p {
     width: 45%;
     font-weight: 400;
 }
 
-.icon{
+.icon {
     background-color: aquamarine;
     height: 4rem;
     width: 4rem;
@@ -70,28 +71,33 @@
 }
 
 .messages::-webkit-scrollbar {
-    width: 8px; /* Ancho del scrollbar */
-  }
-  
-  /* Personaliza el thumb (el control deslizante del scrollbar) */
-  .messages::-webkit-scrollbar-thumb {
-    background-color: #dbdbdb; /* Color del thumb */
-    border-radius: 4px; /* Bordes redondeados del thumb */
-  }
-  
-  /* Personaliza la pista (el fondo del scrollbar) */
-  .messages::-webkit-scrollbar-track {
-    background-color: transparent; /* Color de fondo de la pista */
-  }
-  
-  /* Personaliza el borde del scrollbar */
-  .messages::-webkit-scrollbar-track-piece {
-    background-color: transparent; /* Color de fondo del scrollbar */
-  }
-
-  @media screen and (max-width: 768px) {
-    
-.message p{
-    width: 80%;
+    width: 8px;
+    /* Ancho del scrollbar */
 }
-  }
+
+/* Personaliza el thumb (el control deslizante del scrollbar) */
+.messages::-webkit-scrollbar-thumb {
+    background-color: #dbdbdb;
+    /* Color del thumb */
+    border-radius: 4px;
+    /* Bordes redondeados del thumb */
+}
+
+/* Personaliza la pista (el fondo del scrollbar) */
+.messages::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Color de fondo de la pista */
+}
+
+/* Personaliza el borde del scrollbar */
+.messages::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    /* Color de fondo del scrollbar */
+}
+
+@media screen and (max-width: 768px) {
+
+    .message p {
+        width: 80%;
+    }
+}

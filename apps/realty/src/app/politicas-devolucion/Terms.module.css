@@ -1,0 +1,20 @@
+.terms{
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.terms h1{
+    margin-bottom: 2rem;
+}
+
+.terms p{
+    margin-bottom: 2rem;
+}
+
+
+.terms ul li{
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}

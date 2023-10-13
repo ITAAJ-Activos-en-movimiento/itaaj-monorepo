@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './Itabot.module.css';
 import axios from 'axios';
 import { Loader } from 'react-feather';
+import { marked } from 'marked';
 
 const sendMessage = async (message: any) => {
-    const { data } = await axios.post('http://localhost:8000/api/v1/chat', message)
+    const { data } = await axios.post('https://troting.com//api/v1/chat', message)
     return data;
 }
 

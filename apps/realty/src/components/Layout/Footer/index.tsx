@@ -4,6 +4,7 @@ import styles from './Footer.module.css';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/navigation';
+import { AlertCircle, MessageCircle, Phone } from 'react-feather';
 
 const language:any = {
   "es": "Español", 
@@ -70,8 +71,8 @@ const Footer = () => {
             <li className={styles.title}>Sobre Itaaj</li>
             <li>¿Quiénes somos?</li>
             <li>Nuestro Equipo</li>
-            {/* <li><button onClick={handleDownload}>Términos y condiciones</button></li> */}
-            {/* <li><button onClick={handleDownloadPriva} >Política de devolucion</button></li> */}
+            <li><Link href='/terminos-condiciones'>Términos y condiciones</Link></li>
+            <li><Link href='/politicas-devolucion'>Política de devolucion</Link></li>
             <li>Tecnología Blockchain</li>
           </ul>
           <ul>
@@ -99,8 +100,8 @@ const Footer = () => {
           <div className={styles.options}>            
           <p>&copy; Copyright 2023, Itaaj Realty</p>
           <Link href='/legal'>Aviso legal</Link>
-          <Link href='/data'>Protección de datos</Link>
-          <Link href='/legal'>Política de cookies</Link>
+          <Link href='/terminos-condiciones'>Protección de datos</Link>
+          <Link href='/terminos-condiciones'>Política de cookies</Link>
           
           </div>
           {/* <select  onChange={changeLanguage} > */}
@@ -111,9 +112,21 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.float}>
+      <Link className={styles.itabot} title="Boton Asistente" href='/itabot'>
+            
+            <AlertCircle />
+  
+            {' '}
+        </Link>
         <Link target="_blank" title="Boton Whatsapp" href={whatsappLink}>
             
-            <i className="bx bxl-whatsapp"></i>{' '}
+            <MessageCircle />
+            <Phone style={{
+              position:'absolute',
+              right: 18
+            }} size={8} />
+  
+            {' '}
         </Link>
       </div>
     </footer>

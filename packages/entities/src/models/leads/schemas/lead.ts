@@ -4,7 +4,7 @@ export interface Lead extends Base {
     name: string;
     email: string;
     state: string;
-    phone: number;
+    phone: string;
     type: string;
     gender: string;
     reporter: string;
@@ -12,4 +12,5 @@ export interface Lead extends Base {
     property: string;
     city: string;
     country: string;
+    source: string;
 }

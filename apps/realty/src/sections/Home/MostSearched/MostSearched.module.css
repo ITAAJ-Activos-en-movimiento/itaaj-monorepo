@@ -1,0 +1,29 @@
+.section{
+    width: min(1150px, 90%);
+    margin-inline: auto;
+    padding-block: 8rem;
+}
+
+.section h3{
+    font-weight: 700;
+    color: rgba(0, 0, 0, .8);
+    margin-bottom: 2rem;
+}
+
+.section ul li{
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+.section > div{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .section > div{
+        grid-template-columns: 1fr;
+    } 
+}

@@ -61,15 +61,15 @@ const Banner = () => {
               />
               <h3>Valora tu casa</h3>
             </div>
-            <div className={styles.box}>
+            <Link href='/itabot' className={styles.box}>
               <Image
                 src="/value.png"
                 width={48}
                 height={48}
                 alt="Valora tu casa"
               />
-              <h3>Caltula tu hipoteca</h3>
-            </div>
+              <h3>Asistencia</h3>
+            </Link>
           
             
             <div className={styles.box}>

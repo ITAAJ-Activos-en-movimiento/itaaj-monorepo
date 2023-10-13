@@ -1,4 +1,4 @@
 :root{
-    --font:Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        --font: 'Noto Sans', sans-serif;
     --main-color: #0c0f24;
 }

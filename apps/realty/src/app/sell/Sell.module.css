@@ -1,0 +1,283 @@
+.banner{
+    position: relative;
+   }
+   
+   .banner .image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+   } 
+   
+   .banner .image{
+     display: block;
+     background: rgba(255, 255, 255, .1);
+     background-image: url('/mexico.jpg');
+     height: 40rem;
+     background-repeat: no-repeat;
+     background-position: left center;
+     background-size: cover;
+     border-style: none;
+     width: 100%;
+     /* position: relative; */
+   }
+   
+   .banner_content{
+    width: min(1200px, 90%);
+    margin-inline: auto;
+    height: 50rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+   }
+   
+   .banner_content > div > p{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 500;
+    /* max-width: 50rem; */
+   }
+   
+   .banner_content > div > h2{
+    font-size: 5rem;
+    color: #fff;
+    font-weight: 700;
+    max-width: 65rem;
+   }
+   
+   .banner_content form{
+    background-color: #fff;
+    /* height: 54rem; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+    z-index: 9;
+    margin-top: 10rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 30rem;
+   }
+   
+   .banner_content form h3{
+    text-align: center;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+    margin-bottom: 2rem;
+   }
+   
+   .banner_content form .field{
+    margin-bottom: 1.5rem;
+   }
+   
+   .banner_content form .field label{
+     font-size: 1.3rem;
+     font-weight: 400;
+   }
+   
+   .banner_content form .field input{
+    border: 1px solid rgba(0, 0, 0, .3);
+    height: 3.5rem;
+    margin-top: .5rem;
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 1rem;
+   }
+   .banner_content form .field select{
+    border: 1px solid rgba(0, 0, 0, .3);
+    height: 3.5rem;
+    margin-top: .5rem;
+    font-size: 1.3rem;
+    padding-inline: 1rem;
+    width: 100%;
+    all: none !important;
+   }
+   
+   .field_box{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5rem;
+    font-size: 1.3rem;
+    margin-top: -1.5rem;
+   }
+   
+   .field_box input{
+    width: 1.5rem;
+   }
+   
+   .banner_content form button{
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: .5rem;
+    /* padding: 1rem 2rem; */
+    height: 4rem;
+    color: #fff;
+    text-align: center;
+    display: block;
+    all: none;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+   }
+   
+   .banner_content form span{
+    text-align: center;
+   }
+   
+   .banner_content form span p{
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, .8);
+    font-weight: 600;
+    margin-bottom: .5rem;
+   }
+   
+   .banner_content form span h4{
+    font-size: 1.8rem;
+    color: rgba(0, 0, 0, .8);
+    font-weight: 700;
+    margin-bottom: .5rem;
+   }
+   
+   
+   .section{
+    width: min(1100px, 90%);
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+   }
+   
+   .left{
+    max-width: 50rem;
+   }
+   
+   .left h2{
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+    font-size: 2.8rem;
+    margin-bottom: .5rem;
+   }
+   
+   .left p{
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, .8);
+    line-height: 1.5;
+   }
+   
+   .left .image{
+     margin-top: 5rem;
+     border-radius: .5rem;
+     overflow: hidden;
+     display: flex;
+     width: 100%;
+   }
+   
+   .left p:last-child{
+    margin-top: 2rem;
+   }
+   
+   .right{
+     max-width: 50rem;
+     padding-top: 15rem;
+    }
+   
+   .right h2{
+     font-weight: 600;
+     color: rgba(0, 0, 0, .8);
+     font-size: 2.8rem;
+     margin-bottom: .5rem;
+    }
+    
+    .right p{
+     font-size: 1.6rem;
+     color: rgba(0, 0, 0, .8);
+     line-height: 1.5;
+    }
+    
+    .right p:last-child{
+     margin-top: 2rem;
+    }
+    
+    .left_two{
+     max-width: 50rem;
+     margin-top: 6rem;
+    }
+    
+    .left_two h2{
+     font-weight: 600;
+     color: rgba(0, 0, 0, .8);
+     font-size: 2.8rem;
+     margin-bottom: .5rem;
+    }
+    
+    .left_two p{
+     font-size: 1.6rem;
+     color: rgba(0, 0, 0, .8);
+     line-height: 1.5;
+    }
+    
+    .left_two .image{
+      margin-top: 5rem;
+      border-radius: .5rem;
+      overflow: hidden;
+      display: flex;
+      width: 100%;
+    }
+    
+    .left_two p:last-child{
+     margin-top: 2rem;
+    }
+    
+    .image_two{
+     margin-top: -10rem;
+    }
+
+    .banner_content form .btn{
+        background-color: var(--main-color);
+    }
+    
+    
+    @media screen and (max-width: 768px){
+     .banner_content{
+       /* height: 70vh; */
+       flex-direction: column;
+       height: auto;
+      }
+      
+      .banner_content > div{
+       padding-block: 4rem;
+      }
+      .banner_content form{
+       width: 95%;
+       margin-top: 0;
+       margin-bottom: 6rem;
+      }
+      
+      .banner .image{
+       display: block;
+       background: rgba(255, 255, 255, .8);
+       background-image: url('/banner22.jpg');
+       background-repeat: no-repeat;
+       background-position: left center;
+       background-size: cover;
+       border-style: none;
+       width: 100%;
+       height: 95rem;
+       /* position: relative; */
+     }
+     
+     .section{
+       flex-direction: column;
+     }
+      
+     .right{padding-block: 4rem;}
+     
+     .left_two{
+       margin-block: 1rem ;
+     }
+     
+     .image_two{
+       margin: 0;
+     }
+    }
+    
+    .link{
+     color: var(--primary-color);
+    }

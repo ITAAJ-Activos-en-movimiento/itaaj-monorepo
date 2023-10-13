@@ -4,9 +4,10 @@ import styles from './PropertyCard.module.css'
 import Image from 'next/image'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import { changeLanguage } from '@/utils/change-language'
-const ProeprtyCard = ({images, city, name, price, type, bedrooms, bathrooms, total_area }: any) => {
+import Link from 'next/link'
+const ProeprtyCard = ({images, city, name, price, category, slug, type, bedrooms, bathrooms, total_area }: any) => {
   return (
-    <article>
+    <Link href={`/properties/exclusive/${slug}`}>
         <picture className={styles.picture}>
 
         <Image src={images && images[0]?.length > 6? images[0] : '/img-placeholder.jpg'} width={1050} height={150} style={{
@@ -25,7 +26,7 @@ const ProeprtyCard = ({images, city, name, price, type, bedrooms, bathrooms, tot
             <li> <Heart size={20} color='#e84079' /> </li>
         </ul>
 
-    </article>
+    </Link>
   )
 }
 

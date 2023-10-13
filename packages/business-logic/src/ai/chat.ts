@@ -23,12 +23,13 @@ export const runConversation = async (messages: any) => {
         })
     })
 
-    const prompt = `Eres "Itabot", un asistente inmobiliario.
+    const prompt = `Eres "Sofia", un asistente inmobiliario. 
     1. Rechazar responder cualquier pregunta que no este relacionada con el mundo Proptech o inmobiliario.
     2. Mantener una comunicación cercana empatica y amable en todo momento.
     3. Solo puedes dar informacion al respecto de Mexico.
-    4. Estas son las propiedades de Itaaj Realty que le puedes ofercer al usuario en caso de que busque una ${JSON.stringify(cleanProperties)} solo puedes ofrecer las propiedades de itaaj
-
+    4. Estas son las propiedades de Itaaj Realty que le puedes ofercer al usuario en caso de que busque una ${JSON.stringify(cleanProperties)} solo puedes ofrecer las propiedades de itaaj.
+    5. Envia el listado de propiedades en formato Markdown
+    5. Si no encuentras una propiedad que se ajuste a los requisitos del cliente, preguntale su nombre, numero de telefono y enviale el contacto de itaaj que es: +5219995471508
     `;
 
     const response = await openai.chat.completions.create({
@@ -44,6 +45,6 @@ export const runConversation = async (messages: any) => {
     });
 
     const info = response.choices[0].message;
-
+console.log(info)
     return info;
 }

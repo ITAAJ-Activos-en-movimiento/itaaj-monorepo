@@ -8,6 +8,20 @@
       "when": 1694386927170,
       "tag": "0000_useful_menace",
       "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1695258078497,
+      "tag": "0001_thick_ulik",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1695258531317,
+      "tag": "0002_equal_scorpion",
+      "breakpoints": false
     }
   ]
 }

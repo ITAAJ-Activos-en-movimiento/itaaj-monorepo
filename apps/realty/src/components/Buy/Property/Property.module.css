@@ -1,0 +1,156 @@
+.card{
+    overflow: hidden;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 30rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
+   }
+   
+   .header{
+    background-color: rgba(0, 0, 0, .08);
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    gap: 1rem;
+   }
+   
+   .header h2{
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, .8);
+   }
+   
+   .content {
+    padding-inline: 1rem;
+    padding-top: 2rem;
+   }
+   
+   .price{
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+    font-size: 2.2rem;
+   }
+   
+   .title{
+    font-size: 1.5rem;
+    margin-block: 1rem;
+   }
+   
+   .title strong{
+    font-weight: 600;
+   }
+   
+   .amenities{
+    padding: .5rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+   gap: 1rem;
+   }
+   
+   .amenities > div{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+   }
+   
+   .amenities > div i{
+    font-size: 2rem;
+    color: rgba(0, 0, 0, .8);
+   }
+   
+   .amenities > div p{
+    font-size: 1.4rem;
+    font-weight: 300;
+   }
+   
+   
+   .options{
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, .08);
+    /* margin-top: 5rem; */
+   }
+   
+   .options a{
+    border: 1px solid var(--primary-color);
+    padding: .8rem 1rem;
+    border-radius: .5rem ;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    min-width: 10rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+   }
+   
+   .options a i{
+    font-size: 1.8rem;
+   }
+   
+   
+   .options a:first-child{
+    background-color: var(--primary-color);
+    color: #f2f2f2;
+    border-radius: .5rem;
+   }
+   
+   
+   .options a:last-child{
+    color: var(--primary-color);
+   }
+   
+   .description{
+    padding: 0 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+   }
+   
+   .description > p:first-child  {
+    font-size: 1.4rem;
+    white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis; 
+       width: 40rem;
+       -webkit-box-orient: vertical;
+       -webkit-line-clamp: 2;
+       display: -webkit-box;
+       white-space: normal;
+       width: 95%;
+       color: rgba(0, 0, 0, .8);
+   }
+   
+   .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+
+   .card .options a{
+    border: 1px solid var(--main-color);
+    color: var(--main-color) ;
+    }
+
+   .card .options a:first-child{
+    background-color: var(--main-color) ;
+    color: #fff ;
+}
+
+   @media screen and (max-width: 768px){
+       .card{
+           grid-template-columns: 1fr;
+           grid-template-rows: 300px 1fr;
+           height: 59rem;
+           /* overflow: visible; */
+           box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
+           border-bottom: 1px solid rgba(0, 0, 0, .3);
+          } 
+          
+          .options{
+           margin-top: 2rem;
+          }
+   }

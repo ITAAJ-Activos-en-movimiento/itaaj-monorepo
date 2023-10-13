@@ -52,6 +52,8 @@
     margin-left: 1rem;
     color: rgba(255, 255, 255, .8);
    }
+
+   
    
    .footer .float > a{
     display: block;
@@ -70,6 +72,13 @@
     background-color: #25D366;
     font-size: 4rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+   }
+
+   .footer .float .itabot{
+        right: 8rem;
+        z-index: 999;
+        background-color: #ccc;
+        color: #0C0F24;
    }
    
    .legal{

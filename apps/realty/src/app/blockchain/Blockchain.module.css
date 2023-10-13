@@ -1,0 +1,100 @@
+.hero_back{
+     background-color: #15a0b832;
+    }
+    
+    .hero{
+     padding-top: 10rem;
+     padding-bottom: 5rem;
+     display: grid;
+     justify-content: center;
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .hero > div{
+     text-align: left;
+    }
+    
+    .hero > div h2{
+     font-size: 3.6rem;
+     font-weight: 600;
+     max-width: 50rem;
+     margin-bottom: 4rem;
+    }
+    
+    
+    .hero > div p{
+     font-size: 1.7rem;
+     max-width: 50rem;
+     margin-bottom: 2rem;
+     line-height: 2.2rem;
+    }
+    
+    .how{
+     min-height: 40rem;
+     padding-block: 4rem;
+     display: grid;
+     align-items: center;
+     justify-content: center;
+    }
+    
+    .how h1{
+     text-align: center;
+     margin-bottom: 4rem;
+    }
+    
+    .future{
+     padding-block: 4rem;
+    }
+    
+    .future h2{
+     text-align: center;
+     margin-bottom: 4rem;
+     font-size: 3rem;
+    }
+    
+    .future > div{
+     background-color: var(--primary-color);
+     color: #fff;
+     border-radius: 1rem;
+     min-height: 15rem;
+     max-width: 80rem;
+     margin-inline: auto;
+     padding: 2rem;
+     box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+    }
+    
+    .future > div h2{
+     font-size: 2rem;
+    }
+    
+    .list{
+     width: min(1000px, 90%);
+     margin: auto;
+     margin-top: 2rem;
+    }
+    
+    
+    .list_down{
+     margin-top: 2rem;
+     padding-inline: 3rem;
+     max-width: 60rem;
+    }
+    
+    .title{
+     width: min(1000px, 90%);
+     margin: auto;
+     font-size: 2.2rem;
+     font-weight: 600;
+    }
+    
+    .list_down li{
+     margin-bottom: 2.5rem;
+     font-weight: 400;
+     
+    }
+    
+    .list li{
+     font-weight: 400;
+     margin-bottom: 2.5rem;
+     
+    }
