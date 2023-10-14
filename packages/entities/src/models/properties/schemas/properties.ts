@@ -55,4 +55,5 @@ export interface Property extends Base{
  blockchainId: string;
  category: Category;
  partner: string;
+ development: string;
 }
