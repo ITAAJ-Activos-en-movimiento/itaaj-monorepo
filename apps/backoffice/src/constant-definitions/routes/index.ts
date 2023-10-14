@@ -10,4 +10,7 @@ export const PublicRoutes = {
     EMPLOYES: "/collaborators",
     PROFILE: "/profile/:username",
     SOCIALSCRIPT: "/social-script",
+    PROPERTIES: 'properties',
+    DEVELOPMENTS: 'developments',
+    CREATE_DEVELOPMENT: 'create-development'
   };
