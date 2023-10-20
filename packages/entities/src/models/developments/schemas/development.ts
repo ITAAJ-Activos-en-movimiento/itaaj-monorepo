@@ -37,7 +37,7 @@ export interface Development extends Base {
   street: string;
   external_number: string;
   internal_number: string;
-  location: Location;
+  location: LocationDevelopment;
   price: number;
   area: AreaDevelopment;
   garage: number;

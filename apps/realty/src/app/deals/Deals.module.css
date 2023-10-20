@@ -3,7 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 60rem;
+    height: 65rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,15 +42,15 @@
    
    .info{
     min-height: 40rem;
-    max-width: 70rem;
+    max-width: 50rem;
     display: flex;
     align-items: center;
     justify-content: baseline;
+    margin-inline: auto;
+
    }
    
-   .info{
-    margin-inline: auto;
-   }
+
 
    .info h2{
     text-align: center;
@@ -119,13 +119,11 @@
    }
    
    .selling{
-    padding-block: 4rem;
     font-size: 2rem;
    }
    
    .selling h2{
     text-align: center;
-    margin-bottom: 5rem;
    }
    
    .projects{
@@ -255,7 +253,12 @@
     text-transform: capitalize;
    }
    
-   @media screen and (max-width: 768px){
+   .property_footer button
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}   @media screen and (max-width: 768px){
     .invesment ul{
      flex-direction: column;
      align-items: center;
@@ -338,5 +341,13 @@
    
    .banner p{
     padding: 1rem;
+   }
+
+   .project .picture {
+    height: 50rem;
+   }
+  .project .picture img{
+    height: 70rem;
+    object-fit: contain;
    }
 }

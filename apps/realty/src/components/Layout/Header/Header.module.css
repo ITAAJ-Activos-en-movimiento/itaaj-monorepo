@@ -23,6 +23,14 @@
     font-size: 2.6rem;
     font-weight: 600;
     color: #0c0f24;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.logo h3{
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 .login{
@@ -88,29 +96,32 @@
     background-color: rgba(0, 0, 0, .05);
 }
 
+.btn{
+    background-color: transparent;
+}
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1400px){
     .nav .mid{
         display: none;
     }
 }
 
-@media screen and (max-width: 1200px){
+ @media screen and (max-width: 760px){
     .nav a{
         display: none;
     }
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 600px){
 
     .alerts{
         display: none; 
     }
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 400px){
 
     .label_button span{
         display: none; 
     }
-}
+} 

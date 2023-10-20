@@ -4,6 +4,7 @@ import styles from './Deals.module.css'
 import Image from 'next/image'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react';
+import { ArrowUp, Download } from 'react-feather';
 
 const Deals: NextPage = ()  => {
   
@@ -58,7 +59,7 @@ const Deals: NextPage = ()  => {
             .map((property: any, index:number) => (
               <div key={property.uuid} className={`${styles.project} ${styles['pro'+ index]}`}>
                 <div className={styles.picture}>
-                  <Image src={property.images[0]} alt={property.name} width={1000} height={1000} objectFit='cover' />                  
+                  <Image src={property.images[0]} alt={property.name} width={1000} height={1000} objectFit='contain' />                  
                 </div>
                 <div className={styles.project_info}>
                   <span>{property.city}, {property.state}</span>
@@ -76,10 +77,10 @@ const Deals: NextPage = ()  => {
                   
                   <div>
                     <h4 className={styles.rent}>RENTABILIDAD DEL PROYECTO</h4>
-                    <h3 className={styles.percent}><i className='bx bx-up-arrow-alt' ></i> {index == 1? "18.5%" : "20%"} </h3>
+                    <h3 className={styles.percent}><ArrowUp size={30} /> {index == 1? "18.5%" : "20%"} </h3>
                   </div>
                   <div className={styles.property_footer}>
-                    <button onClick={handleDownload}>¡Hipótesis de Inversión!</button>
+                    <button onClick={handleDownload}><Download size={22} color='var(--main-color)' /> ¡Hipótesis de Inversión!</button>
                   </div>
                 </div>
               </div>

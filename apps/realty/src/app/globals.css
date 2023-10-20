@@ -101,6 +101,26 @@ picture {
   display: none;
 }
 
+.swiper-container {
+  width: 480px;
+}
+
+.S9gUrf-YoZ4jf{
+  width: 100%;
+  overflow: hidden;
+}
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
       scroll-behavior: auto;

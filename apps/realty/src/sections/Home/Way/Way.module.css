@@ -13,3 +13,8 @@
     margin-block: 6rem;
     margin-top: 4rem;
 }
+
+.section img{
+    /* height: 20rem; */
+    object-fit: contain;
+}

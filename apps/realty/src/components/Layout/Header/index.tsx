@@ -1,28 +1,34 @@
 'use client';
 
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Header.module.css'
 import { Bell, Heart, Menu, User } from 'react-feather'
 import Link from 'next/link'
 import { useMediaQuery } from 'react-responsive';
+import Image from 'next/image';
+import SideMenu from '../SideMenu';
 
 const Header = () => {
-
     const isDesktop = useMediaQuery({ query: '(min-width: 1268px)' });
     const content = isDesktop ? 'Publica tu propiedad gratis' : 'Publica';
-    const logo = isDesktop ? 'itaaj realty' : 'ir';
+    const logo = isDesktop ? 'itaaj realty' : '';
+  
+    const [active, setActive] = useState(false);
   
     return (
     <header className={styles.header}>
         <div className={styles.options}>
-            <Menu size={18} />
-            <div className={styles.logo}>
-                {logo}
-            </div>
+            <button className={styles.btn} onClick={() => setActive(true)} >
+                <Menu size={20} />
+            </button>
+            <Link href='/' className={styles.logo}>
+                <Image src='/isotipo.png' alt='Logo Itaaj Realty' width={20} height={40}  />
+                <h3>{logo}</h3>
+            </Link>
             <nav className={styles.nav}>
                 <Link href='/properties'>Comprar</Link>
                 <Link href='/sell'>Vender</Link>
-                <Link href='/' className={styles.mid} >Portafolio de desarrolladores</Link>
+                <Link href='/deals' className={styles.mid} >Portafolio de desarrolladores</Link>
                 <Link href='/agents' className={styles.mid} >Meta Agentes Itaaj</Link>
                 <Link href='/' className={styles.mid} >Blog</Link>
             </nav>
@@ -32,8 +38,9 @@ const Header = () => {
         <button className={styles.label_button} ><Heart size={16} /><span>Mis listas</span></button>
         <Link href='/publish' className={styles.publish}>{content}</Link>
             <button className={styles.login}><User size={18} /> Acceder</button>
-
         </div>
+
+        <SideMenu active={active} setActive={setActive} />
     </header>
   )
 }

@@ -15,17 +15,17 @@ const Questions = () => {
             <article>
                 <h3>Inmuebles a la venta</h3>
                 <p>Encuentra casas en venta, departamentos, chalets y mucho más en Itaaj Realty. Utiliza nuestros filtros y alertas para estar al día de todas las novedades.</p>
-                <Link href='/'>Ver inmuebles a la venta <ArrowRight size={17} /></Link>
+                <Link href='/properties'>Ver inmuebles a la venta <ArrowRight size={17} /></Link>
             </article>
             <article>
                 <h3>Proyectos inmobiliarios</h3>
                 <p>Descubre los mejores proyectos inmobiliarios en cada ciudad. Filtra por precio, número de habitaciones, baños, barrios… y contacta fácilmente para mas informacion.</p>
-                <Link href='/'>Ver proyectos <ArrowRight size={17} /></Link>
+                <Link href='/properties'>Ver proyectos <ArrowRight size={17} /></Link>
             </article>
             <article>
                 <h3>Vender tu casa</h3>
                 <p>Comparte y encuentra el comprador perfecto para tu propiedad. Configura tus alertas y guárdalos en favoritos para estart al dia con las ofertas sobre tu inmueble.</p>
-                <Link href='/'>Vender mi propiedad <ArrowRight size={17} /></Link>
+                <Link href='/sell'>Vender mi propiedad <ArrowRight size={17} /></Link>
             </article>
         </div>
     </section>

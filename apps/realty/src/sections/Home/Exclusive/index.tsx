@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './Exclusive.module.css'
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -44,7 +44,7 @@ const Exclusive: NextPage = () => {
           <p>Proyectos revisados detalladamente con el fin de asegurarnos que tengan viabilidad financiera, legal y técnica.</p>
           <Divider />
         </div>
-        <Link href='/' className={styles.btn}>Mostrar todos los inmuebles</Link>
+        <Link href='/properties' className={styles.btn}>Mostrar todos los inmuebles</Link>
       </div>
 
 
@@ -62,13 +62,13 @@ const Exclusive: NextPage = () => {
             width: 480,
             slidesPerView: 2,
           },
+          280: {
+            width: 300,
+            slidesPerView: 1,
+          },
         }}
 
         navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         {properties
           ?.filter((property: any) => property.category == 'exclusive')

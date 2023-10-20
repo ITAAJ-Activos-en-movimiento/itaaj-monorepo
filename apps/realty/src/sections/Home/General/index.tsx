@@ -51,18 +51,20 @@ const General = () => {
                 slidesPerView={4}
                 breakpoints={{
                     768: {
-                        width: 768,
-                        slidesPerView: 3,
-                      },
-                      480: {
-                        width: 480,
-                        slidesPerView: 2,
-                  },
-                }}
+                      width: 768,
+                      slidesPerView: 3,
+                    },
+                    480: {
+                      width: 480,
+                      slidesPerView: 2,
+                    },
+                    280: {
+                      width: 300,
+                      slidesPerView: 1,
+                    },
+                  }}
                  
                 navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >

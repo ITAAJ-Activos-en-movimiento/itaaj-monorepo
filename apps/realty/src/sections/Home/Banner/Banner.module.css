@@ -1,117 +1,130 @@
-.section{
-    background: linear-gradient(rgba(238, 240, 249, 0) 0%, rgb(238, 240, 249) 100%);
-    border-radius: 0 0 2rem 2rem;
+.section {
+  background: linear-gradient(rgba(238, 240, 249, 0) 0%, rgb(238, 240, 249) 100%);
+  border-radius: 0 0 2rem 2rem;
 }
 
-.container_banner{
-    background: #999 no-repeat top/cover;
-    background-image: url('/home_search.webp');
-    height: 44rem;
-    min-height: 44rem;
-    position: relative;
+.container_banner {
+  background: #999 no-repeat top/cover;
+  background-image: url('/home_search.webp');
+  height: 44rem;
+  min-height: 44rem;
+  position: relative;
+}
+
+.search {
+  max-width: 950px;
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.content {
+  background: var(--second-color);
+  border-radius: 1.6rem;
+  box-shadow: 0 2px 32px rgba(31, 37, 115, .4);
+  margin-top: -12rem;
+  padding: 1.6rem 1.6rem 2.4rem;
+}
+
+.content h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.content ul {
+  display: flex;
+  color: #fff;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.params {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.params select {
+  background-color: #fff;
+  height: 5rem;
+  border-radius: 1rem;
+}
+
+.params>div {
+  display: flex;
+  background-color: #fff;
+  border-radius: 1rem;
+  height: 5rem;
+  padding: 1rem;
+  padding-right: .5rem;
+  align-items: center;
+}
+
+.params .btn {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  border-radius: 1rem;
+}
+
+.params button span {
+  font-weight: 500;
+}
+
+
+
+.options {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+  padding: 2rem;
+}
+
+.options h2 {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, .8);
+}
+
+.options .boxs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.options .boxs .box {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+}
+
+.box h3 {
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, .8);
+}
+
+@media screen and (max-width: 768px) {
+
+  .container_banner {
+    background-position-x: -15rem;
+    background-size: 130rem;
   }
 
-.search{
-    max-width: 950px;
-    position: relative;
-    width: 100%;
-    margin-inline: auto;
-}
-
-.content{
-    background: var(--second-color);
-    border-radius: 1.6rem;
-    box-shadow: 0 2px 32px rgba(31, 37, 115, .4);
-    margin-top: -12rem;
-    padding: 1.6rem 1.6rem 2.4rem;
-}
-
-.content h2{
-    text-align: center;
-    color: #fff;
-    font-size: 2rem;
-}
-
-.content ul{
-    display: flex;
-    color: #fff;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.5rem;
-    font-weight: 600;
-    font-size: 1.6rem;
-}
-
-.params{
-    display: grid;
-    grid-template-columns: 20rem 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.params select{
-    background-color: #fff;
-    height: 5rem;
-    border-radius: 1rem;
-}
-
-.params > div{
-    display: flex;
-    background-color: #fff;
-    border-radius: 1rem;
-    height: 5rem;
-    padding: 1rem;
-    padding-right: .5rem;
-    align-items: center;
-}
-
-.params button{
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    padding:1rem 1.5rem;
-    background-color: var(--main-color);
-    color: #fff;
-    border-radius: 1rem;
-}
-
-.params button span{
-    font-weight: 500;
-}
-
-
-
-.options{
-    width: min(1200px, 90%);
-    margin-inline: auto;
-    padding: 2rem;
+  .params{
+    grid-template-columns: 1fr;
   }
-  
-  .options h2{
-    font-size: 2rem;
-    color: rgba(0, 0, 0, .8);
-  }
-  
-  .options .boxs{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .options .boxs .box{
-    background-color: #fff;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
-  }
-  
-  .box h3{
-    font-weight: 600;
-    margin-top: 1rem;
-    font-size: 1.3rem;
-    color: rgba(0, 0, 0, .8);
-  }
+
+}

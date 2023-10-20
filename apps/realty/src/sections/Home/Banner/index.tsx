@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Banner = () => {
+
   return (
     <section className={styles.section}>
       <div className={styles.container_banner}></div>
@@ -12,18 +13,23 @@ const Banner = () => {
         <div className={styles.content}>
           <h2>Todos tenemos un sitio</h2>
           <ul>
-            <li>Comprar</li>
-            <li>Obra nueva</li>
-            <li>Portafolio</li>
+            <li><Link href='/properties'>Comprar</Link></li>
+            <li><Link href='/properties'>Obra nueva</Link></li>
+            <li><Link href='/properties'>Portafolio</Link></li>
           </ul>
 
           <div className={styles.params}>
             <select name="" id="">
-              <option value="">Viviendas</option>
+              <option value="departament">Viviendas</option>
+              <option value="new">Obra nueva</option>
+              <option value="offerts">Promociones</option>
+              <option value="office">Oficina</option>
+              <option value="terreno">Terreno</option>
+              <option value="building">Edificio</option>
             </select>
             <div>
               <input type="search" placeholder='Buscar propiedades en estados, etc...' />
-              <button><Search size={20} /> <span>Buscar</span></button>
+              <Link href='/properties' className={styles.btn} ><Search size={20} /> <span>Buscar</span></Link>
             </div>
           </div>
         </div>
