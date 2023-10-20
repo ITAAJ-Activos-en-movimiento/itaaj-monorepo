@@ -25,7 +25,7 @@ body{
   font-family: var(--font);
   text-rendering: optimizeSpeed;
   min-height: 100vh;
-  background-color: #003050;
+  background-color: #f2f2f2;
 }
 
 
@@ -151,7 +151,7 @@ body{
   font-family: var(--font);
   text-rendering: optimizeSpeed;
   min-height: 100vh;
-  background-color: #003050;
+  background-color: #f2f2f2;
 }
 
 

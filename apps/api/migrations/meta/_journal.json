@@ -22,6 +22,20 @@
       "when": 1695258531317,
       "tag": "0002_equal_scorpion",
       "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1697317328452,
+      "tag": "0003_dusty_mathemanic",
+      "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1697320067797,
+      "tag": "0004_worried_midnight",
+      "breakpoints": false
     }
   ]
 }
