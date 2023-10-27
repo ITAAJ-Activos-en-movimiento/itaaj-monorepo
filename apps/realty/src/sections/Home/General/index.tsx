@@ -9,28 +9,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Divider, PropertyCard } from '@/components';
 import Link from 'next/link';
+import { properties as propertiesApi } from '@/services';
+import Slider from './Slider';
 
-const General = () => {
-    const [properties, setProperties] = useState([]);
-
-
-    const fetchData =  async() => {
-        const data = await fetch(
-            'https://itaaj-api-v0.onrender.com/api/v1/properties',
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            }
-          );
-          const result: any = await data.json();
-          setProperties(result.items);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
+const General = async () => {
+  const properties = await propertiesApi();
 
     return (
         <section className={styles.section}>
@@ -44,39 +27,8 @@ const General = () => {
                 <Link href='/' className={styles.btn}>Mostrar todos los inmuebles</Link>
             </div>
 
+            <Slider properties={properties} />
             
-            <Swiper
-                modules={[Navigation]}
-                spaceBetween={20}
-                slidesPerView={4}
-                breakpoints={{
-                    768: {
-                      width: 768,
-                      slidesPerView: 3,
-                    },
-                    480: {
-                      width: 480,
-                      slidesPerView: 2,
-                    },
-                    280: {
-                      width: 300,
-                      slidesPerView: 1,
-                    },
-                  }}
-                 
-                navigation
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
-            >
-                      {properties
-            ?.filter((property: any) => property.category == 'general')
-            .sort((property:any) => property.price - property.price)
-            .map((property: any) => (
-                    <SwiperSlide key={property.uuid} >
-                    <PropertyCard {...property} />
-                </SwiperSlide>
-                ))}                
-            </Swiper>
 
         </section>
     )

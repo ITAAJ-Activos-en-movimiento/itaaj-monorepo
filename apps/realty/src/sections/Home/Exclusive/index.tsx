@@ -1,40 +1,18 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './Exclusive.module.css'
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import { Divider, PropertyCard } from '@/components';
 import Link from 'next/link';
 import { NextPage } from 'next';
+import { properties as propertiesApi } from '@/services';
+import Slider from './Slider';
 
-const Exclusive: NextPage = () => {
+const Exclusive: NextPage = async () => {
 
-  const [properties, setProperties] = useState([]);
-
-
-  const fetchData = async () => {
-    const data = await fetch(
-      'https://itaaj-api-v0.onrender.com/api/v1/properties',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    const result: any = await data.json();
-    setProperties(result.items);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
+  const properties = await propertiesApi();
 
   console.log(properties)
+  
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -47,41 +25,7 @@ const Exclusive: NextPage = () => {
         <Link href='/properties' className={styles.btn}>Mostrar todos los inmuebles</Link>
       </div>
 
-
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={20}
-        slidesPerView={4}
-        loop
-        breakpoints={{
-          768: {
-            width: 768,
-            slidesPerView: 3,
-          },
-          480: {
-            width: 480,
-            slidesPerView: 2,
-          },
-          280: {
-            width: 300,
-            slidesPerView: 1,
-          },
-        }}
-
-        navigation
-      >
-        {properties
-          ?.filter((property: any) => property.category == 'exclusive')
-          .sort((property: any) => property.price - property.price)
-          .map((property: any) => (
-            <SwiperSlide key={property.uuid} >
-              <PropertyCard {...property} />
-            </SwiperSlide>
-          ))}
-        {/* {[0,1,2,3,4,5,6,7].map((p) => ( */}
-
-        {/* ))}                 */}
-      </Swiper>
+    {/* <Slider properties={properties} /> */}
 
     </section>
   )

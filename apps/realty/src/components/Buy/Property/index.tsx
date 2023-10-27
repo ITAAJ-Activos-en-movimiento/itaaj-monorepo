@@ -16,7 +16,7 @@ const Property = ({images, price, type, name, category, bedrooms, bathrooms, are
   }, [])
   return (
     <Link className={styles.card} href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
-      <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
+      {/* <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' /> */}
       <div>
        <div className={styles.header}>
         <h2>ITAAJ &middot; Experto inmobiliario</h2>

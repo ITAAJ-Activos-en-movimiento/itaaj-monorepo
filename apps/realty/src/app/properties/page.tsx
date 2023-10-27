@@ -10,7 +10,7 @@ const Properties:NextPage = () => {
 
     const fetchData =  async() => {
         const data = await fetch(
-            'https://itaaj-api-v0.onrender.com/api/v1/properties',
+            'https://troting.com/api/v1/properties',
             {
               method: 'GET',
               headers: {
@@ -19,7 +19,7 @@ const Properties:NextPage = () => {
             }
           );
           const result: any = await data.json();
-          setProperties(result.items);
+          setProperties(result);
     }
 
     useEffect(() => {
@@ -78,7 +78,7 @@ const Properties:NextPage = () => {
         </div>
       </div>
       {properties?.map((property:any) => (
-       <Property key={property.uuid} {...property} />      
+       <Property key={property.id} {...property} />      
       ))}
       </div>
      )}
