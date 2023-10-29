@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const { VITE_API_URL } = import.meta.env;
+
 export const itaajApi = axios.create({
-  baseURL: "http://localhost:8000/api/v1",
+  baseURL: VITE_API_URL,
 });

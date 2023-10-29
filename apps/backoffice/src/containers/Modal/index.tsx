@@ -16,15 +16,9 @@ interface Props {
 }
 
 const Modal = ({
-    className,
-    testid,
-    variant,
     width,
-    withCloseIcon,
     isOpen,
     setIsOpen,
-    onClose: tellParentToClose,
-    renderLink,
     renderContent,
 }: Props) => {
     const closeModal = useCallback(() => {

@@ -75,7 +75,7 @@ const Table = <T extends DataRecord>({
           ))}
         </tbody>
       </table>
-      {/* <div className={styles.table_footer}>
+       <div className={styles.table_footer}>
         <div className={styles.show}>
           <span>
             Showing {showInit}-{showEnd} of {count} results
@@ -110,7 +110,7 @@ const Table = <T extends DataRecord>({
             <i className="bx bx-chevron-right"></i>
           </button>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

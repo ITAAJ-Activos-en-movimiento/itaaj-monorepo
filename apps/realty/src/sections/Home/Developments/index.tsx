@@ -1,28 +1,26 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './Exclusive.module.css'
 import { Divider, PropertyCard } from '@/components';
 import Link from 'next/link';
 import { NextPage } from 'next';
-import { properties as propertiesApi } from '@/services';
+import { developments as developmentsApi } from '@/services';
 import Slider from './Slider';
 
-const Exclusive: NextPage = async () => {
+const Developments: NextPage = async () => {
+  const developments = await developmentsApi();
 
-  const properties = await propertiesApi();
-
-  console.log(properties)
+  console.log(developments)
   
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <div>
 
-          <h2>Propiedades Exclusivas</h2>
+          <h2>Desarrollos Exclusivos</h2>
           <p>Proyectos revisados detalladamente con el fin de asegurarnos que tengan viabilidad financiera, legal y técnica.</p>
           <Divider />
         </div>
-        <Link href='/properties' className={styles.btn}>Mostrar todos los inmuebles</Link>
+        <Link href='/developments' className={styles.btn}>Mostrar todos los desarrollos</Link>
       </div>
 
     {/* <Slider properties={properties} /> */}
@@ -31,4 +29,4 @@ const Exclusive: NextPage = async () => {
   )
 }
 
-export default Exclusive;
+export default Developments;

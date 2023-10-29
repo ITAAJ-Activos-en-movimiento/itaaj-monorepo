@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import dynamic from 'next/dynamic'
 import { Banner, Exclusive, General, MostSearched, Publish, Questions, Way } from '@/sections'
 import { Footer } from '@/components'
+import Developments from '@/sections/Home/Developments'
  
 const Header = dynamic(() => import('../components/Layout/Header'), { ssr: false })
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
     <>
     <main className={styles.main}>
     <Banner />
-    <Exclusive />
+    <Developments />
+    {/* <Exclusive /> */}
     <Publish />
     <General />
     <Way />

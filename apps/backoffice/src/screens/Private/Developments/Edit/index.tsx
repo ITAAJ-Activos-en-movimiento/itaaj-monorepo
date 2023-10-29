@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { Button, Field, ImageInput, Input, TextEditor } from "@/components";
+import { Button, Field,  Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
-import { useDispatch } from "react-redux";
-import { updateProperties } from "@/redux/states";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/constant-definitions";
 import { v4 as uuid } from "uuid";
-import { useUploadImage } from "@/hooks/useUploadImage";
 
-const placeholderImage = "https://via.placeholder.com/300x300";
+// const placeholderImage = "https://via.placeholder.com/300x300";
 
 const CreatePropety: React.FC = () => {
-  const { isLoading, url, uploadImage, urls, setUrls } = useUploadImage();
 
   const [property, setProperty] = useState({
     id: uuid(),
@@ -37,9 +33,6 @@ const CreatePropety: React.FC = () => {
     partner: "",
   });
 
-  const addImages = (e: any) => {
-    uploadImage(e?.target?.files![0]);
-  };
 
   const [amenities, setAmenities] = useState<any[]>([]);
   const addAmenities = () => {
@@ -56,7 +49,6 @@ const CreatePropety: React.FC = () => {
     const index = amenities.findIndex((a: any) => a.id == id);
     amenities[index].text = e.target.value;
   };
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (e: any) => {
@@ -65,13 +57,7 @@ const CreatePropety: React.FC = () => {
     amenities.map((amenity) => {
       newAmenities.push(amenity.text);
     });
-    dispatch(
-      updateProperties({
-        ...property,
-        images: urls,
-        amenities: newAmenities,
-      }) as any
-    );
+   
     navigate(`/${PrivateRoutes.PROPERTIES}`, { replace: true });
   };
 
@@ -194,24 +180,9 @@ const CreatePropety: React.FC = () => {
       <div className={styles.sidebar}>
         <div className={styles.section}>
           <h3>Images</h3>
-          <ImageInput
-            preview={url || placeholderImage}
-            onChange={(e) => addImages(e)}
-            loading={isLoading}
-            src={url || placeholderImage}
-            alt=""
-            width={300}
-            height={300}
-          />
+       
           <div className={styles.preview_container}>
-            {urls?.map((image) => (
-              <img
-                key={image}
-                className={styles.preview_img}
-                src={image}
-                alt=""
-              />
-            ))}
+           
           </div>
         </div>
         <div className={styles.section}>

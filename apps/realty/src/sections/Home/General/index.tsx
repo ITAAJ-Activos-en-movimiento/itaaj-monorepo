@@ -1,13 +1,10 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './Exclusive.module.css'
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Divider, PropertyCard } from '@/components';
+import { Divider } from '@/components';
 import Link from 'next/link';
 import { properties as propertiesApi } from '@/services';
 import Slider from './Slider';

@@ -1,7 +1,7 @@
 import { Field, Input } from '@/components'
 import styles from './Location.module.css'
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
 
 const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handleChange}: any) => {
