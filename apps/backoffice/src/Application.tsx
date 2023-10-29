@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Signin from "./screens/Signin";
 import Private from "./screens/Private";
-import Leads from "./screens/Private/leads";
+import Leads from "./screens/Private/Leads";
 import { PrivateRoutes } from "./constant-definitions";
 import Developments from "./screens/Private/Developments";
 import CreateDevelopment from "./screens/Private/Developments/Create";
@@ -11,11 +11,6 @@ const Application = () => {
     <Routes>
       <Route path="login" element={<Signin />} />
       <Route path="leads" element={<Leads />} />
-      <Route path={PrivateRoutes.DEVELOPMENTS} element={<Developments />} />
-      <Route
-        path={PrivateRoutes.CREATE_DEVELOPMENT}
-        element={<CreateDevelopment />}
-      />
       <Route path="/*" element={<Private />} />
     </Routes>
   );

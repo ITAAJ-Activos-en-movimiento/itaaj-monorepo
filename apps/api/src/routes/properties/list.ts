@@ -9,3 +9,5 @@ export const getAllPropertiesRoute: RouteOptions = {
     reply.status(200).send(properties);
   },
 };
+
+

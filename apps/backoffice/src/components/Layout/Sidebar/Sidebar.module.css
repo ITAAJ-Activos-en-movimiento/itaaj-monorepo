@@ -1,0 +1,40 @@
+.sidebar{
+    /* grid-row: 1 / -1; */
+    background-color: #fff;
+    border-right: 2px solid rgba(0, 0, 0, .1);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar button{
+    background-color: transparent;
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, .8);
+}
+
+.sidebar button:hover{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.sidebar a{
+    display: inline-flex;
+    background-color: transparent;
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, .6);
+}
+
+.sidebar a:hover{
+    background-color: rgba(0, 0, 0, .1);
+}

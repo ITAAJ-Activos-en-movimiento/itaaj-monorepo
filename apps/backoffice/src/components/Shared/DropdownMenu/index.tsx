@@ -4,6 +4,7 @@ import styles from './DropdownMenu.module.css'
 type Item = {
   path: string;
   label: string;
+  icon: any;
 }
 
 interface Props {

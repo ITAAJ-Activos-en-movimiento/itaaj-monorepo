@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom'
+import { MoreVertical } from 'react-feather'
 import styles from './Header.module.css'
-import { headerOptions } from './header-options'
-import { DropdownMenu } from '@/components'
 
 const Header = () => {
   return (
     <div className={styles.header}>
+        <h3>Itaaj Realty</h3>
              <div className={styles.header_left}>
-                <div className={styles.logo}>
+                {/* <div className={styles.logo}>
                     <img src="/isotype.png" />
-                </div>
-                <nav className={styles.nav}>
+                </div> */}
+                {/* <nav className={styles.nav}>
                     <Link className={styles.main} to='/'>Dashboard</Link>
                     {headerOptions
                     .map((option) => (
@@ -21,7 +20,8 @@ const Header = () => {
                         />
                     ))}
                     
-                </nav>
+                </nav> */}
+                <MoreVertical />
             </div>
     </div>
   )

@@ -2,13 +2,18 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    background-color: var(--main-color);
-    padding-inline: 4rem;
-    padding-block: 1.2rem;
+    background-color: #f2f2f2;
+    padding-inline: 2rem;
+    padding-block: 1rem;
     width: 100vw;
     position:sticky;
     top: 0;
     z-index: 999;
+}
+
+.header h3{
+    font-weight: 700;
+    font-size: 1.8rem;
 }
 
 .header a{

@@ -1,19 +1,5 @@
 import { Base } from "../../../common";
 
-export enum PropertyTypeDevelopment {
-  HOUSE = "house",
-  APARTAMENT = "apartament",
-  CONDO = "condo",
-  TOWNHOUSE = "townhouse",
-  OTHER = "other",
-}
-
-export enum CategoryDevelopment {
-  EXCLUSIVE = "exclusive",
-  GENERAL = "general",
-  INVESTMENT = "investment",
-}
-
 export interface LocationDevelopment {
   latitude: number;
   longitude: number;
@@ -33,26 +19,26 @@ export interface Development extends Base {
   city: string;
   state: string;
   country: string;
+  households: string;
   neighborhood: string;
   street: string;
   external_number: string;
   internal_number: string;
   location: LocationDevelopment;
   price: number;
-  area: AreaDevelopment;
+  area: string;
   garage: number;
   images: string[];
   amenities: string[];
-  bedrooms: number;
-  bathrooms: number;
+  bedrooms: string;
+  bathrooms: string;
   image: string;
   owner: string;
   virtualTourUrl: string;
   video: string;
   antiquity: number;
   propertyStatus: string;
-  type: PropertyTypeDevelopment;
+  type: string;
   blockchainId: string;
-  category: CategoryDevelopment;
   partner: string;
 }

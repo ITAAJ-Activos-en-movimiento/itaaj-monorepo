@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateDevelopment = () => {
   const queryClient = useQueryClient();
-  const { isLoading: isCreatingDevelopment, mutate: createDevelopment } =
+  const { isLoading: isCreating, mutate: createDevelopment } =
     useMutation({
       mutationFn: createDevelopmentApi,
       onSuccess: () => {
@@ -14,5 +14,5 @@ export const useCreateDevelopment = () => {
       onError: (err) => console.log(err),
     });
 
-  return { isCreatingDevelopment, createDevelopment };
+  return { isCreating, createDevelopment };
 };

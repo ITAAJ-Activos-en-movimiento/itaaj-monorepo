@@ -106,6 +106,9 @@ src="https://www.facebook.com/tr?id=1263776837578791&ev=PageView&noscript=1"
     src="https://www.facebook.com/tr?id=178858151857801&ev=PageView&noscript=1"
   />
 </noscript>
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+
       </head>
       <body className={inter.className}>
         <Header />

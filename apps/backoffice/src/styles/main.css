@@ -58,6 +58,8 @@ input,
     outline: none;
 }
 
+
+
 meter {
   -webkit-appearance: revert;
   appearance: revert;
@@ -74,6 +76,8 @@ textarea {
 input, textarea {
   -webkit-user-select: auto;
 }
+
+
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
@@ -237,6 +241,19 @@ select{
 
 }
 
+textarea{
+  position: relative;
+  display: inline-block;
+  height: 50rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
 @media (prefers-reduced-motion: reduce){
   html:focus-within {
       scroll-behavior: auto;
@@ -250,4 +267,35 @@ select{
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
   }
+}
+
+.ql-toolbar.ql-snow{
+  border-radius: .5rem .5rem 0 0;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-bottom: none !important;
+  background-color: #fff;
+}
+
+.ql-container.ql-snow{
+  border-radius: 0 0 .5rem .5rem;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-top: none;
+  color: #333;
+  font-size:1.5rem;
+  font-weight: 500;
+}
+
+.ql-editor{
+  min-height: 15rem;
+  height: 20rem !important;
+  overflow-y: auto;
+  background-color: var(--bg-second);
+}
+
+.container_page .ql-editor{
+  height: 70vh !important;
+}
+
+.auto_page .ql-editor{
+  min-height: 50rem !important;
 }

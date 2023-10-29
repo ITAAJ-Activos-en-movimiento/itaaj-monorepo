@@ -4,6 +4,8 @@ import styles from './Development.module.css'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Bold, Box, Camera, Square } from 'react-feather'
+import { changeLanguage } from '@/utils'
 
 const Development = () => {
   const [properties, setProperties] = useState<any>([]);
@@ -31,99 +33,48 @@ const Development = () => {
     <div className={styles.header}>
        <Link href='/properties'><i className='bx bx-arrow-back' ></i> Volver</Link>
       </div>
-      <div className={styles.images}>
-       <div className={styles.photo1}>
-        <Image src={properties[0]?.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />       
+      <div className={styles.info}>
+       <div className={styles.picture}>
+        <span className={styles.tag}>OBRA NUEVA</span>
+        <Image src='/development.avif' alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />       
+        <button className={styles.photos}><Camera size={14} /> 12 Fotos</button>
        </div>
-       <Image src={properties[0]?.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
-       { properties[0]?.images[2] && (
-          <Image src={properties[0]?.images[2]}  alt='Imagen numero 3 de la propiedad' width={500} height={500} />        
-       )}
-        {properties[0]?.images[3] && (
-       <Image src={properties[0]?.images[3]}  alt='Imagen numero 4 de la propiedad' width={500} height={500} />
-        
-       )}
-       {properties[0]?.images[4] && (
-       <Image src={properties[0]?.images[4]} alt='Imagen numero 5 de la propiedad'  width={500} height={500} />        
-       )} 
-       
+      <div className={styles.details}>
+        <h2>Quinta Maria Isabel</h2>
+        <h3>Promoción desde {DivisaFormater({value: 3400000})}</h3>
+        <ul>
+          <li>
+          <i className='bx bx-bed'></i>
+            <span>
+              <p>Habitaciones:</p>
+              <h4>De 2 a 3</h4>
+            </span>
+          </li>
+          <li>
+          <i className='bx bx-bath'></i>
+            <span>
+              <p>Banos:</p>
+              <h4>De 2 a 3</h4>
+            </span>
+          </li>
+          <li>
+          <i className='bx bx-area'></i>
+            <span>
+              <p>Area:</p>
+              <h4>Desde 98 a 123</h4>
+            </span>
+          </li>
+        </ul>
+      </div>
       </div>
       <div className={styles.container}>
        <div>
        <div className={styles.main}>
-        <p className={styles.price}>{DivisaFormater({value: properties[0]?.price})}</p>       
+        <p></p>       
         <button ><i className='bx bx-share-alt' ></i> Compartir</button>
        </div>
-       <button  className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
-       <div className={styles.amenities}>
-        <div>
-        <i className='bx bx-bed' ></i>
-        <p>{properties[0]?.bedrooms} habs.</p>
-        </div>
-        <div>
-        <i className='bx bx-bath' ></i>
-        <p>{properties[0]?.bathrooms} baños</p>
-        </div>
-        <div>
-        <i className='bx bx-area' ></i>
-        <p>{properties[0]?.area.total_area} m&sup2;</p>
-        </div>
-        <div>
-        <i className='bx bx-building-house' ></i>
-          <p>1 planta</p>
-        </div>
-       </div>
-       <h2 className={styles.title_property}><strong>{properties[0]?.type}</strong> en venta en {properties[0]?.city}</h2>
+       <h2 className={styles.title_property}><strong>Descripcion</strong></h2>
        <p className={styles.description} dangerouslySetInnerHTML={{ __html: properties[0]?.description }}></p>
-       <h2 className={styles.title_property}>
-        Caracteristicas
-       </h2>
-       <div className={styles.specs}>
-         
-         <div>
-         <i className='bx bx-home-heart'></i>
-        <span>
-         <p>Tipo de inmueble</p>
-         <h3>{properties[0]?.type}</h3>
-        </span>
-        </div>
-        <div>
-        <i className='bx bx-bed' ></i>
-        <span>
-         <p>Habitaciones</p>
-         <h3>{properties[0]?.bedrooms}</h3>
-        </span>
-        </div>
-        <div>
-        <i className='bx bx-timer' ></i>
-        <span>
-         <p>Antigüedad</p>
-         <h3>{properties[0]?.antiquity} años</h3>
-        </span>
-        </div>
-        <div>
-        <i className='bx bx-chair' ></i>
-        <span>
-         <p>Amueblado</p>
-         <h3>No</h3>
-        </span>
-        </div>
-        <div>
-        <i className='bx bx-buildings' ></i>
-        <span>
-         <p>Planta</p>
-         <h3>1 planta</h3>
-        </span>
-        </div>
-        <div>
-        <i className='bx bx-wrench'></i>
-        <span>
-         <p>Estado</p>
-         <h3>{properties[0]?.propertyStatus}</h3>
-        </span>
-        </div>
-         
-       </div>
 
        <div className={styles.propertie}>
         <h2 className={styles.title_property}>
@@ -196,6 +147,19 @@ const Development = () => {
 
         </div>
        
+        <h2 className={styles.title_property}>
+        Caracteristicas de la promocion
+       </h2>
+       <div className={styles.specs}>
+         
+         <div>
+         <i className='bx bx-home-heart'></i>
+        <span>
+         <p>Viviendas</p>
+         <h3>15</h3>
+        </span>
+        </div>
+       </div>
        <h2 className={styles.title_property}>
         {properties[0]?.city}, {properties[0]?.country}
        </h2>
@@ -233,7 +197,7 @@ const Development = () => {
          <input type="checkbox" name="" id="" />
          <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alto en itaaj</p>
         </label>
-        <button>Contactar</button>
+        <button className={styles.btn}>Contactar</button>
         <Link href='/' className={styles.btn_whatsapp} >Whatsapp</Link>
         
        </form>

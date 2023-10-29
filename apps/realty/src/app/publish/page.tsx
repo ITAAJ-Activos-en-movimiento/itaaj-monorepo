@@ -149,7 +149,6 @@ const CreateProperty = () => {
 
 
   const handleGoogleError = () => {
-
   }
 
  
@@ -165,7 +164,7 @@ const CreateProperty = () => {
   const whatsappLinkHelp = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com, porque necesito ayuda para valorar mi propiedad`;
 
   return (
-    <GoogleOAuthProvider clientId="10748540302-3radc5uefaie52b9sfif74l8d5j1s3e9.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId="259968467063-s0d076kvsf87se4bgmofbll4ivf6gom3.apps.googleusercontent.com">
          <header className={styles.header}>
       
       {/* <nav className={styles.nav}>
@@ -396,7 +395,7 @@ const CreateProperty = () => {
     <div className={styles.footer}>
       <button style={{
         
-      }} className={styles.opacity} onClick={onSubmit}>Continuar</button>
+      }} className={styles.opacity} onClick={onSubmit}>Publicar</button>
     </div>
     </GoogleOAuthProvider>
   )

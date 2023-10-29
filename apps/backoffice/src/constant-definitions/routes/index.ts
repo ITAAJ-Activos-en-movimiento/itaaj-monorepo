@@ -12,5 +12,5 @@ export const PublicRoutes = {
     SOCIALSCRIPT: "/social-script",
     PROPERTIES: 'properties',
     DEVELOPMENTS: 'developments',
-    CREATE_DEVELOPMENT: 'create-development'
+    CREATE_DEVELOPMENT: '/create-development'
   };

@@ -6,7 +6,7 @@ export const getDevelopmentsApi = async () => {
   return data;
 };
 
-export const createDevelopmentApi = async (development: Development) => {
+export const createDevelopmentApi = async (development: Partial<Development>) => {
   const { data } = await itaajApi.post(`/developments`, development);
   return data;
 };

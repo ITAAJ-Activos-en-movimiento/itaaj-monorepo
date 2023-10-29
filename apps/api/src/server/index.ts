@@ -29,7 +29,6 @@ const main = async () => {
     });
 
     server.register(fastifyCors, corsOptions);
-
     server.register(
         (instance, options, next) => {
             registerRoutes(instance);
@@ -37,6 +36,7 @@ const main = async () => {
         },
         { prefix: 'api/v1' },
     );
+
 
     server.listen({port: Number(PORT), host: HOST}, (err, address) => {
         if (err) {

@@ -1,37 +1,35 @@
-import { useEffect, useState } from "react";
-import { Field, Input, Loader } from "@/components";
+import { useState } from "react";
+import { ButtonLink, Field, Input, Loader } from "@/components";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { PrivateRoutes } from "@/constant-definitions";
 import { EmptyTable, HeaderPage, Layout, Table } from "@/containers";
 import Breadcrumbs from "@/components/Shared/Breadcumbs";
-import { AppStore } from "@/redux/store";
 import styles from "./Developments.module.css";
 import { useDevelopments } from "@/hooks";
 
 const Developments = () => {
-  const [search, setSearch] = useState<string>("");
+  const [, setSearch] = useState<string>("");
   const [limit, setLimit] = useState<number>(5);
-  const [page, setPage] = useState<number>(1);
+  const [, setPage] = useState<number>(1);
   const navigate = useNavigate();
 
   const { developments, isLoading } = useDevelopments();
-  console.log("NUEVOS", developments);
 
+  console.log(developments)
   return (
-    <Layout>
+    <div className={styles.container}>
       <HeaderPage title="Developments">
         <Breadcrumbs items={["Realty", "Developments"]} />
       </HeaderPage>
       <div className={styles.header_page}>
-        <Field>
+        <Field className={styles.field}>
           <Input
             type="search"
             placeholder="Search developments"
             onChange={({ target }) => setSearch(target.value)}
           />
         </Field>
-        <Link to="/developments/create">Add Development</Link>
+        <ButtonLink to={PrivateRoutes.CREATE_DEVELOPMENT}>Add Development</ButtonLink>
       </div>
 
       {isLoading ? (
@@ -56,7 +54,7 @@ const Developments = () => {
           )}
         </>
       )}
-    </Layout>
+    </div>
   );
 };
 

@@ -1,80 +1,91 @@
 .container{
- padding-block: 2rem;
- display: grid;
- grid-template-columns: 2fr 1fr;
- gap: 2rem;
- width: min(1200px, 90%);
- margin: 0 auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    border-left: 2px solid rgba(0, 0, 0, .1);
 }
 
-.container .section{
- background-color: #fff;
- padding: 2rem;
- border-radius: .5rem;
- overflow: hidden;
- gap: 2rem;
- display: flex;
- flex-direction: column;
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    padding-block: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
-.section input{
- width: 100%;
+.header h3{
+    font-weight: 600;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+.buttons{
+    display: flex;
+    gap: 2rem;
 }
 
-.sidebar{
- display: flex;
- flex-direction: column;
- gap: 2rem;
+.buttons button{
+    width: 2rem;
+    min-width: 6rem;
 }
 
-.preview_img {
- max-width: 6rem;
+.options{
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    width: 22rem;
+    padding-left: 2rem;
+    height: 91vh;
+    padding-top: 2rem;   
 }
 
-.preview_container{
- display: flex;
- align-items: center;
- gap: 2rem;
+.options ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.station{
- box-shadow: var(--shadow);
- background-color: #fff;
- padding: 2rem;
- border-radius: .5rem;
- margin-bottom: 2rem;
+.options ul li{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 
-.station p{
- font-size: 1.3rem;
- color: rgba(0, 0, 0, .6);
- margin-bottom: 2rem;
- margin-top: .5rem;
+.options ul li button{
+    font-weight: 500;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, .7);
 }
 
-.station h3{
- font-weight: 600;
- color: rgba(0, 0, 0, .9);
- font-size: 1.6rem;
+.main{
+    display: grid;
+    grid-template-columns: 30rem 1fr;
 }
 
-.station > div{
- margin-top: 2rem;
+.main h3{
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-top: 2rem;
 }
 
-.grid{
- display: grid;
- grid-template-columns: 1fr 1fr 1fr;
- gap: 2rem;
+.main .subtitle{
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, .7);
+    margin-bottom: 3rem;
 }
 
-.grid > div select{
- border: 1px solid rgba(0, 0, 0, .1);
- height: 3.5rem;
+.col{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.btn_add{
- padding: .5rem;
- font-weight: 500;
- border-radius: .5rem;
+.divider{
+    margin-top: 2rem;
+}
+
+.content{
+    width: min(1200px, 90%);
+    margin-inline: auto;
 }

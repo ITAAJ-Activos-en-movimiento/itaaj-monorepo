@@ -1,6 +1,85 @@
-.propertie{
-    /* width: min(90%, 1200px); */
-    /* margin: auto; */
+.info{
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    height: 50rem;
+    overflow: hidden;
+    display: flex;
+    background-color: #f4f4fb;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.16);
+    border-radius: 1.5rem;
+    margin-top: 2rem;
+}
+
+.picture{
+    width: 63%;
+    height: 100%;
+    position: relative;
+}
+
+.info img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.details{
+    padding: 2rem;
+    color: #353535;
+}
+
+.details h2{
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+}
+
+.details h3{
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.details ul{
+    margin-top: 2rem;
+}
+
+.details ul li{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.details ul li i{
+    background-color: #fff;
+    padding: 1.5rem;
+    font-size: 2.5rem;
+    border-radius: 50rem;
+}
+
+.picture .tag{
+    position: absolute;
+    background-color: #fff;
+    border-radius: 2rem;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    color: #353535;
+}
+
+.picture .photos{
+    position: absolute;
+    bottom: 1rem;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    font-weight: 600;
+    padding:  1rem;
+    border-radius: 1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
 }
 
 .property{
@@ -17,9 +96,9 @@
 .property .price{
     width: 9rem;
 }
-
 .property button{
     color: var(--main-color);
+    background-color: #353535;
     background-color: transparent;
     font-weight: 600;
 }
@@ -112,7 +191,7 @@
     background-color: rgba(0,0,0,0.08);
     padding: 2rem;
     border-radius: .5rem;
-    height: 50rem;
+    height: 51rem;
    }
    
    .form button{
@@ -408,4 +487,10 @@
     gap: 2rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
-   }
+   } 
+
+
+.form .btn{
+    width: 100%;
+    background-color: #353535;
+}
