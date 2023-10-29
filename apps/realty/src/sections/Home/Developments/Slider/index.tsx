@@ -34,9 +34,7 @@ const Slider = ({properties}: any) => {
     onSwiper={(swiper) => console.log(swiper)}
     onSlideChange={() => console.log('slide change')}
 >
-          {properties
-?.filter((property: any) => property.category == 'exclusive')
-.sort((property:any) => property.price - property.price)
+          {properties.sort((property:any) => property.price - property.price)
 .map((property: any) => (
         <SwiperSlide key={property.id} >
         <PropertyCard {...property} />

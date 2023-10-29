@@ -23,7 +23,7 @@ const Developments: NextPage = async () => {
         <Link href='/developments' className={styles.btn}>Mostrar todos los desarrollos</Link>
       </div>
 
-    {/* <Slider properties={properties} /> */}
+    <Slider properties={developments} />
 
     </section>
   )
