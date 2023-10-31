@@ -5,9 +5,9 @@ import Image from 'next/image'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import { changeLanguage } from '@/utils/change-language'
 import Link from 'next/link'
-const ProeprtyCard = ({images, city, name, price, category, slug, type, bedrooms, bathrooms, area }: any) => {
+const ProeprtyCard = ({images, city, address, name, price, category, slug, type, bedrooms, bathrooms, area }: any) => {
   return (
-    <Link href={`/properties/${slug}`}>
+    <Link href={`/developments/${slug}`}>
         <picture className={styles.picture}>
 
         <Image src={images && images?.length > 2? images[0] : '/img-placeholder.jpg'} width={1050} height={150} style={{
@@ -16,7 +16,7 @@ const ProeprtyCard = ({images, city, name, price, category, slug, type, bedrooms
         </picture>
 
         <h3>{DivisaFormater({value: price})}</h3>
-        <p><strong>{changeLanguage(type)}</strong> En {city}</p>
+        <p><strong>{changeLanguage(type)}</strong> En {address} De <strong>{city}</strong></p>
         <span className={styles.info}>
             <span>{bedrooms} habs</span> &middot; <span>{bathrooms} baños</span> &middot; 
         </span>

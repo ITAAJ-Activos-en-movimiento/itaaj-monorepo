@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateProperties = () => {
   const queryClient = useQueryClient();
-  const { isLoading: isCreatingProperties, mutate: createProperties } =
+  const { isLoading: isCreating, mutate: createProperty } =
     useMutation({
       mutationFn: createPropertiesApi,
       onSuccess: () => {
@@ -14,5 +14,5 @@ export const useCreateProperties = () => {
       onError: (err) => console.log(err),
     });
 
-  return { isCreatingProperties, createProperties };
+  return { isCreating, createProperty };
 };

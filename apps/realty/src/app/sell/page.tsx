@@ -56,8 +56,8 @@ const Sell = () => {
               </select>
             </div>
             <div className={styles.field}>
-              <label htmlFor="">Telefono</label>
-              <input type="text" onChange={(e) => setInfo((prev) => ({...prev, phone: e.target.value}))} placeholder='Telefono de contacto' />
+              <label htmlFor="">Teléfono</label>
+              <input type="text" onChange={(e) => setInfo((prev) => ({...prev, phone: e.target.value}))} placeholder='Teléfono de contacto' />
             </div>
             
             <div className={styles.field_box}>
@@ -67,7 +67,7 @@ const Sell = () => {
             <button className={styles.btn} type='submit'>Me interesa</button>
             
             <span>
-              <p>O llamanos al telefono</p>
+              <p>O llamanos al Teléfono</p>
               <h4>+52 1 999 547 1508</h4>
             </span>
           </form>

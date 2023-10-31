@@ -6,17 +6,24 @@ import Link from 'next/link'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import { Mail } from 'react-feather'
 
-const Property = ({images, price, type, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
+const Property = ({images, price, type, floor, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
   const [url, setUrl] = useState<string>('');
   
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${url} por la sigueinte propiedad ${url}/${slug}`;
 
+  console.log(floor)
+
   useEffect(() => {
     setUrl(window.location.href)
   }, [])
+
+  console.log(images)
   return (
     <Link className={styles.card} href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
-      {/* <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' /> */}
+      {images.length > 0 && images[0].includes('/') && (
+        <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
+
+      )}
       <div>
        <div className={styles.header}>
         <h2>ITAAJ &middot; Experto inmobiliario</h2>

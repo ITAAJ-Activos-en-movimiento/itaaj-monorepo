@@ -1,0 +1,27 @@
+.property{
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px dashed rgba(0, 0, 0, .1);
+    margin-bottom: 2rem;
+    height: 5rem;   
+}
+
+.property .price{
+    width: 9rem;
+}
+
+.property button{
+    color: var(--main-color);
+    background-color: #353535;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.property a{
+    color: var(--main-color);
+    background-color: #353535;
+    background-color: transparent;
+    font-weight: 600;
+}

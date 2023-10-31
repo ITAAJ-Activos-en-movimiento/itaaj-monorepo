@@ -1,0 +1,1 @@
+ALTER TABLE "properties" ALTER COLUMN "slug" DROP NOT NULL;

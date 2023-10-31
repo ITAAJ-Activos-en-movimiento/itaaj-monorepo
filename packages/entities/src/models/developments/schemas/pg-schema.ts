@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import {
   integer,
   jsonb,
@@ -7,6 +8,7 @@ import {
   varchar,
   text
 } from "drizzle-orm/pg-core";
+import { properties } from "../../properties";
 
 export const developments = pgTable("developments", {
   id: uuid("id").defaultRandom().notNull(),
@@ -43,3 +45,7 @@ export const developments = pgTable("developments", {
   development: varchar("development", { length: 256 }),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const developmentRelations = relations(developments, ({ many }) => ({
+  properties: many(properties),
+}));

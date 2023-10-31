@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Sidebar.module.css'
-import { Briefcase, ChevronRight } from 'react-feather'
+import { Briefcase, ChevronRight, Home } from 'react-feather'
 
 const Sidebar = () => {
   return (
@@ -8,7 +8,8 @@ const Sidebar = () => {
              <div className={styles.header_left}>
                 <nav className={styles.nav}>
                     <button><ChevronRight /></button>
-                    <Link to='/'> <Briefcase /> </Link>
+                    <Link to='/developments'> <Briefcase /> </Link>
+                    <Link to='/properties'> <Home /> </Link>
                 </nav>
             </div>
     </aside>

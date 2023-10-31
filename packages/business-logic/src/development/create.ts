@@ -5,7 +5,9 @@ import slugify from 'slugify';
 export const createDevelopment = async (
   data: Development
 ): Promise<Development | Error> => {
-  const slug = slugify(data.name);
+  const slug = slugify(data.name, {
+    lower: true
+  });
   const result = await getDbInstance()
     .insert(developments)
     .values({...data, slug})

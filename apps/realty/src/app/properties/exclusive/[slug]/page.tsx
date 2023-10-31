@@ -2,20 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './Property.module.css';
-import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { propertiesBySlug } from '@/services';
 
-const Property: NextPage = () => {
-    const [property, setProperty] = useState<any>();
-    const [loading, setLoading] = useState<boolean>(false);
-  
-    const [actualImage, setActualImage] = useState(property?.images?.[0]);
+const Property = ({ params }: { params: { slug: string } }) => {
+  const [property, setProperty] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [actualImage, setActualImage] = useState(property?.images?.[0]);
   const [actualImageIn, setActualImageIn] = useState(0);
-  const { slug } = useParams();
-
-  console.log({slug})
+ 
   const prevImage = () => {
     if(actualImageIn == 0){
       setActualImageIn(property.images.length - 1);
@@ -46,22 +42,13 @@ const Property: NextPage = () => {
     }
   }
 
+  console.log(actualImage)
   const fetchData =  async() => {
     setLoading(true);
-      const data = await fetch(
-          `https://itaaj-api-v0.onrender.com/api/v1/properties/${slug}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        
-        console.log(data)
-        const result: any = await data.json();
-        setProperty(result[0]);
-        setLoading(false)
+    const data = await propertiesBySlug(params.slug);
+    setProperty(data);
+    setActualImage(data.images[0]);
+    setLoading(false)
   }
 
   useEffect(() => {

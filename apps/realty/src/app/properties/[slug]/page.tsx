@@ -198,7 +198,7 @@ const Property: NextPage = () => {
         <h2>Contactanos</h2>
         <input type="text" placeholder='Tu nombre' />
         <input type="text" placeholder='Tu e-mail(obligatorio)' />
-        <input type="text" placeholder='Tu telefono' />        
+        <input type="text" placeholder='Tu teléfono' />        
         <label htmlFor="">
          <input type="checkbox" name="" id="" />
          <p>Quiero recibir alertas de inmuebles similares a este</p>
