@@ -11,6 +11,7 @@ import {v4 as uuid} from 'uuid'
 import { ArrowLeft, Loader } from 'react-feather';
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useUploadImage } from '@/hooks';
+import Map from '../developments/[slug]/Map';
 
 const CreateProperty = () => {
   const { t } = useTranslation();
@@ -41,10 +42,8 @@ const CreateProperty = () => {
   });
   const [register, setRegister] = useState(false);
 
-  const uuidD = uuid();
+
   const [property, setProperty] = useState({
-    id: uuidD,
-    uuid: uuidD,
     name: "",
     address: "",
     city: "",
@@ -62,23 +61,19 @@ const CreateProperty = () => {
     bedrooms: 1,
     bathrooms: 1,
     antiquity: 0,
-    balcony: 0,
-    kitcken: 0,
     propertyStatus: "",
     type: type,
-    createdAt: new Date().toString(),
     category: "general",
     partner: "",
     neighborhood:"",
     street: "",
     external_number: 0,
     internal_number: 0,
-    slug:""
   });
 
   const onSubmit = async() => {
     try{
-      await axios.post('https://itaaj-api.onrender.com/api/v1/properties', {...property, images:urls}, {
+      await axios.post('https://troting.com/api/v1/properties', {...property, images:urls, location: {  latitude: longitud, longitude: latitud }}, {
         headers: {
           "api-key": "a0341d0de71a21b122a134576803f9fea2e9841a307b4e26f9240ac2f7d363ff3018a17f2d7f3ecb5a9fe62327e4eaf306864ec741e6432aa50faaf9d92aa6bd"
       }
@@ -125,6 +120,38 @@ const CreateProperty = () => {
       console.log(err)
     }
   }
+
+  const [latitud, setLatitud] = useState(0);
+  const [longitud, setLongitud] = useState(0);
+
+  const obtenerCoordenadas = () => {
+    const address = property.address+' '+property.city+' '+property.state+' '+property.country;
+    const direccionFormateada = address.split(" ").join("+");
+    const API_KEY = "AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg"; // Reemplaza con tu propia API key de Google Maps Geocoding API
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${direccionFormateada}&key=${API_KEY}`;
+
+    axios
+      .get(url)
+      .then((response) => {
+        console.log(response);
+        const { results } = response.data;
+        if (results && results.length > 0) {
+          const { lat, lng } = results[0].geometry.location;
+          setLatitud(lat);
+          setLongitud(lng);
+        }
+        console.log({results})
+      })
+      .catch((error) => {
+        console.error("Error al obtener las coordenadas", error);
+      });
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      obtenerCoordenadas();
+    }, 3000)
+  }, [property]);
 
   console.log(account)
 
@@ -230,10 +257,10 @@ const CreateProperty = () => {
         <div className={styles.field}>
           <label>Precio de venta</label>
           <input onChange={handleChange} name='price' type="number" placeholder='Precio de venta' />
-          <span className={styles.tip}>¿Dudas con el precio? <Link href={whatsappLinkHelp} target='_blank'>Contactanos</Link></span>
+          <span className={styles.tip}> Precio sin coma ni puntos. ¿Dudas con el precio? <Link href={whatsappLinkHelp} target='_blank'>Contactanos</Link></span>
         </div>
         <div className={styles.field}>
-        <label>Superficie</label>
+        <label>Superficie del terreno</label>
         <input onChange={handleChangeArea} name='total_area' type="text" placeholder='Superficie' />
         </div>
        </div>
@@ -297,7 +324,11 @@ const CreateProperty = () => {
        <h4>Dirección</h4>
        <input type="text" name='address' onChange={handleChange} placeholder=''/>
        </div>
-       <div className={styles.property_map}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="700" height="450" loading="lazy" ></iframe></div>
+       <Map location={{
+        latitude: latitud,
+        longitude: longitud
+       }} />
+       {/* <div className={styles.property_map}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="700" height="450" loading="lazy" ></iframe></div> */}
       </div>
 
 <div className={styles.field}>

@@ -1,1 +1,0 @@
-ALTER TABLE "leads" ALTER COLUMN "phone" SET DATA TYPE varchar(255);

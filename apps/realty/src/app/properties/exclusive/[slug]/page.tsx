@@ -5,6 +5,7 @@ import styles from './Property.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { propertiesBySlug } from '@/services';
+import { changeLanguage } from '@/utils';
 
 const Property = ({ params }: { params: { slug: string } }) => {
   const [property, setProperty] = useState<any>();
@@ -67,7 +68,7 @@ const Property = ({ params }: { params: { slug: string } }) => {
             {property?.name}
           </h2>
           <p>
-             {property?.type} de {property?.area?.total_area} m&sup2;
+            {changeLanguage(property?.type)} de {property?.area?.total_area} m&sup2;
           </p>
         </div>
         <Image
@@ -115,7 +116,7 @@ const Property = ({ params }: { params: { slug: string } }) => {
          <div className={styles.caract}>
           <h2>Caracteristicas</h2>
           <ul>
-            <li>{property?.type} de {property?.area?.total_area} m&sup2;</li>
+            <li>{changeLanguage(property?.type)} de {property?.area?.total_area} m&sup2;</li>
             <li>{property?.bedrooms} recamaras</li>
             <li>{property?.bathrooms} baños</li>
             {property?.amenities?.map((amenity: string) => (

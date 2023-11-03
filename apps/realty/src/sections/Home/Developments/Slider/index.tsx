@@ -37,7 +37,7 @@ const Slider = ({properties}: any) => {
           {properties.sort((property:any) => property.price - property.price)
 .map((property: any) => (
         <SwiperSlide key={property.id} >
-        <PropertyCard {...property} />
+        <PropertyCard {...property} loc='developments' />
     </SwiperSlide>
     ))}                
 </Swiper>

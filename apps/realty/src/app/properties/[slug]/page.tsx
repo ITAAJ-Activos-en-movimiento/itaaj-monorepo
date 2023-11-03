@@ -7,6 +7,9 @@ import { NextPage } from 'next'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import { useParams } from 'next/navigation'
 import { PropertyCard } from '@/components'
+import { propertiesBySlug } from '@/services'
+import Map from '@/app/developments/[slug]/Map'
+import { changeLanguage } from '@/utils'
 
 const Property: NextPage = () => {
     const [property, setProperty] = useState<any>();
@@ -49,19 +52,9 @@ const Property: NextPage = () => {
 
   const fetchData =  async() => {
     setLoading(true);
-      const data = await fetch(
-          `https://itaaj-api-v0.onrender.com/api/v1/properties/${slug}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        
+    const data = await propertiesBySlug(slug.toString());        
         console.log(data)
-        const result: any = await data.json();
-        setProperty(result[0]);
+        setProperty(data);
         setLoading(false)
   }
 
@@ -78,25 +71,42 @@ const Property: NextPage = () => {
       </div>
       <div className={styles.images}>
        <div className={styles.photo1}>
-        <Image src={property?.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />       
+        <Image src={property?.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={500}  />       
        </div>
-       <Image src={property?.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
+       <div className={styles.images_container}>
+
+       <div className={styles.small_photo}>
+       <Image src={property?.images[1]}  alt='Imagen numero 2 de la propiedad' width={200} height={200}   />
+       </div>
+
        { property?.images[2] && (
-          <Image src={property?.images[2]}  alt='Imagen numero 3 de la propiedad' width={500} height={500} />        
+                  <div className={styles.small_photo}>
+
+          <Image src={property?.images[2]}  alt='Imagen numero 3 de la propiedad' width={200} height={200}  />        
+          </div>
+
        )}
         {property?.images[3] && (
-       <Image src={property?.images[3]}  alt='Imagen numero 4 de la propiedad' width={500} height={500} />
+          <div className={styles.small_photo}>
+           <Image src={property?.images[3]}  alt='Imagen numero 4 de la propiedad' width={200} height={200}  />
+
+          </div>
         
        )}
        {property?.images[4] && (
-       <Image src={property?.images[4]} alt='Imagen numero 5 de la propiedad'  width={500} height={500} />        
+                  <div className={styles.small_photo}>
+
+       <Image src={property?.images[4]} alt='Imagen numero 5 de la propiedad'  width={200} height={200}  />        
+       </div>
+
        )} 
+       </div>
        
       </div>
       <div className={styles.container}>
        <div>
        <div className={styles.main}>
-        <p className={styles.price}>{DivisaFormater({value: property?.price})}</p>       
+        <p className={styles.price}>Precio {DivisaFormater({value: property?.price})}</p>       
         <button onClick={handleShare}><i className='bx bx-share-alt' ></i> Compartir</button>
        </div>
        <button className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
@@ -115,10 +125,10 @@ const Property: NextPage = () => {
         </div>
         <div>
         <i className='bx bx-building-house' ></i>
-          <p>1 planta</p>
+          <p>{property?.foor} planta</p>
         </div>
        </div>
-       <h2 className={styles.title_property}><strong>{property?.type}</strong> en venta en {property?.city}</h2>
+       <h2 className={styles.title_property}><strong>{changeLanguage(property?.type)}</strong> en venta en {property?.city}</h2>
        <p className={styles.description} dangerouslySetInnerHTML={{ __html: property?.description }}></p>
        <h2 className={styles.title_property}>
         Caracteristicas
@@ -129,7 +139,7 @@ const Property: NextPage = () => {
          <i className='bx bx-home-heart'></i>
         <span>
          <p>Tipo de inmueble</p>
-         <h3>{property?.type}</h3>
+         <h3>{changeLanguage(property?.type)}</h3>
         </span>
         </div>
         <div>
@@ -174,7 +184,10 @@ const Property: NextPage = () => {
         {property?.city}, {property?.country}
        </h2>
        <div className={styles.map}>
-       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="800" height="450" style={{border:0}} loading="lazy"></iframe>
+       <Map location={{
+        latitude: property?.location?.latitud ? property?.location?.latitud : 19.3904366,
+        longitude: property?.location?.longitud? property?.location?.longitud : -99.4732553
+       }} />
        <p>Itaaj Realty no se responsabiliza de los errores que la información mostrada a continuación pueda contener. La posición en el mapa puede ser aproximada por deseo del propietario. El usuario será el responsable del uso que dé a dicha información.</p>
        </div>
        {/* <iframe width="100%" height="640" frameBorder="0" allow="xr-spatial-tracking; gyroscope; accelerometer" allowFullScreen scrolling="no" src="https://kuula.co/share/collection/7lqnK?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"></iframe> */}
@@ -184,13 +197,13 @@ const Property: NextPage = () => {
         Propiedades similares...
        </h2>
        
-       <div className={styles.properties_list}>
+       {/* <div className={styles.properties_list}>
           {property
             ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
             .map((property: any) => (
               <PropertyCard key={property.uuid} {...property} />
             ))}
-        </div>
+        </div> */}
 
        </div>
        
@@ -207,7 +220,7 @@ const Property: NextPage = () => {
          <input type="checkbox" name="" id="" />
          <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alto en itaaj</p>
         </label>
-        <button>Contactar</button>
+        <button className={styles.btn}>Contactar</button>
         <Link href={whatsappLink} className={styles.btn_whatsapp}>Whatsapp</Link>
         
        </form>

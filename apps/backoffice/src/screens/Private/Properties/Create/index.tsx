@@ -1,12 +1,13 @@
 import { Button, Field, Input, TextEditor } from '@/components'
 import styles from './Create.module.css'
-import { Image, Info, List, MapPin } from 'react-feather'
+import { Columns, Info, List  } from 'react-feather'
 import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
 import { useCreateProperties, useDevelopments, useForm, useUploadImage } from '@/hooks'
 import { useNavigate } from 'react-router-dom'
 import initialPropertyState from './initial-state'
+import Floorplants from './Floorplants'
 
 const CreateProperty = () => {
     const [options, setOptions] = useState('overview');
@@ -15,7 +16,7 @@ const CreateProperty = () => {
     const [description, setDescription] = useState('');
 
     const { developments } = useDevelopments();
-    const { isLoading, urls, uploadImage } = useUploadImage();
+    const { isLoading, urls, url, uploadImage } = useUploadImage();
 
     const { formState: property, handleChange } = useForm(initialPropertyState);
 
@@ -26,7 +27,7 @@ const CreateProperty = () => {
     const { isCreating, createProperty } = useCreateProperties();
 
     const onSubmit = () => {
-        createProperty({ ...property, location: { longitude: longitud, latitude: latitud }, description }, {
+        createProperty({ ...property, image: url, location: { longitude: longitud, latitude: latitud }, description }, {
             onSuccess: () => {
                 navigate('/properties')
             }
@@ -116,7 +117,7 @@ const CreateProperty = () => {
                         {/* <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Photo Gallery </button> </li> */}
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
                         {/* <li><Codesandbox color='rgba(0, 0, 0, 0.65)' size={18} /> <button> 3D Tours      </button> </li> */}
-                        {/* <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Floorplans    </button> </li> */}
+                        <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Floorplans    </button> </li>
                         {/* <li><FileText color='rgba(0, 0, 0, 0.65)' size={18} />    <button> Documents     </button> </li> */}
                     </ul>
 
@@ -170,13 +171,13 @@ const CreateProperty = () => {
                                 <Input name='area.land_area' placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
                             </Field>
                             <Field label='Building Area'>
-                                <Input name='area.building_area' placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
+                                <Input name="area.building_area" placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
                             </Field>
                             <Field label='Area Total'>
-                                <Input name='area.total_area' placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
+                                <Input name="area.total_area" placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
                             </Field>
                             <Field label='Floor'>
-                                <Input name='floor' placeholder='1' onChange={handleChange} />
+                                <Input name="floor" placeholder='1' onChange={handleChange} />
                             </Field>
                         </div>
 
@@ -207,10 +208,10 @@ const CreateProperty = () => {
                 {options == 'photo' && (
                     <PhotoGallery isLoading={isLoading} urls={urls} uploadImage={uploadImage} />
                 )}
-                {/* 
+                
 {options == 'floor' && (
-                <Floorplants handleChange={handleChange} />
-            )} */}
+                <Floorplants isLoading={isLoading} url={url} uploadImage={uploadImage} handleChange={handleChange} />
+            )}
 
                 {options == 'location' && (
                     <Location setLongitud={setLongitud} latitud={latitud} longitud={longitud} setLatitud={setLatitud} formState={property} handleChange={handleChange} />

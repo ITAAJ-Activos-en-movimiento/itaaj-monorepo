@@ -1,0 +1,40 @@
+.container{
+    position: fixed;
+    top: -10000;    
+}
+
+.open{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1d1d1d;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.header button{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    font-weight: 600;
+    color: #fff;
+    padding: 2rem;
+}
+
+.re{
+    width: 60px;
+}

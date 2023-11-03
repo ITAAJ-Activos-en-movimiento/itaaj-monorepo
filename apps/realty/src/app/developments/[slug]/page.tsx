@@ -1,5 +1,5 @@
 import { developmentApi, propertiesByDevelopment } from '@/services';
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Development.module.css'
 import Link from 'next/link';
 import { PropertyElement } from '@/components/Developments';
@@ -8,13 +8,13 @@ import { DivisaFormater } from '@/utils';
 import { Camera } from 'react-feather';
 import Map from './Map';
 import Modal from '@/containers/Modal';
+import Floorplans from './Plane';
+import { useRouter } from 'next/navigation';
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);
   const properties = await propertiesByDevelopment(development.id);
 
-
-  // const [open, setOpen] = useState(false);
   return (
     <>
       <div className={styles.header}>
@@ -72,7 +72,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
               Inmuebles de este desarrollo...
             </h2>
             {properties.map((property: any) => (
-              <PropertyElement {...property} area_total={property.area?.area_total} />
+                <PropertyElement {...property} area_total={property.area?.area_total} />
             ))}
           </div>
 
@@ -120,7 +120,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
           <Link href='/' className={styles.btn_whatsapp} >Whatsapp</Link>
 
         </form>
-
+        
         <Modal property={development.uuid}  />
       </div>
     </>
