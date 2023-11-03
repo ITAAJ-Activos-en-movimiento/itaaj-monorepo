@@ -4,8 +4,17 @@ import styles from './PropertyElement.module.css'
 import { DivisaFormater } from '@/utils'
 import Link from 'next/link'
 import Floorplans from '@/app/developments/[slug]/Plane'
+import { useRouter } from 'next/navigation'
 
-const PropertyElement = ({ fn, bathrooms, bedrooms, floor, price, total_area, image, slug }: any) => {
+const PropertyElement = ({  bathrooms, bedrooms, floor, price, total_area, image, slug }: any) => {
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
+  const router = useRouter()
+  const closeModal = () => {
+    console.log('enter')
+    router.push('?plane=open')
+  }
+  
+  
   return (
     <div className={styles.property}>
     <h4 className={styles.price}>{DivisaFormater({value: price})}</h4>
@@ -13,10 +22,9 @@ const PropertyElement = ({ fn, bathrooms, bedrooms, floor, price, total_area, im
     <span>{bathrooms} baños</span>
     <span>{total_area} m2</span>
     <h4>{floor}a  Planta</h4>
-    <button onClick={() => fn({bathrooms, bedrooms, total_area, image})}>Mostrar plano</button>
-    <Link href={`/properties/exclusive/${slug}`}>Ver más</Link>
-    <Link href={`/properties/exclusive/${slug}`}>Contactar</Link>
-    <Floorplans bath={bathrooms}  bed={bedrooms} />
+    <Link href={'?plane=open'}  >Mostrar plano</Link>
+    <Link href={whatsappLink}>Contactar</Link>
+    <Floorplans bath={bathrooms} bed={bedrooms} image={image} />
 
   </div>
   )

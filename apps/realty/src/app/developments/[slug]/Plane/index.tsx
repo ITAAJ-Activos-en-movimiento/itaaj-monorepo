@@ -3,14 +3,15 @@ import React from 'react'
 import styles from './Floors.module.css'
 import { X } from 'react-feather'
 import { useRouter, useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 
 const Floorplans = ({bed, bath, area, image}: any) => {
     const params = useSearchParams();
-    const openProposal = params.get('plans');
+    const openProposal = params.get('plane');
 
     const router = useRouter()
     const closeModal = () => {
-      router.push('?proposal=close')
+      router.push('?plane=close')
     }
     
   return (
@@ -23,6 +24,10 @@ const Floorplans = ({bed, bath, area, image}: any) => {
                 <p>{area} m2</p>
             </div>
             <div className={styles.re}></div>
+        </div>
+        
+        <div className={styles.img}>
+        <Image src={image} width={800} height={800} alt='IMAGE' />
 
         </div>
     </div>

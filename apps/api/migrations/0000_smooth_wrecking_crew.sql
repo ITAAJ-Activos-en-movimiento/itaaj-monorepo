@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(256) NOT NULL,
 	"slug" varchar(256),
-	"description" varchar(256),
+	"description" text,
 	"address" varchar(256),
 	"city" varchar(256),
 	"state" varchar(256),

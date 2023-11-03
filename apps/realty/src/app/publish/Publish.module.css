@@ -424,3 +424,7 @@
     }
   }
   
+ .account .register{
+    background-color: #fff;
+    color: var(--main-color);
+  }
