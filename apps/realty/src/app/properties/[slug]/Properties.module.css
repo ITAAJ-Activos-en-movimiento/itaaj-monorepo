@@ -251,6 +251,7 @@
     font-size: 1.4rem;
     margin-top: 2rem;
     line-height: 2rem;
+    text-align: justify;
     color: rgba(0, 0, 0, 0.6);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding-bottom: 4rem;

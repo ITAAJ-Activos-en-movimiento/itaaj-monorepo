@@ -6,7 +6,7 @@ import { registerRoutes } from '../routes';
 
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
-    origin: '*',
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:51', 'https://itaajrealty.com', 'https://www.itaajrealty.com'],
 };
 
 type Admin = {

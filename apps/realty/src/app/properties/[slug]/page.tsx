@@ -153,7 +153,7 @@ const Property: NextPage = () => {
         <i className='bx bx-timer' ></i>
         <span>
          <p>Antigüedad</p>
-         <h3>{property?.antiquity} años</h3>
+         <h3>De {property?.antiquity.toString().substring(0, 2) + "-" + property?.antiquity.toString().substring(2)} años</h3>
         </span>
         </div>
         <div>
@@ -167,7 +167,7 @@ const Property: NextPage = () => {
         <i className='bx bx-buildings' ></i>
         <span>
          <p>Planta</p>
-         <h3>1 planta</h3>
+         <h3>{property?.floor} planta</h3>
         </span>
         </div>
         <div>

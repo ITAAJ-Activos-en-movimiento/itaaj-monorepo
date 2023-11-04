@@ -16,7 +16,7 @@ const ProeprtyCard = ({loc, images, city, address, name, price, category, slug, 
         </picture>
 
         <h3>{DivisaFormater({value: price})}</h3>
-        <p><strong>{changeLanguage(type)}</strong> En {address} De <strong>{city}</strong></p>
+        <p><strong>{changeLanguage(type)}</strong> {address} en <strong>{city}</strong></p>
         <span className={styles.info}>
             <span>{bedrooms} habs</span> &middot; <span>{bathrooms} baños</span> &middot; 
         </span>
