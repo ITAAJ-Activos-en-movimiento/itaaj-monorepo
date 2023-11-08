@@ -10,6 +10,9 @@ import { PropertyCard } from '@/components'
 import { propertiesBySlug } from '@/services'
 import Map from '@/app/developments/[slug]/Map'
 import { changeLanguage } from '@/utils'
+import Cform from '@/components/Contacts/Cform'
+ 
+
 
 const Property: NextPage = () => {
     const [property, setProperty] = useState<any>();
@@ -39,7 +42,7 @@ const Property: NextPage = () => {
     setActualImage(property.images[actualImageIn])
   }
   
-  const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
+const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
 
   const handleShare = async () => {
     if(navigator.share){
@@ -58,9 +61,11 @@ const Property: NextPage = () => {
         setLoading(false)
   }
 
+
   useEffect(() => {
       fetchData();
   }, [])
+  
 
   if(loading) return <p>Cargando...</p>
   
@@ -206,25 +211,10 @@ const Property: NextPage = () => {
         </div> */}
 
        </div>
-       
-       <form className={styles.form}>
-        <h2>Contactanos</h2>
-        <input type="text" placeholder='Tu nombre' />
-        <input type="text" placeholder='Tu e-mail(obligatorio)' />
-        <input type="text" placeholder='Tu teléfono' />        
-        <label htmlFor="">
-         <input type="checkbox" name="" id="" />
-         <p>Quiero recibir alertas de inmuebles similares a este</p>
-        </label>
-        <label htmlFor="">
-         <input type="checkbox" name="" id="" />
-         <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alto en itaaj</p>
-        </label>
-        <button className={styles.btn}>Contactar</button>
-        <Link href={whatsappLink} className={styles.btn_whatsapp}>Whatsapp</Link>
-        
-       </form>
-       
+       <div className={styles.form}>
+        <Cform slug={"PROP@"+slug}/>
+        <Link href={whatsappLink} target='_blank' className={styles.btn_whatsapp}>Escríbenos por Whatsapp</Link>
+       </div>
       </div>
       
       {/* <Modal open={open} closeModal={() => setOpen(!open)} property={property.uuid} /> */}

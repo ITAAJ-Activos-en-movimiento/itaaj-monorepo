@@ -135,10 +135,26 @@
     color: var(--main-color) ;
     }
 
+    .card .options button{
+        border: 1px solid var(--main-color);
+        color: var(--main-color) ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: .8rem 1rem;
+    }
+
    .card .options a:first-child{
     background-color: var(--main-color) ;
     color: #fff ;
 }
+
+    .card .options button:first-child{
+    background-color: var(--main-color) ;
+    color: #fff ;
+    }
+
 
    @media screen and (max-width: 768px){
        .card{
