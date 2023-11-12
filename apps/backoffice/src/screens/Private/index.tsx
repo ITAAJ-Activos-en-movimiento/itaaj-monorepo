@@ -5,6 +5,7 @@ import { PrivateRoutes } from '@/constant-definitions'
 import CreateDevelopment from './Developments/Create'
 import Properties from './Properties'
 import CreateProperty from './Properties/Create'
+import Proposals from './Proposals'
 
 const Private = () => {
   return (
@@ -17,6 +18,8 @@ const Private = () => {
         element={<CreateDevelopment />}
       />
        <Route path='properties' element={<Properties />} />
+       <Route path='proposals' element={<Proposals />} />
+
         <Route
         path='properties/create'
         element={<CreateProperty />}

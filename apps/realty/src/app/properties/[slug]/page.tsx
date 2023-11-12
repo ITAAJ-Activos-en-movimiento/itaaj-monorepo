@@ -10,6 +10,7 @@ import { propertiesBySlug } from '@/services'
 import Map from '@/app/developments/[slug]/Map'
 import { changeLanguage } from '@/utils'
 import Share from './Share'
+import Modal from '@/containers/Modal'
 
 const Property = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const property = await propertiesBySlug(params.slug.toString());        
@@ -94,7 +95,7 @@ const Property = async ({ params, searchParams }: { params: { slug: string }, se
         <p className={styles.price}>Precio {DivisaFormater({value: property?.price})}</p>       
        <Share />
        </div>
-       <button className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
+       <Link href='?proposal=open' className={styles.price_sug} ><i className='bx bx-share-alt' ></i> Realizar Propuesta</Link>
        <div className={styles.amenities}>
         <div>
         <i className='bx bx-bed' ></i>
@@ -210,7 +211,8 @@ const Property = async ({ params, searchParams }: { params: { slug: string }, se
        </form>
        
       </div>
-      
+      <Modal property={property.uuid}  />
+
       {/* <Modal open={open} closeModal={() => setOpen(!open)} property={property.uuid} /> */}
     </>
   )

@@ -184,6 +184,7 @@
     padding: 1rem 2rem;
     border-radius: 5rem;
     background-color: var(--main-color);
+    max-width: 20rem;
 }
 
 .price_sug i {

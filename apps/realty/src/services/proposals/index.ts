@@ -1,50 +1,20 @@
-export const properties = async () => {
-    try{
-        const response = await fetch('https://troting.com/api/v1/properties', { cache: 'no-store' });
+import axios from "axios";
 
-      if (!response.ok) {
-        throw new Error('No se pudo obtener la lista de propiedades.');
-      }
+export const createProposal = async (data: any) => {
+
+  console.log(data)
+    try{
+        const response = await axios.post('https://troting.com/api/v1/proposals', data );
+
+      // if (!response.ok) {
+      //   throw new Error('No se pudo obtener la lista de propiedades.');
+      // }
   
-      const data = await response.json();
+      const info = await response.data;
   
-      return data;
+      return info;
     }catch(error){
         console.error('Error al obtener las propiedades:', error);
         throw error;
     }
-}
-
-export const propertiesByDevelopment = async (development: string) => {
-  try{
-      const response = await fetch(`https://troting.com/api/v1/properties/${development}`, { cache: 'no-store' });
-
-    if (!response.ok) {
-      throw new Error('No se pudo obtener la lista de propiedades.');
-    }
-
-    const data = await response.json();
-
-    return data;
-  }catch(error){
-      console.error('Error al obtener las propiedades:', error);
-      throw error;
-  }
-}
-
-export const propertiesBySlug = async (slug: string) => {
-  try{
-      const response = await fetch(`https://troting.com/api/v1/property/${slug}`, { cache: 'no-store' });
-
-    if (!response.ok) {
-      throw new Error('No se pudo obtener la lista de propiedades.');
-    }
-
-    const data = await response.json();
-
-    return data;
-  }catch(error){
-      console.error('Error al obtener las propiedades:', error);
-      throw error;
-  }
 }

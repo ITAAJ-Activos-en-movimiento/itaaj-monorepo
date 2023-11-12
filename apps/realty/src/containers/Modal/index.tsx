@@ -6,6 +6,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2'
 import { countries } from '@/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { createProposal } from '@/services';
+import { useUploadImage } from '@/hooks';
 
 interface Props {
  closeModal?: () => void; 
@@ -22,12 +24,13 @@ const Modal = ({ property }: Props) => {
     nationality: '',
     email: '',
     phone: '',
-    economic_proposal: 0,
+    proposal: 0,
     apartado: 50000,
     enganche: 0,
     rest: 0,
-    fund: '',
-    property: property
+    funding: '',
+    funds: '',
+    development: property
   }) 
   
   
@@ -36,16 +39,24 @@ const Modal = ({ property }: Props) => {
     setProposal((prev) => ({...prev, [e.target.name]: e.target.value }))
     
   }
+
+  const { isLoading, uploadImage, url } = useUploadImage();
+
+    
+  const addImages = (e: any) => {
+    uploadImage(e?.target?.files![0]);
+  };
   
   const params = useSearchParams();
   const openProposal = params.get('proposal');
-  console.log(openProposal)
+  console.log("URL", url)
   
   const onSubmit = async(e: FormEvent) => {
     e.preventDefault(); 
     try{
       setLoading(true);
-      const { data } = await axios.post('https://itaaj-api-v0.onrender.com/api/v1/proposals', proposal);      
+      // const { data } = await axios.post('https://itaaj-api-v0.onrender.com/api/v1/proposals', proposal);      
+      const { data } = await createProposal({...proposal, fund: url});
       console.log(data);
       setLoading(false);
       Swal.fire({
@@ -63,16 +74,18 @@ const Modal = ({ property }: Props) => {
     
   }
 
+  console.log(proposal)
+
   const router = useRouter()
   const closeModal = () => {
     router.push('?proposal=close')
   }
   
    useEffect(() => {
-     setProposal((prev) => ({...prev, ['enganche']: Number(prev.economic_proposal * 0.2)}))
-     setProposal((prev) => ({...prev, ['rest']:Number(prev.economic_proposal) - Number(prev.enganche) }))
+     setProposal((prev) => ({...prev, ['enganche']: Number(prev.proposal * 0.2)}))
+     setProposal((prev) => ({...prev, ['rest']:Number(prev.proposal) - Number(prev.enganche) }))
      
-  }, [proposal.economic_proposal]);
+  }, [proposal.proposal]);
   
   
   return (
@@ -134,7 +147,7 @@ const Modal = ({ property }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Propuesta economica
-             <input type="text" name='economic_proposal' value={proposal.economic_proposal} placeholder='Ingresa la propuesta economica' onChange={handleChange} />          
+             <input type="text" name='proposal' value={proposal.proposal} placeholder='Ingresa la propuesta economica' onChange={handleChange} />          
             </label>
           </div>
           
@@ -169,7 +182,7 @@ const Modal = ({ property }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Como piensas fondearlo
-              <select name='fund' onChange={handleChange}>
+              <select name='funding' onChange={handleChange}>
                 <option value="Efectivo">Efectivo</option>
                 <option value="Efectivo & Credito">Efectivo & Crédito</option>
                 <option value="Crypto">Crypto</option>
@@ -181,7 +194,7 @@ const Modal = ({ property }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Prueba de fondos
-            <input type="file" />
+            <input type="file"  onChange={(e) => addImages(e)} name="image" id="image" accept=".png,.jpg,.jpeg,.svg"  />
             </label>
           </div>
           
