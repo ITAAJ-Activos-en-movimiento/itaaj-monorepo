@@ -7,6 +7,7 @@ import leadsRoutes from "./leads";
 import propertiesRoutes from "./properties";
 import developmentsRoutes from "./development";
 import messagesRoutes from "./messages";
+import proposalsRoutes from "./proposals";
 
 const routes: RouteOptions[] = [
   healthCheckRoute,
@@ -16,7 +17,8 @@ const routes: RouteOptions[] = [
   ...leadsRoutes,
   ...propertiesRoutes,
   ...developmentsRoutes,
-  ...messagesRoutes
+  ...messagesRoutes,
+  ...proposalsRoutes
 ];
 
 export const registerRoutes = (fastify: FastifyInstance) => {

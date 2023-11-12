@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
 import SideMenu from '../SideMenu';
+import RegisterModal from '@/containers/RegisterModal';
 
 const Header = () => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1268px)' });
@@ -41,6 +42,7 @@ const Header = () => {
         </div>
 
         <SideMenu active={active} setActive={setActive} />
+        <RegisterModal />
     </header>
   )
 }

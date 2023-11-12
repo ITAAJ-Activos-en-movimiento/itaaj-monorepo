@@ -1,19 +1,28 @@
 .modal {
     position: fixed;
-    top: 0;
-    right: 0%;
+    top: 50%;
+    left: 50%;
     width: 50rem;
-    height: 100%;
-    background-color: #EDEFF3;
+    height: 38rem;
+    background-color: #FFF;
+    border-radius: 2rem;
+    transform: translate(50000px);
     transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-   }
-   
-   .open{
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.open {
     transform: translateX(0%);
-   }
-   
-   .modal_overlay {
+}
+
+.open_modal {
+    transform: translate(-50%, -50%);
+
+}
+
+.modal_overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,30 +30,27 @@
     bottom: 0;
     display: none;
     background-color: rgba(0, 0, 0, 0.5);
-   }
-   
-   .modal_overlay.open{
+    z-index: 999;
+}
+
+.modal_overlay.open {
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
-   }
-   
-   .header{
-    height: 4rem;
-    background-color: #FFF;
-    padding: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-   }
-   
-   .header > div {
+}
+
+
+.header>div {
     display: flex;
     align-items: center;
     gap: 1rem;
-   }
-   
-   .header > div h3{
+}
+
+.header>div h3 {
     border-radius: 50%;
     height: 3.5rem;
     width: 3.5rem;
@@ -52,14 +58,14 @@
     display: grid;
     place-items: center;
     color: #FFF;
-   }
-   
-   .header > div h2{
+}
+
+.header>div h2 {
     font-weight: 600;
     font-size: 1.8rem;
-   }
-   
-   .actions{
+}
+
+.actions {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: baseline;
@@ -67,21 +73,21 @@
     text-align: center;
     padding: 2rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   }
-   
-   .action{
+}
+
+.action {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: .5rem;
-   }
-   
-   .action p{
+}
+
+.action p {
     font-size: 1.3rem;
     color: rgba(0, 0, 0, 0.5);
-   }
-   
-   .action > div{
+}
+
+.action>div {
     background-color: #FFF;
     height: 4rem;
     width: 4rem;
@@ -89,57 +95,57 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   }
-   
-   .action svg{
+}
+
+.action svg {
     color: #AAAAAB;
-   }
-   
-   .action:last-child > div{
+}
+
+.action:last-child>div {
     background-color: #2164D9;
-   }
-   
-   .action:last-child > div  svg{
+}
+
+.action:last-child>div svg {
     color: #FFF;
-   }
-   
-   .edit{
+}
+
+.edit {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   }
-   
-   .edit h3{
+}
+
+.edit h3 {
     font-weight: 600;
     font-size: 1.4rem;
     color: rgba(0, 0, 0, 0.7);
-   }
-   
-   .edit a{
+}
+
+.edit a {
     color: #2164D9;
     font-size: 1.4rem;
-   }
-   
-   .new{
+}
+
+.new {
     padding: 2rem;
-   }
-   
-   .new h3{
+}
+
+.new h3 {
     font-size: 1.4rem;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.7);
     margin-bottom: 1rem;
-   }
-   
-   .new .options{
+}
+
+.new .options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-   }
-   
-   .new .options a{
+}
+
+.new .options a {
     background-color: #FFF;
     border-radius: .5rem;
     padding: 1rem;
@@ -150,63 +156,79 @@
     display: flex;
     align-items: center;
     gap: .5rem;
-   }
-   
-   .new .options a:hover{
+}
+
+.new .options a:hover {
     background-color: #FFF;
-   }
-   
-   .form{
+}
+
+.form {
     overflow-y: auto;
     height: 90%;
-   }
-   .form h3{
+}
+
+.form h3 {
     padding-inline: 2rem;
     font-weight: 500;
     color: #171717;
     margin-top: 2rem;
     margin-bottom: 1rem;
-   }
-   
-   .field{
+}
+
+.field {
     padding-inline: 2rem;
     margin-bottom: 1.5rem;
-   }
-   
-   .field label{
+}
+
+.field label {
     font-size: 1.4rem;
     font-weight: 500;
-   }
-   
-   .field input{
+}
+
+.field input {
     margin-top: .5rem;
     height: 3.5rem;
     padding-inline: 1rem;
-   }
-   
-   .field select{
+}
+
+.field select {
     margin-top: .5rem;
     background-color: #FFF;
     border: none;
 }
-   
-   .proposal_btn{
+
+.form input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.4rem;
+}
+
+.proposal_btn {
     background-color: var(--main-color);
     color: #fff;
     padding: 1rem 2rem;
     width: 90%;
-    border-radius: .5rem;
+    border-radius: 1rem;
     margin: 0 auto;
     display: block;
     font-size: 1.5rem;
-   }
-   
-   .close_btn{
+}
+
+.close_btn {
     background-color: transparent;
-   }
-   
-   @media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
     .modal {
-     width: 100%;
+        width: 100%;
     }
-   }
+}
+
+.copy {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-block: 2rem;
+}
+
+.google_btn {
+    padding-inline: 2rem;
+}

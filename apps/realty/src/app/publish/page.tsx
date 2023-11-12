@@ -72,10 +72,12 @@ const CreateProperty = () => {
     internal_number: 0,
   });
 
+  console.log(property)
+
   const onSubmit = async() => {
     setLoading(true);
     try{
-      await axios.post('https://troting.com/api/v1/properties', {...property, images:urls, location: {  latitude: longitud, longitude: latitud }}, {
+      await axios.post('https://troting.com/api/v1/properties', {...property, images:urls, type, location: {  latitude: longitud, longitude: latitud }}, {
         headers: {
           "api-key": "a0341d0de71a21b122a134576803f9fea2e9841a307b4e26f9240ac2f7d363ff3018a17f2d7f3ecb5a9fe62327e4eaf306864ec741e6432aa50faaf9d92aa6bd"
       }

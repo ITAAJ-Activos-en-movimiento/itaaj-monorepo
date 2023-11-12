@@ -15,6 +15,13 @@
       "when": 1699060873378,
       "tag": "0001_cute_argent",
       "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1699804707202,
+      "tag": "0002_quick_tempest",
+      "breakpoints": false
     }
   ]
 }

@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './Properties.module.css'
 import Link from 'next/link'
@@ -10,59 +9,45 @@ import { PropertyCard } from '@/components'
 import { propertiesBySlug } from '@/services'
 import Map from '@/app/developments/[slug]/Map'
 import { changeLanguage } from '@/utils'
+import Share from './Share'
 
-const Property: NextPage = () => {
-    const [property, setProperty] = useState<any>();
-    const [loading, setLoading] = useState<boolean>(false);
-  
-    const [actualImage, setActualImage] = useState(property?.images?.[0]);
-  const [actualImageIn, setActualImageIn] = useState(0);
-  const { slug } = useParams();
+const Property = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
+  const property = await propertiesBySlug(params.slug.toString());        
 
-  console.log({slug})
-  const prevImage = () => {
-    if(actualImageIn == 0){
-      setActualImageIn(property.images.length - 1);
-    }else{
-      setActualImageIn((prev) => prev - 1);
-    }
-    setActualImage(property.images[actualImageIn])
-  }
+  // const prevImage = () => {
+  //   if(actualImageIn == 0){
+  //     setActualImageIn(property.images.length - 1);
+  //   }else{
+  //     setActualImageIn((prev) => prev - 1);
+  //   }
+  //   setActualImage(property.images[actualImageIn])
+  // }
   
-  const nextImage = () => {
-    const index = property.images.length;
-    if(actualImageIn == index - 1){
-      setActualImageIn(0);
-    }else{
-      setActualImageIn((prev) => prev + 1);
-    }
-    setActualImage(property.images[actualImageIn])
-  }
+  // const nextImage = () => {
+  //   const index = property.images.length;
+  //   if(actualImageIn == index - 1){
+  //     setActualImageIn(0);
+  //   }else{
+  //     setActualImageIn((prev) => prev + 1);
+  //   }
+  //   setActualImage(property.images[actualImageIn])
+  // }
   
   const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
 
-  const handleShare = async () => {
-    if(navigator.share){
-      await navigator.share({
-        title: "Itaaj Realty",
-        url: window.location.href,
-      });
-    }
-  }
 
-  const fetchData =  async() => {
-    setLoading(true);
-    const data = await propertiesBySlug(slug.toString());        
-        console.log(data)
-        setProperty(data);
-        setLoading(false)
-  }
+  // const fetchData =  async() => {
+  //   setLoading(true);
+  //       console.log(data)
+  //       setProperty(data);
+  //       setLoading(false)
+  // }
 
-  useEffect(() => {
-      fetchData();
-  }, [])
+  // useEffect(() => {
+  //     fetchData();
+  // }, [])
 
-  if(loading) return <p>Cargando...</p>
+  // if(loading) return <p>Cargando...</p>
   
   return (
     <>
@@ -107,7 +92,7 @@ const Property: NextPage = () => {
        <div>
        <div className={styles.main}>
         <p className={styles.price}>Precio {DivisaFormater({value: property?.price})}</p>       
-        <button onClick={handleShare}><i className='bx bx-share-alt' ></i> Compartir</button>
+       <Share />
        </div>
        <button className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
        <div className={styles.amenities}>
@@ -129,7 +114,9 @@ const Property: NextPage = () => {
         </div>
        </div>
        <h2 className={styles.title_property}><strong>{changeLanguage(property?.type)}</strong> en venta en {property?.city}</h2>
-       <p className={styles.description} dangerouslySetInnerHTML={{ __html: property?.description }}></p>
+       <p className={styles.description} dangerouslySetInnerHTML={{ __html: property?.description }}>
+       </p>
+       <span className={styles.pricein}>{property.price > 8000000 ? 'Precio en USD' : ''}</span>
        <h2 className={styles.title_property}>
         Caracteristicas
        </h2>
@@ -153,7 +140,7 @@ const Property: NextPage = () => {
         <i className='bx bx-timer' ></i>
         <span>
          <p>Antigüedad</p>
-         <h3>De {property?.antiquity.toString().substring(0, 2) + "-" + property?.antiquity.toString().substring(2)} años</h3>
+         <h3>De {property?.antiquity?.toString().length  == 3? property?.antiquity.toString().substring(0, 1) + "-" + property?.antiquity.toString().substring(1) : property?.antiquity.toString().substring(0, 2) + "-" + property?.antiquity.toString().substring(2)} años</h3>
         </span>
         </div>
         <div>
@@ -184,10 +171,7 @@ const Property: NextPage = () => {
         {property?.city}, {property?.country}
        </h2>
        <div className={styles.map}>
-       <Map location={{
-        latitude: property?.location?.latitud ? property?.location?.latitud : 19.3904366,
-        longitude: property?.location?.longitud? property?.location?.longitud : -99.4732553
-       }} />
+         <Map location={{latitude: property.location.longitude, longitude: property.location.latitude}} />
        <p>Itaaj Realty no se responsabiliza de los errores que la información mostrada a continuación pueda contener. La posición en el mapa puede ser aproximada por deseo del propietario. El usuario será el responsable del uso que dé a dicha información.</p>
        </div>
        {/* <iframe width="100%" height="640" frameBorder="0" allow="xr-spatial-tracking; gyroscope; accelerometer" allowFullScreen scrolling="no" src="https://kuula.co/share/collection/7lqnK?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"></iframe> */}

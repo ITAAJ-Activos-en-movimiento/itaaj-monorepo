@@ -5,8 +5,14 @@ interface Texts {
    const texts:Texts = {
     house: 'Casa',
     apartament: 'Departamento',
-    other: 'Terreno',
-    office: 'Oficina'
+    other: 'Otro',
+    landscape: 'Terreno',
+    office: 'Oficina',
+    House: 'Casa',
+    Apartament: 'Departamento',
+    Other: 'Otro',
+    Landscape: 'Terreno',
+    Office: 'Oficina'
    }
    
    export const changeLanguage = (text: string) => {

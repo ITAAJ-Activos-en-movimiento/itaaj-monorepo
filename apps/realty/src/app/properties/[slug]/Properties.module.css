@@ -253,8 +253,12 @@
     line-height: 2rem;
     text-align: justify;
     color: rgba(0, 0, 0, 0.6);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    padding-bottom: 4rem;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
+    /* padding-bottom: 4rem; */
+}
+
+.pricein{
+
 }
 
 .map {

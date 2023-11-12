@@ -4,18 +4,16 @@ import styles from './Floors.module.css'
 import { X } from 'react-feather'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
+import { DivisaFormater } from '@/utils'
 
-const Floorplans = ({bed, bath, area, image}: any) => {
+const Photos = ({price, photos}: any) => {
+  console.log(photos)
     const params = useSearchParams();
-    const openProposal = params.get('plane');
+    const openProposal = params.get('photos');
 
     const router = useRouter()
     const closeModal = () => {
-      image='';
-      area='';
-      bath='';
-      bed=''
-      router.push('?plane=close')
+      router.push('?photos=close')
     }
     
   return (
@@ -23,19 +21,19 @@ const Floorplans = ({bed, bath, area, image}: any) => {
         <div className={styles.header}>
             <button onClick={closeModal} ><X /> Cerrar</button>
             <div>
-                <p>{bed} habs.</p>
-                <p>{bath} baños</p>
-                <p>{area} m2</p>
+                <p className={styles.price}>Desde {DivisaFormater({value: price})}</p>
             </div>
             <div className={styles.re}></div>
         </div>
         
         <div className={styles.img}>
-        <Image src={image} width={1000} height={800} alt='IMAGE' />
+          {photos?.map((photo: string) => (
+            <Image src={photo} width={1000} height={800} alt='IMAGE' />
+          ))}
 
         </div>
     </div>
   )
 }
 
-export default Floorplans
+export default Photos

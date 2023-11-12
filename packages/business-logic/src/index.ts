@@ -7,4 +7,5 @@ export * from './development';
 export * from './leads';
 export * from './messages';
 export * from './properties';
+export * from './proposals';
 export * from './users';

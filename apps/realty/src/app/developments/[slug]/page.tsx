@@ -10,11 +10,13 @@ import Map from './Map';
 import Modal from '@/containers/Modal';
 import Floorplans from './Plane';
 import { useRouter } from 'next/navigation';
+import Photos from './Photos';
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);
   const properties = await propertiesByDevelopment(development.id);
 
+  console.log(properties)
   return (
     <>
       <div className={styles.header}>
@@ -25,11 +27,11 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
         <div className={styles.picture}>
           <span className={styles.tag}>OBRA NUEVA</span>
           <Image src={development.images?.length > 2 ? development?.images[0] : ''} alt='Imagen numero 1 de la propiedad' width={800} height={800} objectFit='cover' />
-          <button className={styles.photos}><Camera size={14} /> {development?.images?.length} Fotos</button>
+          <Link href='?photos=true' className={styles.photos}><Camera size={14} /> {development?.images?.length} Fotos</Link>
         </div>
         <div className={styles.details}>
           <h2>{development.name}</h2>
-          <h3>Preventa desde {DivisaFormater({ value: development.price })}</h3>
+          <h3>Preventa desde {DivisaFormater({ value: development?.price })}</h3>
           <ul>
             <li>
               <i className='bx bx-bed'></i>
@@ -71,9 +73,9 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <h2 className={styles.title_property}>
               Inmuebles de este desarrollo...
             </h2>
-            {properties.map((property: any) => (
-                <PropertyElement {...property} area_total={property.area?.area_total} />
-            ))}
+            {properties?.map((property: any) => (
+                <PropertyElement key={property.id} {...property} total_area={property.area?.total_area} />
+            ))} 
           </div>
 
           <h2 className={styles.title_property}>
@@ -121,6 +123,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
 
         </form>
         
+        <Photos price={development.price} photos={development.images} />
         <Modal property={development.uuid}  />
       </div>
     </>

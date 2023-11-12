@@ -10,11 +10,22 @@ export const useForm = <T>(initialState: T) => {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value } = event?.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const { name, value } = event.target;
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+      setFormState((prev) => ({
+        ...prev,
+        [outerKey]: {
+          ...prev[outerKey as keyof typeof prev],
+          [innerKey]: value,
+        },
+      }));
+    } else {
+      setFormState((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   return {

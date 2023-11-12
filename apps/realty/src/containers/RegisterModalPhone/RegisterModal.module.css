@@ -1,16 +1,25 @@
 .modal {
     position: fixed;
-    top: 0;
-    right: 0%;
+    top: 50%;
+    left: 50%;
     width: 50rem;
-    height: 100%;
-    background-color: #EDEFF3;
+    height: 38rem;
+    background-color: #FFF;
+    border-radius: 2rem;
+    transform: translate(-50%, -50%);
     transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-   }
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
    
    .open{
     transform: translateX(0%);
+   }
+
+   .open_modal{
+    transform: translate(-50%, -50%);
+
    }
    
    .modal_overlay {
@@ -21,22 +30,19 @@
     bottom: 0;
     display: none;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
    }
    
    .modal_overlay.open{
     display: block;
     background-color: rgba(0, 0, 0, 0.5);
    }
-   
+
    .header{
-    height: 4rem;
-    background-color: #FFF;
-    padding: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
     justify-content: space-between;
    }
+   
    
    .header > div {
     display: flex;
@@ -189,13 +195,18 @@
     background-color: #FFF;
     border: none;
 }
+
+.form input{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.4rem;
+}
    
    .proposal_btn{
     background-color: var(--main-color);
     color: #fff;
     padding: 1rem 2rem;
     width: 90%;
-    border-radius: .5rem;
+    border-radius: 1rem;
     margin: 0 auto;
     display: block;
     font-size: 1.5rem;
@@ -209,4 +220,13 @@
     .modal {
      width: 100%;
     }
+   }
+
+   .copy{
+    text-align: center;
+    font-size: 1.6rem;
+    margin-block: 2rem;
+   }
+   .google_btn{
+    padding-inline: 2rem;
    }
