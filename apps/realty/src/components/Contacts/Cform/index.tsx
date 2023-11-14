@@ -61,11 +61,11 @@ const Cform = ({slug, closeModal, prevmsg} : Props) => {
       <input type="text" value={info.message} placeholder='Mensaje ..' onChange={(e) => setInfo((prev) => ({...prev, message: e.target.value}))} />           
       <label htmlFor="similares">
        <input type="checkbox" name="similares" id="similares" />
-       <p>Quiero recibir alertas de inmuebles similares a este</p>
+       <p>Quiero recibir alertas de inmuebles similares</p>
       </label>
       <label htmlFor="terms">
        <input type="checkbox" name="terms" id="terms" defaultChecked />
-       <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alto en itaaj</p>
+       <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alta en itaaj</p>
       </label>
       <button className={styles.btn } type='submit'>Contactar</button>
       </form>

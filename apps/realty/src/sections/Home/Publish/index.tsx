@@ -21,7 +21,7 @@ const Publish = () => {
 
             <h2>Si eres profesional</h2>
             <p>Haz crecer tu negocio con soluciones exclusivas pensadas para ti.</p>
-            <Link href='/'>Te informamos sin compromiso <ArrowRight size={17} /></Link>
+            <Link href='/servicios-profesional'>Te informamos sin compromiso <ArrowRight size={17} /></Link>
             </div>
 
           </div>
@@ -33,7 +33,7 @@ const Publish = () => {
 
             <h2>Si eres particular</h2>
             <p>Publica tu vivienda en Itaaj Realty y te ayudamos a darme mas visibilidad para llegar a todas las personas interesadas en encontrar vivienda.</p>
-            <Link href='/'>Publica tu inmueble gratis <ArrowRight size={17} /></Link>
+            <Link href='/servicios-particular'>Publica tu inmueble gratis <ArrowRight size={17} /></Link>
             </div>
 
           </div>
