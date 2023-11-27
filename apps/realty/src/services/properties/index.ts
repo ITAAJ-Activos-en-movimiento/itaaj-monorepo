@@ -1,6 +1,6 @@
 export const properties = async () => {
     try{
-        const response = await fetch('https://troting.com/api/v1/properties', { cache: 'no-store' });
+        const response = await fetch('https://itaajrealty.com/api/v1/properties', { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error('No se pudo obtener la lista de propiedades.');
@@ -17,7 +17,7 @@ export const properties = async () => {
 
 export const propertiesByDevelopment = async (development: string) => {
   try{
-      const response = await fetch(`https://troting.com/api/v1/properties/${development}`, { cache: 'no-store' });
+      const response = await fetch(`https://itaajrealty.com/api/v1/properties/${development}`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error('No se pudo obtener la lista de propiedades.');
@@ -34,7 +34,7 @@ export const propertiesByDevelopment = async (development: string) => {
 
 export const propertiesBySlug = async (slug: string) => {
   try{
-      const response = await fetch(`https://troting.com/api/v1/property/${slug}`, { cache: 'no-store' });
+      const response = await fetch(`https://itaajrealty.com/api/v1/property/${slug}`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error('No se pudo obtener la lista de propiedades.');

@@ -2,7 +2,7 @@ import { useParams } from "next/navigation";
 
 export const developments = async () => {
     try{
-        const response = await fetch('https://troting.com/api/v1/developments', { cache: 'no-store' });
+        const response = await fetch('https://itaajrealty.com/api/v1/developments', { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error('No se pudo obtener la lista de desarrollos.');
@@ -20,7 +20,7 @@ export const developments = async () => {
 
 export const developmentApi = async (slug: string) => {
   try{
-      const response = await fetch(`https://troting.com/api/v1/developments/${slug}`, { cache: 'no-store' });
+      const response = await fetch(`https://itaajrealty.com/api/v1/developments/${slug}`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error('No se pudo obtener la lista de desarrollos.');
