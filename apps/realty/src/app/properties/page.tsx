@@ -10,7 +10,7 @@ const Properties:NextPage = () => {
 
     const fetchData =  async() => {
         const data = await fetch(
-            'https://itaajrealty.com/api/v1/properties',
+            'https://itaajrealty.com/api/api/v1/properties',
             {
               method: 'GET',
               headers: {

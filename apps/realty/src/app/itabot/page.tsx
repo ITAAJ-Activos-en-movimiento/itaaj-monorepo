@@ -6,7 +6,7 @@ import { Loader } from 'react-feather';
 import { marked } from 'marked';
 
 const sendMessage = async (message: any) => {
-    const { data } = await axios.post('https://itaajrealty.com//api/v1/chat', message)
+    const { data } = await axios.post('https://itaajrealty.com/api//api/v1/chat', message)
     return data;
 }
 
