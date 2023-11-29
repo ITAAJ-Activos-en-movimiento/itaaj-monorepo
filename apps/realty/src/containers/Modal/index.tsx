@@ -124,7 +124,7 @@ const Modal = ({ property }: Props) => {
               <select name="nationality" onChange={handleChange}>
                 <option value="">Selecciona una nacionalidad</option>
                 {countries.map((state) => (
-                  <option value={state.countryName}>{state.countryName}</option>
+                  <option key={state.countryName} value={state.countryName}>{state.countryName}</option>
                 ))}
                 </select>              
             </label>

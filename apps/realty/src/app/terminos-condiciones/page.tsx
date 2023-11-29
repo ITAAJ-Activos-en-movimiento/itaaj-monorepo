@@ -6,9 +6,9 @@ const Terms = () => {
     <div className={styles.terms}>
    <h1>Terminos, Condiciones y Politica de Cookies</h1>
 
-<p><strong>Micro Finanzas Sociales Familiares, S.A.P.I DE C.V.</strong> (en adelante "ITAAJREALTY"), con domicilio en Avenida Río Pánuco 91, Colonia Cuauhtémoc, Alcaldía Cuauhtémoc, Ciudad de México, 06500, da a conocer su página web: <a href="www.itaajrealty.com">www.itaajrealty.com</a> (en adelante la "Plataforma").</p>
+<p><strong>Micro Finanzas Sociales Familiares, S.A.P.I DE C.V.</strong> (en adelante &quot;ITAAJREALTY&quot;), con domicilio en Avenida Río Pánuco 91, Colonia Cuauhtémoc, Alcaldía Cuauhtémoc, Ciudad de México, 06500, da a conocer su página web: <a href="www.itaajrealty.com">www.itaajrealty.com</a> (en adelante la &quot;Plataforma&quot;).</p>
 
-<p>Las presentes CONDICIONES GENERALES les son aplicables a todas aquellas personas que ingresen o hagan uso de la Plataforma mediante equipos de cómputo, teléfonos móviles, tabletas o cualquier otro equipo de comunicación (en lo sucesivo los "Usuarios").</p>
+<p>Las presentes CONDICIONES GENERALES les son aplicables a todas aquellas personas que ingresen o hagan uso de la Plataforma mediante equipos de cómputo, teléfonos móviles, tabletas o cualquier otro equipo de comunicación (en lo sucesivo los &quot;Usuarios&quot;).</p>
 
 <p>ITAAJREALTY se reserva el derecho a actualizar, modificar o eliminar la información contenida en la Plataforma, así como la configuración o presentación del mismo, en cualquier momento sin asumir alguna responsabilidad frente a los Usuarios por ello. Además, el Usuario acepta que ITAAJREALTY podrá hacer valer vía judicial sus derechos y reclamaciones, siendo admisibles como prueba estas Condiciones Generales, así como toda la información que conste en las bases de datos de ITAAJREALTY para evidenciar la relación con el Usuario y los adeudos que se tengan, en caso de que aplique.</p>
 
