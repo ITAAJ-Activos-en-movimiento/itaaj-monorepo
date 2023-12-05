@@ -30,7 +30,7 @@ const Header = () => {
                 <Link href='/properties'>Comprar</Link>
                 <Link href='/sell'>Vender</Link>
                 <Link href='/deals' className={styles.mid} >Portafolio de desarrolladores</Link>
-                <Link href='/agents' className={styles.mid} >Meta Agentes Itaaj</Link>
+                {/* <Link href='/agents' className={styles.mid} >Meta Agentes Itaaj</Link> */}
                 <Link href='/' className={styles.mid} >Blog</Link>
             </nav>
         </div>
