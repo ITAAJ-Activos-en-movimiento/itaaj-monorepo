@@ -5,11 +5,24 @@ import styles from './Property.module.css'
 import Link from 'next/link'
 import { DivisaFormater } from '@/utils/divisa-formater'
 import { Mail } from 'react-feather'
+import Cform from '@/components/Contacts/Cform'
+//@ts-ignore
+import Modal from 'react-modal';
 
 const Property = ({images, price, type, floor, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false); 
+  const Showmodal = () => {
+    setModalIsOpen(true);
+  };
+
+  function closeModal () {
+    setModalIsOpen(false);
+  };  
+
   const [url, setUrl] = useState<string>('');
   
-  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${url} por la sigueinte propiedad ${url}/${slug}`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${url} por la siguinte propiedad ${url}/${slug}`;
 
   console.log(floor)
 
@@ -19,12 +32,17 @@ const Property = ({images, price, type, floor, name, category, bedrooms, bathroo
 
   console.log(images)
   return (
-    <Link className={styles.card} href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
+  <>
+
+    <div className={styles.card}>
+    <Link href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
       {images.length > 0 && images[0].includes('/') && (
         <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
 
       )}
+    </Link>
       <div>
+      <Link href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
        <div className={styles.header}>
         <h2>ITAAJ &middot; Experto inmobiliario</h2>
        </div>
@@ -53,12 +71,34 @@ const Property = ({images, price, type, floor, name, category, bedrooms, bathroo
        <div className={styles.description}>
           <p  dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
+      </Link>
        <div className={styles.options}>
-        <Link href='/' className={styles.message} ><Mail /> Contactar</Link>
+        <button onClick={() => Showmodal()} className={styles.message} ><Mail />  Contactar </button>
         <Link href={whatsappLink} target="_blank"><i className='bx bxl-whatsapp'></i> Mensaje</Link>
        </div>
       </div>
-    </Link>
+      </div>
+
+    <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel='Contacto'
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0,0,0,0.2)",
+          },
+          content: {
+            width: "33rem",
+            height: "50rem",
+            margin: "auto", // Center the modal horizontally
+            padding: "0px",
+            border: "none",
+          },
+        }}
+      >
+        <Cform slug={"PROP@"+slug} closeModal={closeModal} prevmsg={"Me interesa Inmueble: " + slug}/>
+      </Modal>
+    </>
   )
 }
 

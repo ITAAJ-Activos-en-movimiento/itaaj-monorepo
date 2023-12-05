@@ -86,7 +86,7 @@
     background-color: rgba(0, 0, 0, 0.08);
     padding: 2rem;
     border-radius: .5rem;
-    height: 54rem;
+    height: 50rem;
 }
 
 .form button {
@@ -184,7 +184,6 @@
     padding: 1rem 2rem;
     border-radius: 5rem;
     background-color: var(--main-color);
-    max-width: 20rem;
 }
 
 .price_sug i {
@@ -254,12 +253,8 @@
     line-height: 2rem;
     text-align: justify;
     color: rgba(0, 0, 0, 0.6);
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
-    /* padding-bottom: 4rem; */
-}
-
-.pricein{
-
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 4rem;
 }
 
 .map {

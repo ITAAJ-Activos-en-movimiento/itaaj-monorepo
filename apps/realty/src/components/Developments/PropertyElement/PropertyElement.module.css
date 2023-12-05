@@ -12,16 +12,26 @@
     width: 9rem;
 }
 
-.property button{
+/*.property button{
     color: var(--main-color);
     background-color: #353535;
     background-color: transparent;
     font-weight: 600;
-}
+}*/
 
 .property a{
     color: var(--main-color);
     background-color: #353535;
     background-color: transparent;
     font-weight: 600;
+}
+
+.property button{
+    border: 1px solid var(--main-color);
+    color: var(--main-color) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: .8rem 1rem;
 }

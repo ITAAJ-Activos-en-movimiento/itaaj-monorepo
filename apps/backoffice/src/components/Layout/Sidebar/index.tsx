@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Sidebar.module.css'
-import { Briefcase, Cast, ChevronRight, Crosshair, Home } from 'react-feather'
+import { Briefcase, ChevronRight, Crosshair, Home } from 'react-feather'
 
 const Sidebar = () => {
   return (

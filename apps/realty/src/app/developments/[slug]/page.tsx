@@ -1,5 +1,5 @@
 import { developmentApi, propertiesByDevelopment } from '@/services';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Development.module.css'
 import Link from 'next/link';
 import { PropertyElement } from '@/components/Developments';
@@ -11,10 +11,17 @@ import Modal from '@/containers/Modal';
 import Floorplans from './Plane';
 import { useRouter } from 'next/navigation';
 import Photos from './Photos';
+import Cform from '@/components/Contacts/Cform'
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);
   const properties = await propertiesByDevelopment(development.id);
+  const slug  = params.slug;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj Realty por la siguiente propiedad ${slug}`;
+
+  function Ffunc () {
+    console.log("env");
+  };  
 
   console.log(properties)
   return (
@@ -105,23 +112,10 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
           </div>
         </div>
 
-        <form className={styles.form}>
-          <h2>Contáctanos</h2>
-          <input type="text" placeholder='Tu nombre' />
-          <input type="text" placeholder='Tu e-mail(obligatorio)' />
-          <input type="text" placeholder='Tu teléfono' />
-          <label htmlFor="">
-            <input type="checkbox" name="" id="" />
-            <p>Quiero recibir alertas de inmuebles similares a este</p>
-          </label>
-          <label htmlFor="">
-            <input type="checkbox" name="" id="" />
-            <p>Acepto las condiciones de uso, la información basica de Protección de Datos y darme de alto en itaaj</p>
-          </label>
-          <button className={styles.btn}>Contactar</button>
-          <Link href='/' className={styles.btn_whatsapp} >Whatsapp</Link>
-
-        </form>
+        <div className={styles.form}>
+        <Cform slug={"DEV@"+slug}/>
+        <Link href={whatsappLink} target='_blank' className={styles.btn_whatsapp}>Escríbenos por Whatsapp</Link>
+       </div>
         
         <Photos price={development.price} photos={development.images} />
         <Modal property={development.uuid}  />
