@@ -154,9 +154,11 @@ const CreateProperty = () => {
       if (typeof window !== "undefined") {
         localStorage.setItem("user", JSON.stringify({ token: data }));
       }
+      setIsPhone(false);
     } catch (err) {
       alert("Error logeando el usuario");
       console.log(err);
+      setIsPhone(false);
     }
   };
 
