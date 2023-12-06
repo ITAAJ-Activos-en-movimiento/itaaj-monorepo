@@ -428,3 +428,31 @@
     background-color: #fff;
     color: var(--main-color);
   }
+
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+  }
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff; /* Color de fondo del modal */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px; /* Ancho máximo del modal */
+  width: 100%;
+  max-height: 80vh; /* Altura máxima del modal */
+  overflow-y: auto;
+}
+
+.modal h4{
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
