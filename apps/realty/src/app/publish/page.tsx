@@ -136,10 +136,11 @@ const CreateProperty = () => {
   };
 
   const onSubmitLoginGoogle = async () => {
+    const token = localStorage.getItem("tokene")
     try {
       const { data } = await axios.post(
         "https://itaajrealty.com/api/api/v1/auth/login-google",
-        {token: tokenId},
+        token,
         {
           headers: {
             "Content-Type": "application/json",
@@ -216,11 +217,11 @@ const CreateProperty = () => {
   ) => {
     if (credentialsResponse.credential) {
       const token_id = await credentialsResponse.credential;
+      localStorage.setItem("tokene", token_id);
       await setTokenId(() => token_id);
-
       setTimeout(() => {
         setIsPhone(true);
-      }, 3000)
+      }, 1000)
     }
     console.log(tokenId)
     await setTokenId(credentialsResponse?.credential || "")
