@@ -215,8 +215,8 @@ const CreateProperty = () => {
     credentialsResponse: CredentialResponse
   ) => {
     if (credentialsResponse.credential) {
-      const token_id = credentialsResponse.credential;
-      setTokenId(token_id)
+      const token_id = await credentialsResponse.credential;
+      await setTokenId(token_id)
       setIsPhone(true);
     }
   };
