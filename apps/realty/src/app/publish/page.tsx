@@ -216,9 +216,15 @@ const CreateProperty = () => {
   ) => {
     if (credentialsResponse.credential) {
       const token_id = await credentialsResponse.credential;
-      await setTokenId(token_id)
-      setIsPhone(true);
+      await setTokenId(() => token_id);
+
+      setTimeout(() => {
+        setIsPhone(true);
+      }, 3000)
     }
+    console.log(tokenId)
+    await setTokenId(credentialsResponse?.credential || "")
+
   };
 
   const handleGoogleError = () => {};
