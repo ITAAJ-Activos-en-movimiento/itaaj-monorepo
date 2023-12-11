@@ -34,8 +34,8 @@ const SideMenu = ({active, setActive} : Props) => {
                 {/* <li><Link href='/'>Tasacion online</Link></li> */}
                 <li><Link href='/'>Hipotecas</Link></li>
                 <li><Link href='/'>Asistente online</Link></li>
-                <li><Link href='/'>Publiicadores profesionales</Link></li>
-                <li><Link href='/'>Publiicadores particulares</Link></li>
+                <li><Link href='/'>Si eres profesional</Link></li>
+                <li><Link href='/'>Si eres particular</Link></li>
                 <li><Link href='/deals'>Portafolio de desarrolladores</Link></li>
                 {/* <li><Link href='/agents'>Meta agentes Itaaj</Link></li> */}
                 {/* <li><Link href='/'>Blog</Link></li> */}
