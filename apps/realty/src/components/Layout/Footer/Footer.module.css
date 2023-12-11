@@ -80,6 +80,7 @@
         z-index: 999;
         background-color: #ccc;
         color: #0C0F24;
+        padding-right: 1rem;
    }
    
    .legal{
@@ -156,4 +157,8 @@
      overflow: hidden;
     }
    
+   }
+
+   .text{
+     font-size: 1.4rem !important;
    }

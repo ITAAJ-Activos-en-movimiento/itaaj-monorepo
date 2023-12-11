@@ -117,10 +117,11 @@ const Footer = () => {
             <Image src="/sof.jpeg" alt="Imagen Asistente"  width={80} height={80} style={{
               borderRadius: 100
             }} />
+        <p className={styles.text}>Asistente Virtual</p>
   
             {' '}
         </Link>
-        <Link target="_blank" title="Boton Whatsapp" href={whatsappLink}>
+        {/* <Link target="_blank" title="Boton Whatsapp" href={whatsappLink}>
             
             <MessageCircle />
             <Phone style={{
@@ -129,7 +130,7 @@ const Footer = () => {
             }} size={8} />
   
             {' '}
-        </Link>
+        </Link> */}
       </div>
     </footer>
   );
