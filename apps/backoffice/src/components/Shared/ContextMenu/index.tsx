@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import styles from "./ContextMenu.module.css";
+import { MoreVertical } from "react-feather";
 
 interface Props {
   item: any;
@@ -16,6 +17,7 @@ const ContextMenu: FunctionComponent<Props> = ({
   deleteItem,
   setItemSelected,
 }) => {
+  console.log("ITEM",item)
   const handlerMenu = (uuid: string): void => {
     setOpenMenu(openMenu === uuid ? "" : uuid);
   };
@@ -24,13 +26,13 @@ const ContextMenu: FunctionComponent<Props> = ({
     <div className={styles.actions}>
       <button
         className={styles.btn_context}
-        onClick={() => handlerMenu(item.uuid)}
+        onClick={() => handlerMenu(item.id)}
       >
-        <i className="bx bx-dots-vertical-rounded"></i>
+        <MoreVertical />
       </button>
       <div
         className={`${styles.context_menu} ${
-          openMenu === item.uuid ? styles.active : ""
+          openMenu === item.id ? styles.active : ""
         }`}
       >
         <button
@@ -41,7 +43,7 @@ const ContextMenu: FunctionComponent<Props> = ({
         </button>
         <button
           className={styles.deleteButton}
-          onClick={() => deleteItem(item.uuid)}
+          onClick={() => deleteItem(item.id)}
         >
           Eliminar
         </button>

@@ -46,7 +46,7 @@ const Developments = () => {
               headers={["Name", "Address", "Country", "Price"]}
               deleteItem={() => ({})}
               setItemSelected={({ slug }: { slug: string }) => {
-                navigate(`${PrivateRoutes.PROPERTIES}/${slug}`);
+                navigate(`/development/edit/${slug}`);
               }}
             />
           ) : (

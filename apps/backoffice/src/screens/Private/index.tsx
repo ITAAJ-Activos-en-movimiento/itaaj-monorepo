@@ -6,6 +6,7 @@ import CreateDevelopment from './Developments/Create'
 import Properties from './Properties'
 import CreateProperty from './Properties/Create'
 import Proposals from './Proposals'
+import EditDevelopment from './Developments/Edit'
 
 const Private = () => {
   return (
@@ -13,6 +14,8 @@ const Private = () => {
        <Route index element={<Navigate replace to="developments" />} />
       <Route element={<Layout />}>
         <Route path='developments' element={<Developments />} />
+        <Route path='development/edit/:slug' element={<EditDevelopment />} />
+
         <Route
         path={PrivateRoutes.CREATE_DEVELOPMENT}
         element={<CreateDevelopment />}

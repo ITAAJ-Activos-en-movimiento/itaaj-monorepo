@@ -26,7 +26,7 @@ export interface Development extends Base {
   internal_number: string;
   location: LocationDevelopment;
   price: number;
-  area: string;
+  area: any;
   garage: number;
   images: string[];
   amenities: string[];
