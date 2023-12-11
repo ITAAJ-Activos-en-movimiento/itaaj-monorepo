@@ -75,6 +75,7 @@
    }
 
    .footer .float .itabot{
+     padding: 0;
         right: 8rem;
         z-index: 999;
         background-color: #ccc;

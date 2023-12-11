@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Field,  Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import { useNavigate } from "react-router-dom";
-import { PrivateRoutes } from "@/constant-definitions";
 import { useDevelopment, useEditDevelopment, useUploadImage } from "@/hooks";
 import { Image, Info, List, MapPin } from "react-feather";
 import Location from "./Location";
@@ -47,34 +46,12 @@ const EditDevelopment: React.FC = () => {
   });
 
 
-  const [amenities, setAmenities] = useState<any[]>([]);
-  const addAmenities = () => {
-    const amenity = {
-      id: Date.now().toString(),
-      text: "",
-    };
 
-    setAmenities([...amenities, amenity]);
-  };
 
-  const handleText = (e: any, id: string) => {
-    e.preventDefault();
-    const index = amenities.findIndex((a: any) => a.id == id);
-    amenities[index].text = e.target.value;
-  };
   const navigate = useNavigate();
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setProperty((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleChangeArea = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setProperty((prev) => ({ ...prev, area: { ...prev.area, [name]: value } }));
   };
 
   const handleEditorChange = (value: any) => {

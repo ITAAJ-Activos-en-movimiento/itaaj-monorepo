@@ -5,6 +5,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/navigation';
 import { AlertCircle, MessageCircle, Phone } from 'react-feather';
+import Image from 'next/image';
 
 const language:any = {
   "es": "Español", 
@@ -113,8 +114,9 @@ const Footer = () => {
       </div>
       <div className={styles.float}>
       <Link className={styles.itabot} title="Boton Asistente" href='/itabot'>
-            
-            <AlertCircle />
+            <Image src="/sof.jpeg" alt="Imagen Asistente"  width={45} height={45} style={{
+              borderRadius: 100
+            }} />
   
             {' '}
         </Link>
