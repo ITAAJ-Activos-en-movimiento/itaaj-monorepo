@@ -35,6 +35,9 @@ const Particulars:NextPage = () => {
       <li>No deseas hacer absolutamente nada. Nosotros nos hacernos cargo de todo el proceso, desde la identificación del cliente hasta que recibes tu dinero por una comisión general de 5%. Consulta nuestro apartado de Microservicios Inmobiliarios y solicita una consulta.</li>      
      </ul>
      </div>
+     <h4 style={{
+      textAlign: "center"
+     }} >Microservicios Itaaj</h4>
 
      <div className={styles.options}>
       <div className={styles.boxs}>
