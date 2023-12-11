@@ -26,19 +26,19 @@ const SideMenu = ({active, setActive} : Props) => {
 
 
             <ul>
-                <li><Link href='/'>Ayuda y sugerencias</Link></li>
-                <li><Link href='/buy'>Comprar</Link></li>
+                {/* <li><Link href='/'>Ayuda y sugerencias</Link></li> */}
+                <li><Link href='/properties'>Comprar</Link></li>
                 <li><Link href='/sell'>Vender</Link></li>
-                <li><Link href='/'>Actualidad</Link></li>
+                {/* <li><Link href='/'>Actualidad</Link></li> */}
                 <li><Link href='/'>Indice de precios</Link></li>
-                <li><Link href='/'>Tasacion online</Link></li>
+                {/* <li><Link href='/'>Tasacion online</Link></li> */}
                 <li><Link href='/'>Hipotecas</Link></li>
                 <li><Link href='/'>Asistente online</Link></li>
                 <li><Link href='/'>Publiicadores profesionales</Link></li>
                 <li><Link href='/'>Publiicadores particulares</Link></li>
                 <li><Link href='/deals'>Portafolio de desarrolladores</Link></li>
-                <li><Link href='/agents'>Meta agentes Itaaj</Link></li>
-                <li><Link href='/'>Blog</Link></li>
+                {/* <li><Link href='/agents'>Meta agentes Itaaj</Link></li> */}
+                {/* <li><Link href='/'>Blog</Link></li> */}
                 <li><Link href='/'>Itaaj seguros y creditos</Link></li>
             </ul>
         </div>
