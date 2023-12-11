@@ -37,9 +37,9 @@ const Proffesionals:NextPage = () => {
      </ul>
      </div>
 
-     <h4 style={{
+     <h2 style={{
       textAlign: "center"
-     }}  >Microservicios Itaaj</h4>
+     }}  >Microservicios Itaaj</h2>
 
      <div className={styles.options}>
       <div className={styles.boxs}>
