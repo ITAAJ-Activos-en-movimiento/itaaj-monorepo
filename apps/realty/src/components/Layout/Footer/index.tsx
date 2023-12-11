@@ -117,7 +117,7 @@ const Footer = () => {
             <Image src="/sof.jpeg" alt="Imagen Asistente"  width={80} height={80} style={{
               borderRadius: 100
             }} />
-        <p className={styles.text}>Asistente Virtual</p>
+        <p className={styles.text}>Hola soy Sofia tu asistente AI virtual</p>
   
             {' '}
         </Link>
