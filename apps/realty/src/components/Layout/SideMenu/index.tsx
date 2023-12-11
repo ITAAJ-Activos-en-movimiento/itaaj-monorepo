@@ -33,9 +33,9 @@ const SideMenu = ({active, setActive} : Props) => {
                 <li><Link href='/'>Indice de precios</Link></li>
                 {/* <li><Link href='/'>Tasacion online</Link></li> */}
                 <li><Link href='/'>Hipotecas</Link></li>
-                <li><Link href='/'>Sofia asistente AI online</Link></li>
-                <li><Link href='/'>Si eres profesional</Link></li>
-                <li><Link href='/'>Si eres particular</Link></li>
+                <li><Link href='/itabot'>Sofia asistente AI online</Link></li>
+                <li><Link href='/servicios-profesional'>Si eres profesional</Link></li>
+                <li><Link href='/servicios-particular'>Si eres particular</Link></li>
                 <li><Link href='/deals'>Portafolio de desarrolladores</Link></li>
                 {/* <li><Link href='/agents'>Meta agentes Itaaj</Link></li> */}
                 {/* <li><Link href='/'>Blog</Link></li> */}
