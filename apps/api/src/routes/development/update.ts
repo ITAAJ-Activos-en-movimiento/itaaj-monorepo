@@ -2,7 +2,7 @@ import { updateDevelopment } from "@itaaj/business-logic";
 import { Development } from "@itaaj/entities";
 import { RouteOptions } from "fastify";
 
-export const createDevelopmentRoute: RouteOptions = {
+export const updateDevelopmentRoute: RouteOptions = {
   method: "PUT",
   url: "/developments",
   handler: async (request, reply) => {
