@@ -114,7 +114,7 @@ const Footer = () => {
       </div>
       <div className={styles.float}>
       <Link className={styles.itabot} title="Boton Asistente" href='/itabot'>
-            <Image src="/sof.jpeg" alt="Imagen Asistente"  width={45} height={45} style={{
+            <Image src="/sof.jpeg" alt="Imagen Asistente"  width={80} height={80} style={{
               borderRadius: 100
             }} />
   
