@@ -425,6 +425,17 @@ img {
         font-size: 1.6rem;
     }
 
+    .images_container img{
+        display: none;
+    }
+
+    .images{
+        height: 30rem;
+    }
+
+    .form {
+        margin-bottom:  10rem;
+    }
 }
 
 .properties_list {
