@@ -44,7 +44,8 @@ const Proffesionals:NextPage = () => {
      <div className={styles.options}>
       <div className={styles.boxs}>
  
-            <button className={styles.box} onClick={() => Showmodal("Fotos y Diseño")}>
+            <details className={styles.box} /*onClick={() => Showmodal("Fotos y Diseño")}*/ >
+              <summary>
               <Image
                 src="/fotosdisenoN.png"
                 width={200}
@@ -52,9 +53,14 @@ const Proffesionals:NextPage = () => {
                 alt="Fotos y Diseño"
               />
               <h3>Fotos y Diseño</h3>
-            </button>
+              </summary>
+              <p>Ofrece servicios relacionados con la captura y edición de imágenes de propiedades, mejorando la presentación visual para atraer a posibles compradores o inquilinos.</p>
+              
+            </details>
 
-            <button className={styles.box} onClick={() => Showmodal("Conoce el valor de tu inmueble")}>
+            <details className={styles.box} /*onClick={() => Showmodal("Conoce el valor de tu inmueble")}*/ >
+            <summary>
+
               <Image
                 src="/valorN.png"
                 width={200}
@@ -62,9 +68,15 @@ const Proffesionals:NextPage = () => {
                 alt="Conoce el valor de tu inmueble"
               />
               <h3>Conoce el valor de tu inmueble</h3>
-            </button>
+              </summary>
 
-            <button className={styles.box} onClick={() => Showmodal("Revisión documental y asesoría Jurídica")}>
+              <p>Proporciona herramientas para evaluar de manera precisa el valor de una propiedad, basándose en datos de mercado y análisis comparativo.</p>
+
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Revisión documental y asesoría Jurídica")}*/>
+              <summary>
+
               <Image
                 src="/documentalN.png"
                 width={200}
@@ -72,9 +84,14 @@ const Proffesionals:NextPage = () => {
                 alt="Revisión documental y asesoría Jurídica"
               />
               <h3>Revisión documental y asesoría Jurídica</h3>
-            </button>
+              </summary>
+              <p>Facilita la revisión y gestión de documentos legales relacionados con transacciones inmobiliarias, ofreciendo asesoría jurídica para garantizar procesos seguros y conformes a la normativa.</p>
 
-            <button className={styles.box} onClick={() => Showmodal("Planos de inmueble")}>
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Planos de inmueble")}*/>
+              <summary>
+
               <Image
                 src="/planosN.png"
                 width={200}
@@ -82,9 +99,14 @@ const Proffesionals:NextPage = () => {
                 alt="Planos"
               />
               <h3>Planos</h3>
-            </button>
+              </summary>
+              <p> Proporciona acceso a planos digitales actualizados de propiedades, facilitando la visualización y comprensión de la distribución y diseño arquitectónico.</p>
 
-            <button className={styles.box} onClick={() => Showmodal("Firma Digital")}>
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Firma Digital")}*/>
+              <summary>
+
               <Image
                 src="/firmaN.png"
                 width={200}
@@ -92,9 +114,15 @@ const Proffesionals:NextPage = () => {
                 alt="Firma Digital"
               />
               <h3>Firma Digital</h3>
-            </button>
+              </summary>
 
-            <button className={styles.box} onClick={() => Showmodal("Leads Paquete Básico")}>
+              <p>Permite la firma digital de documentos relacionados con transacciones inmobiliarias, agilizando procesos y proporcionando un medio seguro y legalmente válido para la firma de contratos.</p>
+
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Leads Paquete Básico")}*/>
+              <summary>
+
               <Image
                 src="/leadsbasicN.png"
                 width={200}
@@ -102,9 +130,14 @@ const Proffesionals:NextPage = () => {
                 alt="Leads Paquete Básico"
               />
               <h3>Leads Paquete Básico</h3>
-            </button>
+              </summary>
+              <p>Ofrece una solución más avanzada para la gestión de leads, incluyendo análisis de datos adicionales, segmentación avanzada y herramientas de seguimiento para mejorar la conversión.</p>
 
-            <button className={styles.box} onClick={() => Showmodal("Leads Paquete Profesional")}>
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Leads Paquete Profesional")}*/>
+             <summary>
+
               <Image
                 src="/leadsproN.png"
                 width={200}
@@ -112,9 +145,14 @@ const Proffesionals:NextPage = () => {
                 alt="Leads Paquete Profesional"
               />
               <h3>Leads Paquete Profesional</h3>
-            </button>
+             </summary>
+             <p>Gestiona y analiza leads (clientes potenciales) generados a través de diferentes canales, proporcionando información básica para identificar oportunidades de negocio.</p>
 
-            <button className={styles.box} onClick={() => Showmodal("Desarrolladores")}>
+            </details>
+
+            <details className={styles.box} /*onClick={() => Showmodal("Desarrolladores")}*/>
+              <summary>
+
               <Image
                 src="/desarrolladoresN.png"
                 width={200}
@@ -122,7 +160,10 @@ const Proffesionals:NextPage = () => {
                 alt="Desarrolladores"
               />
               <h3>Desarrolladores</h3>
-            </button>
+              </summary>
+              <p>Proporciona herramientas y recursos para desarrolladores que deseen integrar funcionalidades específicas de la Proptech en sus propias aplicaciones o plataformas, facilitando la personalización y la expansión del ecosistema tecnológico.</p>
+
+            </details>
 
         </div>
       </div>

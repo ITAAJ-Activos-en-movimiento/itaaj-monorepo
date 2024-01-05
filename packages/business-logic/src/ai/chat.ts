@@ -4,8 +4,8 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 export const runConversation = async (messages: any) => {
-    const { data } = await axios.get('https://itaaj-api-v0.onrender.com/api/v1/properties')
-    const properties = data.items;
+    const { data } = await axios.get('https://itaajrealty.com/api/api/v1/properties')
+    const properties = data?.items;
     
     const cleanProperties = []
 

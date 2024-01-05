@@ -31,7 +31,7 @@
    }
    
    .properties{
-    width: min(900px, 90%);
+    width: 90%;
     margin-inline: auto;
     display: grid;
     gap: 4rem;
@@ -326,7 +326,27 @@
     align-items: center;
     justify-content: center;
    }
-   
+
+   .filters{
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    padding-block: 2rem;
+   }
+
+   .container_body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 4rem;
+    gap: 2rem;
+   }
+
+   .map{
+    width: 100%;
+    height: 100vh;
+    position:sticky;
+   }
+
+  
    @media screen and (max-width: 768px) {
     .header{
      overflow-x: scroll;

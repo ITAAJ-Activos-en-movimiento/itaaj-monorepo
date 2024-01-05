@@ -427,9 +427,36 @@
    }
    
    @media screen and (max-width: 768px) {
+    .info{
+        height: auto;
+        display: grid;
+        grid-template-rows: 30rem 1fr;
+        width: 90%;
+      }
+
+    .picture{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
     .header{
      overflow-x: scroll;
     }
+
+    .container {
+        width: 90%;
+    }
+
+    .properti{
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+.details h2{
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
     
     .images{
      display: flex;
@@ -442,6 +469,9 @@
      display: none !important;
     }
     
+    .properties{
+        width: 100%;
+       }
     
     .container{
      grid-template-columns: 1fr;
@@ -503,4 +533,36 @@
     padding-inline: 2rem;
     padding-block: .5rem;
     border-radius: 1rem;
+}
+
+.picture .tres{
+    position: absolute;
+    bottom: 1rem;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: #fff;
+    font-weight: 600;
+    padding:  1rem;
+    border-radius: 1rem;
+    left: 12rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.picture .lett {
+    position: absolute;
+    bottom: 1rem;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: #fff;
+    font-weight: 600;
+    padding:  1rem;
+    border-radius: 1rem;
+    left: 24rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
 }

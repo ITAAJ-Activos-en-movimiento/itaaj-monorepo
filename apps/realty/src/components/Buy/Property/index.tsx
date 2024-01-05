@@ -24,13 +24,10 @@ const Property = ({images, price, type, floor, name, category, bedrooms, bathroo
   
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${url} por la siguinte propiedad ${url}/${slug}`;
 
-  console.log(floor)
 
   useEffect(() => {
     setUrl(window.location.href)
   }, [])
-
-  console.log(images)
   return (
   <>
 

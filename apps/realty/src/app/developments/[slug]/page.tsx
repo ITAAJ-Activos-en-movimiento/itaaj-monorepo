@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { PropertyElement } from '@/components/Developments';
 import Image from 'next/image';
 import { DivisaFormater } from '@/utils';
-import { Camera } from 'react-feather';
+import { Camera, Globe, Info } from 'react-feather';
 import Map from './Map';
 import Modal from '@/containers/Modal';
 import Floorplans from './Plane';
 import { useRouter } from 'next/navigation';
 import Photos from './Photos';
 import Cform from '@/components/Contacts/Cform'
+import Properties from './Properties';
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);
@@ -19,11 +20,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
   const slug  = params.slug;
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj Realty por la siguiente propiedad ${slug}`;
 
-  function Ffunc () {
-    console.log("env");
-  };  
-
-  console.log(properties)
+  console.log(development)
   return (
     <>
       <div className={styles.header}>
@@ -35,6 +32,14 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
           <span className={styles.tag}>OBRA NUEVA</span>
           <Image src={development.images?.length > 2 ? development?.images[0] : ''} alt='Imagen numero 1 de la propiedad' width={800} height={800} objectFit='cover' />
           <Link href='?photos=true' className={styles.photos}><Camera size={14} /> {development?.images?.length} Fotos</Link>
+          {development.owner && (
+          <Link href={development.owner} className={styles.tres}><Info size={14} /> Brochure</Link>
+          )}
+          {development.virtualTourUrl && (
+            <Link href={development.virtualTourUrl} className={styles.lett}><Globe size={14} />360</Link>
+          )}
+      
+        
         </div>
         <div className={styles.details}>
           <h2>{development.name}</h2>
@@ -44,21 +49,21 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
               <i className='bx bx-bed'></i>
               <span>
                 <p>Habitaciones:</p>
-                <h4>{development.bedrooms}</h4>
+                <h4>{development?.bedrooms}</h4>
               </span>
             </li>
             <li>
               <i className='bx bx-bath'></i>
               <span>
                 <p>Baños:</p>
-                <h4>{development.bathrooms}</h4>
+                <h4>{development?.bathrooms}</h4>
               </span>
             </li>
             <li>
               <i className='bx bx-area'></i>
               <span>
                 <p>Área:</p>
-                <h4>{development.area}</h4>
+                <h4>{development?.area}</h4>
               </span>
             </li>
           </ul>
@@ -80,9 +85,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <h2 className={styles.title_property}>
               Inmuebles de este desarrollo...
             </h2>
-            {properties?.map((property: any) => (
-                <PropertyElement key={property.id} {...property} total_area={property.area?.total_area} />
-            ))} 
+            <Properties properties={properties} />
           </div>
 
           <h2 className={styles.title_property}>
@@ -94,7 +97,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
               <i className='bx bx-home-heart'></i>
               <span>
                 <p>Viviendas</p>
-                <h3>{development.households}</h3>
+                <h3>{development?.households}</h3>
               </span>
             </div>
           </div>

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './PropertyElement.module.css'
 import { DivisaFormater } from '@/utils'
 import Link from 'next/link'
@@ -10,9 +10,12 @@ import { Mail } from 'react-feather'
 //@ts-ignore
 import Modal from 'react-modal';
 
-const PropertyElement = ({  bathrooms, bedrooms, floor, price, total_area, image, slug }: any) => {
-  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
+const PropertyElement = ({ bathrooms, bedrooms, floor, price, total_area, image, slug }: any) => {
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad`;
   const router = useRouter()
+  const [img, setImg] = useState();
+
+  
   const closeModaln = () => {
     console.log('enter')
     router.push('?plane=open')
@@ -27,7 +30,6 @@ const PropertyElement = ({  bathrooms, bedrooms, floor, price, total_area, image
     setModalIsOpen(false);
   };
 
-
   return (
     <>
     <div className={styles.property}>
@@ -37,8 +39,7 @@ const PropertyElement = ({  bathrooms, bedrooms, floor, price, total_area, image
       <span>{total_area} m2</span>
       <h4>{floor}a  Planta</h4>
       <Link href={'?plane=open'}  >Mostrar plano</Link>
-      <button onClick={() => Showmodal()} className={styles.message} ><Mail /> Contactar</button>
-      <Floorplans bath={bathrooms} bed={bedrooms} image={image} />
+      <Floorplans bath={bathrooms} bed={bedrooms} image={image ? image : ""}  />
     </div>
 
     <Modal

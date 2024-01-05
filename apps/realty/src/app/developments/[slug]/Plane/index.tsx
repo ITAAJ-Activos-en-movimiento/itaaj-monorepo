@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './Floors.module.css'
 import { X } from 'react-feather'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -17,6 +17,7 @@ const Floorplans = ({bed, bath, area, image}: any) => {
       bed=''
       router.push('?plane=close')
     }
+
     
   return (
     <div className={ openProposal == null || openProposal == 'close'? styles.container : styles.open}>
