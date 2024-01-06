@@ -37,7 +37,7 @@ const Property = async ({ params, searchParams }: { params: { slug: string }, se
   //   setActualImage(property.images[actualImageIn])
   // }
   
-const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
+const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina itaajrealty.com por la siguiente propiedad ${window.location.href}` : `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina itaajrealty.com por la siguiente propiedad: https://itaajrealty.com/properties/${property.slug}`;
 
 
   // const fetchData =  async() => {

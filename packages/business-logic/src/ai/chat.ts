@@ -5,11 +5,11 @@ const openai = new OpenAI();
 
 export const runConversation = async (messages: any) => {
     const { data } = await axios.get('https://itaajrealty.com/api/api/v1/properties')
-    const properties = data?.items;
+    const properties = data;
     
     const cleanProperties = []
 
-    properties.map((property: any) => {
+    properties?.map((property: any) => {
         cleanProperties.push({
             price: property.price,
             state: property.state,

@@ -18,10 +18,10 @@ const SideMenu = ({active, setActive} : Props) => {
                 <X />
             </button>
 
-            <div>
+            <Link href="/">
             <Image src='/isotipo.png' alt='Logo Itaaj Realty' width={20} height={40}  />
                 <h3>itaaj Realty</h3>
-            </div>
+            </Link>
       </div>
 
 

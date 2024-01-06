@@ -451,7 +451,9 @@
         width: 90%;
         overflow-x: scroll;
     }
-
+    .form {
+        margin-bottom:  10rem;
+    }
 .details h2{
     font-size: 2.8rem;
     margin-bottom: 2rem;

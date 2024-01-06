@@ -86,7 +86,10 @@ const Properties = async () => {
                 <Property key={property.id} {...property} />
               ))}
             </div>
+            <div className={styles.map}>
               <MapProperties locations={locations} />
+
+            </div>
           </div>
         </div>
       )}

@@ -392,6 +392,10 @@
     .specs > div h3{
      font-size: 1.6rem;
     }
+
+    .map{
+        display: none;
+    }
     
    }
    
@@ -402,3 +406,4 @@
     margin-top: 2rem;
     margin-bottom: 4rem;
    }
+

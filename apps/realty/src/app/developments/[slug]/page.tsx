@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import Photos from './Photos';
 import Cform from '@/components/Contacts/Cform'
 import Properties from './Properties';
+import Share from '@/app/properties/[slug]/Share';
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);
@@ -74,7 +75,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
         <div>
           <div className={styles.main}>
             <Link href='?proposal=open' className={styles.btn} ><i className='bx bx-share-alt' ></i> Realizar Propuesta</Link>
-            <button ><i className='bx bx-share-alt' ></i> Compartir</button>
+            <Share />
           </div>
           <h2 className={styles.title_property}><strong>Descripción</strong></h2>
           <p className={styles.description} dangerouslySetInnerHTML={{ __html: development?.description }}></p>

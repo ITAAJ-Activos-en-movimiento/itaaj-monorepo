@@ -1,8 +1,7 @@
 "use client";
 import styles from "./Professionals.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NextPage } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Cform from "@/components/Contacts/Cform";
 //@ts-ignore
@@ -86,9 +85,8 @@ const Proffesionals: NextPage = () => {
               <h3>Fotos y Diseño</h3>
             </summary>
             <p>
-              Ofrece servicios relacionados con la captura y edición de imágenes
-              de propiedades, mejorando la presentación visual para atraer a
-              posibles compradores o inquilinos.
+            Mejora la presentación visual para atraer potenciales clientes. Te apoyamos en la realización de fotografías digitales profesionales de tu propiedad.
+Precio: 2, 000 pesos más IVA.
               <button className={styles.btn} onClick={() => Showmodal("Fotos y Diseño")} >Contactar</button>
 
             </p>
@@ -110,9 +108,7 @@ const Proffesionals: NextPage = () => {
             </summary>
 
             <p>
-              Proporciona herramientas para evaluar de manera precisa el valor
-              de una propiedad, basándose en datos de mercado y análisis
-              comparativo.
+            Realizamos la Investigación de Mercado de tu inmueble con el con el fin de conocer su valor comercial. Precio: 2, 000 pesos más IVA.
               <button className={styles.btn} onClick={() => Showmodal("Conoce el valor de tu inmueble")} >Contactar</button>
 
             </p>
@@ -133,9 +129,7 @@ const Proffesionals: NextPage = () => {
               <h3>Revisión documental y asesoría Jurídica</h3>
             </summary>
             <p>
-              Facilita la revisión y gestión de documentos legales relacionados
-              con transacciones inmobiliarias, ofreciendo asesoría jurídica para
-              garantizar procesos seguros y conformes a la normativa.
+            Revisión de la documentación necesaria para la compraventa de tu inmueble. Valoración de los escenarios de exención de impuesto de acuerdo con lo establecido en la ley. Precio: 1, 500 pesos más IVA
               <button className={styles.btn} onClick={() => Showmodal("Revisión documental y asesoría Jurídica")} >Contactar</button>
 
             </p>
@@ -152,9 +146,7 @@ const Proffesionals: NextPage = () => {
             </summary>
             <p>
               {" "}
-              Proporciona acceso a planos digitales actualizados de propiedades,
-              facilitando la visualización y comprensión de la distribución y
-              diseño arquitectónico.
+              El costo del crédito hipotecario bancario incrementará en caso de que no cuentes con planos. Un especialista certificado te apoyara en este tema.
               <button
                 className={styles.btn}
                 onClick={() => Showmodal("Planos")}
@@ -180,9 +172,7 @@ const Proffesionals: NextPage = () => {
             </summary>
 
             <p>
-              Permite la firma digital de documentos relacionados con
-              transacciones inmobiliarias, agilizando procesos y proporcionando
-              un medio seguro y legalmente válido para la firma de contratos.
+            Te ayudamos en la firma de contratos de manera remota con el más alto estándar normativo. Nuestra firma digital cumple la NOM 151 de la Secretaría de Economía en México. Firma hasta 4 documentos. Precio: 2, 000 pesos más IVA.
               <button
                 className={styles.btn}
                 onClick={() => Showmodal("Firma Digital")}
@@ -207,9 +197,8 @@ const Proffesionals: NextPage = () => {
               <h3>Leads Paquete Básico</h3>
             </summary>
             <p>
-              Ofrece una solución más avanzada para la gestión de leads,
-              incluyendo análisis de datos adicionales, segmentación avanzada y
-              herramientas de seguimiento para mejorar la conversión.
+            Ofrece una solución más avanzada para la gestión de leads, incluyendo análisis de datos adicionales y herramientas de seguimiento para mejorar la conversión. Los costos por paquete de anuncios son:
+            Gratis el primero,$110 pesos de 1 a 10 anuncios, $90 pesos de 11 a 20 anuncios, $80 pesos de 21 anuncios en adelante, son precios mensuales.
               <button className={styles.btn} onClick={() => Showmodal("Leads Paquete Básico")} >Contactar</button>
 
             </p>
@@ -230,9 +219,7 @@ const Proffesionals: NextPage = () => {
               <h3>Leads Paquete Profesional</h3>
             </summary>
             <p>
-              Gestiona y analiza leads (clientes potenciales) generados a través
-              de diferentes canales, proporcionando información básica para
-              identificar oportunidades de negocio.
+            Acompaña el Plan de Leads Paquete Básico con una campaña digital ya sea de posicionamiento o de generación de leads a través de campañas en FB, IG y Google
               <button className={styles.btn} onClick={() => Showmodal("Leads Paquete Profesional")} >Contactar</button>
 
             </p>
