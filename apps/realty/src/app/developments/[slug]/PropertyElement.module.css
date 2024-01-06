@@ -88,3 +88,8 @@
     text-align: center;
     padding: .8rem 1rem;
 }
+
+.property .btn{
+    background-color: var(--main-color);
+    color: #fff;
+}

@@ -131,6 +131,13 @@
     text-align: center;
   }
   
+  .btn{
+    display: block;
+    width: 100%;
+    background-color: var(--main-color);
+    color: #fff;
+    margin-top: 1rem;
+  }
   @media screen and (max-width: 768px) {
   
     .params{

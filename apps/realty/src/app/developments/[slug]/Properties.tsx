@@ -44,6 +44,7 @@ const Properties = ({ properties }: { properties: unknown[] }) => {
             <span>{property.total_area} m2</span>
             <h4>{property.floor}a Planta</h4>
             <button onClick={() => openPlane(property.image)}>Mostrar plano</button>
+            <button onClick={() => setModalIsOpen(true)} className={styles.btn}>Contactar</button>
             <div
               className={
                 openProposal == null || openProposal == "close"

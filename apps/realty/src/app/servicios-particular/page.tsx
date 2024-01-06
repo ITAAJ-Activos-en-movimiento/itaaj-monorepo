@@ -40,9 +40,13 @@ const Particulars:NextPage = () => {
      }} >Microservicios Itaaj</h2>
 
      <div className={styles.options}>
-      <div className={styles.boxs}>
- 
-            <button className={styles.box} onClick={() => Showmodal("Fotos y Diseño")}>
+     <div className={styles.boxs}>
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Fotos y Diseño")}*/
+          >
+            <summary>
               <Image
                 src="/fotosdisenoN.png"
                 width={200}
@@ -50,9 +54,22 @@ const Particulars:NextPage = () => {
                 alt="Fotos y Diseño"
               />
               <h3>Fotos y Diseño</h3>
-            </button>
+            </summary>
+            <p>
+              Ofrece servicios relacionados con la captura y edición de imágenes
+              de propiedades, mejorando la presentación visual para atraer a
+              posibles compradores o inquilinos.
+              <button className={styles.btn} onClick={() => Showmodal("Fotos y Diseño")} >Contactar</button>
 
-            <button className={styles.box} onClick={() => Showmodal("Conoce el valor de tu inmueble")}>
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Conoce el valor de tu inmueble")}*/
+          >
+            <summary>
               <Image
                 src="/valorN.png"
                 width={200}
@@ -60,9 +77,23 @@ const Particulars:NextPage = () => {
                 alt="Conoce el valor de tu inmueble"
               />
               <h3>Conoce el valor de tu inmueble</h3>
-            </button>
+            </summary>
 
-            <button className={styles.box} onClick={() => Showmodal("Revisión documental y asesoría Jurídica")}>
+            <p>
+              Proporciona herramientas para evaluar de manera precisa el valor
+              de una propiedad, basándose en datos de mercado y análisis
+              comparativo.
+              <button className={styles.btn} onClick={() => Showmodal("Conoce el valor de tu inmueble")} >Contactar</button>
+
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Revisión documental y asesoría Jurídica")}*/
+          >
+            <summary>
               <Image
                 src="/documentalN.png"
                 width={200}
@@ -70,19 +101,45 @@ const Particulars:NextPage = () => {
                 alt="Revisión documental y asesoría Jurídica"
               />
               <h3>Revisión documental y asesoría Jurídica</h3>
-            </button>
+            </summary>
+            <p>
+              Facilita la revisión y gestión de documentos legales relacionados
+              con transacciones inmobiliarias, ofreciendo asesoría jurídica para
+              garantizar procesos seguros y conformes a la normativa.
+              <button className={styles.btn} onClick={() => Showmodal("Revisión documental y asesoría Jurídica")} >Contactar</button>
 
-            <button className={styles.box} onClick={() => Showmodal("Planos de inmueble")}>
-              <Image
-                src="/planosN.png"
-                width={200}
-                height={200}
-                alt="Planos"
-              />
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Planos de inmueble")}*/
+          >
+            <summary>
+              <Image src="/planosN.png" width={200} height={200} alt="Planos" />
               <h3>Planos</h3>
-            </button>
+            </summary>
+            <p>
+              {" "}
+              Proporciona acceso a planos digitales actualizados de propiedades,
+              facilitando la visualización y comprensión de la distribución y
+              diseño arquitectónico.
+              <button
+                className={styles.btn}
+                onClick={() => Showmodal("Planos")}
+              >
+                Contactar
+              </button>
+            </p>
+          </details>
 
-            <button className={styles.box} onClick={() => Showmodal("Firma Digital")}>
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Firma Digital")}*/
+          >
+            <summary>
               <Image
                 src="/firmaN.png"
                 width={200}
@@ -90,9 +147,27 @@ const Particulars:NextPage = () => {
                 alt="Firma Digital"
               />
               <h3>Firma Digital</h3>
-            </button>
+            </summary>
 
-            <button className={styles.box} onClick={() => Showmodal("Leads Paquete Básico")}>
+            <p>
+              Permite la firma digital de documentos relacionados con
+              transacciones inmobiliarias, agilizando procesos y proporcionando
+              un medio seguro y legalmente válido para la firma de contratos.
+              <button
+                className={styles.btn}
+                onClick={() => Showmodal("Firma Digital")}
+              >
+                Contactar
+              </button>
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Leads Paquete Básico")}*/
+          >
+            <summary>
               <Image
                 src="/leadsbasicN.png"
                 width={200}
@@ -100,9 +175,22 @@ const Particulars:NextPage = () => {
                 alt="Leads Paquete Básico"
               />
               <h3>Leads Paquete Básico</h3>
-            </button>
+            </summary>
+            <p>
+              Ofrece una solución más avanzada para la gestión de leads,
+              incluyendo análisis de datos adicionales, segmentación avanzada y
+              herramientas de seguimiento para mejorar la conversión.
+              <button className={styles.btn} onClick={() => Showmodal("Leads Paquete Básico")} >Contactar</button>
 
-            <button className={styles.box} onClick={() => Showmodal("Leads Paquete Profesional")}>
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Leads Paquete Profesional")}*/
+          >
+            <summary>
               <Image
                 src="/leadsproN.png"
                 width={200}
@@ -110,9 +198,22 @@ const Particulars:NextPage = () => {
                 alt="Leads Paquete Profesional"
               />
               <h3>Leads Paquete Profesional</h3>
-            </button>
+            </summary>
+            <p>
+              Gestiona y analiza leads (clientes potenciales) generados a través
+              de diferentes canales, proporcionando información básica para
+              identificar oportunidades de negocio.
+              <button className={styles.btn} onClick={() => Showmodal("Leads Paquete Profesional")} >Contactar</button>
 
-            <button className={styles.box} onClick={() => Showmodal("Desarrolladores")}>
+            </p>
+          </details>
+
+          <details
+            className={
+              styles.box
+            } /*onClick={() => Showmodal("Desarrolladores")}*/
+          >
+            <summary>
               <Image
                 src="/desarrolladoresN.png"
                 width={200}
@@ -120,8 +221,16 @@ const Particulars:NextPage = () => {
                 alt="Desarrolladores"
               />
               <h3>Desarrolladores</h3>
-            </button>
+            </summary>
+            <p>
+              Proporciona herramientas y recursos para desarrolladores que
+              deseen integrar funcionalidades específicas de la Proptech en sus
+              propias aplicaciones o plataformas, facilitando la personalización
+              y la expansión del ecosistema tecnológico.
+              <button className={styles.btn} onClick={() => Showmodal("Desarrolladores")} >Contactar</button>
 
+            </p>
+          </details>
         </div>
       </div>
 
