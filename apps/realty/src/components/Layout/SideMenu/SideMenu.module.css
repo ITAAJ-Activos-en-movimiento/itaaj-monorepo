@@ -63,3 +63,9 @@
     font-size: 2rem;
     font-weight: 600;
 }
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

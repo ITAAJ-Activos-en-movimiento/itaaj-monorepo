@@ -351,6 +351,11 @@
     .header{
      overflow-x: scroll;
     }
+    .container_body{
+        grid-template-columns: 1fr;
+        padding-left: 0;
+       }
+    
     
     .images{
      display: flex;
