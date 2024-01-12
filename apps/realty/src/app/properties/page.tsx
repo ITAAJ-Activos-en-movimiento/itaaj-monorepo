@@ -9,10 +9,39 @@ import MapProperties from "./MapProperties";
 
 const Properties = async () => {
   const properties = await propertiesApi();
-  const developments = await developmentsApi();
 
   const newLocations = properties.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
+
+  function compararPorDesarrollo(a: any, b: any): number {
+    // Si a.development es nulo y b.development no es nulo, colocamos a después de b
+    if (a.development === null && b.development !== null) {
+      return 1;
+    }
+    // Si a.development no es nulo y b.development es nulo, colocamos a antes de b
+    else if (a.development !== null && b.development === null) {
+      return -1;
+    }
+    // En todos los demás casos, mantenemos el orden actual
+    else {
+      return 0;
+    }
+  }
+  
+  // Ordenar la lista utilizando la función de comparación personalizada
+  const listaOrdenada = properties.sort(compararPorDesarrollo);
+  const developmentVistos = new Set<string>();
+const listaUnica = listaOrdenada.filter((item: any) => {
+  if (item.development !== null) {
+    if (!developmentVistos.has(item.development)) {
+      developmentVistos.add(item.development);
+      return true;
+    }
+    return false;
+  }
+  return true; // Mantener todas las instancias con development nulo
+});
+
 
   return (
     <>
@@ -82,7 +111,7 @@ const Properties = async () => {
           </div>
           <div className={styles.container_body} >
             <div className={styles.properties}>
-              {properties?.map((property: any) => (
+              {listaUnica?.map((property: any) => (
                 <Property key={property.id} {...property} />
               ))}
             </div>
