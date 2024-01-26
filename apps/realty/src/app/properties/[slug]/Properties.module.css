@@ -385,14 +385,31 @@ img {
     }
 
     .images {
-        display: flex;
+        display: flex !important;
         width: 100%;
         overflow-x: scroll;
         height: auto;
+        display: flex;
+  overflow-x: auto; /* Permite desplazar los divs horizontalmente */
+  scroll-snap-type: x mandatory; /* Asegura un desplazamiento suave entre divs */
+  -webkit-overflow-scrolling: touch;
+    }
+
+    .photo1,
+.images_container {
+  flex: 0 0 100%; /* Hace que cada div ocupe el 100% del ancho del contenedor */
+}
+
+.images_container img{
+    width: 100%;
+    height: 100%;
+}
+    .photo1{
+        width: 100%;
     }
 
     .images>span {
-        display: none !important;
+        /* display: none !important; */
     }
 
 
@@ -425,8 +442,14 @@ img {
         font-size: 1.6rem;
     }
 
+    .images .images_container{
+        display: flex;
+    }
+
     .images_container img{
-        display: none;
+        width: 100%;
+        height: 100%;
+        /* display: none; */
     }
 
     .images{

@@ -67,7 +67,7 @@ const Cform = ({slug, closeModal, prevmsg} : Props) => {
        <input type="checkbox" name="terms" id="terms" defaultChecked />
        <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alta en itaaj</p>
       </label>
-      <button className={styles.btn } type='submit'>Contactar</button>
+      <button disabled={info.name.length < 3 || info.phone.length < 4 || info.email.length < 5} className={styles.btn } type='submit'>Contactar</button>
       </form>
     );
 };
