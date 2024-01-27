@@ -397,12 +397,14 @@ img {
 
     .photo1,
 .images_container {
-  flex: 0 0 100%; /* Hace que cada div ocupe el 100% del ancho del contenedor */
+  flex: 0 0 100%; 
+    width: 200rem;
 }
 
 .images_container img{
-    width: 100%;
+    width:300rem;
     height: 100%;
+    object-fit: cover;
 }
     .photo1{
         width: 100%;
@@ -411,7 +413,6 @@ img {
     .images>span {
         /* display: none !important; */
     }
-
 
     .container {
         grid-template-columns: 1fr;
@@ -441,19 +442,27 @@ img {
     .specs>div h3 {
         font-size: 1.6rem;
     }
-
-    .images .images_container{
-        display: flex;
+    .small_photo{
+        width: 50rem;
     }
 
+    .images .images_container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 30rem;
+        gap: .5rem;
+    }
+  
+
     .images_container img{
-        width: 100%;
         height: 100%;
+        object-fit: cover;
         /* display: none; */
     }
 
     .images{
         height: 30rem;
+        object-fit: cover;
     }
 
     .form {

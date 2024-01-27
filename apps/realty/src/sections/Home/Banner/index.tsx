@@ -8,7 +8,31 @@ const Banner = () => {
 
   return (
     <section className={styles.section}>
-      <div className={styles.container_banner}></div>
+        <div  className="home-hero-video" style={{ position: "relative", width: '100%', height: '60vh', overflow: 'hidden',  }} data-video-id="3337">
+      <iframe
+        src="https://app.vidzflow.com/v/H0LDXZjsnq?dq=576&amp;ap=true&amp;muted=true&amp;loop=true&amp;ctp=false&amp;bc=%234E5FFD&amp;controls="
+        allow="fullscreen"
+        scrolling="no"
+        title="Jasper Hero Video - Abstract Urban"
+        width="100%"
+        height="100%"
+        frameBorder="0"
+        style={{ width: '100%', height: '100%', overflow: 'hidden' }}
+      ></iframe>
+        <div style={{
+      width: "100%",
+      height: "60vh",
+      position: "absolute",
+      backgroundColor: "rgba(0,0,0,0.3)",
+      zIndex: 1,
+      top: 0,
+      left: 0
+    }}>
+
+    </div>
+    </div>
+  
+      {/* <div className={styles.container_banner}></div> */}
       <div className={styles.search}>
         <div className={styles.content}>
           <h2>Todos tenemos un sitio</h2>
