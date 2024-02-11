@@ -7,9 +7,18 @@ import {
 } from "@/services";
 import MapProperties from "./MapProperties";
 
-const Properties = async () => {
+const Properties = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    type?: string;
+    search?: string;
+  };
+}) => {
   const properties = await propertiesApi();
 
+  console.log("DEVELP,ENT", searchParams?.type)
+  console.log("DEVELP,ENT", searchParams?.search)
   const newLocations = properties.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
 
@@ -41,6 +50,8 @@ const listaUnica = listaOrdenada.filter((item: any) => {
   }
   return true; // Mantener todas las instancias con development nulo
 });
+
+
 
 
   return (
@@ -80,7 +91,7 @@ const listaUnica = listaOrdenada.filter((item: any) => {
         <div>
           <div className={styles.filters}>
             <h2 className={styles.title}>
-              Viviendas y casas en venta en Mexico
+              Viviendas y casas en venta en México
             </h2>
             <p>
               {
@@ -111,7 +122,7 @@ const listaUnica = listaOrdenada.filter((item: any) => {
           </div>
           <div className={styles.container_body} >
             <div className={styles.properties}>
-              {listaUnica?.map((property: any) => (
+              {listaUnica?.filter((property: any) => property.type.toLowerCase().includes(searchParams?.type?.toLowerCase()) || property.address.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.city.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) ).map((property: any) => (
                 <Property key={property.id} {...property} />
               ))}
             </div>

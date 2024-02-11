@@ -25,9 +25,9 @@ const MostSearched = () => {
             <li><Link href='/properties'>Departamentos en venta baratos</Link></li>
         </ul>
         <ul>
-            <li><Link href='/properties'>Obra nueva Mexico</Link></li>
+            <li><Link href='/properties'>Obra nueva México</Link></li>
             <li><Link href='/properties'>Obra nueva Merida</Link></li>
-            <li><Link href='/properties'>Obra nueva Ciudad de Mexico</Link></li>
+            <li><Link href='/properties'>Obra nueva Ciudad de México</Link></li>
             <li><Link href='/properties'>Departametos en venta Toluca</Link></li>
             <li><Link href='/properties'>Departametos en venta Queretaro</Link></li>
             <li><Link href='/properties'>Departametos en venta Morelia</Link></li>
@@ -38,12 +38,12 @@ const MostSearched = () => {
             <li><Link href='/properties'>Departametos en venta Veracruz</Link></li>
             <li><Link href='/properties'>Departametos en venta Cancun</Link></li>
             <li><Link href='/properties'>Departametos en venta Puebla</Link></li>
-            <li><Link href='/properties'>Departametos en venta Mexico</Link></li>
+            <li><Link href='/properties'>Departametos en venta México</Link></li>
         </ul>
         <ul>
-            <li><Link href='/properties'>Lofts en Mexico</Link></li>
+            <li><Link href='/properties'>Lofts en México</Link></li>
             <li><Link href='/properties'>Lofts en Merida</Link></li>
-            <li><Link href='/properties'>Lofts en Ciudad de Mexico</Link></li>
+            <li><Link href='/properties'>Lofts en Ciudad de México</Link></li>
             <li><Link href='/properties'>Casas en venta Oxaca</Link></li>
             <li><Link href='/properties'>Casas en venta Merica</Link></li>
             <li><Link href='/properties'>Casas en venta Monterrey</Link></li>
@@ -54,7 +54,7 @@ const MostSearched = () => {
             <li><Link href='/properties'>Casas en venta Veracruz</Link></li>
             <li><Link href='/properties'>Casas en venta GUadalajara</Link></li>
             <li><Link href='/properties'>Casas en venta Puebla</Link></li>
-            <li><Link href='/properties'>Casas en venta Mexico</Link></li>
+            <li><Link href='/properties'>Casas en venta México</Link></li>
         </ul>
    
         <ul>
