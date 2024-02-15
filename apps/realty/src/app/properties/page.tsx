@@ -122,7 +122,7 @@ const listaUnica = listaOrdenada.filter((item: any) => {
           </div>
           <div className={styles.container_body} >
             <div className={styles.properties}>
-              {listaUnica?.filter((property: any) => property.type.toLowerCase().includes(searchParams?.type?.toLowerCase()) || property.address.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.city.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) ).map((property: any) => (
+              {listaUnica?.filter((property: any) => property.type.toLowerCase().includes(searchParams?.type?.toLowerCase() || "") || property.address.toLowerCase().includes(searchParams?.search?.toLowerCase() || "") || property.city.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) ).map((property: any) => (
                 <Property key={property.id} {...property} />
               ))}
             </div>
