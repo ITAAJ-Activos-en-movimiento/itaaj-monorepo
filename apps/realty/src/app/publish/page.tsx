@@ -237,6 +237,9 @@ const CreateProperty = () => {
     lastname: "",
     email: "",
     password: "",
+    roleId: 3,
+    residence: "",
+    identification: ""
   });
 
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;

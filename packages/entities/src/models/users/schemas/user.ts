@@ -1,6 +1,9 @@
 import { Base } from "../../../common";
 
 export interface User extends Base {
+    roleId: number;
+    residence: string;
+    identification: string;
     method: string;
     email: string;
     name: string;

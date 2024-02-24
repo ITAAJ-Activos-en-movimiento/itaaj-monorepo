@@ -1,0 +1,260 @@
+/* ============= */
+/* ========================== */
+/* ===================GENERAL */
+/* ========================== */
+/* ============= */
+
+.modalPortalKYC {
+  position: relative;
+  z-index: 10000;
+}
+
+.contentStepKYC {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.contentStepKYC > div {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.field label{
+  font-size: 1.3rem;
+  margin-bottom: .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .8);
+}
+
+.field .tip{
+  font-size: 1.3rem;
+  margin-top: .6rem;
+}
+
+.field textarea{
+  min-height: 20rem;
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: 1rem;
+}
+
+.field input {
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: .5rem;
+  width: auto;
+}
+
+.field h4{
+  font-size: 1.3rem;
+  margin-bottom: .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .8);
+}
+
+.back{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: .5rem;
+}
+
+/* ============= */
+/* ========================== */
+/* ====================STEP 1 */
+/* ========================== */
+/* ============= */
+
+.account{
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.account h3{
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.account button{
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  margin-top: 1.5rem;
+}
+
+.account > p{
+  text-align: center;
+  opacity: .5;
+  margin-block: 4rem;
+  margin-bottom: 2rem;
+}
+
+.account a{
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.account .register{
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--main-color);
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+}
+
+.terms{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  font-size: 1.3rem;
+}
+
+.terms p{
+  text-align: left;
+  opacity: .6;
+  margin-top: .7rem;
+}
+
+.account .buton{
+  background-color: var(--main-color) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .property_map iframe{
+    width: 100%;
+  }  
+
+  .col{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .col .field{
+    width: 100%;
+  }
+
+  .col .field input{
+    width: 100%;
+  }
+}
+
+.account .register{
+  background-color: #fff;
+  color: var(--main-color);
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ============= */
+/* ========================== */
+/* ====================STEP 2 */
+/* ========================== */
+/* ============= */
+
+.connectWallet {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.connectWallet h3 {
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.connectWallet button{
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  margin-top: 1.5rem;
+}
+
+/* ============= */
+/* ========================== */
+/* ====================STEP 3 */
+/* ========================== */
+/* ============= */
+
+.selectRole {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+.selectRole button {
+  width: 100%;
+  padding: 40px 15px;
+  display: block;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+}
+
+/* ============= */
+/* ========================== */
+/* ====================STEP 4 */
+/* ========================== */
+/* ============= */
+
+.additionalData {
+  margin: 0 auto;
+  gap: 15px;
+  padding: 15px;
+}
+
+.additionalData h3 {
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.additionalData button {
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  margin-top: 1.5rem;
+}

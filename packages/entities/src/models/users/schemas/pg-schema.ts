@@ -1,7 +1,12 @@
+import { relations } from 'drizzle-orm';
 import { boolean, integer, pgTable, primaryKey, timestamp, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
+import { roles } from '../../roles/schemas/pg-schema';
 
 export const users = pgTable('users', {
     id: uuid('id').defaultRandom().notNull(),
+    roleId: varchar('name', { length: 256 }).notNull(),
+    residence: varchar('residence', { length: 256 }).notNull(),
+    identification: varchar('residence', { length: 11 }).notNull(),
     name: varchar('name', { length: 256 }).notNull(),
     lastname: varchar('lastname', { length: 256 }).notNull(),
     email: varchar('email', { length: 256 }).notNull(),
@@ -24,3 +29,11 @@ export const users = pgTable('users', {
         idIndex: uniqueIndex('users_id_index').on(users.id)
     }
 });
+
+export const usersRelations = relations(users, ({ one }) => ({
+    development: one(roles, {
+      fields: [users.roleId],
+      references: [roles.id],
+    }),
+  }));
+  

@@ -34,8 +34,11 @@
 }
 
 .login{
-    display: flex;
+    max-width: 12rem;
+    display: grid;
+    overflow: hidden;
     align-items: center;
+    grid-template-columns: 18px 1fr;
     gap: .5rem;
     font-weight: 600;
     font-size: 1.3rem;
@@ -44,6 +47,16 @@
     padding-block: 1rem;
     border-radius: .8rem;
     color: #fff;
+}
+
+.login *:first-child {
+    width: -webkit-fill-available;
+} 
+
+.login span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .publish{

@@ -8,13 +8,22 @@ import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
 import SideMenu from '../SideMenu';
 import RegisterModal from '@/containers/RegisterModal';
+import KYCModal from '@/containers/KYCModal';
+import { useSDK } from '@metamask/sdk-react';
 
 const Header = () => {
+    const { connected, account } = useSDK();
     const isDesktop = useMediaQuery({ query: '(min-width: 1268px)' });
     const content = isDesktop ? 'Publica tu propiedad gratis' : 'Publica';
+    const [openModalKYC, setOpenModalKYC] = useState<boolean>(false);
     const logo = isDesktop ? 'itaaj realty' : '';
   
     const [active, setActive] = useState(false);
+    const handleClickAccess = () => {
+        if (connected) return alert("Redirect user");
+        document.body.style.overflow = 'hidden';
+        setOpenModalKYC(true);
+    }
   
     return (
     <header className={styles.header}>
@@ -35,14 +44,18 @@ const Header = () => {
             </nav>
         </div>
         <div className={styles.options}>
-        <button className={`${styles.label_button} ${styles.alerts}`} ><Bell size={16} /> Mis alertas</button>
-        <button className={styles.label_button} ><Heart size={16} /><span>Mis listas</span></button>
-        <Link href='/publish' className={styles.publish}>{content}</Link>
-            <button className={styles.login}><User size={18} /> Acceder</button>
+            <button className={`${styles.label_button} ${styles.alerts}`} ><Bell size={16} /> Mis alertas</button>
+            <button className={styles.label_button} ><Heart size={16} /><span>Mis listas</span></button>
+            <Link href='/publish' className={styles.publish}>{content}</Link>
+            <button className={styles.login} onClick={handleClickAccess}>
+                <User size={18} /> 
+                <span>{ connected ? account : 'Acceder' }</span>
+            </button>
         </div>
 
         <SideMenu active={active} setActive={setActive} />
         <RegisterModal />
+        <KYCModal openModal={openModalKYC} setOpenModal={setOpenModalKYC} />
     </header>
   )
 }
