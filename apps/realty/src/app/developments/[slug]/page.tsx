@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { PropertyElement } from '@/components/Developments';
 import Image from 'next/image';
 import { DivisaFormater } from '@/utils';
-import { Camera, Globe, Info } from 'react-feather';
+import { Camera, Globe, Info, Image as ImageIcon } from 'react-feather';
 import Map from './Map';
 import Modal from '@/containers/Modal';
 import Floorplans from './Plane';
@@ -38,6 +38,9 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
           )}
           {development.virtualTourUrl && (
             <Link href={development.virtualTourUrl} className={styles.lett}><Globe size={14} />360</Link>
+          )}
+                {development.video && (
+            <Link href={development.video} className={styles.lettre}><ImageIcon size={14} />Video</Link>
           )}
       
         
