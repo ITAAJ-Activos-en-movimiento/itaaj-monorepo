@@ -5,7 +5,7 @@ import Link from 'next/link'
 const MostSearched = () => {
   return (
     <section className={styles.section} >
-        <h3>Lo mas Buscado</h3>
+        <h3>Lo más Buscado</h3>
         <div>
 
         <ul>
@@ -32,11 +32,11 @@ const MostSearched = () => {
             <li><Link href='/properties'>Departametos en venta Queretaro</Link></li>
             <li><Link href='/properties'>Departametos en venta Morelia</Link></li>
             <li><Link href='/properties'>Departametos en venta Cuernavaca</Link></li>
-            <li><Link href='/properties'>Departametos en venta Leon</Link></li>
+            <li><Link href='/properties'>Departametos en venta León</Link></li>
             <li><Link href='/properties'>Departametos en venta Hermisllo</Link></li>
             <li><Link href='/properties'>Departametos en venta Guanajuato</Link></li>
             <li><Link href='/properties'>Departametos en venta Veracruz</Link></li>
-            <li><Link href='/properties'>Departametos en venta Cancun</Link></li>
+            <li><Link href='/properties'>Departametos en venta Cancún</Link></li>
             <li><Link href='/properties'>Departametos en venta Puebla</Link></li>
             <li><Link href='/properties'>Departametos en venta México</Link></li>
         </ul>
@@ -44,15 +44,15 @@ const MostSearched = () => {
             <li><Link href='/properties'>Lofts en México</Link></li>
             <li><Link href='/properties'>Lofts en Merida</Link></li>
             <li><Link href='/properties'>Lofts en Ciudad de México</Link></li>
-            <li><Link href='/properties'>Casas en venta Oxaca</Link></li>
-            <li><Link href='/properties'>Casas en venta Merica</Link></li>
+            <li><Link href='/properties'>Casas en venta Oaxaca</Link></li>
+            <li><Link href='/properties'>Casas en venta Merida</Link></li>
             <li><Link href='/properties'>Casas en venta Monterrey</Link></li>
             <li><Link href='/properties'>Casas en venta Cuernavaca</Link></li>
-            <li><Link href='/properties'>Casas en venta Leon</Link></li>
+            <li><Link href='/properties'>Casas en venta León</Link></li>
             <li><Link href='/properties'>Casas en venta Hermosillo</Link></li>
             <li><Link href='/properties'>Casas en venta Guanajuato</Link></li>
             <li><Link href='/properties'>Casas en venta Veracruz</Link></li>
-            <li><Link href='/properties'>Casas en venta GUadalajara</Link></li>
+            <li><Link href='/properties'>Casas en venta Guadalajara</Link></li>
             <li><Link href='/properties'>Casas en venta Puebla</Link></li>
             <li><Link href='/properties'>Casas en venta México</Link></li>
         </ul>
@@ -60,7 +60,7 @@ const MostSearched = () => {
         <ul>
             <li><Link href='/properties'>Casas de campo en venta</Link></li>
             <li><Link href='/properties'>Oficinas en venta Merida</Link></li>
-            <li><Link href='/properties'>Casas en la plays</Link></li>
+            <li><Link href='/properties'>Casas en la playa</Link></li>
             <li><Link href='/properties'>Casas de pueblo</Link></li>
             <li><Link href='/properties'>Casas prefabricadas baratas</Link></li>
             <li><Link href='/properties'>Terrenos en venta Merida</Link></li>

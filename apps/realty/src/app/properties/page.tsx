@@ -6,6 +6,7 @@ import {
   properties as propertiesApi,
 } from "@/services";
 import MapProperties from "./MapProperties";
+import PropertiesWithMap from "./PropertiesWithMap";
 
 const Properties = async ({
   searchParams,
@@ -17,8 +18,8 @@ const Properties = async ({
 }) => {
   const properties = await propertiesApi();
 
-  console.log("DEVELP,ENT", searchParams?.type)
-  console.log("DEVELP,ENT", searchParams?.search)
+  console.log("DEVELP,ENT", searchParams?.type);
+  console.log("DEVELP,ENT", searchParams?.search);
   const newLocations = properties.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
 
@@ -36,27 +37,24 @@ const Properties = async ({
       return 0;
     }
   }
-  
+
   // Ordenar la lista utilizando la función de comparación personalizada
   const listaOrdenada = properties.sort(compararPorDesarrollo);
   const developmentVistos = new Set<string>();
-const listaUnica = listaOrdenada.filter((item: any) => {
-  if (item.development !== null) {
-    if (!developmentVistos.has(item.development)) {
-      developmentVistos.add(item.development);
-      return true;
+  const listaUnica = listaOrdenada.filter((item: any) => {
+    if (item.development !== null) {
+      if (!developmentVistos.has(item.development)) {
+        developmentVistos.add(item.development);
+        return true;
+      }
+      return false;
     }
-    return false;
-  }
-  return true; // Mantener todas las instancias con development nulo
-});
-
-
-
+    return true; // Mantener todas las instancias con development nulo
+  });
 
   return (
-    <>
-      <div className={styles.header}>
+    <div>
+<div className={styles.header}>
         <h2>Filtros</h2>
         <select name="" id="">
           <option value="">Estado</option>
@@ -80,6 +78,8 @@ const listaUnica = listaOrdenada.filter((item: any) => {
           <option value="">Baños</option>
         </select>
       </div>
+      <PropertiesWithMap  properties={listaUnica} searchParams={searchParams} locations={locations} />
+      {/* 
       {properties.length == 0 ? (
         <div className={styles.notProperties}>
           <div>
@@ -90,21 +90,8 @@ const listaUnica = listaOrdenada.filter((item: any) => {
       ) : (
         <div>
           <div className={styles.filters}>
-            <h2 className={styles.title}>
-              Viviendas y casas en venta en México
-            </h2>
-            <p>
-              {
-                properties.filter((property: any) => !property.development)
-                  .length
-              }{" "}
-              usadas y{" "}
-              {
-                properties.filter((property: any) => property.development)
-                  .length
-              }{" "}
-              de obra nueva
-            </p>
+       
+       
             <div className={styles.option}>
               <span>
                 <i className="bx bx-info-circle"></i>
@@ -120,20 +107,13 @@ const listaUnica = listaOrdenada.filter((item: any) => {
               </select>
             </div>
           </div>
-          <div className={styles.container_body} >
-            <div className={styles.properties}>
-              {listaUnica?.filter((property: any) => property.type.toLowerCase().includes(searchParams?.type?.toLowerCase() || "") || property.address.toLowerCase().includes(searchParams?.search?.toLowerCase() || "") || property.city.toLowerCase().includes(searchParams?.search?.toLowerCase()) || property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) ).map((property: any) => (
-                <Property key={property.id} {...property} />
-              ))}
-            </div>
-            <div className={styles.map}>
-              <MapProperties locations={locations} />
-
-            </div>
+          <div className={styles.container_body}>
+          
+          
           </div>
         </div>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

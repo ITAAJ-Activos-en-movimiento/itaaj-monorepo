@@ -12,7 +12,9 @@ import { changeLanguage } from "@/utils";
 import Share from "./Share";
 import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
-
+import {
+  properties as propertiesApi,
+} from "@/services";
 const Property = async ({
   params,
   searchParams,
@@ -21,6 +23,7 @@ const Property = async ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const property = await propertiesBySlug(params.slug.toString());
+  const properties = await propertiesApi();
 
   // const prevImage = () => {
   //   if(actualImageIn == 0){
@@ -63,6 +66,7 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
+  console.log("PROP", property)
   return (
     <>
       <div className={styles.header}>
@@ -70,57 +74,22 @@ const Property = async ({
           <i className="bx bx-arrow-back"></i> Volver
         </Link>
       </div>
-      <div className={styles.images}>
-        <div className={styles.photo1}>
-          <Image
-            src={property?.images[0]}
-            alt="Imagen numero 1 de la propiedad"
-            width={800}
-            height={500}
-          />
-        </div>
-        <div className={styles.images_container}>
-          <div className={styles.small_photo}>
-            <Image
-              src={property?.images[1]}
-              alt="Imagen numero 2 de la propiedad"
-              width={200}
-              height={200}
-            />
-          </div>
 
-          {property?.images[2] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[2]}
-                alt="Imagen numero 3 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-          {property?.images[3] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[3]}
-                alt="Imagen numero 4 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-          {property?.images[4] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[4]}
-                alt="Imagen numero 5 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+      <section className={styles.mosaic_grid}>
+        {property?.images.slice(0, 5).map((img: string) => (
+          <figure>
+            <Image
+              src={img}
+              height="542"
+              fetchPriority="high"
+              loading="eager"
+              width={948}
+              alt={property?.description}
+            />
+          </figure>
+        ))}
+      </section>
+
       <div className={styles.container}>
         <div>
           <div className={styles.main}>
@@ -238,23 +207,27 @@ const Property = async ({
 
           <h2 className={styles.title_property}>Propiedades similares...</h2>
 
-          {/* <div className={styles.properties_list}>
-          {property
+          <div className={styles.properties_list}>
+          {properties
             ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
-            .map((property: any) => (
+            .slice(0, 3).map((property: any) => (
               <PropertyCard key={property.uuid} {...property} />
             ))}
-        </div> */}
+        </div> 
         </div>
-        <div className={styles.form}>
-          <Cform slug={"PROP@" + params.slug} />
-          <Link
-            href={whatsappLink}
-            target="_blank"
-            className={styles.btn_whatsapp}
-          >
-            Escríbenos por Whatsapp
-          </Link>
+        <div className={styles.form_t}>
+          <Cform
+            slug={"PROP@" + params.slug}
+            children={
+              <Link
+                href={whatsappLink}
+                target="_blank"
+                className={styles.btn_whatsapp}
+              >
+                Escríbenos por Whatsapp
+              </Link>
+            }
+          />
         </div>
       </div>
       <Modal property={property.uuid} />
