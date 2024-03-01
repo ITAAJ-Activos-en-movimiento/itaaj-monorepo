@@ -12,9 +12,7 @@ import { changeLanguage } from "@/utils";
 import Share from "./Share";
 import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
-import {
-  properties as propertiesApi,
-} from "@/services";
+import { properties as propertiesApi } from "@/services";
 const Property = async ({
   params,
   searchParams,
@@ -66,7 +64,7 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
-  console.log("PROP", property)
+  console.log("PROP", property);
   return (
     <>
       <div className={styles.header}>
@@ -208,25 +206,30 @@ const Property = async ({
           <h2 className={styles.title_property}>Propiedades similares...</h2>
 
           <div className={styles.properties_list}>
-          {properties?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
-            .slice(0, 3).map((property: any) => (
-              <PropertyCard key={property.uuid} {...property} />
-            ))}
-        </div> 
+            {properties
+              ?.filter(
+                (prop: any) =>
+                  prop.category == "general" && prop.slug !== property.slug
+              )
+              .slice(0, 3)
+              .map((property: any) => (
+                <PropertyCard key={property.uuid} {...property} />
+              ))}
+          </div>
         </div>
         <div className={styles.form_t}>
           <Cform
             slug={"PROP@" + params.slug}
-            children={
-              <Link
+          >
+ <Link
                 href={whatsappLink}
                 target="_blank"
                 className={styles.btn_whatsapp}
               >
                 Escríbenos por Whatsapp
               </Link>
-            }
-          />
+
+          </Cform>
         </div>
       </div>
       <Modal property={property.uuid} />
