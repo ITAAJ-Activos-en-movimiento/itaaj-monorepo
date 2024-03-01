@@ -79,6 +79,15 @@ const Banner = () => {
               />
               <h3>Valora tu casa</h3>
             </div>
+            <Link href='/hipotecas' className={styles.box}>
+              <Image
+                src="/hipo_icon.svg"
+                width={45}
+                height={45}
+                alt="Calcula tu hipoteca"
+              />
+              <h3>Calcula tu hipoteca</h3>
+            </Link>
             <Link href='/itabot' className={styles.box}>
               <Image
                 src="/value.png"

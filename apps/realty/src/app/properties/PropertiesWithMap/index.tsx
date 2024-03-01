@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../Properties.module.css";
 import Property from "@/components/Buy/Property";
 import MapProperties from "../MapProperties";
+import Link from "next/link";
+import { Map } from "react-feather";
 
 const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -35,8 +37,11 @@ const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
       <div className={styles.content}>
         <div className={styles.publish}>
           <p>Compara ofertas de distintos bancos y elige tu mejor hipoteca</p>
-          <button>Calcular tu Hipoteca</button>
+          <Link href="/hipotecas" >Calcular tu Hipoteca</Link>
         </div>
+        <div className={styles.h_title}>
+      <div>
+
         <h2 className={styles.title}>Viviendas y casas en venta en México</h2>
         <p>
           {properties.filter((property: any) => !property.development).length}{" "}
@@ -44,6 +49,13 @@ const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
           {properties.filter((property: any) => property.development).length} de
           obra nueva
         </p>
+      </div>
+      {hidden && (
+          <button onClick={() => setHidden(true)} ><Map size={18} /> Ver mapa</button>
+
+      )}
+        </div>
+
         <div className={styles.properties}>
           {properties
             ?.filter(
