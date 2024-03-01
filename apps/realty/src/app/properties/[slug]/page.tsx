@@ -77,7 +77,7 @@ const Property = async ({
 
       <section className={styles.mosaic_grid}>
         {property?.images.slice(0, 5).map((img: string) => (
-          <figure>
+          <figure key={img}>
             <Image
               src={img}
               height="542"
@@ -208,8 +208,7 @@ const Property = async ({
           <h2 className={styles.title_property}>Propiedades similares...</h2>
 
           <div className={styles.properties_list}>
-          {properties
-            ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
+          {properties?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
             .slice(0, 3).map((property: any) => (
               <PropertyCard key={property.uuid} {...property} />
             ))}
