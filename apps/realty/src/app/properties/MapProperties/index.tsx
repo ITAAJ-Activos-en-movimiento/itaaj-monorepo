@@ -5,15 +5,15 @@ import styles from "../Properties.module.css"
 import { ChevronLeft, ChevronRight, X } from 'react-feather'
 
 const MapProperties = ({ locations, scrollTop, onHidden }: { locations: { latitude: number, longitude: number }[], scrollTop:any,  onHidden: () => void }) => {
-  const center = { lat: locations[8]?.longitude, lng: locations[8]?.latitude }
-
+  const center = { lat: -105.78934677418087, lng:  25.61970064377464}
+  
   const [map, setMap] = React.useState(null)
 
   const onLoad = React.useCallback(function callback(map:any) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
-
+    map.set
     setMap(map)
   }, [])
 
@@ -48,7 +48,7 @@ const MapProperties = ({ locations, scrollTop, onHidden }: { locations: { latitu
       <GoogleMap
         mapContainerStyle={{ height: "100vh", width: "100%"}}
         center={center}
-        zoom={5}
+        zoom={1000}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{

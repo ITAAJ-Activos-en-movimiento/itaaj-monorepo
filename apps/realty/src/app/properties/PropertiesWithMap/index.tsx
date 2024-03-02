@@ -51,7 +51,7 @@ const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
         </p>
       </div>
       {hidden && (
-          <button onClick={() => setHidden(true)} ><Map size={18} /> Ver mapa</button>
+          <button onClick={() => setHidden(false)} ><Map size={18} /> Ver mapa</button>
 
       )}
         </div>
