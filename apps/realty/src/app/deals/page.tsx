@@ -3,42 +3,40 @@
 import styles from './Deals.module.css'
 import Image from 'next/image'
 import { NextPage } from 'next'
-import { useEffect, useState } from 'react';
-import { ArrowUp, Download } from 'react-feather';
-import Link from 'next/link';
+// import { useEffect, useState } from 'react';
 import Project from './Project';
 
 const Deals: NextPage = ()  => {
   
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/hipotesis.pdf'; // Ruta relativa al archivo PDF
-    link.download = 'Hipotesis_de_Inversion.pdf'; // Nombre de archivo para descargar
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.click();
-  };
+  // const handleDownload = () => {
+  //   const link = document.createElement('a');
+  //   link.href = '/hipotesis.pdf'; // Ruta relativa al archivo PDF
+  //   link.download = 'Hipotesis_de_Inversion.pdf'; // Nombre de archivo para descargar
+  //   link.target = '_blank';
+  //   link.rel = 'noopener noreferrer';
+  //   link.click();
+  // };
 
-  const [properties, setProperties] = useState([]);
+  // const [properties, setProperties] = useState([]);
 
 
-  const fetchData =  async() => {
-      const data = await fetch(
-          'https://itaaj-api-v0.onrender.com/api/v1/properties',
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        const result: any = await data.json();
-        setProperties(result.items);
-  }
+  // const fetchData =  async() => {
+  //     const data = await fetch(
+  //         'https://itaaj-api-v0.onrender.com/api/v1/properties',
+  //         {
+  //           method: 'GET',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       );
+  //       const result: any = await data.json();
+  //       setProperties(result.items);
+  // }
 
-  useEffect(() => {
-      fetchData();
-  }, [])
+  // useEffect(() => {
+  //     fetchData();
+  // }, [])
   
   return (
     <>

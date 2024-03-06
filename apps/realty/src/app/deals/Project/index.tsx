@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Project.module.css";
 import { Feather } from "react-feather";
 import Image from "next/image";
+import CountdownTimer from "./Counter";
 
 const Project = () => {
   return (
@@ -52,7 +53,7 @@ const Project = () => {
           </div>
           <div className={styles.time} >
             <p>
-              Faltan para que suba el precio del unit{" "}
+              Faltan <CountdownTimer /> para que suba el precio del unit{" "}
               <Link href="/">No te pierdas esta oportunidad</Link>
             </p>
           </div>

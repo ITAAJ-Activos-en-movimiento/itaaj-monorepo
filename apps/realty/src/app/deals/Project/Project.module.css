@@ -93,6 +93,13 @@
     color: #fff;
 }
 
+.time p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .picture img{
     width: 100%;
     height: 40rem;
@@ -104,4 +111,18 @@
 
 .price span{
     color: var(--main-color);
+}
+
+.list{
+    display: flex;
+    margin-inline: 2rem;
+    gap: 1rem;
+    line-height: 1.8rem;
+}
+
+.list h4{
+    font-size: 2rem;
+}
+.list p{
+    font-size: 1.2rem;
 }
