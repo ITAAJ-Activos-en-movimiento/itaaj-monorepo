@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react';
 import { ArrowUp, Download } from 'react-feather';
+import Link from 'next/link';
+import Project from './Project';
 
 const Deals: NextPage = ()  => {
   
@@ -40,18 +42,20 @@ const Deals: NextPage = ()  => {
   
   return (
     <>
-      <div className={styles.banner}>
+      {/* <div className={styles.banner}>
         <h1>Forma parte del Equipo de Desarroladores Inmobiliarios</h1>
         <h2>Conoce nuestros proyectos</h2>
         <p>Proyectos estructurados hacia el complimiento. <br /> Solides y transparencia de la estructura <strong>Jurídica, Financiera y Fiscal</strong> de cada proyecto.</p>
-      </div>
+      </div> */}
       
-      <section className={styles.info}>
+      {/* <section className={styles.info}>
         <h2>Nuestros proyectos se estructuran hacia la <strong>portabilidad de derechos</strong> y <strong>seguridad jurídica</strong> del equipo de desarrolladores.</h2>
-      </section>
+      </section> */}
       
+      <Project />
+
       <div className={styles.selling}>
-        <h2>Proyectos en curso</h2>
+        {/* <h2>Proyectos en curso</h2>
         <div className={styles.projects}>
           
           {properties
@@ -85,9 +89,8 @@ const Deals: NextPage = ()  => {
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
             
-     
       </div>
       
       <div className={styles.invesment_back}>
