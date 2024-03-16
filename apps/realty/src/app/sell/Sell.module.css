@@ -12,7 +12,7 @@
    .banner .image{
      display: block;
      background: rgba(255, 255, 255, .1);
-     background-image: url('/México.jpg');
+     background-image: url('/mexico.jpg');
      height: 40rem;
      background-repeat: no-repeat;
      background-position: left center;

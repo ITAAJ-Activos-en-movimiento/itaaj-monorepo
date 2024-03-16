@@ -18,8 +18,6 @@ const Properties = async ({
 }) => {
   const properties = await propertiesApi();
 
-  console.log("DEVELP,ENT", searchParams?.type);
-  console.log("DEVELP,ENT", searchParams?.search);
   const newLocations = properties.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
 
@@ -78,7 +76,7 @@ const Properties = async ({
           <option value="">Baños</option>
         </select>
       </div>
-      <PropertiesWithMap  properties={listaUnica} searchParams={searchParams} locations={locations} />
+      <PropertiesWithMap properties={listaUnica} searchParams={searchParams} locations={locations} />
       {/* 
       {properties.length == 0 ? (
         <div className={styles.notProperties}>

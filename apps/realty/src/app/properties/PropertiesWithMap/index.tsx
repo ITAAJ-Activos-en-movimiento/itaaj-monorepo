@@ -8,9 +8,8 @@ import { Map } from "react-feather";
 
 const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
   const [scrollTop, setScrollTop] = useState(0);
-  console.log("Scroll Y", window.scrollY);
 
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   const handleHidden = () => {
     setHidden(true);
