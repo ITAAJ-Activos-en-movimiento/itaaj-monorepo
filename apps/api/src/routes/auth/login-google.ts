@@ -9,7 +9,6 @@ export const loginGoogleRoute: RouteOptions = {
    const { body } = request;
    const data = body as string
    const user = await loginGoogle(data);
-   console.log({user})
    reply.status(200).send(user);
   }catch(err){
    reply.status(500).send(err);

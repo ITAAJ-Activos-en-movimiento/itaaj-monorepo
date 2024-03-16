@@ -17,7 +17,7 @@ exports.getPropertiesBySlugRoute = {
     handler: (req, reply) => __awaiter(void 0, void 0, void 0, function* () {
         const { slug } = req.params;
         const property = yield (0, business_logic_1.getPropertiesBySlug)(slug);
-        console.log("PROPERTY", property);
+        // console.log("PROPERTY", property)
         reply.status(200).send(property);
     }),
 };

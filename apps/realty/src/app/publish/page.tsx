@@ -9,6 +9,8 @@ import { v4 as uuid } from "uuid";
 // import { useUploadImage } from '@/hooks/useUploadImage';
 // import Loader from '@/components/Loader';
 import { ArrowLeft, Loader } from "react-feather";
+// import Cookies from "js-cookie";
+
 import {
   GoogleOAuthProvider,
   GoogleLogin,
@@ -84,8 +86,6 @@ const CreateProperty = () => {
     external_number: 0,
     internal_number: 0,
   });
-
-  console.log(property);
 
   const onSubmit = async () => {
     setLoading(true);
@@ -201,11 +201,8 @@ const CreateProperty = () => {
     }, 3000);
   }, [property]);
 
-  console.log(account);
-
-  const registerUser = (e: any) => {
+  const registerUser = async (e: any) => {
     e.preventDefault();
-    // localStorage.setItem('user', JSON.stringify(user))
   };
 
   const { isLoading, uploadImage, urls } = useUploadImage();

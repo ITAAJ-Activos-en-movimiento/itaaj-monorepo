@@ -2,13 +2,16 @@
 import { useState } from 'react';
 import { useSDK } from '@metamask/sdk-react';
 import styles from '../KYCModal.module.css';
+import { UserProps } from './auth/Register';
 import Web3 from 'web3';
-import { UserProps } from '..';
 import axios from 'axios';
+import { Register } from '@/services';
+import useAuthContext from '@/shared/hooks/useAuthContext';
 
 interface StepProps { 
   moveStep: (prop: number) => void
   handleChangeUser?: (prop: React.ChangeEvent<HTMLInputElement>) => void 
+  setStateFormAuth?: (prop: string) => void
   setOpenModal?: (prop: boolean) => void
   setUser?: ((prop: UserProps) => void)
   setRole?: ((prop: "INVESTOR" | "BROKER" | null) => void)
@@ -16,7 +19,7 @@ interface StepProps {
   user?: UserProps
 }
 
-export const StepRegisterAccount = ({ moveStep, handleChangeUser, user }: StepProps) => {
+export const StepRegisterAccount = ({ moveStep, handleChangeUser, user, setStateFormAuth }: StepProps) => {
   const validateField = () => {
     if (!user?.name) return alert("Nombre esta vacio");
     if (!user?.lastname) return alert("Apellido esta vacio");
@@ -85,6 +88,12 @@ export const StepRegisterAccount = ({ moveStep, handleChangeUser, user }: StepPr
       >
         Crear mi cuenta
       </button>
+      <span
+        onClick={() => setStateFormAuth && setStateFormAuth("LOGIN")}
+        className={styles.textRegister}
+      >
+        Ya tengo cuenta en Itaaj Realty
+      </span>
     </div>
   )
 }
@@ -154,6 +163,7 @@ export const StepSelectRole = ({ moveStep, setUser, user, setRole }: StepProps) 
 }
 
 export const StepAdditionalData = ({ handleChangeUser, user, role, setOpenModal }: StepProps) => {
+  const { action } = useAuthContext();
   const validateField = () => {
     if (!user?.residence) return alert("Residencia esta vacio");
     if (!user?.identification) return alert("Identificación esta vacio");
@@ -166,26 +176,7 @@ export const StepAdditionalData = ({ handleChangeUser, user, role, setOpenModal 
   }
 
   const registerUser = async (): Promise<void> => {
-    try {
-      const { data } = await axios.post(
-        "https://itaajrealty.com/api/api/v1/auth/register",
-        user,
-        {
-          headers: {
-            "api-key":
-              "a0341d0de71a21b122a134576803f9fea2e9841a307b4e26f9240ac2f7d363ff3018a17f2d7f3ecb5a9fe62327e4eaf306864ec741e6432aa50faaf9d92aa6bd",
-          },
-        }
-      );
-      alert("Usuario registrado correctamente");
-      setOpenModal && setOpenModal(false);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("user", JSON.stringify({ token: data }));
-      }
-    } catch (err) {
-      alert("Error registrando el usuario");
-      console.log(err);
-    }
+    await action.register(user);
   }
 
   const formByRole = {

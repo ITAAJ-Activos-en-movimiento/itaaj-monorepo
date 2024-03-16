@@ -25,7 +25,7 @@ const routes = [
     ...proposals_1.default
 ];
 const registerRoutes = (fastify) => {
-    console.warn("registering routes", routes);
+    // console.warn("registering routes", routes);
     routes.map((route) => {
         fastify.route(route);
     });

@@ -8,7 +8,7 @@ export const getPropertiesBySlugRoute: RouteOptions = {
     const { slug } = req.params as {slug: string};
     
     const property = await getPropertiesBySlug(slug);
-    console.log("PROPERTY", property)
+    // console.log("PROPERTY", property)
     reply.status(200).send(property);
   },
 };

@@ -69,6 +69,19 @@
   gap: .5rem;
 }
 
+.textRegister{
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--main-color);
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
 /* ============= */
 /* ========================== */
 /* ====================STEP 1 */

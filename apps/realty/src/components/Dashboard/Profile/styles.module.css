@@ -1,0 +1,30 @@
+.profileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profileAction {
+  border: 1px solid var(--second-color);
+  border-radius: 5px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileAction button {
+  padding: 5px 10px;
+  border: 1px solid var(--second-color);
+  background: none;
+}
+
+.profileAction button:hover {
+  border: 1px solid var(--second-color);
+  background: var(--second-color);
+  color: #FFFFFF;
+}
+
+.profileAction button:active {
+  transform: scale(.95);
+}

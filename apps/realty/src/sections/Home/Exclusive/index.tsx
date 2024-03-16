@@ -11,7 +11,7 @@ const Exclusive: NextPage = async () => {
 
   const properties = await propertiesApi();
 
-  console.log(properties)
+  // console.log(properties)
   
   return (
     <section className={styles.section}>

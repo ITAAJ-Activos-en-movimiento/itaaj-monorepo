@@ -49,7 +49,7 @@ const Modal = ({ property }: Props) => {
   
   const params = useSearchParams();
   const openProposal = params.get('proposal');
-  console.log("URL", url)
+  // console.log("URL", url)
   
   const onSubmit = async(e: FormEvent) => {
     e.preventDefault(); 
@@ -74,7 +74,7 @@ const Modal = ({ property }: Props) => {
     
   }
 
-  console.log(proposal)
+  // console.log(proposal)
 
   const router = useRouter()
   const closeModal = () => {

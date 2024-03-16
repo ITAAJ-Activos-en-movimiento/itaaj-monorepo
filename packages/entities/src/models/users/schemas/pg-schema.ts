@@ -4,8 +4,8 @@ import { roles } from '../../roles/schemas/pg-schema';
 
 export const users = pgTable('users', {
     id: uuid('id').defaultRandom().notNull(),
-    roleId: varchar('name', { length: 256 }).notNull(),
-    residence: varchar('residence', { length: 256 }).notNull(),
+    // roleId: varchar('name', { length: 256 }).notNull(),
+    // residence: varchar('residence', { length: 256 }).notNull(),
     identification: varchar('residence', { length: 11 }).notNull(),
     name: varchar('name', { length: 256 }).notNull(),
     lastname: varchar('lastname', { length: 256 }).notNull(),
@@ -30,10 +30,10 @@ export const users = pgTable('users', {
     }
 });
 
-export const usersRelations = relations(users, ({ one }) => ({
-    development: one(roles, {
-      fields: [users.roleId],
-      references: [roles.id],
-    }),
-  }));
+// export const usersRelations = relations(users, ({ one }) => ({
+//     development: one(roles, {
+//       fields: [users.roleId],
+//       references: [roles.id],
+//     }),
+//   }));
   

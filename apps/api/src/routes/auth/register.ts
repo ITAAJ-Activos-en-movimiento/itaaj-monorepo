@@ -1,5 +1,5 @@
 import { RouteOptions } from "fastify";
-import { registerUser } from '@itaaj/business-logic';
+import { registerUser, verifyToken } from '@itaaj/business-logic';
 import { User } from "@itaaj/entities";
 
 export const registerUserRoute: RouteOptions = {
@@ -8,7 +8,12 @@ export const registerUserRoute: RouteOptions = {
     handler: async (request, reply) => {
         const { body } = request;
         const data = body as User;
-        const user = await registerUser(data);
-        reply.status(201).send(user);
+        const token = await registerUser(data) as string;
+        const decoded = await verifyToken(token)
+        reply.status(201).send({ token, user: decoded });
+    },
+    errorHandler: async (error, _, reply) => {
+        console.log(error)
+        reply.status(403).send(error);
     }
 }

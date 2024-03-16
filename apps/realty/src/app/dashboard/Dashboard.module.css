@@ -1,0 +1,53 @@
+.content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  align-items: flex-start;
+  gap: 25px;
+  background: url("/home_search.webp");
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 5px;
+  color: var(--second-color);
+  overflow: hidden;
+  border: 1px solid var(--second-color);
+}
+
+.profile > div {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.itemProfileActive {
+  background: var(--second-color);
+  color: #FFFFFF;
+}
+
+.contentDashboard {
+  border-radius: 5px;
+  overflow: hidden;
+  color: var(--second-color);
+  border: 1px solid var(--second-color);
+  background: #FFFFFF;
+}
+
+.dashboardHead {
+  background: var(--second-color);
+  color: #fff;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+
+.dashboardBody {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+

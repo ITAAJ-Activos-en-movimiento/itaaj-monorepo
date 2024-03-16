@@ -17,7 +17,7 @@ exports.createPropertyRoute = {
     handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
         const { body } = request;
         const data = body;
-        console.log(data);
+        // console.log(data)
         const lead = yield (0, business_logic_1.createProperty)(data);
         reply.status(201).send(lead);
     }),

@@ -3,7 +3,6 @@ import { GoogleMap, LoadScriptNext, MarkerF } from '@react-google-maps/api'
 import React, { useEffect, useState } from 'react'
 
 const Map = ({ location }: any) => {
-  console.log(location)
   return (
     <LoadScriptNext googleMapsApiKey="AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg">
       <GoogleMap

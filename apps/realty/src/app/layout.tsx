@@ -4,6 +4,7 @@ import './globals.css'
 // import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { MetaMaskProvider } from '@metamask/sdk-react'
+import { AuthContextProvider } from '@/shared/context/AuthContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -125,13 +126,15 @@ export default function RootLayout({
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
 
       </head>
-      <MetaMaskProvider debug={false} sdkOptions={sdkOptions}>
-        <body className={inter.className}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </MetaMaskProvider>
+      <AuthContextProvider>
+        <MetaMaskProvider debug={false} sdkOptions={sdkOptions}>
+          <body className={inter.className}>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </MetaMaskProvider>
+      </AuthContextProvider>
     </html>
   )
 }

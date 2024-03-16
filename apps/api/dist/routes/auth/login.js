@@ -18,6 +18,10 @@ exports.loginUserRoute = {
         const { body } = request;
         const data = body;
         const user = yield (0, business_logic_1.login)({ email: data.email, password: data.password });
-        reply.status(201).send(user);
+        const decoded = yield (0, business_logic_1.verifyToken)(user.token);
+        reply.status(201).send({ user: decoded, token: user.token });
+    }),
+    errorHandler: (error, _, reply) => __awaiter(void 0, void 0, void 0, function* () {
+        reply.status(403).send(error);
     })
 };
