@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  text-align: left;
+  width: 65rem;
+}
+
+.image{
+    margin-top: 4rem;
+}
+
+.info {
+  width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.info p {
+  font-size: 1.4rem;
+}
+
+.button_blue {
+  background-color: #0c0f24;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.button_white {
+    background-color: transparent;
+    color: #0c0f24;
+    font-size: 1.4rem;
+    border: 1px solid #0c0f24;
+  }
+  
