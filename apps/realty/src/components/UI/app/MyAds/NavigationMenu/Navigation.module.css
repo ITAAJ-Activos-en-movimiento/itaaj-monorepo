@@ -1,0 +1,34 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100vw;
+}
+
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.active {
+  font-weight: 600;
+  border-bottom: 2px solid #0c0f24;
+}
+
+.navIcon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.navLabel {
+  font-size: 14px;
+}
