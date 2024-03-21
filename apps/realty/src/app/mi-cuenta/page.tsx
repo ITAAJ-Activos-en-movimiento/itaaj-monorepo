@@ -21,7 +21,7 @@ const MyAccount: NextPage = () => {
 
           <div className={styles.cards}>
             {cardsData.map((card) => (
-              <Link href={card.url} className={styles.container_card}>
+              <Link key={card.icon} href={card.url} className={styles.container_card}>
                 <div className={styles.image}>
                   <Image
                     src={card.icon}

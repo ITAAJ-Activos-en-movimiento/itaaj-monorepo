@@ -105,6 +105,6 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider children={children} value={value} />
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   )
 }
