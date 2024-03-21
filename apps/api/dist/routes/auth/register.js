@@ -17,7 +17,12 @@ exports.registerUserRoute = {
     handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
         const { body } = request;
         const data = body;
-        const user = yield (0, business_logic_1.registerUser)(data);
-        reply.status(201).send(user);
+        const token = yield (0, business_logic_1.registerUser)(data);
+        const decoded = yield (0, business_logic_1.verifyToken)(token);
+        reply.status(201).send({ token, user: decoded });
+    }),
+    errorHandler: (error, _, reply) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(error);
+        reply.status(403).send(error);
     })
 };

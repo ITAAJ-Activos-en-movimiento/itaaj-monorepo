@@ -7,7 +7,7 @@ export const runConversation = async (messages: any) => {
     const { data } = await axios.get('https://itaajrealty.com/api/api/v1/properties')
     const properties = data;
     
-    const cleanProperties = []
+    const cleanProperties: any[] = []
 
     properties?.map((property: any) => {
         cleanProperties.push({

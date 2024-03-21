@@ -5,6 +5,7 @@ import authRoutes from "./auth";
 import aiRoutes from "./ai";
 import leadsRoutes from "./leads";
 import propertiesRoutes from "./properties";
+import dashboardRoutes from "./dashboard";
 import developmentsRoutes from "./development";
 import messagesRoutes from "./messages";
 import proposalsRoutes from "./proposals";
@@ -16,13 +17,14 @@ const routes: RouteOptions[] = [
   ...aiRoutes,
   ...leadsRoutes,
   ...propertiesRoutes,
+  ...dashboardRoutes,
   ...developmentsRoutes,
   ...messagesRoutes,
   ...proposalsRoutes
 ];
 
 export const registerRoutes = (fastify: FastifyInstance) => {
-  console.warn("registering routes", routes);
+  // console.warn("registering routes", routes);
   routes.map((route) => {
     fastify.route(route);
   });

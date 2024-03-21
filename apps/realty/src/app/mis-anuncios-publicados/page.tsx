@@ -39,7 +39,7 @@ const MyAds: NextPage = () => {
           </button>
 
           <p>
-            Descargate la App de Fotocasa y recibe las novedades de tu anuncio
+            Descargate la App de Itaaj Realty y recibe las novedades de tu anuncio
             en tu movil
           </p>
         </div>

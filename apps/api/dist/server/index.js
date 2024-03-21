@@ -17,9 +17,9 @@ const fastify_1 = __importDefault(require("fastify"));
 const cors_1 = __importDefault(require("@fastify/cors"));
 const data_sources_1 = require("@itaaj/data-sources");
 const routes_1 = require("../routes");
-const { PORT, DATABASE_CONNECTION } = process.env;
+const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
-    origin: '*',
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'https://itaajrealty.com', 'https://www.itaajrealty.com', 'https://admin-itaaj.vercel.app'],
 };
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, data_sources_1.initDataSources)({
@@ -33,7 +33,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         (0, routes_1.registerRoutes)(instance);
         next();
     }, { prefix: 'api/v1' });
-    server.listen({ port: Number(PORT) }, (err, address) => {
+    server.listen({ port: Number(PORT), host: HOST }, (err, address) => {
         if (err) {
             server.log.error(err);
             process.exit(1);

@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1698979274688,
-      "tag": "0000_nosy_hellfire_club",
-      "breakpoints": false
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1699060873378,
-      "tag": "0001_cute_argent",
-      "breakpoints": false
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1699804707202,
-      "tag": "0002_quick_tempest",
+      "when": 1708737704053,
+      "tag": "0000_cynical_mariko_yashida",
       "breakpoints": false
     }
   ]

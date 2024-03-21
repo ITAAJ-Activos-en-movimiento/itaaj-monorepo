@@ -53,6 +53,18 @@ CREATE TABLE IF NOT EXISTS "leads" (
 	CONSTRAINT leads_email PRIMARY KEY("email")
 );
 
+CREATE TABLE IF NOT EXISTS "messages" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"name" varchar(256) NOT NULL,
+	"email" varchar(256) NOT NULL,
+	"phone" varchar(255),
+	"message" text,
+	"property" varchar(256),
+	"type" varchar(256),
+	"status" varchar(50),
+	"created_at" timestamp DEFAULT now() NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS "properties" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(256) NOT NULL,
@@ -89,9 +101,23 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"created_at" timestamp DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS "proposals" (
+	"id" uuid DEFAULT gen_random_uuid(),
+	"name" varchar(256),
+	"nationality" varchar(256),
+	"email" varchar(256),
+	"phone" varchar(256),
+	"proposal" varchar(256),
+	"funding" varchar(256),
+	"funds" varchar(256),
+	"development" varchar(256),
+	"created_at" timestamp DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(256) NOT NULL,
+	"residence" varchar(11) NOT NULL,
 	"lastname" varchar(256) NOT NULL,
 	"email" varchar(256) NOT NULL,
 	"password" varchar(256) NOT NULL,
@@ -108,6 +134,14 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"birthdate" timestamp,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT users_email PRIMARY KEY("email")
+);
+
+CREATE TABLE IF NOT EXISTS "roles" (
+	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
+	"name" varchar(50) NOT NULL,
+	"description" text,
+	"status" boolean,
+	"created_at" timestamp DEFAULT now()
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "leads_id_index" ON "leads" ("id");

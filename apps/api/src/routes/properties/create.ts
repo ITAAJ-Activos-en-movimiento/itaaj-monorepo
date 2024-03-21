@@ -8,7 +8,7 @@ export const createPropertyRoute: RouteOptions = {
   handler: async (request, reply) => {
     const { body } = request;
     const data = body as Property;
-    console.log(data)
+    // console.log(data)
     const lead = await createProperty(data);
     reply.status(201).send(lead);
   },

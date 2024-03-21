@@ -7,9 +7,9 @@ export const developments = async () => {
       if (!response.ok) {
         throw new Error('No se pudo obtener la lista de desarrollos.');
       }
-      console.log(response)
+      // console.log(response)
       const data = await response.json();
-      console.log({data})
+      // console.log({data})
       return data;
     }catch(error){
         console.error('Error al obtener los Desarrollos:', error);

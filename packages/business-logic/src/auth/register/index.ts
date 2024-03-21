@@ -7,15 +7,12 @@ const { JWT_SECRET } = process.env;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-interface UserToken {
- token: string;
-}
 
-export const registerUser = async (data: User): Promise<UserToken | Error> => {
+export const registerUser = async (data: User): Promise<string | Error> => {
     if (!EMAIL_REGEX.test(data.email)) {
         throw new Error("The email provided is not valid");
       }
-      
+    console.log(data);
     const salt = genSaltSync(10);
     const hashedPassword = hashSync(data.password, salt);
     const result = await getDbInstance().insert(users).values({
@@ -25,5 +22,5 @@ export const registerUser = async (data: User): Promise<UserToken | Error> => {
     
     const token = jwt.sign({id: result[0].id}, JWT_SECRET!, {expiresIn: '5d'});
 
-    return {token};
+    return token;
 }

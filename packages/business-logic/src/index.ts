@@ -3,6 +3,7 @@ export * from './auth';
 export * from './auth/login-google';
 export * from './auth/login';
 export * from './auth/register';
+export * from './dashboard';
 export * from './development';
 export * from './leads';
 export * from './messages';

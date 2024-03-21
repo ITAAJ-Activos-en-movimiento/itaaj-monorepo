@@ -237,7 +237,7 @@ const Mortgages = () => {
             bonificaciones de cada uno. Tanto para estudiar tu perfil, como para
             conseguir varias ofertas, lo ideal si no conoces este tipo de
             gestiones es recurrir a un experto hipotecario. Los expertos de
-            Fotocasa Hipotecas te acompañarán en todo el proceso de contratación
+            Itaaj Realty Hipotecas te acompañarán en todo el proceso de contratación
             de tu hipoteca de forma completamente gratuita.
           </p>
         </details>

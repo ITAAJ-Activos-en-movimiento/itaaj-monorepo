@@ -19,7 +19,6 @@ exports.loginGoogleRoute = {
             const { body } = request;
             const data = body;
             const user = yield (0, business_logic_1.loginGoogle)(data);
-            console.log({ user });
             reply.status(200).send(user);
         }
         catch (err) {
