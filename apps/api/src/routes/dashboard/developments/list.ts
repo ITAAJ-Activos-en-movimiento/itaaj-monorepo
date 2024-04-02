@@ -1,14 +1,14 @@
-import { getPropertiesById } from "@itaaj/business-logic";
+import { getDevelopmentsById } from "@itaaj/business-logic";
 import { RouteOptions } from "fastify";
 
-export const listProperties: RouteOptions = {
+export const listDevelopments: RouteOptions = {
   method: "POST",
-  url: "/dashboard/properties",
+  url: "/dashboard/developments",
   handler: async (request, reply) => {
     const { body } = request;
     const data = body as any;
-    const properties = await getPropertiesById(data.userId)
-    reply.status(200).send(properties);
+    const properties = await getDevelopmentsById(data.userId)
+    reply.status(201).send(properties);
   },
   errorHandler: (error, _, reply) => {
     console.error(error);

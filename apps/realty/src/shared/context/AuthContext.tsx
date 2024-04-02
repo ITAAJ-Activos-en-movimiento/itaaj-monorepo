@@ -1,5 +1,5 @@
 'use client'
-import { Access, Login, Register } from "@/services";
+import { Access, Login, Register, RemoveSession } from "@/services";
 import { useRouter } from "next/navigation";
 import { FC, PropsWithChildren, createContext, useCallback, useEffect, useMemo, useState } from "react";
 
@@ -10,6 +10,7 @@ export interface AuthContextProps {
   }
   action: {
     access: () => void
+    logout: () => void
     login: (prop: any) => Promise<void>
     register: (prop: any) => Promise<void>
   }
@@ -22,6 +23,7 @@ export const AuthContext = createContext<AuthContextProps>({
   },
   action: {
     access: () => {},
+    logout: () => {},
     login: async () => {},
     register: async () => {},
   }
@@ -66,6 +68,13 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const logout = async () => {
+    RemoveSession();
+    setIsAuthenticated(false);
+    setUser({});
+    push("/");
+  }
+
   const register = async (user: any) => {
     const response = await Register(user);
     if (response.error) {
@@ -73,7 +82,7 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       alert(response.message); 
       return;
     }
-    console.log(response);
+
     if (Object.entries(response.data).length !== 0) {
       setUser(response.data);
       setIsAuthenticated(true);
@@ -95,7 +104,8 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     action: {
       access,
       login,
-      register
+      register,
+      logout
     }
   }), [isAuthenticated]);
   

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const removeSession = () => {
+export const RemoveSession = () => {
   localStorage.removeItem("tokene");
   Cookies.remove('tokene')
 }
@@ -13,12 +13,12 @@ export const Access = async () => {
 
   try {  
     if (!token) {
-      removeSession();
+      RemoveSession();
       return { data: {}, error: false };
     }
     
     if (token !== tokenCookie) {
-      removeSession();
+      RemoveSession();
       return { message: 'Token alterado', error: true };
     }
     const response = await axios.post('https://itaajrealty.com/api/api/v1/auth/access', {}, headers);
@@ -27,7 +27,7 @@ export const Access = async () => {
     return { data: user, error: false };
   } catch (error: any) {
     const { response } = error;
-    removeSession();
+    RemoveSession();
     return { message: response.data.message, error: true, status: response.status };
   }
 }
@@ -42,7 +42,7 @@ export const Login = async (body: any) => {
     return { data: user, message: 'Inicio de Sesión exitosa', error: false };
   } catch (error: any) {
     const { response } = error;
-    removeSession();
+    RemoveSession();
     return { message: response.data.message, error: true, status: response.status };
   }
 }

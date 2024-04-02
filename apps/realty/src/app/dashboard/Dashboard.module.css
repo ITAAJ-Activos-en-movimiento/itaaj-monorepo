@@ -10,6 +10,12 @@
 .profile {
   display: flex;
   flex-direction: column;
+  gap: 15px;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
   background: #FFFFFF;
   border-radius: 5px;
   color: var(--second-color);
@@ -17,11 +23,43 @@
   border: 1px solid var(--second-color);
 }
 
-.profile > div {
+.profileMenu > div {
   cursor: pointer;
   padding: 10px;
   text-align: center;
   font-weight: bold;
+}
+
+.profileUser {
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.profileUser li {
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px 0;
+}
+
+.profileUser button {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  border-radius: .8rem;
+  color: #fff;
+}
+
+.buttonConnect {
+  background-color: var(--main-color);
+}
+
+.buttonDisconnect {
+  background-color: #C70039;
 }
 
 .itemProfileActive {
@@ -42,10 +80,25 @@
   color: #fff;
   padding: 10px 15px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboardHead button {
+  max-width: 12rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-inline: 1.5rem;
+  background-color: var(--main-color);
+  padding-block: 1rem;
+  border-radius: .8rem;
+  color: #fff;
 }
 
 .dashboardBody {
+  max-height: 550px;
   padding: 10px 15px;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;

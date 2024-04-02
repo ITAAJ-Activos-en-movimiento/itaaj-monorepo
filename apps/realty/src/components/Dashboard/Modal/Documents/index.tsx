@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import styles from './Documents.module.css'
+import { downloadFiles } from "@/utils/download";
 
 interface DocumentsProps {
   openModal: boolean
@@ -8,6 +9,15 @@ interface DocumentsProps {
 
 const Documents = ({ openModal, setOpenModal }: DocumentsProps) => {
   const closeModal = () => setOpenModal(false);
+
+  const handleDownloadFiles = async () => {
+    const arrFilesPath: string[] = [
+      '/FORMATO COMISION COMPARTIDA.docx',
+      '/FORMATO COMISION COMPARTIDA.pdf',
+    ]
+    
+    await downloadFiles(arrFilesPath);
+  }
 
   return (
     <Modal
@@ -39,7 +49,7 @@ const Documents = ({ openModal, setOpenModal }: DocumentsProps) => {
             <p>Descargue y revise los siguientes documentos:</p>
           </div>
           <ul className={styles.documents}>
-            <li className={styles.documentButton}>
+            <li className={styles.documentButton} onClick={handleDownloadFiles}>
               <p><b>Contrato de Comisio Mercantil</b></p> {/* SOLO PARA BROKERS */}
             </li>
           </ul>
