@@ -36,8 +36,8 @@ const Developments = () => {
       <span>Se encontraron <b>{developments.length} avisos</b></span>
       <section className={styles.containerDevelop}>
         {
-          developments.map(item => (
-            <article className={styles.development}>
+          developments.map((item, index) => (
+            <article className={styles.development} key={index}>
               <div className={styles.developmentBody}>
                 <div className={styles.developmentContainDescrip}>
                   <Image alt={item.name} src={item.images[0]} width={200} height={200} />
