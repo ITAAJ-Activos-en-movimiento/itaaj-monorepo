@@ -1,8 +1,10 @@
 import { RouteOptions } from 'fastify';
-import { listProperties } from './properties/list';
+import { listDevelopments } from './developments/list';
+import { getMyProfile } from './profile/get-my-profile';
 
 const dashboardRoutes: RouteOptions[] = [
-  listProperties
+  listDevelopments,
+  getMyProfile,
 ];
 
 export default dashboardRoutes;

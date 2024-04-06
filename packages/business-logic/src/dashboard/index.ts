@@ -1,1 +1,2 @@
-export * from './properties/list';
+export * from './developments/list';
+export * from './profile/get-my-profile';
