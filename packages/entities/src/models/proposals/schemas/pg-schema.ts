@@ -15,6 +15,7 @@ export const proposals = pgTable("proposals", {
   phone: varchar("phone", { length: 256 }),
   proposal: varchar("proposal", { length: 256 }),
   funding: varchar("funding", { length: 256 }),
+  userId: varchar("userId"),
   funds: varchar("funds", { length: 256 }),
   development: varchar("development", { length: 256 }),
   createdAt: timestamp("created_at").defaultNow(),

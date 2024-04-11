@@ -11,10 +11,12 @@
 }
 
 .container{
-  background-color: #fff;
   border-radius: 1rem;
-  height: 80vh;
+  min-height: 80vh;
   background-color: #fff;
   border-radius: 1rem;
   border-left: 2px solid rgba(0, 0, 0, .1);
+}
+.content{
+  padding: 0 4rem;
 }

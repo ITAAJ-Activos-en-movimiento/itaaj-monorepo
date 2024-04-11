@@ -1,15 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import Signin from "./screens/Signin";
 import Private from "./screens/Private";
-import Leads from "./screens/Private/Leads";
+import { PublicRoutes } from "./constant-definitions";
+import { Login } from "./screens/Authentication";
+import GuardRoute from "./guards";
 
 const Application = () => {
   return (
-    <Routes>
-      <Route path="login" element={<Signin />} />
-      <Route path="leads" element={<Leads />} />
-      <Route path="/*" element={<Private />} />
-    </Routes>
+    <>
+      <Routes>
+      <Route path={PublicRoutes.LOGIN} element={<Login />} />
+          <Route element={<GuardRoute privateValidation={true} />}>
+            <Route path="/*" element={<Private />} />
+          </Route>
+      </Routes>
+      {/* <Route path="/*" element={<Private />} /> */}
+    </>
+
   );
 };
 

@@ -37,6 +37,11 @@
     object-fit: cover;
 }
 
+.mosaic_grid figure:first-child img {
+    width: 150%;
+}
+
+
 .mosaic_grid figure:nth-child(2) {
     height: 269px;
     grid-area: photo2;
@@ -64,7 +69,13 @@
 .mosaic_grid figure:first-child ~ figure img {
     height: 269px;
 }
+.mosaic_grid figure {
+    overflow: hidden; 
+}
 
+.mosaic_grid figure img{
+    transform: scale(1.5);
+}
 
 .container {
     width: min(1200px, 90%);

@@ -32,6 +32,9 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
         <div className={styles.picture}>
           <span className={styles.tag}>OBRA NUEVA</span>
           <Image src={development.images?.length > 2 ? development?.images[0] : ''} alt='Imagen numero 1 de la propiedad' width={800} height={800} objectFit='cover' />
+          <div className={styles.image_info}>
+
+          
           <Link href='?photos=true' className={styles.photos}><Camera size={14} /> {development?.images?.length} Fotos</Link>
           {development.owner && (
           <Link href={development.owner} className={styles.tres}><Info size={14} /> Brochure</Link>
@@ -43,6 +46,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <Link href={development.video} className={styles.lettre}><ImageIcon size={14} />Video</Link>
           )}
       
+      </div>
         
         </div>
         <div className={styles.details}>

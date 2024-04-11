@@ -6,6 +6,7 @@ import { EmptyTable, HeaderPage, Table } from "@/containers";
 import Breadcrumbs from "@/components/Shared/Breadcumbs";
 import styles from "./Developments.module.css";
 import { useDevelopments } from "@/hooks";
+import DevelopmentTable from "./Table/DevelopmentTable";
 
 const Developments = () => {
   const [, setSearch] = useState<string>("");
@@ -15,44 +16,34 @@ const Developments = () => {
 
   const { developments, isLoading } = useDevelopments();
 
-  console.log(developments)
   return (
     <div className={styles.container}>
-      <HeaderPage title="Developments">
-        <Breadcrumbs items={["Realty", "Developments"]} />
+      <HeaderPage title="Desarrollos">
+        <Breadcrumbs items={["Realty", "Desarrollos"]} />
       </HeaderPage>
       <div className={styles.header_page}>
         <Field className={styles.field}>
           <Input
             type="search"
-            placeholder="Search developments"
+            placeholder="Buscar desarrollos"
             onChange={({ target }) => setSearch(target.value)}
           />
         </Field>
-        <ButtonLink to={PrivateRoutes.CREATE_DEVELOPMENT}>Add Development</ButtonLink>
+        <ButtonLink to={PrivateRoutes.CREATE_DEVELOPMENT}>
+          Agregar Desarrollo
+        </ButtonLink>
       </div>
 
       {isLoading ? (
         <Loader />
       ) : (
-        <>
+        <div className={styles.content}>
           {developments?.length > 0 ? (
-            <Table
-              count={developments?.length}
-              data={developments}
-              setLimit={setLimit}
-              limit={limit}
-              setPage={setPage}
-              headers={["Name", "Address", "Country", "Price"]}
-              deleteItem={() => ({})}
-              setItemSelected={({ slug }: { slug: string }) => {
-                navigate(`/development/edit/${slug}`);
-              }}
-            />
+            <DevelopmentTable />
           ) : (
-            <EmptyTable title="Developments" url="/properties/create" />
+            <EmptyTable title="Desarrollos" url="/properties/create" />
           )}
-        </>
+        </div>
       )}
     </div>
   );

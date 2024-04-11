@@ -1,5 +1,5 @@
 import { RouteOptions } from "fastify";
-import { getPropertiesByDevelopment, getPropertiesBySlug } from "@itaaj/business-logic";
+import { getPropertiesBySlug } from "@itaaj/business-logic";
 
 export const getPropertiesBySlugRoute: RouteOptions = {
   method: "GET",

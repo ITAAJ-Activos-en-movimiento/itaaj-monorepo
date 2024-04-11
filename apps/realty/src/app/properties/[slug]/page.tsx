@@ -31,6 +31,7 @@ const Property = async ({
   //   }
   //   setActualImage(property.images[actualImageIn])
   // }
+  console.log("PROP", property);
 
   // const nextImage = () => {
   //   const index = property.images.length;
@@ -64,7 +65,6 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
-  console.log("PROP", property);
   return (
     <>
       <div className={styles.header}>
@@ -77,8 +77,9 @@ const Property = async ({
         {property?.images.slice(0, 5).map((img: string) => (
           <figure key={img}>
             <Image
+              objectFit="scale-down"
               src={img}
-              height="542"
+              height="545"
               fetchPriority="high"
               loading="eager"
               width={948}

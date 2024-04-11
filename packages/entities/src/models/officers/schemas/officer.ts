@@ -7,6 +7,7 @@ export interface Officer extends Base{
  middleName: string;
  lastName: string; 
  email: string; 
+ password: string;
  middleLastName: string;
  photo: string;
  role: string;

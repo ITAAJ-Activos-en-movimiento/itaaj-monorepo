@@ -1,118 +1,91 @@
+import React, { createContext, ReactNode, useContext } from "react";
 import styles from "./Table.module.css";
-import { fromNow } from "@/utilities/date-formater";
-import { ContextMenu } from "@/components";
-import { useState } from "react";
-import { DivisaFormater } from "@/utilities/divisa-formater";
-interface DataRecord {
-  [key: string]: any;
-}
-interface Props<T extends DataRecord> extends Partial<any> {
-  data: T[];
-  headers: string[];
-  count: number;
-  setLimit: Function;
-  setPage: Function;
-  limit: number;
-  deleteItem: Function;
-  setItemSelected: Function;
+
+interface TableContextProps {
+  columns: string;
 }
 
-const Table = <T extends DataRecord>({
-  limit,
-  count,
-  data,
-  headers,
-  setLimit,
-  deleteItem,
-  setPage,
-  pageInfo,
-  setItemSelected,
-}: Props<T>) => {
-  const [openMenu, setOpenMenu] = useState<string>("");
-  const showInit = limit * ((pageInfo?.page || 1) - 1) + 1;
-  const showEnd =
-    Math.ceil(count / (pageInfo?.pages || 1)) * (pageInfo?.page || 1);
+const TableContext = createContext<TableContextProps | undefined>(undefined);
 
+interface TableProps {
+  columns: string;
+  children: ReactNode;
+}
+
+function Table({ columns, children }: TableProps) {
   return (
-    <div className={styles.table_wrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-            <th>Created At</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((d) => (
-            <tr key={d.uuid}>
-              {headers.map((header) => (
-                <td key={header}>
-                  {" "}
-                  {header == "Price"
-                    ? DivisaFormater({
-                        value: parseFloat(d[header.toLowerCase()]),
-                        currency: "USD",
-                        format: "en-US",
-                      })
-                    : d[header.toLowerCase()]}
-                </td>
-              ))}
-              <td>{fromNow(d.createdAt)}</td>
-
-              <td>
-                <ContextMenu
-                  item={d}
-                  openMenu={openMenu}
-                  setOpenMenu={setOpenMenu}
-                  deleteItem={deleteItem}
-                  setItemSelected={setItemSelected}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+    <TableContext.Provider value={{ columns }}>
+      <table className={styles.table} role="table">
+        {children}
       </table>
-       <div className={styles.table_footer}>
-        <div className={styles.show}>
-          <span>
-            Showing {showInit}-{showEnd} of {count} results
-          </span>
-        </div>
+    </TableContext.Provider>
+  );
+}
 
-        <div>
-          <span>Items per page</span>
-          <select
-            name=""
-            id=""
-            onChange={({ target }) => setLimit(target.value)}
-          >
-            <option value={4000}>All</option>
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={30}>30</option>
-          </select>
-          <button
-            className={!pageInfo?.hasPreviousPage ? "disable_btn" : ""}
-            disabled={!pageInfo?.hasPreviousPage}
-            onClick={() => setPage(pageInfo?.previousPage)}
-          >
-            <i className="bx bx-chevron-left"></i>
-          </button>
-          <button
-            className={!pageInfo?.hasNextPage ? "disable_btn" : ""}
-            disabled={!pageInfo?.hasNextPage}
-            onClick={() => setPage(pageInfo?.nextPage)}
-          >
-            <i className="bx bx-chevron-right"></i>
-          </button>
+interface HeaderProps {
+  children: ReactNode;
+}
+
+function Header({ children }: HeaderProps) {
+  const { columns } = useContext(TableContext)!;
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: columns }} className={`${styles.header} ${styles.common_row}`} role="row">
+      {React.Children.map(children, (child, index) => (
+        <div key={index} style={{ gridColumn: `${index + 1}` }}>
+          {child}
         </div>
-      </div>
+      ))}
     </div>
   );
-};
+}
+
+interface RowProps {
+  children: ReactNode;
+}
+
+function Row({ children }: RowProps) {
+  const { columns } = useContext(TableContext)!;
+  return (
+    <div style={{ gridTemplateColumns: columns }} className={`${styles.row} ${styles.common_row}`} role="row">
+      {children}
+    </div>
+  );
+}
+
+interface BodyProps<T> {
+  data: T[];
+  render: (item: T, index: number) => ReactNode;
+}
+
+function Body<T>({ data, render }: BodyProps<T>) {
+  if (!data.length) return <p className={styles.empty}>No data to show at the moment</p>;
+
+  return (
+    <section className={styles.body}>
+      {data.map((item, index) => (
+        <div key={index} className={styles.row}>
+          {render(item, index)}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+interface FooterProps {
+  children: ReactNode;
+}
+
+function Footer({ children }: FooterProps) {
+  return (
+    <footer className={styles.footer}>
+      {children}
+    </footer>
+  );
+}
+
+Table.Header = Header;
+Table.Body = Body;
+Table.Row = Row;
+Table.Footer = Footer;
 
 export default Table;
