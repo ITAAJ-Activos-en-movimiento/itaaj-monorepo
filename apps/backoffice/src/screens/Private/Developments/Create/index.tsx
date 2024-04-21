@@ -1,7 +1,6 @@
-import { Button, Field, Input, TextEditor } from '@/components'
+import { Button } from '@/components'
 import styles from './Create.module.css'
 import { Image, Info, List, MapPin } from 'react-feather'
-import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
 import { useCreateDevelopment, useForm, useUploadImage } from '@/hooks'
@@ -49,18 +48,19 @@ const CreateDevelopment = () => {
         // })
     }
 
-
-
     const { step, goTo } = useMultistep([
-        <Details  development={development} handleChange={handleChange}  />
+        <Details  development={development} handleChange={handleChange}  />,
+        <Location  development={development}  handleChange={handleChange}  />,
+        <PhotoGallery  development={development} isLoading={isLoading} uploadimage={uploadImage} urls={urls} handleChange={handleChange}  />
+
     ])
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Development info</h3>
+                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Información</h3>
                 <div className={styles.buttons}>
-                    <Button variant='cancel'>View</Button>
-                    <Button loading={isCreating} onClick={onSubmit}>Save</Button>
+                    <Button variant='cancel'>Vista</Button>
+                    <Button loading={isCreating} onClick={onSubmit}>Guardar</Button>
                 </div>
 
             </div>
@@ -68,12 +68,12 @@ const CreateDevelopment = () => {
                 <div className={styles.options}>
                     <ul>
                         {/* <li><Grid color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => setOptions('overview')}>Overview</button></li> */}
-                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => goTo(0)} > Details       </button> </li>
-                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => goTo(1)}>Location</button> </li>
-                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => goTo(2)}> Photo Gallery </button> </li>
+                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => goTo(0)} > Detalles </button> </li>
+                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => goTo(1)}>Ubicación</button> </li>
+                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />  <button onClick={() => goTo(2)}> Galería de fotos </button> </li>
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
                         {/* <li><Codesandbox color='rgba(0, 0, 0, 0.65)' size={18} /> <button> 3D Tours      </button> </li> */}
-                        {/* <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Floorplans    </button> </li> */}
+                        {/* <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Planos    </button> </li> */}
                         {/* <li><FileText color='rgba(0, 0, 0, 0.65)' size={18} />    <button> Documents     </button> </li> */}
                     </ul>
 

@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Footer, Header } from '@/components'
 import './globals.css'
-// import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { AuthContextProvider } from '@/shared/context/AuthContext';
 import MetaMask from "./MetaMask";

@@ -4,8 +4,8 @@ import styles from './Photo.module.css';
 const PhotoGallery = ({isLoading, urls, uploadImage }: any) => {
   return (
     <div>
-        <h3>Photos gallery</h3>
-        <p>Organize and display your photos</p>
+        <h3>Galería de fotos</h3>
+        <p>Organiza y muestra tus fotos</p>
         <ImageInput 
             // preview={url || placeholderImage}
             uploadImage={uploadImage}

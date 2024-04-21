@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { ButtonLink, Field, Input, Loader } from "@/components";
-import { useNavigate } from "react-router-dom";
-import { PrivateRoutes } from "@/constant-definitions";
-import { EmptyTable, HeaderPage, Table } from "@/containers";
+import { EmptyTable, HeaderPage } from "@/containers";
 import Breadcrumbs from "@/components/Shared/Breadcumbs";
 import styles from "./Developments.module.css";
 import { useProperties } from "@/hooks";
@@ -10,10 +8,6 @@ import PropertyTable from "./Table/PropertyTable";
 
 const Properties = () => {
   const [, setSearch] = useState<string>("");
-  const [limit, setLimit] = useState<number>(5);
-  const [, setPage] = useState<number>(1);
-  const navigate = useNavigate();
-
   const { properties, isLoading } = useProperties();
 
   return (

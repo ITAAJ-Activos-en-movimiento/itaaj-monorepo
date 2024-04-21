@@ -9,3 +9,9 @@ export const loginOfficer = async (info: { username: string, password: string })
     const { data } = await itaajApi.post("/auth/login", info)
     return data
 }
+
+export const login = async (email: string) =>{
+    console.log({email})
+    const { data } = await itaajApi.post("/auth/login/email", { email })
+    return data
+}

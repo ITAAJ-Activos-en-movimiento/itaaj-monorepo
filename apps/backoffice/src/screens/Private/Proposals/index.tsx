@@ -17,18 +17,18 @@ const Proposals = () => {
 
   return (
     <div className={styles.container}>
-      <HeaderPage title="Proposals">
-        <Breadcrumbs items={["Realty", "Proposals"]} />
+      <HeaderPage title="Propuestas">
+        <Breadcrumbs items={["Realty", "Propuestas"]} />
       </HeaderPage>
       <div className={styles.header_page}>
         <Field className={styles.field}>
           <Input
             type="search"
-            placeholder="Search proposals"
+            placeholder="Buscar propuestas"
             onChange={({ target }) => setSearch(target.value)}
           />
         </Field>
-        <ButtonLink to='/proposals/create'>Add Property</ButtonLink>
+        {/* <ButtonLink to='/proposals/create'>Add Property</ButtonLink> */}
       </div>
 
       {isLoading ? (

@@ -69,9 +69,6 @@ const CreateProperty = () => {
                   value: state,
                 },
               } as React.ChangeEvent<any>);
-              
-              
-              
 
               handleChange({
                 target: {
@@ -103,8 +100,8 @@ const CreateProperty = () => {
             <div className={styles.header}>
                 <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Development info</h3>
                 <div className={styles.buttons}>
-                    <Button variant='cancel'>View</Button>
-                    <Button loading={isCreating} onClick={onSubmit}>Save</Button>
+                    <Button variant='cancel'>Vista</Button>
+                    <Button loading={isCreating} onClick={onSubmit}>Guardar</Button>
                 </div>
 
             </div>
@@ -112,7 +109,7 @@ const CreateProperty = () => {
                 <div className={styles.options}>
                     <ul>
                         {/* <li><Grid color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => setOptions('overview')}>Overview</button></li> */}
-                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('overview')} > Details       </button> </li>
+                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('overview')} > Detalles       </button> </li>
                         {/* <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Location</button> </li> */}
                         {/* <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Photo Gallery </button> </li> */}
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
@@ -125,7 +122,7 @@ const CreateProperty = () => {
                 {options == 'overview' && (
 
                     <div className={styles.content}>
-                        <h3>General details</h3>
+                        <h3>Detalles generales</h3>
                         <p className={styles.subtitle}>A brief description of these settings</p>
                         <div className={styles.col}>
 
