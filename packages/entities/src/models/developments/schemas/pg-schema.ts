@@ -6,7 +6,7 @@ import {
   timestamp,
   uuid,
   varchar,
-  text
+  text,
 } from "drizzle-orm/pg-core";
 import { properties } from "../../properties";
 

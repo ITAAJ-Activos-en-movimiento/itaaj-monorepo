@@ -3,3 +3,4 @@ export * from './leads';
 export * from './login';
 export * from './properties';
 export * from './proposals';
+export * from './posts';
