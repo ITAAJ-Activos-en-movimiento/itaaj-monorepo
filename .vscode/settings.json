@@ -1,0 +1,5 @@
+{
+    "exportall.config.relExclusion": [
+        "/packages/entities/src/models/posts/schemas/index.ts"
+    ]
+}

@@ -4,9 +4,9 @@ import { roles } from '../../roles/schemas/pg-schema';
 
 export const users = pgTable('users', {
     id: uuid('id').defaultRandom().notNull(),
-    roleId: varchar('name', { length: 256 }),
+    roleId: varchar('roleId', { length: 256 }),
     residence: varchar('residence', { length: 256 }),
-    identification: varchar('residence', { length: 11 }),
+    identification: varchar('identification', { length: 11 }),
     name: varchar('name', { length: 256 }),
     lastname: varchar('lastname', { length: 256 }),
     email: varchar('email', { length: 256 }).notNull(),

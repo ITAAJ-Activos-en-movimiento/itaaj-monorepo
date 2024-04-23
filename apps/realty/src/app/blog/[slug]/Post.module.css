@@ -1,0 +1,243 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #e0f5f3;
+  height: 40rem;
+  border-bottom-left-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+}
+
+.container h1 {
+  font-size: clamp(1.8rem, 5.5vw + 1rem, 4.5rem);
+  max-width: 60rem;
+}
+
+.container .picture {
+  width: 40rem;
+  height: 30rem;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+  position: relative;
+}
+
+.container .picture img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.info p {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content {
+  color: #000;
+  margin-left: 18rem;
+  margin-bottom: 4rem;
+}
+
+.date {
+  display: flex;
+  gap: 2rem;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-top: 2rem;
+  width: 70%;
+}
+
+.table_contents {
+  margin-left: 14rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table_contents p {
+  font-weight: 600;
+  color: #ff5a5a;
+}
+
+.table_contents button {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 1);
+  font-weight: 600;
+}
+
+.table_contents_two {
+  margin-left: 14rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.table_contents_two button {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.line {
+  background-color: #000;
+  height: 0.3rem;
+  margin-left: 14rem;
+  width: 6rem;
+  margin-top: 2rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
+  padding: 4rem;
+}
+
+.other {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container_cards {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en múltiples líneas */
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.card {
+  flex-basis: calc(
+    25% - 2rem
+  ); /* Ajusta el ancho de las tarjetas para ocupar el 25% del contenedor y deja espacio entre ellas */
+  margin-bottom: 2rem; /* Agrega espacio entre las tarjetas */
+}
+
+.image {
+  height: 20rem;
+  width: 27rem;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center;
+  border-radius: 0.4rem; /* Centrar verticalmente */
+  position: relative; /* Posicionamiento relativo para que los elementos internos se posicionen correctamente */
+  overflow: hidden; /* Oculta el contenido que desborde del contenedor */
+}
+
+.image img {
+  width: 100%; /* Establece el ancho de la imagen al 100% del contenedor */
+  height: 100%; /* Establece el alto de la imagen al 100% del contenedor */
+  object-fit: cover; /* La imagen se ajustará para cubrir todo el contenedor manteniendo su relación de aspecto */
+  position: absolute; /* Posicionamiento absoluto para que la imagen se ajuste correctamente */
+  top: 0; /* Posiciona la imagen en la parte superior del contenedor */
+  left: 0; /* Posiciona la imagen en la parte izquierda del contenedor */
+}
+
+.banner_card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 2rem;
+  max-width: 26rem;
+}
+
+.show_more {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 12rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  color: #ff5a5a;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 100%;
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+  }
+
+  .container .picture {
+    width: 100%;
+    border-radius: 0.4rem;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .content {
+    color: #000;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .image {
+    height: 10rem;
+    width: 17rem;
+  }
+
+  .banner_card {
+    gap: 1rem;
+  }
+
+  .banner_card h3 {
+    font-size: 1.4rem;
+  }
+
+  .banner_card span {
+    font-size: 1.2rem;
+  }
+
+  .show_more {
+    display: flex;
+    text-align: center;
+    gap: 1rem;
+    background-color: transparent;
+    width: 12rem;
+    padding: 0rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    color: #ff5a5a;
+  }
+  
+}

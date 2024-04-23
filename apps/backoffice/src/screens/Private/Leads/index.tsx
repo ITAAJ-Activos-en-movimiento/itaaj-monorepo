@@ -1,15 +1,15 @@
+
 import { useLeads } from "@/hooks/leads/useLeads"
 import styles from './Leads.module.css'
 import { Loader } from "@/components";
 
 const Leads = () => {
-    const { isLoading, leads } = useLeads();
+  const { isLoading, leads } = useLeads();
   return (
     <div>
         {isLoading ? (
            <Loader />
         ): (
-
         <table className={styles.table}>
             <thead>
                 <tr>
@@ -29,11 +29,11 @@ const Leads = () => {
                     </tr>
                 ))}
             </tbody>
+
         </table>
-        )}
-
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Leads
+export default Leads;

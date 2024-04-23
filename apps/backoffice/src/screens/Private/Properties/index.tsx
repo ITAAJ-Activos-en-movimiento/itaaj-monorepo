@@ -23,23 +23,21 @@ const Properties = () => {
             onChange={({ target }) => setSearch(target.value)}
           />
         </Field>
-        <ButtonLink to='/properties/create'>Agregar Propiedad</ButtonLink>
+        <ButtonLink to="/properties/create">Agregar Propiedad</ButtonLink>
       </div>
-      <div className={styles.content} >
-
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          {properties?.length > 0 ? (
-            <PropertyTable />
-          ) : (
-            <EmptyTable title="Properties" url="/properties/create" />
-          )}
-        </>
-      )}
+      <div className={styles.content}>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {properties?.length > 0 ? (
+              <PropertyTable />
+            ) : (
+              <EmptyTable title="Properties" url="/properties/create" />
+            )}
+          </>
+        )}
       </div>
-
     </div>
   );
 };
