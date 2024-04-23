@@ -1,0 +1,224 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_title {
+  width: 100%;
+  background-color: #e0f5f3;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+}
+
+.title {
+  width: 30%;
+  text-align: center;
+}
+
+.container_banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_principal {
+  background-color: #fff;
+  border-radius: 4rem;
+  padding: 4rem;
+  height: 50rem;
+  width: 60%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: -10rem;
+}
+
+.card_principal img {
+  border-radius: 4rem;
+}
+
+.banner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.banner h5 {
+  background-color: #e0f5f3;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  width: 10rem;
+  text-align: center;
+}
+
+.show_more {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ff5a5a;
+  width: 12rem;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  color: #fff;
+}
+
+.new {
+  position: absolute;
+  background-color: #ff5a5a;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  color: #fff;
+  width: 15rem;
+  left: 4rem;
+  top: -1.5rem;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
+  padding: 4rem;
+}
+
+.container_cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.card {
+  flex-basis: calc(
+    25% - 2rem
+  ); /* Ajusta el ancho de las tarjetas para ocupar el 25% del contenedor y deja espacio entre ellas */
+  margin-bottom: 2rem; /* Agrega espacio entre las tarjetas */
+}
+
+.image {
+  height: 20rem;
+  width: 27rem;
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center;
+  border-radius: 0.4rem; /* Centrar verticalmente */
+  position: relative; /* Posicionamiento relativo para que los elementos internos se posicionen correctamente */
+  overflow: hidden; /* Oculta el contenido que desborde del contenedor */
+}
+
+.image img {
+  width: 100%; /* Establece el ancho de la imagen al 100% del contenedor */
+  height: 100%; /* Establece el alto de la imagen al 100% del contenedor */
+  object-fit: cover; /* La imagen se ajustará para cubrir todo el contenedor manteniendo su relación de aspecto */
+  position: absolute; /* Posicionamiento absoluto para que la imagen se ajuste correctamente */
+  top: 0; /* Posiciona la imagen en la parte superior del contenedor */
+  left: 0; /* Posiciona la imagen en la parte izquierda del contenedor */
+}
+
+.banner_card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 2rem;
+  max-width: 26rem;
+}
+
+@media screen and (max-width: 768px) {
+  .header_title {
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+  }
+
+  .title {
+    width: 90%;
+    font-size: 1.4rem;
+  }
+
+  .container_banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card_principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.4rem;
+    padding: 2rem 1rem 2rem 1rem;
+    height: 100%;
+    width: 90%;
+    position: relative;
+    gap: 4rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: -8rem;
+  }
+
+  .bn_img {
+    overflow: hidden;
+  }
+
+  .card_principal img {
+    border-radius: 0.4rem;
+  }
+
+  .banner {
+    gap: 2rem;
+  }
+  .container_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .card {
+    flex-basis: calc(
+      50% - 1rem
+    ); /* Ajustar el ancho de las tarjetas para ocupar el 50% del contenedor y dejar espacio entre ellas */
+    margin-bottom: 2rem; /* Agregar espacio entre las tarjetas */
+  }
+
+  .section {
+    padding: 4rem;
+  }
+
+  .image {
+    height: 10rem;
+    width: 17rem;
+  }
+
+  .banner_card {
+    gap: 1rem;
+  }
+
+  .banner_card h3 {
+    font-size: 1.4rem;
+  }
+
+  .banner_card span {
+    font-size: 1.2rem;
+  }
+
+  .show_more {
+    display: flex;
+    text-align: center;
+    gap: 1rem;
+    background-color: transparent;
+    width: 12rem;
+    padding: 0rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    color: #ff5a5a;
+  }
+}

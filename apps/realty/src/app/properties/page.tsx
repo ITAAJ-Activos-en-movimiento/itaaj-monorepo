@@ -52,7 +52,7 @@ const Properties = async ({
 
   return (
     <div>
-<div className={styles.header}>
+      <div className={styles.header}>
         <h2>Filtros</h2>
         <select name="" id="">
           <option value="">Estado</option>
@@ -76,7 +76,11 @@ const Properties = async ({
           <option value="">Baños</option>
         </select>
       </div>
-      <PropertiesWithMap properties={listaUnica} searchParams={searchParams} locations={locations} />
+      <PropertiesWithMap
+        properties={listaUnica}
+        searchParams={searchParams}
+        locations={locations}
+      />
       {/* 
       {properties.length == 0 ? (
         <div className={styles.notProperties}>
