@@ -8,10 +8,9 @@ const Sidebar = () => {
              <div className={styles.header_left}>
                 <nav className={styles.nav}>
                     <button><ChevronRight /></button>
-                    <Link to='/developments' title='Developments' > <Briefcase /> </Link>
-                    <Link to='/properties' title='Properties' > <Home /> </Link>
-                    <Link to='/proposals' title='Proposals' > <Crosshair /> </Link>
-
+                    <Link to='/developments' title='Developments' > <Briefcase /> <p>Desarrollos</p> </Link>
+                    <Link to='/properties' title='Properties' > <Home /> <p>Propiedades</p> </Link>
+                    <Link to='/proposals' title='Proposals' > <Crosshair /> <p>Propuestas</p> </Link>
                 </nav>
             </div>
     </aside>

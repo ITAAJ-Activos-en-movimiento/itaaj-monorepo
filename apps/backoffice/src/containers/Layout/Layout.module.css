@@ -7,7 +7,7 @@
 
 .content{
     display: grid;
-    grid-template-columns: 5rem 1fr;
+    grid-template-columns: 15rem 1fr;
     grid-row: 2; 
     gap: .5rem;
 }

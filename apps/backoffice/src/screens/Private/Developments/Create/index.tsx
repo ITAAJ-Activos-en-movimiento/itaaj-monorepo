@@ -8,6 +8,7 @@ import { Development } from '@itaaj/entities'
 import { useNavigate } from 'react-router-dom'
 import { useMultistep } from '@/hooks/form/useMultistep'
 import Details from './Details'
+import { useEffect } from 'react'
 
 const INITIAL_DATA = {
     price: 0,
@@ -34,24 +35,37 @@ const INITIAL_DATA = {
 const CreateDevelopment = () => {
     const { isCreating, createDevelopment } = useCreateDevelopment();
     const { isLoading, urls, uploadImage } = useUploadImage();
-    const { formState: development, handleChange } = useForm<Partial<Development>>(INITIAL_DATA);
+    const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
 
     const navigate = useNavigate();
 
 
     const onSubmit = () => {
-        console.log(urls)
-        // createDevelopment({ ...development, images: urls, location: { longitude: longitud, latitude: latitud }, description }, {
+        // createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud }, description }, {
         //     onSuccess: () => {
         //         navigate('/developments')
         //     }
         // })
     }
 
+
+  const removeImage = (image: string) => {
+    const images = development?.images?.filter((img) => img !== image);
+    setFormState(prev => ({...prev, images: images}));
+  }
+
+  useEffect(() => {
+    if(urls.length > 0 && !development.images?.includes(urls[urls.length - 1])){
+    const ima = development.images || [];
+    setFormState(prev => ({...prev, images: [...ima, urls[urls.length - 1]]}))
+  }
+
+  }, [urls, development.images, setFormState]);
+
     const { step, goTo } = useMultistep([
         <Details  development={development} handleChange={handleChange}  />,
         <Location  development={development}  handleChange={handleChange}  />,
-        <PhotoGallery  development={development} isLoading={isLoading} uploadimage={uploadImage} urls={urls} handleChange={handleChange}  />
+        <PhotoGallery remove={removeImage} development={development} isLoading={isLoading} uploadImage={uploadImage} urls={development.images} handleChange={handleChange}  />
 
     ])
     return (

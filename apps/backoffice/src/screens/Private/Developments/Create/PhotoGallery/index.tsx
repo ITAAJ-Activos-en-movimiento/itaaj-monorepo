@@ -1,7 +1,8 @@
 import { ImageInput } from '@/components'
 import styles from './Photo.module.css';
+import { X } from 'react-feather';
 
-const PhotoGallery = ({isLoading, urls, uploadImage }: any) => {
+const PhotoGallery = ({remove, isLoading, urls, uploadImage }: any) => {
   return (
     <div>
         <h3>Galería de fotos</h3>
@@ -18,7 +19,10 @@ const PhotoGallery = ({isLoading, urls, uploadImage }: any) => {
 
           <div className={styles.images}>
             {urls.map((url: string) => (
-              <img className={styles.property_image} src={url} alt="" />
+              <picture className={styles.picture} >
+                <button onClick={() => remove(url)} className={styles.close}><X  size={18} color='#fff' /></button>
+                <img key={url} className={styles.property_image} src={url} />
+              </picture>
             ))}
           </div>
     </div>
