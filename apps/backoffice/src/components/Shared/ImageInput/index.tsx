@@ -31,9 +31,9 @@ const ImageInput = ({loading, uploadImage, ...rest}: Props) => {
           <Loader small={true} primary={true} />         
         : (
           <div>
-              <span className={styles.formbold_drop_file} >Upload photos</span>
-              <span className={styles.formbold_or} >Select a file or drop one hero.</span>
-              <Button onClick={handleButtonClick} loading={loading} >Browse photos</Button>
+              <span className={styles.formbold_drop_file} >Subir fotos</span>
+              <span className={styles.formbold_or} >Selecciona un archivo.</span>
+              <Button onClick={handleButtonClick} loading={loading} >Explorar fotos</Button>
           </div>
         )}
       </label>

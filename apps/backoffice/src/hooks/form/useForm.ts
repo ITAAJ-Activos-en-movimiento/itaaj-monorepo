@@ -31,5 +31,6 @@ export const useForm = <T>(initialState: T) => {
   return {
     formState,
     handleChange,
+    setFormState
   };
 };

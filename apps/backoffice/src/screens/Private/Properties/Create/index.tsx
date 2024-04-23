@@ -1,6 +1,6 @@
 import { Button, Field, Input, TextEditor } from '@/components'
 import styles from './Create.module.css'
-import { Columns, Info, List  } from 'react-feather'
+import { Columns, Image, Info, List, MapPin  } from 'react-feather'
 import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
@@ -98,7 +98,7 @@ const CreateProperty = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Development info</h3>
+                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Información</h3>
                 <div className={styles.buttons}>
                     <Button variant='cancel'>Vista</Button>
                     <Button loading={isCreating} onClick={onSubmit}>Guardar</Button>
@@ -110,11 +110,11 @@ const CreateProperty = () => {
                     <ul>
                         {/* <li><Grid color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => setOptions('overview')}>Overview</button></li> */}
                         <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('overview')} > Detalles       </button> </li>
-                        {/* <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Location</button> </li> */}
-                        {/* <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Photo Gallery </button> </li> */}
+                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Ubicación</button> </li>
+                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Galeria de Fotos </button> </li>
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
                         {/* <li><Codesandbox color='rgba(0, 0, 0, 0.65)' size={18} /> <button> 3D Tours      </button> </li> */}
-                        <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Floorplans    </button> </li>
+                        <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Planos </button> </li>
                         {/* <li><FileText color='rgba(0, 0, 0, 0.65)' size={18} />    <button> Documents     </button> </li> */}
                     </ul>
 
@@ -123,13 +123,13 @@ const CreateProperty = () => {
 
                     <div className={styles.content}>
                         <h3>Detalles generales</h3>
-                        <p className={styles.subtitle}>A brief description of these settings</p>
+                        <p className={styles.subtitle}>Una breve descripción de estas configuraciones.</p>
                         <div className={styles.col}>
 
-                            <Field label='Bedrooms'>
+                            <Field label='Habitaciones'>
                                 <Input value={property.bedrooms} name='bedrooms' onChange={handleChange} />
                             </Field>
-                            <Field label='Bathrooms'>
+                            <Field label='Baños'>
                                 <Input value={property.bathrooms} name='bathrooms' onChange={handleChange} />
                             </Field>
 
@@ -137,14 +137,14 @@ const CreateProperty = () => {
 
                         <div className={styles.col}>
 
-                            <Field label='Price'>
+                            <Field label='Precio'>
                                 <Input type='number' value={property.price} name='price' onChange={handleChange} />
                             </Field>
 
-                            <Field label='Development'>
+                            <Field label='Desarrollo'>
                                 <select name="development" id="" onChange={handleChangeDevelopment} >
-                                    <option value="">None</option>
-                                    {developments.map((development: any) => (
+                                    <option value="">Ningúno</option>
+                                    {developments?.map((development: any) => (
                                         <option value={development.id}>{development.name}</option>
                                     ))}
                                 </select>
@@ -156,24 +156,24 @@ const CreateProperty = () => {
 
                         </div>
 
-                        <h3>Development details</h3>
-                        <p className={styles.subtitle}>A brief description of these settings</p>
-                        <Field label='Property name'>
+                        <h3>Detalles</h3>
+                        <p className={styles.subtitle}></p>
+                        <Field label='Nombre'>
                             <Input name='name' value={property.name} onChange={handleChange} />
                         </Field>
 
                         <div className={styles.col}>
 
-                            <Field label='Land Area'>
-                                <Input name='area.land_area' placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
+                            <Field label='Superficie del Terreno"'>
+                                <Input name='area.land_area' placeholder='80 m2' onChange={handleChange} />
                             </Field>
-                            <Field label='Building Area'>
-                                <Input name="area.building_area" placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
+                            <Field label='Superficie Construida'>
+                                <Input name="area.building_area" placeholder='91 m2' onChange={handleChange} />
                             </Field>
-                            <Field label='Area Total'>
-                                <Input name="area.total_area" placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
+                            <Field label='Superficie Total'>
+                                <Input name="area.total_area" placeholder='128 m2' onChange={handleChange} />
                             </Field>
-                            <Field label='Floor'>
+                            <Field label='Piso' tip='En que piso esta la propiedad'>
                                 <Input name="floor" placeholder='1' onChange={handleChange} />
                             </Field>
                         </div>
@@ -181,18 +181,25 @@ const CreateProperty = () => {
 
                         <div className={styles.col}>
 
-                            <Field label='Development type'>
-                                <Input name='type' value={property.type} onChange={handleChange} />
+                            <Field label='Tipo'>
+                                <select name='type' value={property.type} onChange={handleChange}>
+                            <option value="apartment">Seleccionar un tipo</option>
+                                 
+                                    <option value="apartment">Departamento</option>
+                                    <option value="apartment">Casa</option>
+                                    <option value="apartment">Oficina</option>
+                                    <option value="apartment">Terreno</option>
+                                </select>
                             </Field>
 
-                            <Field label='Antiquity'>
+                            <Field label='Antigüedad'>
                                 <Input type='number' name='antiquity' value={property.antiquity} onChange={handleChange} />
                             </Field>
                         </div>
 
                         <div className={styles.divider}>
 
-                            <Field label='Development description'>
+                            <Field label='Descripción'>
                                 <TextEditor
                                     value={description}
                                     onChange={handleEditorChange}
