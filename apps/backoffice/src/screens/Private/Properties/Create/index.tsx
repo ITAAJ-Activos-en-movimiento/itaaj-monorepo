@@ -1,6 +1,6 @@
 import { Button, Field, Input, TextEditor } from '@/components'
 import styles from './Create.module.css'
-import { Columns, Info, List  } from 'react-feather'
+import { Columns, Image, Info, List, MapPin  } from 'react-feather'
 import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
@@ -110,8 +110,8 @@ const CreateProperty = () => {
                     <ul>
                         {/* <li><Grid color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => setOptions('overview')}>Overview</button></li> */}
                         <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('overview')} > Detalles       </button> </li>
-                        {/* <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Location</button> </li> */}
-                        {/* <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Photo Gallery </button> </li> */}
+                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Ubicación</button> </li>
+                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Galeria de Fotos </button> </li>
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
                         {/* <li><Codesandbox color='rgba(0, 0, 0, 0.65)' size={18} /> <button> 3D Tours      </button> </li> */}
                         <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Planos </button> </li>
@@ -144,7 +144,7 @@ const CreateProperty = () => {
                             <Field label='Desarrollo'>
                                 <select name="development" id="" onChange={handleChangeDevelopment} >
                                     <option value="">Ningúno</option>
-                                    {developments.map((development: any) => (
+                                    {developments?.map((development: any) => (
                                         <option value={development.id}>{development.name}</option>
                                     ))}
                                 </select>
