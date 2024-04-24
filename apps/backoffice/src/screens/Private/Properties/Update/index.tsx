@@ -1,7 +1,7 @@
-import { Button, Field, Input, TextEditor } from "@/components";
+import { Button, Field, Input, Loader, TextEditor } from "@/components";
 import styles from "./Create.module.css";
 import { Columns, Image, Info, List, MapPin } from "react-feather";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Location from "./Location";
 import {
   useDevelopments,
@@ -14,7 +14,9 @@ import { Development } from "@itaaj/entities";
 import PhotoGalleryUpdate from "./PhotoGallery";
 
 const UpdateProperty = () => {
-  const { property: propertyInfo } = useProperty();
+  const { isLoading, property: propertyInfo } = useProperty();
+
+  console.log("PROPIEDAD A EDITAR", propertyInfo)
 
   const [property, setProperty] = useState({
     name: propertyInfo?.name || "",
@@ -138,6 +140,42 @@ const UpdateProperty = () => {
   const handleEditorChange = (value: string) => {
     setDescription(value);
   };
+
+  useEffect(() => {
+    if (propertyInfo) {
+      setProperty({
+        name: propertyInfo.name || '',
+        address: propertyInfo.address || '',
+        city: propertyInfo.city || '',
+        state: propertyInfo.state || '',
+        country: propertyInfo.country || '',
+        price: propertyInfo.price || 0,
+        description: propertyInfo.description || '',
+        area: {
+          building_area: propertyInfo.area?.building_area || 0,
+          land_area: propertyInfo.area?.land_area || '',
+          total_area: propertyInfo.area?.total_area || 0,
+        },
+        images: propertyInfo.images || [],
+        garage: propertyInfo.garage || 0,
+        bedrooms: propertyInfo.bedrooms || 0,
+        bathrooms: propertyInfo.bathrooms || 0,
+        antiquity: propertyInfo.antiquity || 0,
+        balcony: propertyInfo.balcony || 0,
+        kitcken: propertyInfo.kitcken || 0,
+        propertyStatus: propertyInfo.propertyStatus || '',
+        type: propertyInfo.type || '',
+        category: propertyInfo.category || '',
+        partner: propertyInfo.partner || '',
+        floor: propertyInfo.floor || '',
+        development: propertyInfo.development || '',
+        zipcode: propertyInfo.zipcode || 0,
+        floorPlans: propertyInfo.floorPlans || [],
+      });
+    }
+  }, [propertyInfo]);
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className={styles.container}>
