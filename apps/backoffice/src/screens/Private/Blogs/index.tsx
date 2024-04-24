@@ -1,6 +1,6 @@
 import { usePosts } from "@/hooks";
-import { Loader, Title } from "@/components";
-import { Container, EmptyTable, Modal, ScreenHeader } from "@/containers";
+import { Loader } from "@/components";
+import { EmptyTable, HeaderPage, Modal } from "@/containers";
 import styles from "./Blog.module.css";
 import BlogTable from "./Table/PropertyTable";
 import CreatePost from "./Create";
@@ -10,31 +10,27 @@ const Blog = () => {
 
   if (isLoading) return <Loader />;
   return (
-    <>
+    <div className={styles.container}>
       <Modal>
-        <Container>
-          <ScreenHeader>
-            <div>
-              <Title text="Blog" />
-            </div>
-            <CreatePost />
-          </ScreenHeader>
-          <div className={styles.content}>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <>
-                {posts?.length > 0 ? (
-                  <BlogTable />
-                ) : (
-                  <EmptyTable title="Blog" url="/properties/create" />
-                )}
-              </>
-            )}
-          </div>
-        </Container>
+        <HeaderPage title="Blog">
+          <CreatePost />
+        </HeaderPage>
+
+        <div className={styles.content}>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              {posts?.length > 0 ? (
+                <BlogTable />
+              ) : (
+                <EmptyTable title="Blog" url="/properties/create" />
+              )}
+            </>
+          )}
+        </div>
       </Modal>
-    </>
+    </div>
   );
 };
 
