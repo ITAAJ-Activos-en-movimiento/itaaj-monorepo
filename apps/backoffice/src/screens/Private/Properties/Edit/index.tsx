@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Field,  Input, TextEditor } from "@/components";
+import { Button, Field, Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/constant-definitions";
@@ -32,7 +32,6 @@ const EditPropety: React.FC = () => {
     partner: "",
   });
 
-
   const [amenities, setAmenities] = useState<any[]>([]);
   const addAmenities = () => {
     const amenity = {
@@ -56,7 +55,7 @@ const EditPropety: React.FC = () => {
     amenities.map((amenity) => {
       newAmenities.push(amenity.text);
     });
-   
+
     navigate(`/${PrivateRoutes.PROPERTIES}`, { replace: true });
   };
 
@@ -74,7 +73,7 @@ const EditPropety: React.FC = () => {
     setProperty((prev) => ({ ...prev, area: { ...prev.area, [name]: value } }));
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     setProperty({
       name: propertyInfo?.name,
       address: propertyInfo?.address,
@@ -95,8 +94,8 @@ const EditPropety: React.FC = () => {
       type: propertyInfo?.type,
       category: propertyInfo?.category,
       partner: "",
-    })
-  }, [isLoading])
+    });
+  }, [isLoading]);
 
   return (
     <div className={styles.container}>
@@ -106,7 +105,11 @@ const EditPropety: React.FC = () => {
         </Field>
 
         <Field label="Address">
-          <Input name="address" value={property.address}  onChange={handleChange} />
+          <Input
+            name="address"
+            value={property.address}
+            onChange={handleChange}
+          />
         </Field>
 
         <Field label="City">
@@ -203,10 +206,8 @@ const EditPropety: React.FC = () => {
       <div className={styles.sidebar}>
         <div className={styles.section}>
           <h3>Images</h3>
-       
-          <div className={styles.preview_container}>
-           
-          </div>
+
+          <div className={styles.preview_container}></div>
         </div>
         <div className={styles.section}>
           <Field label="Property Status">

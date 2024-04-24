@@ -32,7 +32,7 @@ export const properties = pgTable("properties", {
   images: varchar("images", { length: 256 }).array(),
   amenities: varchar("amenities", { length: 256 }).array(),
   bedrooms: integer("bedrooms"),
-  bathrooms: decimal("bathrooms"),
+  bathrooms: integer("bathrooms"),
   image: varchar("image", { length: 256 }),
   owner: varchar("owner", { length: 256 }),
   virtualTourUrl: varchar("virtualTourUrl", { length: 256 }),
@@ -45,6 +45,9 @@ export const properties = pgTable("properties", {
   partner: varchar("partner", { length: 256 }),
   development: varchar("development", { length: 256 }),
   createdAt: timestamp("created_at").defaultNow(),
+  zipcode: integer("zipcode"),
+  floorPlans: varchar("floorPlans", { length: 256 }).array(),
+  status: varchar("status", { length: 256 }).default("active"),
 });
 
 export const propertyRelations = relations(properties, ({ one }) => ({

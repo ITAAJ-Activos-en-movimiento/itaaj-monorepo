@@ -1,0 +1,1 @@
+ALTER TABLE "properties" ALTER COLUMN "name" SET DATA TYPE varchar(256);

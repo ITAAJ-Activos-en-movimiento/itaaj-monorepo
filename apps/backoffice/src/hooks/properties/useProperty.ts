@@ -6,7 +6,7 @@ export const useProperty = () => {
   const { slug } = useParams();
   const { isLoading, data: property } = useQuery({
     queryKey: ["properties", slug],
-    queryFn:  () => getPropertyApi(slug ?? ""),
+    queryFn: () => getPropertyApi(slug ?? ""),
   });
 
   return { isLoading, property };
