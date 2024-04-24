@@ -1,61 +1,60 @@
-.menu{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.toggle{
-    background: none;
-    border: none;
-    padding: .4rem;
-    border-radius: var(--border-radius-sm);
-    transform: translateX(.8rem);
-    transition: all .2s;
-    width: fit-content;
-    /* height: 3rem; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.toggle {
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  border-radius: var(--border-radius-sm);
+  transform: translateX(0.8rem);
+  transition: all 0.2s;
+  width: fit-content;
+  /* height: 3rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.toggle:hover{
-    background-color: rgba(0, 0, 0, .05);
+.toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.list{
-    position: fixed;
-    background-color: var(--color-grey-0);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--border-radius-md);
-    padding-right: 1rem;
-    padding: 1rem;
+.list {
+  position: fixed;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border-radius: 0.4rem;
+  padding-right: 1rem;
+  padding: 1rem;
 }
 
-.button{
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: .5rem 2rem;
-    padding-left: .5rem;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    color: #000000b3;
-    font-size: 1.2rem;
+.button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #000000b3;
+  font-size: 1.2rem;
 }
 
-.option{
-    border: none;
-    width: 100%;
+.option {
+  border: none;
+  width: 100%;
 }
 
-.option{
-    border: none !important;
-    padding-inline: 0 !important;
+.option {
+  border: none !important;
+  padding-inline: 0 !important;
 }
 
-.button:hover{
-    color: var(--main-color)
+.button:hover {
+  color: var(--main-color);
 }

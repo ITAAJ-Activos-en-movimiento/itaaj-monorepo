@@ -1,7 +1,6 @@
 import { Modal, Table } from "@/containers";
 import { Post } from "@itaaj/entities";
 import Menus from "@/components/Shared/Menus";
-import { Link } from "react-router-dom";
 import { useDeletePost } from "@/hooks";
 
 interface Props {
@@ -53,10 +52,7 @@ const BlogRow = ({ post }: Props) => {
             <Menus.Toggle id={post.id!} />
 
             <Menus.List id={post.id!}>
-              <Modal.Open opens="edit">
-                <Link to={"/post/" + post.slug}>Ver</Link>
-              </Modal.Open>
-
+              <Menus.Button>Ver</Menus.Button>
               <Menus.Button onClick={() => deletePost(post.id!)}>
                 Eliminar
               </Menus.Button>

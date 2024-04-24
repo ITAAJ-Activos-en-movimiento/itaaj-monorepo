@@ -2,7 +2,6 @@ import { Modal, Table } from "@/containers";
 import { Property } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
-import { Link } from "react-router-dom";
 import { useDeleteProperty } from "@/hooks";
 
 interface Props {
@@ -13,7 +12,6 @@ interface Props {
 }
 
 const PropertyRow = ({ property }: Props) => {
-  console.log("SLUG", `/properties/${property.slug}`);
   const { deleteProperty } = useDeleteProperty();
 
   return (
@@ -73,17 +71,13 @@ const PropertyRow = ({ property }: Props) => {
             <Menus.Toggle id={property.id} />
 
             <Menus.List id={property.id}>
-              <Modal.Open opens="show">
-                <Link to={"/properties/" + property.slug}>Ver</Link>
-              </Modal.Open>
+              <Menus.LinkTo to={`/properties/${property.slug}`}>
+                Editar
+              </Menus.LinkTo>
 
               <Menus.Button onClick={() => deleteProperty(property.id!)}>
                 Eliminar
               </Menus.Button>
-
-              <Modal.Open opens="edit">
-                <Link to={`/properties/${property.slug}`}>Editar</Link>
-              </Modal.Open>
             </Menus.List>
           </Menus.Menu>
 

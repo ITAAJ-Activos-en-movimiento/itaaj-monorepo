@@ -1,0 +1,12 @@
+.container {
+  border-radius: 1rem;
+  min-height: 80vh;
+  background-color: #fff;
+  border-radius: 1rem;
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  padding: 0 4rem;
+  margin-bottom: 10rem;
+}
