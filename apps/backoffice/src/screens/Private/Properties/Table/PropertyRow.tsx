@@ -3,6 +3,7 @@ import { Property } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
 import { Link } from "react-router-dom";
+import { useDeleteProperty } from "@/hooks";
 
 interface Props {
   property: Property;
@@ -11,34 +12,12 @@ interface Props {
   onSelect?: () => void;
 }
 
-const PropertyRow = ({ property, index, selected, onSelect }: Props) => {
-  // const {isDeleting, deleteContact  } = useDeleteContact();
-console.log({property})
-  // const { id: contactId, name } = contact;
+const PropertyRow = ({ property }: Props) => {
+  console.log("SLUG", `/properties/${property.slug}`);
+  const { deleteProperty } = useDeleteProperty();
+
   return (
     <Table.Row>
-      {/* <div
-        onClick={onSelect}
-        style={{
-          backgroundColor: selected ? 'rgba(0,0,0,0.1)' : colors[index],
-          borderRadius: 3,
-          height: 25,
-          width: 25,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#fff',
-          fontWeight: 500,
-        }}>
-        {selected ? (
-          <Check color="#000" size={18} />
-        ) : (
-          <>
-            {development.name.charAt(0).toUpperCase()}
-            {development.name.charAt(1).toUpperCase()}
-          </>
-        )}
-      </div> */}
       <div
         style={{
           display: "grid",
@@ -68,19 +47,21 @@ console.log({property})
       <div>{property.address}</div>
       <div>{property.area.total_area}</div>
       {property.propertyStatus ? (
-      <div>&#183; {property.propertyStatus}</div>
-
-      ): (
-        <div style={{
+        <div>&#183; {property.propertyStatus}</div>
+      ) : (
+        <div
+          style={{
             backgroundColor: "rgba(0,255,0,.1)",
             maxWidth: "fit-content",
             paddingBlock: 5,
             paddingInline: 15,
             borderRadius: 5,
             color: "#00D900",
-            fontWeight: "500"
-        }} >&#183;  Publicada</div>
-
+            fontWeight: "500",
+          }}
+        >
+          &#183; Publicada
+        </div>
       )}
       <div style={{ textAlign: "right" }}>
         {DivisaFormater({ value: property.price })}
@@ -89,21 +70,22 @@ console.log({property})
       <div>
         <Modal>
           <Menus.Menu>
-            <Menus.Toggle id={property.uuid} />
+            <Menus.Toggle id={property.id} />
 
-            <Menus.List id={property.uuid}>
-              <Modal.Open opens="edit">
+            <Menus.List id={property.id}>
+              <Modal.Open opens="show">
                 <Link to={"/properties/" + property.slug}>Ver</Link>
               </Modal.Open>
-              <Modal.Open opens="delete">
-                <Menus.Button>Eliminar</Menus.Button>
+
+              <Menus.Button onClick={() => deleteProperty(property.id!)}>
+                Eliminar
+              </Menus.Button>
+
+              <Modal.Open opens="edit">
+                <Link to={`/properties/${property.slug}`}>Editar</Link>
               </Modal.Open>
             </Menus.List>
           </Menus.Menu>
-
-          {/* <Modal.Window title="Editar Contacto" name="edit">
-            <ProductFrom productToEdit={product} />
-          </Modal.Window> */}
 
           <Modal.Window title="" name="delete">
             <div></div>

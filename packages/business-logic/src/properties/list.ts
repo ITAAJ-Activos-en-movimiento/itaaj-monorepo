@@ -1,9 +1,11 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
 import { properties } from "@itaaj/entities";
+import { eq } from "drizzle-orm";
 
 export const getAllProperties = () => {
   const result = getDbInstance()
     .select()
-    .from(properties);
+    .from(properties)
+    .where(eq(properties.status, "active"));
   return result;
 };

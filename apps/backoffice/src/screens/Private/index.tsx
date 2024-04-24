@@ -7,8 +7,8 @@ import Properties from "./Properties";
 import CreateProperty from "./Properties/Create";
 import Proposals from "./Proposals";
 import EditDevelopment from "./Developments/Edit";
-import EditPropety from "./Properties/Edit";
 import Blog from "./Blogs";
+import UpdateProperty from "./Properties/Update";
 
 const Private = () => {
   return (
@@ -26,7 +26,7 @@ const Private = () => {
         <Route path="proposals" element={<Proposals />} />
 
         <Route path="properties/create" element={<CreateProperty />} />
-        <Route path="properties/:slug" element={<EditPropety />} />
+        <Route path="properties/:slug" element={<UpdateProperty />} />
 
         <Route path="blogs" element={<Blog />} />
       </Route>
