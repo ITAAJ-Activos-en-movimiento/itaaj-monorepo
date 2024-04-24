@@ -1,5 +1,5 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { StatusType, leads } from "@itaaj/entities"
+import { StatusType, funnels } from "@itaaj/entities"
 
 interface Query {
     status: StatusType;
@@ -14,9 +14,10 @@ interface Params {
     search?: string;
 }
 
-export const getAllLeads = async ({page = 1, limit = 14, search= ''}: Params) => {
-    const result = await getDbInstance().select({}).from(leads)
+export const getAllFunnels = async ({page = 1, limit = 14, search= ''}: Params) => {
+    const result = await getDbInstance().select().from(funnels)
 
+    console.log({result})
  const query: Query = { status: StatusType.ACTIVE }
 
  if(search){
@@ -28,11 +29,6 @@ export const getAllLeads = async ({page = 1, limit = 14, search= ''}: Params) =>
 
  const total = result.length;
 
-//  const items = await result
-//    .find(query)
-//    .skip(skip)
-//    .limit(pageSize)
-//    .sort({createdAt: -1 })
 
  const pages = Math.ceil(total / pageSize);
 

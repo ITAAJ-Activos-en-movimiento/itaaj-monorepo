@@ -1,1 +1,0 @@
-ALTER TABLE "properties" ADD COLUMN "status" varchar(256) DEFAULT 'active';

@@ -1,1 +1,0 @@
-ALTER TABLE "properties" ADD COLUMN "floorPlans" varchar(256)[];

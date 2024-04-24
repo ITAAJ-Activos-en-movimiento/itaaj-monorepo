@@ -1,1 +1,0 @@
-ALTER TABLE "posts" ALTER COLUMN "comments" DROP NOT NULL;

@@ -1,1 +1,0 @@
-ALTER TABLE "posts" ADD COLUMN "status" varchar(256);

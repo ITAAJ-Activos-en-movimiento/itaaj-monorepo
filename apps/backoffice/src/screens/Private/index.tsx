@@ -9,6 +9,8 @@ import Proposals from "./Proposals";
 import EditDevelopment from "./Developments/Edit";
 import Blog from "./Blogs";
 import UpdateProperty from "./Properties/Update";
+import CRM from "./Crm";
+import Funnel from "./Crm/Funnel";
 
 const Private = () => {
   return (
@@ -29,6 +31,10 @@ const Private = () => {
         <Route path="properties/:slug" element={<UpdateProperty />} />
 
         <Route path="blogs" element={<Blog />} />
+
+        <Route path="/crm/funnels/:id" element={<Funnel />} />
+        <Route path="/crm/funnels" element={<CRM />} />
+
       </Route>
     </Routes>
   );

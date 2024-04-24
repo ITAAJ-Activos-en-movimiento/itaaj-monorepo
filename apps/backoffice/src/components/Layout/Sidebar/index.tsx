@@ -11,6 +11,8 @@ const Sidebar = () => {
                     <Link to='/developments' title='Developments' > <Briefcase /> <p>Desarrollos</p> </Link>
                     <Link to='/properties' title='Properties' > <Home /> <p>Propiedades</p> </Link>
                     <Link to='/proposals' title='Proposals' > <Crosshair /> <p>Propuestas</p> </Link>
+                    <Link to='/crm/funnels' title='Embudo' > <Crosshair /> <p>Embudo</p> </Link>
+
                 </nav>
             </div>
     </aside>

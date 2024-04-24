@@ -1,8 +1,8 @@
-import { pgTable, primaryKey, timestamp, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, primaryKey, timestamp, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
 
 export const leads = pgTable('leads', {
     id: uuid('id').defaultRandom().notNull(),
-    name: varchar('name', { length: 256 }).notNull(),
+    name: varchar('name', { length: 256 }),
     email: varchar('email', { length: 256 }).notNull(),
     phone: varchar('phone', {length: 255}),
     gender: varchar('gender', { length: 256 }),
@@ -14,6 +14,15 @@ export const leads = pgTable('leads', {
     type: varchar('type', { length: 256 }),
     status: varchar('status', { length: 50 }),
     source: varchar('source', { length: 255 }),
+    userId: varchar("userId"),
+    currency: varchar("currency"),
+    funnelId: varchar("funnelId"),
+    contactId: varchar("contactId"),
+    contactName: varchar("contactName"),
+    personName: varchar("personName"),
+    value: integer("value"),
+    potential: integer("potential"),
+    stageId: varchar("stageId"),
     reporter: varchar('reportes', { length: 256 }),
     createdAt: timestamp('created_at').defaultNow().notNull(),
 }, (leads) => {

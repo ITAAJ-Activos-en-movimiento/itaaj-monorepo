@@ -5,6 +5,11 @@ export const getCurrentUser = async () =>{
     return data
 }
 
+export const getUsers = async () =>{
+    const { data } = await itaajApi.get(`/users`);
+    return data
+}
+
 export const loginOfficer = async (info: { username: string, password: string }) =>{
     const { data } = await itaajApi.post("/auth/login", info)
     return data

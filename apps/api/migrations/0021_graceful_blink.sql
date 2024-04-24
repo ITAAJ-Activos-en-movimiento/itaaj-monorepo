@@ -1,1 +1,0 @@
-ALTER TABLE "properties" ALTER COLUMN "name" SET DATA TYPE text;

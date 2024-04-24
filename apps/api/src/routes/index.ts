@@ -10,6 +10,7 @@ import developmentsRoutes from "./development";
 import messagesRoutes from "./messages";
 import proposalsRoutes from "./proposals";
 import postsRoutes from "./posts";
+import { funnelsRoutes } from "./funnels";
 
 const routes: RouteOptions[] = [
   healthCheckRoute,
@@ -23,6 +24,7 @@ const routes: RouteOptions[] = [
   ...messagesRoutes,
   ...proposalsRoutes,
   ...postsRoutes,
+  ...funnelsRoutes
 ];
 
 export const registerRoutes = (fastify: FastifyInstance) => {
