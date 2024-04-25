@@ -77,12 +77,13 @@ const Property = async ({
         {property?.images.slice(0, 5).map((img: string) => (
           <figure key={img}>
             <Image
-              objectFit="scale-down"
+              objectFit="contain"
               src={img}
               height="545"
               fetchPriority="high"
               loading="eager"
               width={948}
+              
               alt={property?.description}
             />
           </figure>
