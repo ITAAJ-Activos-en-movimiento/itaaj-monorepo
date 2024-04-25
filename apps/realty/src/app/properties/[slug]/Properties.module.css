@@ -34,34 +34,38 @@
 
 .mosaic_grid figure:first-child {
     grid-area: photo1;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .mosaic_grid figure:first-child img {
-    width: 150%;
+    /* width: 150%; */
+    object-fit: contain;
 }
 
 
 .mosaic_grid figure:nth-child(2) {
-    height: 269px;
+    /* height: 269px; */
     grid-area: photo2;
+    object-fit: contain;
+
 }
 
 .mosaic_grid figure:nth-child(3) {
-    height: 269px;
+    /* height: 269px; */
     grid-area: photo3;
+    object-fit: contain;
 }
 
 
 .mosaic_grid figure:nth-child(4) {
     grid-area: photo4;
-    height: 269px;
+    /* height: 269px; */
 }
 
 
 .mosaic_grid figure:nth-child(5)  {
     grid-area: photo5;
-    height: 269px;
+    /* height: 269px; */
 }
 
 
@@ -74,7 +78,8 @@
 }
 
 .mosaic_grid figure img{
-    transform: scale(1.5);
+    /* transform: scale(1.5); */
+    object-fit: contain;
 }
 
 .container {

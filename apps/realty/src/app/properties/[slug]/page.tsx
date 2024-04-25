@@ -77,7 +77,7 @@ const Property = async ({
         {property?.images.slice(0, 5).map((img: string) => (
           <figure key={img}>
             <Image
-              objectFit="contain"
+              objectFit="cover"
               src={img}
               height="545"
               fetchPriority="high"
