@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const VerificationCode = () => {
-    const [code, setCode] = useState("");
+    const [, setCode] = useState("");
   const { gratting } = useGratting();
 
   const navigate = useNavigate();

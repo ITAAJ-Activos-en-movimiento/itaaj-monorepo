@@ -65,7 +65,7 @@ const Blog = async () => {
               slug: string;
               featuredImage: string;
             }) => (
-              <div className={styles.card}>
+              <div key={post.slug} className={styles.card}>
                 <div className={styles.image}>
                   <Image
                     src={post?.featuredImage}

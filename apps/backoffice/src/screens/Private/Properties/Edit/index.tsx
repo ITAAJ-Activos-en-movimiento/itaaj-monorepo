@@ -3,7 +3,6 @@ import { Button, Field, Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/constant-definitions";
-import { v4 as uuid } from "uuid";
 import { useProperty } from "@/hooks/properties/useProperty";
 
 // const placeholderImage = "https://via.placeholder.com/300x300";

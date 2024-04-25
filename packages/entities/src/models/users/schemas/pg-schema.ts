@@ -1,6 +1,4 @@
-import { relations } from 'drizzle-orm';
 import { boolean, integer, pgTable, primaryKey, timestamp, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
-import { roles } from '../../roles/schemas/pg-schema';
 
 export const users = pgTable('users', {
     id: uuid('id').defaultRandom().notNull(),

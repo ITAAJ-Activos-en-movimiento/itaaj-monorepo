@@ -5,7 +5,7 @@ import PhotoGallery from './PhotoGallery'
 import Location from './Location'
 import { useCreateDevelopment, useForm, useUploadImage } from '@/hooks'
 import { Development } from '@itaaj/entities'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { useMultistep } from '@/hooks/form/useMultistep'
 import Details from './Details'
 import { useEffect } from 'react'
@@ -33,11 +33,11 @@ const INITIAL_DATA = {
 }
 
 const CreateDevelopment = () => {
-    const { isCreating, createDevelopment } = useCreateDevelopment();
+    const { isCreating } = useCreateDevelopment();
     const { isLoading, urls, uploadImage } = useUploadImage();
     const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
 
     const onSubmit = () => {

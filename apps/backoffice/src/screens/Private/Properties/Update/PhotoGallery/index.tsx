@@ -27,7 +27,7 @@ const PhotoGalleryUpdate = ({ oldUrls, setImages }: GalleryProps) => {
 
   useEffect(() => {
     setUrls((prev) => ([...prev, url]))
-    setImages((prev) => ([url]))
+    setImages(() => ([url]))
   }, [initialUrls]);
 
   console.log(urls)

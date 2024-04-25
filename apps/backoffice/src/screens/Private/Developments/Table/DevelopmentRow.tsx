@@ -3,7 +3,6 @@ import { Development } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
 import { Link } from "react-router-dom";
-import { Speaker } from "react-feather";
 
 interface Props {
   development: Development;
@@ -12,7 +11,7 @@ interface Props {
   onSelect?: () => void;
 }
 
-const DevelopmentRow = ({ development, index, selected, onSelect }: Props) => {
+const DevelopmentRow = ({ development }: Props) => {
   // const {isDeleting, deleteContact  } = useDeleteContact();
 
   // const { id: contactId, name } = contact;
