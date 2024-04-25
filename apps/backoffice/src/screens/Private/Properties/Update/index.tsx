@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Location from "./Location";
 import {
   useDevelopments,
+  useForm,
   useProperty,
   useUpdateProperty,
   useUploadImage,
@@ -12,13 +13,12 @@ import {
 import Floorplants from "./Floorplants";
 import { Development } from "@itaaj/entities";
 import PhotoGalleryUpdate from "./PhotoGallery";
+import { useNavigate } from "react-router-dom";
 
 const UpdateProperty = () => {
   const { isLoading, property: propertyInfo } = useProperty();
 
-  console.log("PROPIEDAD A EDITAR", propertyInfo)
-
-  const [property, setProperty] = useState({
+  const {formState:property, handleChange, setFormState} = useForm({
     name: propertyInfo?.name || "",
     address: propertyInfo?.address || "",
     city: propertyInfo?.city || "",
@@ -35,7 +35,7 @@ const UpdateProperty = () => {
     garage: propertyInfo?.garage || 0,
     bedrooms: propertyInfo?.bedrooms || 0,
     bathrooms: propertyInfo?.bathrooms || 0,
-    antiquity: 0,
+    antiquity: propertyInfo?.antiquity || 0,
     balcony: 0,
     kitcken: 0,
     propertyStatus: propertyInfo?.propertyStatus || "",
@@ -48,19 +48,8 @@ const UpdateProperty = () => {
     floorPlans: propertyInfo?.floorPlans || [],
   });
 
-  const [images, setImages] = useState([""]);
+  const [images, setImages] = useState(propertyInfo?.images || []);
   const [floorPlans, seFloorPlans] = useState([""]);
-
-  const handleChange = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    setProperty((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
 
   const [options, setOptions] = useState("overview");
   const [longitud, setLongitud] = useState(0);
@@ -71,6 +60,7 @@ const UpdateProperty = () => {
   const { url } = useUploadImage();
 
   const { isEditing, editProperty } = useUpdateProperty();
+  const navigate = useNavigate();
 
   const onSubmitUpdate = () => {
     editProperty({
@@ -81,6 +71,10 @@ const UpdateProperty = () => {
       location: { longitude: longitud, latitude: latitud },
       description,
       floorPlans,
+    }, {
+      onSuccess: () => {
+        navigate('/properties')
+    }
     });
   };
 
@@ -142,8 +136,9 @@ const UpdateProperty = () => {
   };
 
   useEffect(() => {
-    if (propertyInfo) {
-      setProperty({
+    if(propertyInfo){
+
+      setFormState({
         name: propertyInfo.name || '',
         address: propertyInfo.address || '',
         city: propertyInfo.city || '',
@@ -173,6 +168,7 @@ const UpdateProperty = () => {
         floorPlans: propertyInfo.floorPlans || [],
       });
     }
+
   }, [propertyInfo]);
 
   if (isLoading) return <Loader />;
@@ -227,7 +223,8 @@ const UpdateProperty = () => {
             <div className={styles.col}>
               <Field label="Habitaciones">
                 <Input
-                  value={property.bathrooms}
+                type="number"
+                  value={property.bedrooms}
                   name="bedrooms"
                   onChange={handleChange}
                 />

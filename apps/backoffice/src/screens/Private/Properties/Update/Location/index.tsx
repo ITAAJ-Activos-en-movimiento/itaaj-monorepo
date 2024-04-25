@@ -52,7 +52,7 @@ const Location = ({
       });
   };
 
-  const addressUpdate = address + " " + city + " " + state + " " + country;
+  // const addressUpdate = address + " " + city + " " + state + " " + country;
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,10 +62,10 @@ const Location = ({
 
   return (
     <div className={styles.content}>
-      <h3>Editar Detalles de ubicacion</h3>
+      <h3>Editar Detalles de ubicación</h3>
 
-      <Field label="Direccion">
-        <Input value={addressUpdate} name="address" onChange={handleChange} />
+      <Field label="Dirección">
+        <Input value={address} name="address" onChange={handleChange} />
       </Field>
 
       <div className={styles.col}>

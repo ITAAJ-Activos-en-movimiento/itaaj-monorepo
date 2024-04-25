@@ -9,26 +9,38 @@ interface GalleryProps {
 }
 
 const PhotoGalleryUpdate = ({ oldUrls, setImages }: GalleryProps) => {
-  const { isLoading, urls: initialUrls, uploadImage } = useUploadImage();
+  const { isLoading, urls: initialUrls, url, uploadImage } = useUploadImage();
   const mergedUrls = [...oldUrls, ...initialUrls];
   const [urls, setUrls] = useState<string[]>(mergedUrls);
 
   const deletePhoto = (url: string) => {
     const newUrls = urls.filter((u) => u !== url);
     setUrls(newUrls);
+    setImages(newUrls);
   };
+
+  // useEffect(() => {
+  //   const mergedUrls = [...oldUrls, ...initialUrls];
+  //   setUrls(mergedUrls)
+  //   setImages(mergedUrls);
+  // }, [oldUrls, initialUrls]);
+
+  useEffect(() => {
+    setUrls((prev) => ([...prev, url]))
+    setImages((prev) => ([url]))
+  }, [initialUrls]);
+
+  console.log(urls)
 
   useEffect(() => {
     const mergedUrls = [...oldUrls, ...initialUrls];
     setUrls(mergedUrls)
-    setImages(mergedUrls);
-  }, [oldUrls, initialUrls]);
-
-  console.log(uploadImage);
+    setImages(mergedUrls)
+  }, []);
 
   return (
     <div>
-      <h3>Photos gallery</h3>
+      <h3>Galeria de fotos</h3>
       <p>Organize and display your photos</p>
       <ImageInput
         // preview={url || placeholderImage}

@@ -11,6 +11,7 @@ import styles from './Menus.module.css';
 import { MoreVertical } from 'react-feather';
 import { createPortal } from 'react-dom';
 import { useOutsideClick } from '@/hooks';
+import { Link } from 'react-router-dom';
 
 interface Props {
   children: React.ReactNode;
@@ -147,10 +148,29 @@ const Option = ({ children, onClick, ...rest }: ButtonProps) => {
   );
 };
 
+const LinkTo = ({
+  to,
+  children,
+  ...rest
+}: {
+  to: string;
+  children: ReactNode;
+}) => {
+  return (
+    <li>
+      <Link to={to} className={styles.button} {...rest}>
+        {children}
+      </Link>
+    </li>
+  );
+};
+
+
 Menus.Menu = Menu;
 Menus.Toggle = Toggle;
 Menus.List = List;
 Menus.Button = Button;
 Menus.Option = Option;
+Menus.LinkTo = LinkTo;
 
 export default Menus;

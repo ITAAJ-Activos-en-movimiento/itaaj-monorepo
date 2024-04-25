@@ -21,6 +21,7 @@ export const useForm = <T>(initialState: T) => {
         },
       }));
     } else {
+    console.log(name, value)
       setFormState((prev) => ({
         ...prev,
         [name]: value,
