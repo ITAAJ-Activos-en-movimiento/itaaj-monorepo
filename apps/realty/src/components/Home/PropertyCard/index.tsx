@@ -11,7 +11,7 @@ const ProeprtyCard = ({loc, images, city, address, name, price, category, slug, 
         <picture className={styles.picture}>
 
         <Image src={images && images?.length > 2? images[0] : '/img-placeholder.jpg'} width={1050} height={150} style={{
-            objectFit: 'cover'
+            objectFit: 'contain'
         }} alt={name} /> 
         </picture>
 
