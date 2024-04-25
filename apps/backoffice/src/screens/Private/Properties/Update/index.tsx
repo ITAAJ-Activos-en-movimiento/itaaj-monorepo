@@ -167,6 +167,7 @@ const UpdateProperty = () => {
         zipcode: propertyInfo.zipcode || 0,
         floorPlans: propertyInfo.floorPlans || [],
       });
+      setImages(propertyInfo?.images || []);
     }
 
   }, [propertyInfo]);
