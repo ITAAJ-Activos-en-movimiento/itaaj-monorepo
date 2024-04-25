@@ -191,8 +191,8 @@ const Property = async ({
           <div className={styles.map}>
             <Map
               location={{
-                latitude: property.location.longitude,
-                longitude: property.location.latitude,
+                latitude: property.location.latitude,
+                longitude: property.location.longitude,
               }}
             />
             <p>
