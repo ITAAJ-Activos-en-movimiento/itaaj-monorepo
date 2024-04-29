@@ -3,6 +3,7 @@ import { Development } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
 import { useDeleteDevelopment } from "@/hooks";
+import { Link } from "react-router-dom";
 
 interface Props {
   development: Development;
@@ -95,12 +96,12 @@ const DevelopmentRow = ({ development }: Props) => {
             <Menus.Toggle id={development.id} />
 
             <Menus.List id={development.id}>
-              {/* <Menus.Button>
-                <Link to={"/products/" + development.uuid}>Ver</Link>
-              </Menus.Button> */}
-              <Modal.Open opens="edit">
+              <Menus.Button>
+                <Link to={`/development/edit/${development.slug}`}>Editar</Link>
+              </Menus.Button>
+              {/* <Modal.Open opens="edit">
                 <Menus.Button>Editar</Menus.Button>
-              </Modal.Open>
+              </Modal.Open> */}
 
               
               <Menus.Button onClick={() => deleteDevelopment(development.id!)}>

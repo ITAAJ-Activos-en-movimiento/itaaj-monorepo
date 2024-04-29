@@ -168,6 +168,7 @@ const UpdateProperty = () => {
         floorPlans: propertyInfo.floorPlans || [],
       });
       setImages(propertyInfo?.images || []);
+      setDescription(propertyInfo?.description)
     }
 
   }, [propertyInfo]);
@@ -339,7 +340,7 @@ const UpdateProperty = () => {
             <div className={styles.divider}>
               <Field label="Descripción">
                 <TextEditor
-                  value={property.description}
+                  value={description}
                   onChange={handleEditorChange}
                 />
               </Field>
