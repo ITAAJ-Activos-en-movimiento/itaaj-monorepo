@@ -2,7 +2,7 @@ import { Modal, Table } from "@/containers";
 import { Development } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
-import { Link } from "react-router-dom";
+import { useDeleteDevelopment } from "@/hooks";
 
 interface Props {
   development: Development;
@@ -12,6 +12,9 @@ interface Props {
 }
 
 const DevelopmentRow = ({ development }: Props) => {
+  const { deleteDevelopment } = useDeleteDevelopment();
+
+  console.log(development)
   // const {isDeleting, deleteContact  } = useDeleteContact();
 
   // const { id: contactId, name } = contact;
@@ -89,18 +92,20 @@ const DevelopmentRow = ({ development }: Props) => {
       <div>
         <Modal>
           <Menus.Menu>
-            <Menus.Toggle id={development.uuid} />
+            <Menus.Toggle id={development.id} />
 
-            <Menus.List id={development.uuid}>
-              <Menus.Button>
+            <Menus.List id={development.id}>
+              {/* <Menus.Button>
                 <Link to={"/products/" + development.uuid}>Ver</Link>
-              </Menus.Button>
+              </Menus.Button> */}
               <Modal.Open opens="edit">
                 <Menus.Button>Editar</Menus.Button>
               </Modal.Open>
-              <Modal.Open opens="delete">
-                <Menus.Button>Eliminar</Menus.Button>
-              </Modal.Open>
+
+              
+              <Menus.Button onClick={() => deleteDevelopment(development.id!)}>
+                Eliminar
+              </Menus.Button>
             </Menus.List>
           </Menus.Menu>
 

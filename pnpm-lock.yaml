@@ -234,6 +234,12 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
 
+  packages/blockchain:
+    dependencies:
+      ton-core:
+        specifier: ^0.53.0
+        version: 0.53.0(ton-crypto@3.2.0)
+
   packages/business-logic:
     dependencies:
       '@itaaj/data-sources':
@@ -8039,6 +8045,10 @@ packages:
       semver: 7.5.0
     dev: false
 
+  /jssha@3.2.0:
+    resolution: {integrity: sha512-QuruyBENDWdN4tZwJbQq7/eAK85FqrI4oDbXjy5IBhYD+2pTJyBUWZe8ctWaCkrV0gy6AaelgOZZBMeswEa/6Q==}
+    dev: false
+
   /jsx-ast-utils@3.3.3:
     resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
     engines: {node: '>=4.0'}
@@ -11056,6 +11066,10 @@ packages:
     engines: {node: '>= 4.7.0'}
     dev: false
 
+  /symbol.inspect@1.0.1:
+    resolution: {integrity: sha512-YQSL4duoHmLhsTD1Pw8RW6TZ5MaTX5rXJnqacJottr2P2LZBF/Yvrc3ku4NUpMOm8aM0KOCqM+UAkMA5HWQCzQ==}
+    dev: false
+
   /synckit@0.8.5:
     resolution: {integrity: sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -11192,6 +11206,29 @@ packages:
   /toidentifier@1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
+    dev: false
+
+  /ton-core@0.53.0(ton-crypto@3.2.0):
+    resolution: {integrity: sha512-uO/U1oVLdEliWWbwfNQQK+61C+KM0ehcTdHQ6cN0WSEH2UzGfdVFpC4Wb0ph+wUYe/5njl7TA0uL9nif9Q6qwA==}
+    peerDependencies:
+      ton-crypto: '>=3.2.0'
+    dependencies:
+      symbol.inspect: 1.0.1
+      ton-crypto: 3.2.0
+    dev: false
+
+  /ton-crypto-primitives@2.0.0:
+    resolution: {integrity: sha512-K+qKjpS0h9sPW6oExcpxnzuQ7nEgHEiDKwIqE/jWD25o8iFGe3FWj1gKxFNbKE9wwYKc5IV8FwrU+raF0KO5nQ==}
+    dependencies:
+      jssha: 3.2.0
+    dev: false
+
+  /ton-crypto@3.2.0:
+    resolution: {integrity: sha512-fltdBNQ45gARMuGMEOjPZWPJ5eSql8p3CA0Dj7tPv5lhU5ziT8SxXLAzDraR9HJ8YpjBHLVvYyhMLRiEwxgtMQ==}
+    dependencies:
+      jssha: 3.2.0
+      ton-crypto-primitives: 2.0.0
+      tweetnacl: 1.0.3
     dev: false
 
   /tr46@0.0.3:
@@ -11333,6 +11370,10 @@ packages:
       turbo-windows-64: 1.12.4
       turbo-windows-arm64: 1.12.4
     dev: true
+
+  /tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+    dev: false
 
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}

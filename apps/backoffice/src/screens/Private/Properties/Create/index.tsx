@@ -8,6 +8,7 @@ import { useCreateProperties, useDevelopments, useForm, useUploadImage } from '@
 import { useNavigate } from 'react-router-dom'
 import initialPropertyState from './initial-state'
 import Floorplants from './Floorplants'
+import { Category } from '@itaaj/entities'
 
 const CreateProperty = () => {
     const [options, setOptions] = useState('overview');
@@ -27,7 +28,7 @@ const CreateProperty = () => {
     const { isCreating, createProperty } = useCreateProperties();
 
     const onSubmit = () => {
-        createProperty({ ...property, image: url, location: { longitude: longitud, latitude: latitud }, description }, {
+        createProperty({ ...property, category: Category.GENERAL, images: urls, image: url, location: { longitude: longitud, latitude: latitud }, description }, {
             onSuccess: () => {
                 navigate('/properties')
             }

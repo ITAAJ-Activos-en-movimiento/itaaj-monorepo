@@ -24,6 +24,7 @@ const initialPropertyState = {
     images: [],
     bathrooms: 0,
     bedrooms: 0,
+    categoty: "general"
 
  
 }

@@ -54,7 +54,7 @@ const UpdateProperty = () => {
   const [options, setOptions] = useState("overview");
   const [longitud, setLongitud] = useState(0);
   const [latitud, setLatitud] = useState(0);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(propertyInfo?.description || "");
 
   const { developments } = useDevelopments();
   const { url } = useUploadImage();

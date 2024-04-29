@@ -21,3 +21,8 @@ export const updateDevelopmentApi = async (development: Partial<Development>) =>
   const { data } = await itaajApi.put(`/developments`, development);
   return data;
 };
+
+export const deleteDevelopmentApi = async (id: string) => {
+  const { data } = await itaajApi.patch(`/developments/${id}/delete`);
+  return data;
+};

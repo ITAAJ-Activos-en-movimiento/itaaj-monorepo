@@ -2,12 +2,15 @@ import { Development } from '@itaaj/entities';
 import { Table } from '@/containers'
 import { useDevelopments } from '@/hooks';
 import DevelopmentRow from './DevelopmentRow';
+import Menus from '@/components/Shared/Menus';
 
 const DevelopmentTable = () => {
     const { developments } = useDevelopments();
     // const [{ selectedRows, selectAll }, toggleRowSelect, toggleSelectAll] = useTableSelection({ data: products.items });
 
   return (
+    <Menus>
+
         <Table columns='1fr 1fr 1fr 1fr 1fr 5rem' >
             <Table.Header>
 
@@ -25,6 +28,8 @@ const DevelopmentTable = () => {
             <Table.Body<Development> data={developments} render={(development, index) => <DevelopmentRow development={development} index={index} key={development.uuid}  />}/>
                  
         </Table>
+    </Menus>
+
   )
 }
 

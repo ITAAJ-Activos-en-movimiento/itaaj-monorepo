@@ -8,7 +8,8 @@ import { Development } from '@itaaj/entities'
 // import { useNavigate } from 'react-router-dom'
 import { useMultistep } from '@/hooks/form/useMultistep'
 import Details from './Details'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const INITIAL_DATA = {
     price: 0,
@@ -33,19 +34,23 @@ const INITIAL_DATA = {
 }
 
 const CreateDevelopment = () => {
-    const { isCreating } = useCreateDevelopment();
+    const { isCreating, createDevelopment } = useCreateDevelopment();
     const { isLoading, urls, uploadImage } = useUploadImage();
     const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
+    const [longitud, setLongitud] = useState(0);
+    const [latitud, setLatitud] = useState(0);
+    const [description, setDescription] = useState('');
 
-    // const navigate = useNavigate();
+    console.log(development)
+    const navigate = useNavigate();
 
 
     const onSubmit = () => {
-        // createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud }, description }, {
-        //     onSuccess: () => {
-        //         navigate('/developments')
-        //     }
-        // })
+        createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud }, description }, {
+            onSuccess: () => {
+                navigate('/developments')
+            }
+        })
     }
 
 
@@ -64,7 +69,7 @@ const CreateDevelopment = () => {
 
     const { step, goTo } = useMultistep([
         <Details  development={development} handleChange={handleChange}  />,
-        <Location  development={development}  handleChange={handleChange}  />,
+        <Location setLongitud={setLongitud} latitud={latitud} longitud={longitud} setLatitud={setLatitud} formState={development} handleChange={handleChange}  />,
         <PhotoGallery remove={removeImage} development={development} isLoading={isLoading} uploadImage={uploadImage} urls={development.images} handleChange={handleChange}  />
 
     ])
