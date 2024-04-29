@@ -6,8 +6,7 @@ export const deleteDevelopment = async (id: string): Promise<boolean | Error> =>
   try {
     const db = getDbInstance();
     const updatedPost = await db
-      .update(developments)
-      .set({ status: "deleted" })
+      .delete(developments)
       .where(eq(developments.id, id))
       .returning();
 

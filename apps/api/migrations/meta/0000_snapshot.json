@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "aa1e274b-462b-49b2-a235-645d4bf9aa11",
+  "id": "ca0a567b-6c5b-4e15-8baa-9210795fc0e7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -19,13 +19,13 @@
           "name": "name",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "slug": {
           "name": "slug",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "description": {
           "name": "description",
@@ -37,25 +37,25 @@
           "name": "address",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "city": {
           "name": "city",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "state": {
           "name": "state",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "country": {
           "name": "country",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "neighborhood": {
           "name": "neighborhood",
@@ -91,13 +91,13 @@
           "name": "location",
           "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "price": {
           "name": "price",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "area": {
           "name": "area",

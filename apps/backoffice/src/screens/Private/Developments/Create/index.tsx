@@ -39,14 +39,14 @@ const CreateDevelopment = () => {
     const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
     const [longitud, setLongitud] = useState(0);
     const [latitud, setLatitud] = useState(0);
-    const [description, setDescription] = useState('');
+    // const [description, setDescription] = useState('');
 
     console.log(development)
     const navigate = useNavigate();
 
 
     const onSubmit = () => {
-        createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud }, description }, {
+        createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud } }, {
             onSuccess: () => {
                 navigate('/developments')
             }
