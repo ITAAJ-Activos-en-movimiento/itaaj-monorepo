@@ -4,7 +4,7 @@ import { Columns, Image, Info, List, MapPin  } from 'react-feather'
 import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
-import { useCreateProperties, useDevelopments, useForm, useUploadImage } from '@/hooks'
+import { useCreateProperties, useForm, useUploadImage } from '@/hooks'
 import { useNavigate } from 'react-router-dom'
 import initialPropertyState from './initial-state'
 import Floorplants from './Floorplants'
@@ -16,7 +16,7 @@ const CreateProperty = () => {
     const [latitud, setLatitud] = useState(0);
     const [description, setDescription] = useState('');
 
-    const { developments } = useDevelopments();
+    // const { developments } = useDevelopments();
     const { isLoading, urls, url, uploadImage } = useUploadImage();
 
     const { formState: property, handleChange } = useForm(initialPropertyState);
@@ -35,61 +35,61 @@ const CreateProperty = () => {
         })
     }
 
-    const handleChangeDevelopment = (e: any) => {
-        if (e.target.name === 'development') {
-            const selectedDevelopment = developments.find(
-              (development: any) => development.id === e.target.value
-            );
+    // const handleChangeDevelopment = (e: any) => {
+    //     if (e.target.name === 'development') {
+    //         const selectedDevelopment = developments.find(
+    //           (development: any) => development.id === e.target.value
+    //         );
       
-            if (selectedDevelopment) {
-              const { location, images, city, country, state } = selectedDevelopment; // Agrega la ubicación y las imágenes del desarrollo
-              handleChange({
-                target: {
-                  name: 'location',
-                  value: location,
-                },
-              } as React.ChangeEvent<any>);
+    //         if (selectedDevelopment) {
+    //           const { location, images, city, country, state } = selectedDevelopment; // Agrega la ubicación y las imágenes del desarrollo
+    //           handleChange({
+    //             target: {
+    //               name: 'location',
+    //               value: location,
+    //             },
+    //           } as React.ChangeEvent<any>);
 
-              handleChange({
-                target: {
-                  name: 'city',
-                  value: city,
-                },
-              } as React.ChangeEvent<any>);
+    //           handleChange({
+    //             target: {
+    //               name: 'city',
+    //               value: city,
+    //             },
+    //           } as React.ChangeEvent<any>);
               
-              handleChange({
-                target: {
-                  name: 'country',
-                  value: country,
-                },
-              } as React.ChangeEvent<any>);
+    //           handleChange({
+    //             target: {
+    //               name: 'country',
+    //               value: country,
+    //             },
+    //           } as React.ChangeEvent<any>);
               
-              handleChange({
-                target: {
-                  name: 'state',
-                  value: state,
-                },
-              } as React.ChangeEvent<any>);
+    //           handleChange({
+    //             target: {
+    //               name: 'state',
+    //               value: state,
+    //             },
+    //           } as React.ChangeEvent<any>);
 
-              handleChange({
-                target: {
-                  name: 'development',
-                  value: e.target.value,
-                },
-              } as React.ChangeEvent<any>);
+    //           handleChange({
+    //             target: {
+    //               name: 'development',
+    //               value: e.target.value,
+    //             },
+    //           } as React.ChangeEvent<any>);
       
-              handleChange({
-                target: {
-                  name: 'images',
-                  value: images,
-                },
-              } as React.ChangeEvent<any>);
-            }
-          } else {
-            const { name, value } = e.target;
-            handleChange({ target: { name, value } } as React.ChangeEvent<any>);
-          }
-        };
+    //           handleChange({
+    //             target: {
+    //               name: 'images',
+    //               value: images,
+    //             },
+    //           } as React.ChangeEvent<any>);
+    //         }
+    //       } else {
+    //         const { name, value } = e.target;
+    //         handleChange({ target: { name, value } } as React.ChangeEvent<any>);
+    //       }
+    //     };
      
     const handleEditorChange = (value: any) => {
         setDescription(value);
@@ -135,22 +135,22 @@ const CreateProperty = () => {
                             </Field>
 
                         </div>
-
-                        <div className={styles.col}>
-
-                            <Field label='Precio'>
+                        <Field label='Precio'>
                                 <Input type='number' value={property.price} name='price' onChange={handleChange} />
                             </Field>
+                        <div className={styles.col}>
 
-                            <Field label='Desarrollo'>
-                                <select name="development" id="" onChange={handleChangeDevelopment} >
+                            
+
+                            {/* <Field label='Desarrollo'> */}
+                                {/* <select name="development" id="" onChange={handleChangeDevelopment} >
                                     <option value="">Ningúno</option>
                                     {developments?.map((development: any) => (
                                         <option value={development.id}>{development.name}</option>
                                     ))}
-                                </select>
+                                </select> */}
                                 {/* <Input value={property.development} name='households' onChange={handleChange} /> */}
-                            </Field>
+                            {/* </Field> */}
 
 
 
@@ -171,11 +171,11 @@ const CreateProperty = () => {
                             <Field label='Superficie Construida'>
                                 <Input name="area.building_area" placeholder='91 m2' onChange={handleChange} />
                             </Field>
-                            <Field label='Superficie Total'>
-                                <Input name="area.total_area" placeholder='128 m2' onChange={handleChange} />
-                            </Field>
                             <Field label='Piso' tip='En que piso esta la propiedad'>
                                 <Input name="floor" placeholder='1' onChange={handleChange} />
+                            </Field>
+                            <Field label='Estacionamientos' >
+                                <Input type='number' name="garage" placeholder='1' onChange={handleChange} />
                             </Field>
                         </div>
 

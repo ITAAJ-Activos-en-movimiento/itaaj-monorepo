@@ -4,14 +4,14 @@ import { Columns, Image, Info, List, MapPin } from "react-feather";
 import { useEffect, useState } from "react";
 import Location from "./Location";
 import {
-  useDevelopments,
+  // useDevelopments,
   useForm,
   useProperty,
   useUpdateProperty,
   useUploadImage,
 } from "@/hooks";
 import Floorplants from "./Floorplants";
-import { Development } from "@itaaj/entities";
+// import { Development } from "@itaaj/entities";
 import PhotoGalleryUpdate from "./PhotoGallery";
 import { useNavigate } from "react-router-dom";
 
@@ -56,7 +56,7 @@ const UpdateProperty = () => {
   const [latitud, setLatitud] = useState(0);
   const [description, setDescription] = useState(propertyInfo?.description || "");
 
-  const { developments } = useDevelopments();
+  // const { developments } = useDevelopments();
   const { url } = useUploadImage();
 
   const { isEditing, editProperty } = useUpdateProperty();
@@ -78,58 +78,58 @@ const UpdateProperty = () => {
     });
   };
 
-  const handleChangeDevelopment = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.name === "development") {
-      const selectedDevelopment = developments.find(
-        (development: Development) => development.id === e.target.value
-      );
+  // const handleChangeDevelopment = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   if (e.target.name === "development") {
+  //     const selectedDevelopment = developments.find(
+  //       (development: Development) => development.id === e.target.value
+  //     );
 
-      if (selectedDevelopment) {
-        const { location, images, city, country, state } = selectedDevelopment;
-        handleChange({
-          target: {
-            name: "location",
-            value: location,
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
+  //     if (selectedDevelopment) {
+  //       const { location, images, city, country, state } = selectedDevelopment;
+  //       handleChange({
+  //         target: {
+  //           name: "location",
+  //           value: location,
+  //         },
+  //       } as React.ChangeEvent<HTMLInputElement>);
 
-        handleChange({
-          target: {
-            name: "city",
-            value: city,
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
+  //       handleChange({
+  //         target: {
+  //           name: "city",
+  //           value: city,
+  //         },
+  //       } as React.ChangeEvent<HTMLInputElement>);
 
-        handleChange({
-          target: {
-            name: "country",
-            value: country,
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
+  //       handleChange({
+  //         target: {
+  //           name: "country",
+  //           value: country,
+  //         },
+  //       } as React.ChangeEvent<HTMLInputElement>);
 
-        handleChange({
-          target: {
-            name: "state",
-            value: state,
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
+  //       handleChange({
+  //         target: {
+  //           name: "state",
+  //           value: state,
+  //         },
+  //       } as React.ChangeEvent<HTMLInputElement>);
 
-        handleChange(e);
+  //       handleChange(e);
 
-        handleChange({
-          target: {
-            name: "images",
-            value: images,
-          },
-        } as React.ChangeEvent<HTMLInputElement>);
-      }
-    } else {
-      const { name, value } = e.target;
-      handleChange({
-        target: { name, value },
-      } as React.ChangeEvent<HTMLInputElement>);
-    }
-  };
+  //       handleChange({
+  //         target: {
+  //           name: "images",
+  //           value: images,
+  //         },
+  //       } as React.ChangeEvent<HTMLInputElement>);
+  //     }
+  //   } else {
+  //     const { name, value } = e.target;
+  //     handleChange({
+  //       target: { name, value },
+  //     } as React.ChangeEvent<HTMLInputElement>);
+  //   }
+  // };
 
   const handleEditorChange = (value: string) => {
     setDescription(value);
@@ -250,8 +250,8 @@ const UpdateProperty = () => {
                 />
               </Field>
 
-              <Field label="Desarrollo">
-                <select
+              {/* <Field label="Desarrollo"> */}
+                {/* <select
                   value={property.development}
                   name="development"
                   id=""
@@ -261,9 +261,9 @@ const UpdateProperty = () => {
                   {developments?.map((development: Development) => (
                     <option value={development.id}>{development.name}</option>
                   ))}
-                </select>
+                </select> */}
                 {/* <Input value={property.development} name='households' onChange={handleChange} /> */}
-              </Field>
+              {/* </Field> */}
             </div>
 
             <h3>Detalles</h3>
@@ -293,14 +293,6 @@ const UpdateProperty = () => {
                   onChange={handleChange}
                 />
               </Field>
-              <Field label="Superficie Total">
-                <Input
-                  value={property.area.total_area}
-                  name="area.total_area"
-                  placeholder="128 m2"
-                  onChange={handleChange}
-                />
-              </Field>
               <Field label="Piso" tip="En que piso esta la propiedad">
                 <Input
                   value={property.floor}
@@ -309,6 +301,9 @@ const UpdateProperty = () => {
                   onChange={handleChange}
                 />
               </Field>
+              <Field label='Estacionamientos' >
+                                <Input type='number' name="garage" placeholder='1' onChange={handleChange} />
+                            </Field>
             </div>
 
             <div className={styles.col}>

@@ -110,14 +110,20 @@ const Property = async ({
               <i className="bx bx-bath"></i>
               <p>{property?.bathrooms} baños</p>
             </div>
+            {property?.area?.land_area.length > 0 && (
+
             <div>
               <i className="bx bx-area"></i>
               <p>{property?.area?.land_area} m&sup2; Superficie Terreno</p>
-            </div>           
+            </div>      
+            )}
+            {property?.area.building_area.length > 0 && (
             <div>
               <i className="bx bx-building-house"></i>
               <p>{property?.area?.building_area} m&sup2; Superficie Construcción</p>
             </div>
+            )}
+
           </div>
           <h2 className={styles.title_property}>
             <strong>{changeLanguage(property?.type)}</strong> en venta en{" "}
