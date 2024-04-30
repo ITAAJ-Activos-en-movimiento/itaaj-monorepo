@@ -112,7 +112,7 @@ const Property = async ({
             </div>
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area.total_area} m&sup2; Total</p>
+              <p>{property?.area?.land_area} m&sup2; Terreno</p>
             </div>           
             <div>
               <i className="bx bx-building-house"></i>
