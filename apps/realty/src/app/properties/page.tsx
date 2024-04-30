@@ -45,10 +45,12 @@ const Properties = async ({
         developmentVistos.add(item.development);
         return true;
       }
-      return false;
+      return true;
     }
     return true; // Mantener todas las instancias con development nulo
   });
+
+  console.log(listaUnica)
 
   return (
     <div>

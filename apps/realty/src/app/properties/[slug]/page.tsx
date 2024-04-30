@@ -65,6 +65,7 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
+  console.log(property)
   return (
     <>
       <div className={styles.header}>
@@ -111,11 +112,11 @@ const Property = async ({
             </div>
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area.total_area} m&sup2;</p>
-            </div>
+              <p>{property?.area.total_area} m&sup2; Total</p>
+            </div>           
             <div>
               <i className="bx bx-building-house"></i>
-              <p>{property?.foor} planta</p>
+              <p>{property?.area?.building_area} m&sup2; construido</p>
             </div>
           </div>
           <h2 className={styles.title_property}>
@@ -126,9 +127,9 @@ const Property = async ({
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: property?.description }}
           ></p>
-          <span className={styles.pricein}>
+          {/* <span className={styles.pricein}>
             {property.price > 8000000 ? "Precio en USD" : ""}
-          </span>
+          </span> */}
           <h2 className={styles.title_property}>Caracteristicas</h2>
           <div className={styles.specs}>
             <div>
@@ -163,10 +164,10 @@ const Property = async ({
               </span>
             </div>
             <div>
-              <i className="bx bx-chair"></i>
+            <i className='bx bxs-car-garage' ></i>
               <span>
-                <p>Amueblado</p>
-                <h3>No</h3>
+                <p>Estacionamientos</p>
+                <h3>0</h3>
               </span>
             </div>
             <div>
