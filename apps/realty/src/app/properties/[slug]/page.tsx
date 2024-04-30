@@ -114,13 +114,17 @@ const Property = async ({
 
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area?.land_area} m&sup2; <br /> Superficie Terreno</p>
+              <p style={{
+                textAlign: "center"
+              }}>Superficie Terreno <br /> {property?.area?.land_area} m&sup2;</p>
             </div>      
             )}
             {property?.area.building_area.length > 0 && (
             <div>
               <i className="bx bx-building-house"></i>
-              <p>{property?.area?.building_area} m&sup2; <br /> Superficie Construcción</p>
+              <p style={{
+                textAlign: "center"
+              }}>Superficie Construcción <br /> {property?.area?.building_area} m&sup2;</p>
             </div>
             )}
 
@@ -183,13 +187,13 @@ const Property = async ({
                 <h3>{property?.floor} planta</h3>
               </span>
             </div> */}
-            <div>
+            {/* <div>
               <i className="bx bx-wrench"></i>
               <span>
                 <p>Estado</p>
                 <h3>{property?.propertyStatus}</h3>
               </span>
-            </div>
+            </div> */}
           </div>
 
           <h2 className={styles.title_property}>

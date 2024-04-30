@@ -414,7 +414,7 @@ const CreateProperty = () => {
               </div>
             </div>
             <div className={styles.col}>
-              <div className={styles.field}>
+              {/* <div className={styles.field}>
                 <label>Estado del inmueble</label>
                 <select onChange={handleChange} name="propertyStatus" id="">
                   <option value="">Selecciona</option>
@@ -424,7 +424,7 @@ const CreateProperty = () => {
                   <option value="A reformar">A reformar</option>
                   <option value="Reformado">Reformado</option>
                 </select>
-              </div>
+              </div> */}
               <div className={styles.field}>
                 <label>Antigüedad</label>
                 <select onChange={handleChange} name="antiquity" id="">
