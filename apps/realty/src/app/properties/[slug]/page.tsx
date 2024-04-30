@@ -173,7 +173,7 @@ const Property = async ({
             <i className='bx bxs-car-garage' ></i>
               <span>
                 <p>Estacionamientos</p>
-                <h3>0</h3>
+                <h3>{property?.garage}</h3>
               </span>
             </div>
             <div>
