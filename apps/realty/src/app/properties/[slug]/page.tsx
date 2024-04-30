@@ -112,11 +112,11 @@ const Property = async ({
             </div>
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area?.land_area} m&sup2; Terreno</p>
+              <p>{property?.area?.land_area} m&sup2; Superficie Terreno</p>
             </div>           
             <div>
               <i className="bx bx-building-house"></i>
-              <p>{property?.area?.building_area} m&sup2; construido</p>
+              <p>{property?.area?.building_area} m&sup2; Superficie Construcción</p>
             </div>
           </div>
           <h2 className={styles.title_property}>
