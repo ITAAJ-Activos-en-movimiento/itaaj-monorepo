@@ -114,13 +114,13 @@ const Property = async ({
 
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area?.land_area} m&sup2; Superficie Terreno</p>
+              <p>{property?.area?.land_area} m&sup2; <br /> Superficie Terreno</p>
             </div>      
             )}
             {property?.area.building_area.length > 0 && (
             <div>
               <i className="bx bx-building-house"></i>
-              <p>{property?.area?.building_area} m&sup2; Superficie Construcción</p>
+              <p>{property?.area?.building_area} m&sup2; <br /> Superficie Construcción</p>
             </div>
             )}
 
