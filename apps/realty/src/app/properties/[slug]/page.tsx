@@ -145,13 +145,13 @@ const Property = async ({
                 <h3>{changeLanguage(property?.type)}</h3>
               </span>
             </div>
-            <div>
+            {/* <div>
               <i className="bx bx-bed"></i>
               <span>
                 <p>Habitaciones</p>
                 <h3>{property?.bedrooms}</h3>
               </span>
-            </div>
+            </div> */}
             <div>
               <i className="bx bx-timer"></i>
               <span>
@@ -176,13 +176,13 @@ const Property = async ({
                 <h3>{property?.garage}</h3>
               </span>
             </div>
-            <div>
+            {/* <div>
               <i className="bx bx-buildings"></i>
               <span>
                 <p>Planta</p>
                 <h3>{property?.floor} planta</h3>
               </span>
-            </div>
+            </div> */}
             <div>
               <i className="bx bx-wrench"></i>
               <span>
