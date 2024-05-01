@@ -32,7 +32,7 @@ export const developments = pgTable("developments", {
   amenities: varchar("amenities", { length: 256 }).array(),
   bedrooms: varchar("bedrooms", { length: 256 }),
   bathrooms: varchar("bathrooms", { length: 256 }),
-  bathroomsMedium: varchar("bathroomsMedium"),  
+  bathrooms_medium: varchar("bathrooms_medium"),  
   image: varchar("image", { length: 256 }),
   owner: varchar("owner", { length: 256 }),
   virtualTourUrl: varchar("virtualTourUrl", { length: 256 }),
