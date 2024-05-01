@@ -1,5 +1,6 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
 import { developments } from "@itaaj/entities";
+import { eq } from "drizzle-orm";
 
 export const getAllDevelopments = () => {
   const result = getDbInstance()
@@ -36,5 +37,29 @@ export const getAllDevelopments = () => {
       blockchainId: developments.blockchainId,
     })
     .from(developments);
+    result.forEach(async (data: any) => {
+      const code = generatePropertyCode();
+      if (!data.blockchainId) {
+        const result = await getDbInstance()
+        .update(developments)
+        .set({...data, blockchainId:code })
+        .where(eq(developments.id, data.id || ""))
+        .returning();
+      }
+  });
   return result;
 };
+
+
+function generatePropertyCode(): string {
+  const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const numeros = '0123456789';
+  const letraInicial = letras.charAt(Math.floor(Math.random() * letras.length));
+  let codigo = letraInicial;
+  
+  for (let i = 0; i < 5; i++) { // Generar 5 dígitos numéricos después de la letra
+      codigo += numeros.charAt(Math.floor(Math.random() * numeros.length));
+  }
+  
+  return codigo;
+}
