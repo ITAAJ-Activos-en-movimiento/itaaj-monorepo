@@ -13,6 +13,7 @@ const initialPropertyState = {
     floor: '',
     street: '',
     garage: 0,
+    bathrooms_medium: "",
     location: {
         longitude: 0,
         latitude: 0,

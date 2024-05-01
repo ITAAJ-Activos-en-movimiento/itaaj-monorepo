@@ -134,6 +134,10 @@ const CreateProperty = () => {
                                 <Input value={property.bathrooms} name='bathrooms' onChange={handleChange} />
                             </Field>
 
+                            <Field label='Medios Baños'>
+                                <Input value={property.bathrooms_medium} name='bathrooms_medium' onChange={handleChange} />
+                            </Field>
+
                         </div>
                         <Field label='Precio'>
                                 <Input type='number' value={property.price} name='price' onChange={handleChange} />

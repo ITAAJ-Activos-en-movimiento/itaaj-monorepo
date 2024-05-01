@@ -32,7 +32,7 @@ const Property = ({images, id, isDevelopment, price, type, floor, development, n
   <>
 
     <div className={styles.card}>
-    <Link href={!isDevelopment?  `/properties/${slug}` : `/developments/${id}`} >
+    <Link href={!isDevelopment?  `/properties/${slug}` : `/developments/${slug}`} >
       {images.length > 0 && images[0].includes('/') && (
         <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
 

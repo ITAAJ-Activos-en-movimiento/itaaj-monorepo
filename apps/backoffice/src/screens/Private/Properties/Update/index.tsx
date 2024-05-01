@@ -25,6 +25,7 @@ const UpdateProperty = () => {
     state: propertyInfo?.state || "",
     country: propertyInfo?.country || "",
     price: propertyInfo?.price || 0,
+    bathrooms_medium: propertyInfo?.bathrooms_medium || "",
     description: propertyInfo?.description || "",
     area: {
       building_area: propertyInfo?.area?.building_area || 0,
@@ -158,6 +159,7 @@ const UpdateProperty = () => {
         antiquity: propertyInfo.antiquity || 0,
         balcony: propertyInfo.balcony || 0,
         kitcken: propertyInfo.kitcken || 0,
+        bathrooms_medium: propertyInfo?.bathrooms_medium || "",
         propertyStatus: propertyInfo.propertyStatus || '',
         type: propertyInfo.type || '',
         category: propertyInfo.category || '',
@@ -238,6 +240,9 @@ const UpdateProperty = () => {
                   onChange={handleChange}
                 />
               </Field>
+              <Field label='Medios Baños'>
+                                <Input value={property.bathrooms_medium} name='bathrooms_medium' onChange={handleChange} />
+                            </Field>
             </div>
 
             <div className={styles.col}>
