@@ -24,6 +24,7 @@ export const properties = pgTable("properties", {
   external_number: varchar("external_number", { length: 256 }),
   internal_number: varchar("internal_number", { length: 256 }),
   location: jsonb("location"),
+  bathroomsMedium: varchar("bathroomsMedium"),
   price: integer("price"),
   floor: varchar("floor", { length: 256 }),
   area: jsonb("area"),

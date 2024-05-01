@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"external_number" varchar(256),
 	"internal_number" varchar(256),
 	"location" jsonb,
+	"bathroomsMedium" varchar,
 	"price" integer,
 	"floor" varchar(256),
 	"area" jsonb,

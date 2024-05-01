@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "ca0a567b-6c5b-4e15-8baa-9210795fc0e7",
+  "id": "bea58355-9cc5-49d1-ac4d-a383ba4c8316",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -531,6 +531,12 @@
         "location": {
           "name": "location",
           "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bathroomsMedium": {
+          "name": "bathroomsMedium",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
