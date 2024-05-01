@@ -16,7 +16,9 @@ const Properties = async ({
     search?: string;
   };
 }) => {
+  const developments = await developmentsApi();
   const properties = await propertiesApi();
+
 
   const newLocations = properties.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
@@ -38,17 +40,7 @@ const Properties = async ({
 
   // Ordenar la lista utilizando la función de comparación personalizada
   const listaOrdenada = properties.sort(compararPorDesarrollo);
-  const developmentVistos = new Set<string>();
-  const listaUnica = listaOrdenada.filter((item: any) => {
-    if (item.development !== null) {
-      if (!developmentVistos.has(item.development)) {
-        developmentVistos.add(item.development);
-        return true;
-      }
-      return true;
-    }
-    return true; // Mantener todas las instancias con development nulo
-  });
+  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
 
   console.log(listaUnica)
 
@@ -79,6 +71,7 @@ const Properties = async ({
         </select>
       </div>
       <PropertiesWithMap
+        developments={developments}
         properties={listaUnica}
         searchParams={searchParams}
         locations={locations}

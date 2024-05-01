@@ -9,7 +9,7 @@ import Cform from '@/components/Contacts/Cform'
 //@ts-ignore
 import Modal from 'react-modal';
 
-const Property = ({images, price, type, floor, development, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
+const Property = ({images, id, isDevelopment, price, type, floor, development, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false); 
   const Showmodal = () => {
@@ -32,7 +32,7 @@ const Property = ({images, price, type, floor, development, name, category, bedr
   <>
 
     <div className={styles.card}>
-    <Link href={category == "general"?  `/properties/${slug}` : `/developments/${development}`} >
+    <Link href={!isDevelopment?  `/properties/${slug}` : `/developments/${id}`} >
       {images.length > 0 && images[0].includes('/') && (
         <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
 

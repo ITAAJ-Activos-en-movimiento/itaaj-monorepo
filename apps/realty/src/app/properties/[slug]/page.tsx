@@ -13,6 +13,7 @@ import Share from "./Share";
 import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
+import { dateFormater } from "@/utils/date-formter";
 const Property = async ({
   params,
   searchParams,
@@ -194,6 +195,14 @@ const Property = async ({
                 <h3>{property?.propertyStatus}</h3>
               </span>
             </div> */}
+          </div>
+
+          <div style={{
+            marginTop: 20
+          }} >
+            <p style={{
+              fontSize: 15
+            }} >{dateFormater(property?.createdAt)}</p>
           </div>
 
           <h2 className={styles.title_property}>

@@ -6,7 +6,7 @@ import MapProperties from "../MapProperties";
 import Link from "next/link";
 import { Map } from "react-feather";
 
-const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
+const PropertiesWithMap = ({ developments, properties, searchParams, locations }: any) => {
   const [scrollTop, setScrollTop] = useState(0);
 
   const [hidden, setHidden] = useState(true);
@@ -54,7 +54,28 @@ const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
 
       )}
         </div>
-
+        
+        <div className={styles.properties}>
+          {developments
+            ?.filter(
+              (property: any) =>
+                property.type
+                  .toLowerCase()
+                  .includes(searchParams?.type?.toLowerCase() || "") ||
+                property.address
+                  .toLowerCase()
+                  .includes(searchParams?.search?.toLowerCase() || "") ||
+                property.city
+                  .toLowerCase()
+                  .includes(searchParams?.search?.toLowerCase()) ||
+                property.state
+                  .toLowerCase()
+                  .includes(searchParams?.search?.toLowerCase())
+            )
+            .map((property: any) => (
+              <Property key={property.id} isDevelopment={true} {...property} />
+            ))}
+        </div>
         <div className={styles.properties}>
           {properties
             ?.filter(
@@ -73,7 +94,7 @@ const PropertiesWithMap = ({ properties, searchParams, locations }: any) => {
                   .includes(searchParams?.search?.toLowerCase())
             )
             .map((property: any) => (
-              <Property key={property.id} {...property} />
+              <Property key={property.id} isDevelopment={false} {...property} />
             ))}
         </div>
       </div>
