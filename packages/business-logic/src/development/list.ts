@@ -2,7 +2,7 @@ import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
 import { developments } from "@itaaj/entities";
 import { eq } from "drizzle-orm";
 
-export const getAllDevelopments = () => {
+export const getAllDevelopments = async () => {
   const result = getDbInstance()
     .select({
       id: developments.id,
@@ -40,16 +40,16 @@ export const getAllDevelopments = () => {
 
     const elements = result as any[];
 
-    elements.forEach(async (data: any) => {
+    await Promise.all(elements.map(async (data: any) => {
       const code = generatePropertyCode();
       if (!data.blockchainId) {
-        const result = await getDbInstance()
-        .update(developments)
-        .set({...data, blockchainId:code })
-        .where(eq(developments.id, data.id || ""))
-        .returning();
+        await getDbInstance()
+          .update(developments)
+          .set({...data, blockchainId: code })
+          .where(eq(developments.id, data.id || ""))
+          .returning();
       }
-  });
+    }));
   return result;
 };
 
