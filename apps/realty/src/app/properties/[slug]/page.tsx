@@ -205,6 +205,16 @@ const Property = async ({
             }} >{dateFormater(property?.createdAt)}</p>
           </div>
 
+          <div style={{
+            marginTop: 20
+          }} >
+            <p style={{
+              fontSize: 15
+            }} >Código de propiedad: <span style={{
+              fontWeight:600
+            }} >{property?.blockchainId}</span></p>
+          </div>
+
           <h2 className={styles.title_property}>
             {property?.city}, {property?.country}
           </h2>
