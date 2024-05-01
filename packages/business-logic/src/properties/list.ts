@@ -3,13 +3,12 @@ import { properties } from "@itaaj/entities";
 import { eq } from "drizzle-orm";
 
 export const getAllProperties = async () => {
-  const result = getDbInstance()
+  const result = await getDbInstance()
     .select()
     .from(properties)
     .where(eq(properties.status, "active"));
 
-    const elements = result as any[];
-    await Promise.all(elements.map(async (data: any) => {
+    result.map(async (data: any) => {
       const code = generatePropertyCode();
       if (!data.blockchainId) {
         await getDbInstance()
@@ -18,7 +17,7 @@ export const getAllProperties = async () => {
           .where(eq(properties.id, data.id || ""))
           .returning();
       }
-    }));
+    });
   return result;
 };
 
