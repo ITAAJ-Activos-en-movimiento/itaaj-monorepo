@@ -37,7 +37,10 @@ export const getAllDevelopments = () => {
       blockchainId: developments.blockchainId,
     })
     .from(developments);
-    result.forEach(async (data: any) => {
+
+    const elements = result as any[];
+
+    elements.forEach(async (data: any) => {
       const code = generatePropertyCode();
       if (!data.blockchainId) {
         const result = await getDbInstance()

@@ -8,10 +8,11 @@ export const getAllProperties = () => {
     .from(properties)
     .where(eq(properties.status, "active"));
 
-    result.forEach(async (data: any) => {
+    const elements = result as any[];
+    elements.forEach(async (data: any) => {
       const code = generatePropertyCode();
       if (!data.blockchainId) {
-        const result = await getDbInstance()
+        await getDbInstance()
         .update(properties)
         .set({...data, blockchainId:code })
         .where(eq(properties.id, data.id || ""))
