@@ -10,7 +10,7 @@ import { properties as propertiesApi } from '@/services';
 import Slider from './Slider';
 
 const General = async () => {
-  const properties = await propertiesApi();
+  const properties = await propertiesApi({ page: 1, limit: 1004 });
 
     return (
         <section className={styles.section}>
