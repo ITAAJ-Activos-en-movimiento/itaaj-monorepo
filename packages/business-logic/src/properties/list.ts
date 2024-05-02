@@ -42,7 +42,7 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  const totalResult = await getDbInstance()
  .select()
  .from(properties)
- .where(eq(properties.status, "active"))
+ .where(and(eq(properties.status, "active"), eq(properties.development, null)))
  const total = totalResult.length;
 
  console.log({total})
