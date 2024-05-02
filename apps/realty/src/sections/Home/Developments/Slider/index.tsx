@@ -34,8 +34,7 @@ const Slider = ({properties}: any) => {
     // onSwiper={(swiper) => console.log(swiper)}
     onSlideChange={() => console.log('slide change')}
 >
-          {properties.items?.sort((property:any) => property.price - property.price).
-items.map((property: any) => (
+          {properties?.items?.sort((property:any) => property.price - property.price)?.map((property: any) => (
         <SwiperSlide key={property.id} >
         <PropertyCard {...property} loc='developments' />
     </SwiperSlide>
