@@ -22,7 +22,7 @@ const Property = async ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const property = await propertiesBySlug(params.slug.toString());
-  const properties = await propertiesApi();
+  const properties = await propertiesApi({ page: 1, limit: 10004 });
 
   // const prevImage = () => {
   //   if(actualImageIn == 0){
