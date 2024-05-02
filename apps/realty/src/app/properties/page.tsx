@@ -76,7 +76,7 @@ const Properties = async ({
         </select>
       </div>
       <PropertiesWithMap
-        developments={Number(searchParams?.page) > 1? []: developments}
+        developments={Number(searchParams?.page) > 1? []: developments.items}
         properties={listaOrdenada}
         searchParams={searchParams}
         locations={locations}
