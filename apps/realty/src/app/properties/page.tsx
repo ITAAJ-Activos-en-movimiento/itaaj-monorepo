@@ -84,7 +84,7 @@ const Properties = async ({
 
       <div className={styles.pagination}>
         {pagesArray.map((page: number) => (
-          <span><Link href={`?page=${page}&limit=${10}`} >{page} </Link></span>
+          <span key={page}><Link href={`?page=${page}&limit=${10}`} >{page} </Link></span>
         ))}
       </div>
       {/* 
