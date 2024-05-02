@@ -1,6 +1,6 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
 import { StatusType, properties } from "@itaaj/entities";
-import { eq } from "drizzle-orm";
+import { eq, and } from 'drizzle-orm';
 
 
 interface Query {
@@ -35,7 +35,7 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  let result = await getDbInstance()
  .select()
  .from(properties)
- .where(eq(properties.status, "active"))
+ .where(and(eq(properties.status, "active"), eq(properties.development, null)))
  .limit(pageSize)
  .offset(skip);
  
@@ -53,9 +53,6 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  const hasNextPage = page < pages;
  const nextPage = hasNextPage ? page + 1 : page;
 
- if(limit < 1004){
-  result = result.filter((item: any) => !item.development);
- }
 
  
  return {
