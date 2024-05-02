@@ -188,12 +188,12 @@ const CreateProperty = () => {
 
                             <Field label='Tipo'>
                                 <select name='type' value={property.type} onChange={handleChange}>
-                            <option value="apartment">Seleccionar un tipo</option>
+                            <option value="">Seleccionar un tipo</option>
                                  
-                                    <option value="apartment">Departamento</option>
-                                    <option value="apartment">Casa</option>
-                                    <option value="apartment">Oficina</option>
-                                    <option value="apartment">Terreno</option>
+                                    <option value="Departamento">Departamento</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Oficina">Oficina</option>
+                                    <option value="Terreno">Terreno</option>
                                 </select>
                             </Field>
 
