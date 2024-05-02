@@ -7,6 +7,7 @@ import {
 } from "@/services";
 import MapProperties from "./MapProperties";
 import PropertiesWithMap from "./PropertiesWithMap";
+import Link from "next/link";
 
 const Properties = async ({
   searchParams,
@@ -14,13 +15,16 @@ const Properties = async ({
   searchParams?: {
     type?: string;
     search?: string;
+    page?: string;
+    limit?: string;
+
   };
 }) => {
   const developments = await developmentsApi();
-  const properties = await propertiesApi();
+  const properties = await propertiesApi({ page: Number(searchParams?.page), limit: Number(searchParams?.limit) });
 
 
-  const newLocations = properties.map((property: any) => property.location);
+  const newLocations = properties.items.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
 
   function compararPorDesarrollo(a: any, b: any): number {
@@ -39,10 +43,11 @@ const Properties = async ({
   }
 
   // Ordenar la lista utilizando la función de comparación personalizada
-  const listaOrdenada = properties.sort(compararPorDesarrollo);
-  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
+  const listaOrdenada = properties.items.sort(compararPorDesarrollo);
+//  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
+  const pagesArray = Array.from({ length: properties.pageInfo.pages }, (_, index) => index + 1);
 
-  console.log(listaUnica)
+  console.log(properties)
 
   return (
     <div>
@@ -72,10 +77,16 @@ const Properties = async ({
       </div>
       <PropertiesWithMap
         developments={developments}
-        properties={listaUnica}
+        properties={listaOrdenada}
         searchParams={searchParams}
         locations={locations}
       />
+
+      <div>
+        {pagesArray.map((page: number) => (
+          <span><Link href="?" >{page} hola </Link></span>
+        ))}
+      </div>
       {/* 
       {properties.length == 0 ? (
         <div className={styles.notProperties}>

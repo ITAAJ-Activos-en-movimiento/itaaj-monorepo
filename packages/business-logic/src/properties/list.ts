@@ -32,7 +32,7 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  const pageSize = limit;
  const skip = (page - 1) * pageSize;
 
- const result = await getDbInstance()
+ let result = await getDbInstance()
  .select()
  .from(properties)
  .where(eq(properties.status, "active"))
@@ -53,6 +53,11 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  const hasNextPage = page < pages;
  const nextPage = hasNextPage ? page + 1 : page;
 
+ if(limit < 1004){
+  result = result.filter((item: any) => !item.development);
+ }
+
+ 
  return {
   count: total,
   items: result,

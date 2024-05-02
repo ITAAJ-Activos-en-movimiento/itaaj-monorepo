@@ -1,7 +1,7 @@
-export const properties = async () => {
+export const properties = async ({ page, limit }: { page: number, limit: number }) => {
   try {
     const response = await fetch(
-      "https://itaajrealty.com/api/api/v1/properties",
+      `https://itaajrealty.com/api/api/v1/properties?page=${page}&limit=${limit}`,
       { cache: "no-store" }
     );
 

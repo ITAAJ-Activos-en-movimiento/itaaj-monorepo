@@ -46,7 +46,7 @@ const Header = () => {
             <h3>{logo}</h3>
           </Link>
           <nav className={styles.nav}>
-            <Link href="/properties">Comprar</Link>
+            <Link href="/properties?page=1&limit=4">Comprar</Link>
             <Link href="/vende-tu-propiedad">Vender</Link>
             <Link href="/deals" className={styles.mid}>
               Portafolio de desarrolladores
