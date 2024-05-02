@@ -43,6 +43,7 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  .select()
  .from(properties)
  .where(and(eq(properties.status, "active"), eq(properties.development, "")))
+
  const total = totalResult.length;
 
  console.log({total})

@@ -139,7 +139,31 @@
     gap: 2rem;
     margin-top: 2rem;
    }
+
+   .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+   }
    
+   .pagination span{
+    display: inline-flex;
+ 
+   }
+
+   .pagination span a{
+    display: inline-flex;
+    border: 1px solid rgba(0,0,0,0.1);
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
    .option span{
     display: flex;
     align-items: center;

@@ -76,15 +76,15 @@ const Properties = async ({
         </select>
       </div>
       <PropertiesWithMap
-        developments={developments}
+        developments={Number(searchParams?.page) > 1? []: developments}
         properties={listaOrdenada}
         searchParams={searchParams}
         locations={locations}
       />
 
-      <div>
+      <div className={styles.pagination}>
         {pagesArray.map((page: number) => (
-          <span><Link href="?" >{page} hola </Link></span>
+          <span><Link href={`?page=${page}&limit=${10}`} >{page} </Link></span>
         ))}
       </div>
       {/* 
