@@ -84,7 +84,10 @@ const Properties = async ({
 
       <div className={styles.pagination}>
         {pagesArray.map((page: number) => (
-          <span key={page}><Link href={`?page=${page}&limit=${10}`} >{page} </Link></span>
+          <span key={page}><Link style={{
+            backgroundColor: Number(searchParams?.page) == Number(page) ? "var(--main-color)" : "#fff",
+            color: Number(searchParams?.page) == Number(page) ? "#fff" : "#000"
+          }}  href={`?page=${page}&limit=${10}`} >{page} </Link></span>
         ))}
       </div>
       {/* 

@@ -60,10 +60,7 @@ const Property = ({images, id, isDevelopment, price, type, floor, development, n
         <i className='bx bx-area' ></i>
         <p>{area.total_area} m&sup2;</p>
         </div>
-        <div>
-        <i className='bx bx-building-house' ></i>
-          <p>1 planta</p>
-        </div>
+      
        </div>
        <div className={styles.description}>
           <p  dangerouslySetInnerHTML={{ __html: description }}></p>
