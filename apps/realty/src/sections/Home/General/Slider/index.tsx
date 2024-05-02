@@ -34,7 +34,7 @@ const Slider = ({properties}: any) => {
     // onSwiper={(swiper) => console.log(swiper)}
     onSlideChange={() => console.log('slide change')}
 >
-          {properties
+          {properties?.items
 ?.filter((property: any) => property.category == 'general')
 .sort((property:any) => property.price - property.price)
 .map((property: any) => (

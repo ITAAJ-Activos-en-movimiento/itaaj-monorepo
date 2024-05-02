@@ -43,9 +43,9 @@ const PropertiesWithMap = ({ developments, properties, searchParams, locations }
 
         <h2 className={styles.title}>Viviendas y casas en venta en México</h2>
         <p>
-          {properties.filter((property: any) => !property.development).length}{" "}
+          {properties.items?.filter((property: any) => !property.development).length}{" "}
           usadas y{" "}
-          {properties.filter((property: any) => property.development).length} de
+          {properties.itesm?.filter((property: any) => property.development).length} de
           obra nueva
         </p>
       </div>

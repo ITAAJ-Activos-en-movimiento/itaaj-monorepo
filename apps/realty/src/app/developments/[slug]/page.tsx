@@ -93,7 +93,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <h2 className={styles.title_property}>
               Inmuebles de este desarrollo...
             </h2>
-            <Properties properties={properties} />
+            <Properties properties={properties.items} />
           </div>
 
           <h2 className={styles.title_property}>

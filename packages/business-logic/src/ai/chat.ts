@@ -9,7 +9,7 @@ export const runConversation = async (messages: any) => {
     
     const cleanProperties: any[] = []
 
-    properties?.map((property: any) => {
+    properties?.items?.map((property: any) => {
         cleanProperties.push({
             price: property.price,
             state: property.state,
