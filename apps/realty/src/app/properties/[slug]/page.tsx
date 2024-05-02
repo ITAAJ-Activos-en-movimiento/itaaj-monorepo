@@ -237,7 +237,7 @@ const Property = async ({
           <h2 className={styles.title_property}>Propiedades similares...</h2>
 
           <div className={styles.properties_list}>
-            {properties
+            {properties?.items
               ?.filter(
                 (prop: any) =>
                   prop.category == "general" && prop.slug !== property.slug

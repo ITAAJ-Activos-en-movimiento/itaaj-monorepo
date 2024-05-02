@@ -39,7 +39,7 @@ const Property = ({images, id, isDevelopment, price, type, floor, development, n
       )}
     </Link>
       <div>
-      <Link href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
+      <Link replace href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
        <div className={styles.header}>
         <h2>ITAAJ &middot; Experto inmobiliario</h2>
        </div>
