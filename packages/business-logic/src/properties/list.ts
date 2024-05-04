@@ -35,7 +35,7 @@ export const getAllProperties = async ({page = 1, limit = 1004, search= ''}: Par
  let result = await getDbInstance()
  .select()
  .from(properties)
- .where(and(eq(properties.status, "active"), eq(properties.development, "")))
+ .where(and(eq(properties.status, "active"), eq(properties.category, "general")))
  .limit(pageSize)
  .offset(skip);
  
