@@ -2,7 +2,7 @@ import { itaajApi } from "@/api";
 import { Property } from "@itaaj/entities";
 
 export const getPropertiesApi = async () => {
-  const { data } = await itaajApi.get(`/properties`);
+  const { data } = await itaajApi.get(`/properties?page=1&limit=1000004`);
   return data;
 };
 

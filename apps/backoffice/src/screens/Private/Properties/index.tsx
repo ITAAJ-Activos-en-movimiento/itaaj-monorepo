@@ -30,7 +30,7 @@ const Properties = () => {
           <Loader />
         ) : (
           <>
-            {properties?.items?.length > 0 ? (
+            {properties?.length > 0 ? (
               <PropertyTable />
             ) : (
               <EmptyTable title="Properties" url="/properties/create" />
