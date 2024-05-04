@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { X } from "react-feather";
 
 const Properties = ({ properties }: { properties: unknown[] }) => {
-    const [prop, setProp] = useState(properties)
+  const [prop, setProp] = useState(properties)
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const params = useSearchParams();
   const openProposal = params.get("plane");
@@ -20,7 +20,6 @@ const Properties = ({ properties }: { properties: unknown[] }) => {
 
   const [actualImg, setActualImg] = useState("")
 
-  console.log(actualImg)
   function openPlane(img: string) {
     setActualImg(img)
     router.push('?plane=open', { scroll: false })

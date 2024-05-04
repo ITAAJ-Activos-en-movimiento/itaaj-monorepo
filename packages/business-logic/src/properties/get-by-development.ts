@@ -3,7 +3,6 @@ import { properties } from "@itaaj/entities";
 import { and, eq } from "drizzle-orm";
 
 export const getPropertiesByDevelopment = (development: string) => {
-  console.log(development)
   const result = getDbInstance()
     .select()
     .from(properties).where(and(eq(properties.development, development)));

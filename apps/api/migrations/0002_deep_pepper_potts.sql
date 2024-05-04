@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "public_key" DROP NOT NULL;

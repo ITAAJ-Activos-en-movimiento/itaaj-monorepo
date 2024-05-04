@@ -15,7 +15,6 @@ const Properties = () => {
 
   const { properties, isLoading } = useProperties();
 
-  console.log(properties)
   return (
     <div className={styles.container}>
       <HeaderPage title="Properties">

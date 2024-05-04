@@ -15,7 +15,6 @@ const Developments = () => {
 
   const { developments, isLoading } = useDevelopments();
 
-  console.log(developments)
   return (
     <div className={styles.container}>
       <HeaderPage title="Developments">

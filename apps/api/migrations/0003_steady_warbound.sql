@@ -1,0 +1,2 @@
+ALTER TABLE "users" ALTER COLUMN "residence" SET DATA TYPE varchar(255);
+ALTER TABLE "users" ALTER COLUMN "residence" DROP NOT NULL;

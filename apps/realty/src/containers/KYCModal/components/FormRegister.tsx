@@ -7,6 +7,7 @@ import Web3 from 'web3';
 import axios from 'axios';
 import { Register } from '@/services';
 import useAuthContext from '@/shared/hooks/useAuthContext';
+import { useSnackbar } from '@/shared/snackbar/Snackbar';
 
 interface StepProps { 
   moveStep: (prop: number) => void
@@ -20,13 +21,15 @@ interface StepProps {
 }
 
 export const StepRegisterAccount = ({ moveStep, handleChangeUser, user, setStateFormAuth }: StepProps) => {
+  const snackbar = useSnackbar()
+  
   const validateField = () => {
-    if (!user?.name) return alert("Nombre esta vacio");
-    if (!user?.lastname) return alert("Apellido esta vacio");
-    if (!user?.email) return alert("Email esta vacio");
-    if (!user?.phone) return alert("Teléfono esta vacio");
-    if (!user?.password) return alert("Contraseña esta vacio");
-    if (!user?.checkTerms) return alert("No has aceptado los terminos y condiciones");
+    if (!user?.name) return snackbar.warning({ message: "Nombre esta vacio" });
+    if (!user?.lastname) return snackbar.warning({ message: "Apellido esta vacio" });
+    if (!user?.email) return snackbar.warning({ message: "Email esta vacio" });
+    if (!user?.phone) return snackbar.warning({ message: "Teléfono esta vacio" });
+    if (!user?.password) return snackbar.warning({ message: "Contraseña esta vacio" });
+    if (!user?.checkTerms) return snackbar.warning({ message: "No has aceptado los terminos y condiciones" });
     moveStep(1);
   }
   
@@ -164,9 +167,11 @@ export const StepSelectRole = ({ moveStep, setUser, user, setRole }: StepProps) 
 
 export const StepAdditionalData = ({ handleChangeUser, user, role, setOpenModal }: StepProps) => {
   const { action } = useAuthContext();
+  const snackbar = useSnackbar();
+
   const validateField = () => {
-    if (!user?.residence) return alert("Residencia esta vacio");
-    if (!user?.identification) return alert("Identificación esta vacio");
+    if (!user?.residence) return snackbar.warning({ message: "Residencia esta vacio" });
+    if (!user?.identification) return snackbar.warning({ message: "Identificación esta vacio" });
     registerUser();
   }
   

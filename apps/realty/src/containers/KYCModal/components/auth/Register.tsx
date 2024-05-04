@@ -45,8 +45,9 @@ export const Register = ({ setOpenModal, setStateFormAuth }: {
   };
 
   const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
-    setUser((user) => ({ ...user, [name]: value || checked }));
+    const { name, value, checked, type } = e.target;
+    const valUser = type === 'checkbox' ? checked : value;
+    setUser((user) => ({ ...user, [name]: valUser }));
   };
   
   return (

@@ -2,7 +2,6 @@ import { Base } from "../../../common";
 
 export interface User extends Base {
     roleId: number;
-    residence: string;
     identification: string;
     method: string;
     email: string;
@@ -15,4 +14,5 @@ export interface User extends Base {
     city: string;
     country: string;
     gender: string;
+    public_key: string;
 }

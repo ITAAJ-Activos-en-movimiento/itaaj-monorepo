@@ -10,6 +10,7 @@ const auth_1 = __importDefault(require("./auth"));
 const ai_1 = __importDefault(require("./ai"));
 const leads_1 = __importDefault(require("./leads"));
 const properties_1 = __importDefault(require("./properties"));
+const dashboard_1 = __importDefault(require("./dashboard"));
 const development_1 = __importDefault(require("./development"));
 const messages_1 = __importDefault(require("./messages"));
 const proposals_1 = __importDefault(require("./proposals"));
@@ -20,6 +21,7 @@ const routes = [
     ...ai_1.default,
     ...leads_1.default,
     ...properties_1.default,
+    ...dashboard_1.default,
     ...development_1.default,
     ...messages_1.default,
     ...proposals_1.default

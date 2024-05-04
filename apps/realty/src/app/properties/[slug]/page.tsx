@@ -48,7 +48,6 @@ const Property = async ({
 
   // const fetchData =  async() => {
   //   setLoading(true);
-  //       console.log(data)
   //       setProperty(data);
   //       setLoading(false)
   // }

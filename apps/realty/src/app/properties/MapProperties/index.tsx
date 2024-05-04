@@ -3,7 +3,6 @@ import { GoogleMap, LoadScriptNext, MarkerF, useJsApiLoader } from '@react-googl
 import React, { useEffect, useState } from 'react'
 
 const MapProperties = ({ locations }: { locations: { latitude: number, longitude: number }[] }) => {
-  console.log({locations})
   
   const center = { lat: locations[0]?.latitude, lng: locations[0]?.longitude }
 

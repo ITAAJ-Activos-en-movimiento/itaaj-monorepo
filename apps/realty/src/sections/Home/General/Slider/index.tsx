@@ -31,8 +31,6 @@ const Slider = ({properties}: any) => {
       }}
      
     navigation
-    // onSwiper={(swiper) => console.log(swiper)}
-    onSlideChange={() => console.log('slide change')}
 >
           {properties
 ?.filter((property: any) => property.category == 'general')

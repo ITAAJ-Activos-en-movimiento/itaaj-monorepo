@@ -17,7 +17,6 @@ exports.getDevelopmentBySlugRoute = {
     handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
         const { params } = request;
         const { slug } = params;
-        // console.log(slug);
         const development = yield (0, business_logic_1.getDevelopmentById)(slug);
         reply.status(200).send(development);
     }),

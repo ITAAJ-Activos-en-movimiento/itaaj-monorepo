@@ -22,7 +22,7 @@ exports.registerUserRoute = {
         reply.status(201).send({ token, user: decoded });
     }),
     errorHandler: (error, _, reply) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(error);
+        console.error(error);
         reply.status(403).send(error);
     })
 };

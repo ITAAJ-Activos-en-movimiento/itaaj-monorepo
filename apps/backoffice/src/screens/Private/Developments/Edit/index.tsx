@@ -58,7 +58,6 @@ const EditDevelopment: React.FC = () => {
     setDescription(value);
 };
 
-console.log(development)
 useEffect(() => {
   setProperty({
     name: developmentInfo?.name,

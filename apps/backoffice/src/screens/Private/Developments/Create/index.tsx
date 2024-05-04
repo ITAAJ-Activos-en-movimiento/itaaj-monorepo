@@ -17,7 +17,6 @@ const CreateDevelopment = () => {
 
     const { isLoading, urls, uploadImage } = useUploadImage();
 
-    console.log(urls)
     const { formState: development, handleChange } = useForm<Partial<Development>>({
         price: 0,
         name: '',
@@ -42,7 +41,6 @@ const CreateDevelopment = () => {
     });
 
     const navigate = useNavigate();
-    console.log(development)
 
     const { isCreating, createDevelopment } = useCreateDevelopment();
 

@@ -5,7 +5,6 @@ import slugify from "slugify";
 export const createProperty = async (
   data: Property
 ): Promise<Property | Error> => {
-  console.log(data)
   const slug = slugify(data.name, {
     lower: true
   });

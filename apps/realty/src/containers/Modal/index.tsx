@@ -49,7 +49,6 @@ const Modal = ({ property }: Props) => {
   
   const params = useSearchParams();
   const openProposal = params.get('proposal');
-  // console.log("URL", url)
   
   const onSubmit = async(e: FormEvent) => {
     e.preventDefault(); 
@@ -57,7 +56,6 @@ const Modal = ({ property }: Props) => {
       setLoading(true);
       // const { data } = await axios.post('https://itaaj-api-v0.onrender.com/api/v1/proposals', proposal);      
       const { data } = await createProposal({...proposal, fund: url});
-      console.log(data);
       setLoading(false);
       Swal.fire({
         title: 'Felicidades!',
@@ -69,12 +67,10 @@ const Modal = ({ property }: Props) => {
       
     }
     catch(err){
-      console.log(err)
+      console.error(err)
     }
     
   }
-
-  // console.log(proposal)
 
   const router = useRouter()
   const closeModal = () => {

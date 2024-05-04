@@ -2,6 +2,7 @@
 import { Access, Login, Register, RemoveSession } from "@/services";
 import { useRouter } from "next/navigation";
 import { FC, PropsWithChildren, createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { useSnackbar } from "../snackbar/Snackbar";
 
 export interface AuthContextProps {
   state: {
@@ -31,13 +32,14 @@ export const AuthContext = createContext<AuthContextProps>({
 export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const { push } = useRouter()
+  const snackbar = useSnackbar();
+  const { push } = useRouter();
 
   const access = useCallback(async () => {
     const response = await Access();
     if (response.error) {
       push("/");      
-      alert(response.message); 
+      snackbar.error({ message: response.message }); 
       return;
     }
     
@@ -51,8 +53,8 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const response = await Login(user);
     if (response.error) {
       push("/");      
-      alert(response.message); 
-      return;
+      snackbar.error({ message: response.message }); 
+      throw new Error(response.message);
     }
     
     if (Object.entries(response.data).length !== 0) {
@@ -62,9 +64,7 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
     if (!response.error) {
       push("/dashboard");
-      alert(response.message);
-    } else {
-      alert(response.message);
+      snackbar.success({ message: response.message }); 
     }
   };
 
@@ -79,7 +79,7 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const response = await Register(user);
     if (response.error) {
       push("/");      
-      alert(response.message); 
+      snackbar.error({ message: response.message }); 
       return;
     }
 
@@ -90,9 +90,9 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
     if (!response.error) {
       push("/dashboard");
-      alert(response.message);
+      snackbar.success({ message: response.message }); 
     } else {
-      alert(response.message);
+      snackbar.error({ message: response.message }); 
     }
   }
 

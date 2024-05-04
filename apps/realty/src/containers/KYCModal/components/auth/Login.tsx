@@ -3,12 +3,14 @@ import styles from "../../KYCModal.module.css";
 import { Login as actionLogin } from "@/services";
 import { useRouter } from "next/navigation";
 import useAuthContext from "@/shared/hooks/useAuthContext";
+import { useSnackbar } from "@/shared/snackbar/Snackbar";
 
 export const Login = ({ setOpenModal, setStateFormAuth }: { 
   setOpenModal: (key: boolean) => void,
   setStateFormAuth: (key: string) => void,
 }) => {
   const { action } = useAuthContext()
+  const snackbar = useSnackbar()
 
   const [user, setUser] = useState({
     email: "",
@@ -22,11 +24,11 @@ export const Login = ({ setOpenModal, setStateFormAuth }: {
 
   const validFields = () => {
     if (!user.email) {
-      alert("Email vacio");
+      snackbar.warning({ message: "El campo Email está vacio." });
       return false;
     }
     if (!user.password) {
-      alert("Contraseña vacia");
+      snackbar.warning({ message: "El campo Contraseña está vacio." });
       return false
     }
 
@@ -76,6 +78,13 @@ export const Login = ({ setOpenModal, setStateFormAuth }: {
         className={styles.textRegister}
       >
         No tengo cuenta y quiero registrarme
+      </span>
+
+      <span
+        onClick={() => setStateFormAuth("RECOVER")}
+        className={styles.textRecover}
+      >
+        ¿Olvidaste tu contraseña?
       </span>
     </div>
   )

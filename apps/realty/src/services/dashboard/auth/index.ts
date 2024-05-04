@@ -59,3 +59,13 @@ export const Register = async (body: any) => {
     return { message: response.data.message, error: true, status: response.status };
   }
 }
+
+export const RecoverAccount = async () => {
+  try {
+    const response = await axios.post("http://localhost:8000/api/v1/auth/recover");
+    return { message: 'Registro de cuenta exitosa', error: false };
+  } catch (error: any) {
+    const { response } = error;
+    return { message: response };
+  }
+}

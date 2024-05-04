@@ -5,7 +5,7 @@ import { roles } from '../../roles/schemas/pg-schema';
 export const users = pgTable('users', {
     id: uuid('id').defaultRandom().notNull(),
     // roleId: varchar('name', { length: 256 }).notNull(),
-    // residence: varchar('residence', { length: 256 }).notNull(),
+    residence: varchar('residence', { length: 256 }),
     identification: varchar('residence', { length: 11 }).notNull(),
     name: varchar('name', { length: 256 }).notNull(),
     lastname: varchar('lastname', { length: 256 }).notNull(),
@@ -21,6 +21,7 @@ export const users = pgTable('users', {
     last_login: varchar('last_login', { length: 50 }),
     login_attempts: integer('login_attempts'),
     locked: boolean('locked').default(false),
+    public_key: varchar('public_key', { length: 256 }),
     birthdate: timestamp('birthdate'),
     createdAt: timestamp('created_at').defaultNow().notNull(),
 }, (users) => {

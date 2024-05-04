@@ -50,7 +50,7 @@ const Documents = ({ openModal, setOpenModal }: DocumentsProps) => {
           </div>
           <ul className={styles.documents}>
             <li className={styles.documentButton} onClick={handleDownloadFiles}>
-              <p><b>Contrato de Comisio Mercantil</b></p> {/* SOLO PARA BROKERS */}
+              <p><b>Contrato de Comisión Mercantil</b></p> {/* SOLO PARA BROKERS */}
             </li>
           </ul>
           {/* <div>

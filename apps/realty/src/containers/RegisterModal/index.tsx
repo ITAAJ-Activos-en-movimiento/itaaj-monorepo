@@ -52,7 +52,7 @@ const RegisterModal = () => {
       }
     }catch(err){
       alert("Error logeando el usuario")
-      console.log(err)
+      console.error(err)
     }
   }
   
@@ -69,14 +69,12 @@ const RegisterModal = () => {
 
   const params = useSearchParams();
   const register = params.get('register');
-  // console.log(register)
   
   const onSubmit = async(e: FormEvent) => {
     e.preventDefault(); 
     try{
       setLoading(true);
       const { data } = await axios.post('https://itaaj-api-v0.onrender.com/api/v1/proposals', proposal);      
-      // console.log(data);
       setLoading(false);
       Swal.fire({
         title: 'Felicidades!',
@@ -88,7 +86,7 @@ const RegisterModal = () => {
       
     }
     catch(err){
-      console.log(err)
+      console.error(err)
     }
     
   }

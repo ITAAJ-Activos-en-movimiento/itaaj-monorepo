@@ -1,0 +1,66 @@
+.Snackbar {
+  display: flex;
+  gap: 5px;
+  padding: 15px;
+  box-shadow: rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 10px 22px -8px;
+  background: #fff;
+  border-radius: 5px;
+  max-width: 400px;
+}
+
+.SnackbarIcon {
+  font-size: 20px;
+}
+
+.SnackbarDivClose {
+  margin: 0 0 0 auto;
+}
+
+.SnackbarIconClose {
+  font-size: 20px;
+  border-radius: 10px;
+  transition: background ease 1s;
+  cursor: pointer;
+}
+
+.SnackbarIconClose:hover {
+  background: #0000003a;
+}
+
+.SnackbarIconClose:active {
+  transform: scale(.95);
+}
+
+.SnackbarContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.SnackbarTitle {
+  font-size: 1.5rem;
+  padding: 3px 0;
+}
+
+.SnackbarMessage {
+  font-size: 1.3rem;
+}
+
+.SnackbarIconError {
+  font-size: 20px !important;
+  color: #F44336;
+}
+
+.SnackbarIconWarning {
+  font-size: 20px !important;
+  color: #FF9800;
+}
+
+.SnackbarIconInfo {
+  font-size: 20px !important;
+  color: #2196F3;
+}
+
+.SnackbarIconSuccess {
+  font-size: 20px !important;
+  color: rgb(54, 179, 126);
+}

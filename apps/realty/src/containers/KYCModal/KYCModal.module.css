@@ -6,7 +6,7 @@
 
 .modalPortalKYC {
   position: relative;
-  z-index: 10000;
+  z-index: 1300;
 }
 
 .contentStepKYC {
@@ -72,6 +72,19 @@
 .textRegister{
   text-align: center;
   font-size: 1.6rem;
+  color: var(--main-color);
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.textRecover {
+  text-align: center;
+  font-size: 1.2rem;
   color: var(--main-color);
   font-weight: 600;
   display: inline-block;
