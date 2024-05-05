@@ -11,6 +11,8 @@ import Blog from "./Blogs";
 import UpdateProperty from "./Properties/Update";
 import CRM from "./Crm";
 import Funnel from "./Crm/Funnel";
+import PropertiesModel from "./PropertiesDevelopments";
+import CreatePropertyModel from "./PropertiesDevelopments/Create";
 
 const Private = () => {
   return (
@@ -25,7 +27,11 @@ const Private = () => {
           element={<CreateDevelopment />}
         />
         <Route path="properties" element={<Properties />} />
+        <Route path="properties-developments" element={<PropertiesModel />} />
+
         <Route path="proposals" element={<Proposals />} />
+
+        <Route path="properties/developments/create" element={<CreatePropertyModel />} />
 
         <Route path="properties/create" element={<CreateProperty />} />
         <Route path="properties/:slug" element={<UpdateProperty />} />

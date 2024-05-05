@@ -6,6 +6,11 @@ export const getPropertiesApi = async () => {
   return data;
 };
 
+export const getPropertiesDevelopmentApi = async () => {
+  const { data } = await itaajApi.get(`/properties/developments?page=1&limit=1000004`);
+  return data;
+};
+
 export const getPropertyApi = async (slug: string) => {
   const { data } = await itaajApi.get(`/property/${slug}`);
   return data;

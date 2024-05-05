@@ -12,9 +12,9 @@ const EmptyTable = ({title, url}: Props) => {
       <div className={styles.circle}>
        <i className='bx bx-check'></i>
       </div>
-      <h3>There are no {title}</h3>
-      <p> Click on the button to create a new {title}. Created {title} will appear here.</p>
-      <Link to={url}>Add {title}</Link>
+      <h3>No hay {title}</h3>
+      <p> Click en el botón de abajo para crear un nuevo {title}.</p>
+      <Link to={url}>Agregar {title}</Link>
     </div>
   )
 }

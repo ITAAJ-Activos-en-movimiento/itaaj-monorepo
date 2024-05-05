@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Sidebar.module.css'
-import { Briefcase, ChevronRight, Crosshair, Home, BookOpen, Filter } from 'react-feather'
+import { Briefcase, ChevronRight, Crosshair, Home, BookOpen, Filter, Paperclip } from 'react-feather'
 
 const Sidebar = () => {
   return (
@@ -9,6 +9,7 @@ const Sidebar = () => {
                 <nav className={styles.nav}>
                     <button><ChevronRight /></button>
                     <Link to='/developments' title='Developments' > <Briefcase /> <p>Desarrollos</p> </Link>
+                    <Link to='/properties-developments' title='Propiedades para desarrollos' > <Paperclip /> <p>Modelos de D.</p> </Link>
                     <Link to='/properties' title='Properties' > <Home /> <p>Propiedades</p> </Link>
                     <Link to='/proposals' title='Proposals' > <Crosshair /> <p>Propuestas</p> </Link>
                     <Link to='/crm/funnels' title='Embudo' > <Filter /> <p>Embudo</p> </Link>

@@ -5,6 +5,7 @@ import { getPropertiesByDevelopmentRoute } from "./get-by-development";
 import { getPropertiesBySlugRoute } from "./get-by-slug";
 import { updatePropertyRoute } from "./update";
 import { deletePropertyRoute } from "./delete";
+import { getAllModelsPropertiesRoute } from "./list-models";
 
 const propertiesRoutes: RouteOptions[] = [
   getAllPropertiesRoute,
@@ -12,7 +13,8 @@ const propertiesRoutes: RouteOptions[] = [
   getPropertiesByDevelopmentRoute,
   getPropertiesBySlugRoute,
   updatePropertyRoute,
-  deletePropertyRoute
+  deletePropertyRoute,
+  getAllModelsPropertiesRoute
 ];
 
 export default propertiesRoutes;
