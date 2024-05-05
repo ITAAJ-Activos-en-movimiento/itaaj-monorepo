@@ -21,7 +21,6 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
   const slug  = params.slug;
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj Realty por la siguiente propiedad ${slug}`;
 
-  console.log(development)
   return (
     <>
       <div className={styles.header}>
@@ -93,7 +92,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <h2 className={styles.title_property}>
               Inmuebles de este desarrollo...
             </h2>
-            <Properties properties={properties.items} />
+            <Properties properties={properties} />
           </div>
 
           <h2 className={styles.title_property}>

@@ -6,6 +6,6 @@ export const getPropertiesByDevelopment = (development: string) => {
   console.log(development)
   const result = getDbInstance()
     .select()
-    .from(properties).where(and(eq(properties.development, development)));
+    .from(properties).where(eq(properties.development, development));
   return result;
 };
