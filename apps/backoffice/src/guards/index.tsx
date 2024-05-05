@@ -17,15 +17,14 @@ const GuardRoute = ({privateValidation}: Props) => {
 
   if(isLoading) return <Loader />
 
-  return !user ? (
+  return user ? (
     privateValidation ? (
         PrivateValidationFragment
     ): (
-      PrivateValidationFragment
+      PublicValidationFragment
     )
 ) : (
-  PrivateValidationFragment
-    // <Navigate replace to={PublicRoutes.LOGIN} />
+    <Navigate replace to={PublicRoutes.LOGIN} />
 ) 
 }
 
