@@ -58,7 +58,7 @@ interface BodyProps<T> {
 }
 
 function Body<T>({ data, render }: BodyProps<T>) {
-  if (!data.length) return <p className={styles.empty}>No data to show at the moment</p>;
+  if (!data?.length) return <p className={styles.empty}></p>;
 
   return (
     <section className={styles.body}>

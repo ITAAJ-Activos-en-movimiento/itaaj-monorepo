@@ -1,11 +1,11 @@
 import { Property } from "@itaaj/entities";
 import { Table } from "@/containers";
-import { useProperties } from "@/hooks";
+import { usePropertiesDevelopments } from "@/hooks";
 import PropertyRow from "./PropertyRow";
 import Menus from "@/components/Shared/Menus";
 
 const PropertyTable = () => {
-  const { properties } = useProperties();
+  const { properties } = usePropertiesDevelopments();
 
   return (
     <Menus>

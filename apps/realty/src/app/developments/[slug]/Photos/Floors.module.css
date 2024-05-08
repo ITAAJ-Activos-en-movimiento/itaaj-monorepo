@@ -54,6 +54,9 @@
     margin-top: 2rem;
 }
 
+.img img {
+    object-fit: contain;
+}
 .price{
     color: #121212;
 }

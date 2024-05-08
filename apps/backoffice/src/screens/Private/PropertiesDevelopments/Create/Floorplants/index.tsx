@@ -10,7 +10,7 @@ const Floorplants = ({ isLoading, url, uploadImage }: any) => {
             // preview={url || placeholderImage}
             uploadImage={uploadImage}
             loading={isLoading}
-            src={url || ''}
+            src={url.length > 0 ? url : ''}
             alt=""
             width={300}
             height={300}

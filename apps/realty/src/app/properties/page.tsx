@@ -8,6 +8,7 @@ import {
 import MapProperties from "./MapProperties";
 import PropertiesWithMap from "./PropertiesWithMap";
 import Link from "next/link";
+import Search from "./Search";
 
 const Properties = async ({
   searchParams,
@@ -17,7 +18,6 @@ const Properties = async ({
     search?: string;
     page?: string;
     limit?: string;
-
   };
 }) => {
   const developments = await developmentsApi();
@@ -46,17 +46,14 @@ const Properties = async ({
   const listaOrdenada = properties.items.sort(compararPorDesarrollo);
 //  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
   const pagesArray = Array.from({ length: properties.pageInfo.pages }, (_, index) => index + 1);
-
-  console.log(properties)
-
+  
+ 
   return (
     <div>
       <div className={styles.header}>
         <h2>Filtros</h2>
-        <select name="" id="">
-          <option value="">Estado</option>
-        </select>
-        <select name="" id="">
+      <Search />
+        {/* <select name="" id="">
           <option value="">Colonia</option>
         </select>
         <select name="" id="">
@@ -73,11 +70,11 @@ const Properties = async ({
         </select>
         <select name="" id="">
           <option value="">Baños</option>
-        </select>
+        </select> */}
       </div>
       <PropertiesWithMap
-        developments={Number(searchParams?.page) > 1? []: developments.items}
-        properties={listaOrdenada}
+        developments={Number(searchParams?.page) > 1? []: developments.items.filter((property: any) => property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()))}
+        properties={listaOrdenada.filter((property: any) => property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()))}
         searchParams={searchParams}
         locations={locations}
       />

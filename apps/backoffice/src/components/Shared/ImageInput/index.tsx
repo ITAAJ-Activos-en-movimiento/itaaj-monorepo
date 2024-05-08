@@ -9,7 +9,7 @@ interface Props  extends React.InputHTMLAttributes<HTMLInputElement>{
 
 }
 
-const ImageInput = ({loading, uploadImage, ...rest}: Props) => {
+const ImageInput = ({loading, uploadImage, src, ...rest}: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -31,9 +31,16 @@ const ImageInput = ({loading, uploadImage, ...rest}: Props) => {
           <Loader small={true} primary={true} />         
         : (
           <div>
-              <span className={styles.formbold_drop_file} >Subir fotos</span>
+            {src ? (
+                <img src={src} alt="" width={100} height={100} />
+            ): (
+<>
+<span className={styles.formbold_drop_file} >Subir fotos</span>
               <span className={styles.formbold_or} >Selecciona un archivo.</span>
               <Button onClick={handleButtonClick} loading={loading} >Explorar fotos</Button>
+</>
+            )}
+           
           </div>
         )}
       </label>

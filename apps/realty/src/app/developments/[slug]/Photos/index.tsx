@@ -28,7 +28,7 @@ const Photos = ({price, photos}: any) => {
         
         <div className={styles.img}>
           {photos?.map((photo: string) => (
-            <Image key={photo} src={photo} width={1000} height={800} alt='IMAGE' />
+            <Image key={photo} src={photo} width={1000} height={800} objectFit='contain' alt='IMAGE' />
           ))}
 
         </div>
