@@ -2,11 +2,9 @@
 import React, { useState } from 'react'
 import styles from "../Properties.module.css";
 
-const Search = () => {
-    const [value, setValue] = useState("")
+const Search = ({ value }: { value?: string }) => {
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
-        setValue(selectedValue)
         // Actualizar la URL con el nuevo parámetro de búsqueda
         window.location.href = `?search=${selectedValue}`;
 

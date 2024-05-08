@@ -52,7 +52,7 @@ const Properties = async ({
     <div>
       <div className={styles.header}>
         <h2>Filtros</h2>
-      <Search />
+      <Search value={searchParams?.search} />
         {/* <select name="" id="">
           <option value="">Colonia</option>
         </select>
