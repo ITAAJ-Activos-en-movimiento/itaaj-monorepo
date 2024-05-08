@@ -73,8 +73,8 @@ const Properties = async ({
         </select> */}
       </div>
       <PropertiesWithMap
-        developments={Number(searchParams?.page) > 1? []: developments.items.filter((property: any) => property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()))}
-        properties={listaOrdenada.filter((property: any) => property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()))}
+        developments={Number(searchParams?.page) > 1? []: developments.items.filter((property: any) => searchParams?.search ? property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) : property)}
+        properties={listaOrdenada.filter((property: any) => searchParams?.search? property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) : property)}
         searchParams={searchParams}
         locations={locations}
       />
