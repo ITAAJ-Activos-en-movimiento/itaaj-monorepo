@@ -11,7 +11,7 @@ export const useLoginEmail = () => {
           queryKey: ["auth-email"],
         });
       },
-      onError: (err) => console.log(err),
+      onError: (err) => console.error(err),
     });
 
   return { isSending, login };

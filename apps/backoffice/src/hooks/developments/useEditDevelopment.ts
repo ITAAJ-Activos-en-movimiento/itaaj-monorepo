@@ -11,7 +11,7 @@ export const useEditDevelopment = () => {
           queryKey: ["developments"],
         });
       },
-      onError: (err) => console.log(err),
+      onError: (err) => console.error(err),
     });
 
   return { isEditing, editDevelopment };

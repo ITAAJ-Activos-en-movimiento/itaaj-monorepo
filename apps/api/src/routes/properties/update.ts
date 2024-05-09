@@ -8,7 +8,6 @@ export const updatePropertyRoute: RouteOptions = {
   handler: async (request, reply) => {
     const { id } = request.params as { id: string };
     const data = request.body as Partial<Property>;
-    console.log("LA INFO", data);
     const success = await updateProperty(id, data);
   },
 };

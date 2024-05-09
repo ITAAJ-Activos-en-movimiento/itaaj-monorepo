@@ -41,7 +41,6 @@ const CreateDevelopment = () => {
     const [latitud, setLatitud] = useState(0);
     // const [description, setDescription] = useState('');
 
-    console.log(development)
     const navigate = useNavigate();
 
 

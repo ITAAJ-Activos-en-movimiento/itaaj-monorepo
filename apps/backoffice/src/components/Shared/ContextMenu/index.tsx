@@ -17,7 +17,6 @@ const ContextMenu: FunctionComponent<Props> = ({
   deleteItem,
   setItemSelected,
 }) => {
-  console.log("ITEM",item)
   const handlerMenu = (uuid: string): void => {
     setOpenMenu(openMenu === uuid ? "" : uuid);
   };

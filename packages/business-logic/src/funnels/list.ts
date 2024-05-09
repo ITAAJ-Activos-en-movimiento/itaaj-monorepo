@@ -17,7 +17,6 @@ interface Params {
 export const getAllFunnels = async ({page = 1, limit = 14, search= ''}: Params) => {
     const result = await getDbInstance().select().from(funnels)
 
-    console.log({result})
  const query: Query = { status: StatusType.ACTIVE }
 
  if(search){

@@ -13,7 +13,7 @@ export const registerUserRoute: RouteOptions = {
         reply.status(201).send({ token, user: decoded });
     },
     errorHandler: async (error, _, reply) => {
-        console.log(error)
+        console.error(error)
         reply.status(403).send(error);
     }
 }

@@ -7,7 +7,6 @@ import Image from 'next/image'
 import { DivisaFormater } from '@/utils'
 
 const Photos = ({price, photos}: any) => {
-  console.log(photos)
     const params = useSearchParams();
     const openProposal = params.get('photos');
 

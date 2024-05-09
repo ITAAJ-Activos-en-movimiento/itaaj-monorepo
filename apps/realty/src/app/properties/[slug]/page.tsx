@@ -32,7 +32,6 @@ const Property = async ({
   //   }
   //   setActualImage(property.images[actualImageIn])
   // }
-  console.log("PROP", property);
 
   // const nextImage = () => {
   //   const index = property.images.length;
@@ -51,7 +50,6 @@ const Property = async ({
 
   // const fetchData =  async() => {
   //   setLoading(true);
-  //       console.log(data)
   //       setProperty(data);
   //       setLoading(false)
   // }
@@ -66,7 +64,6 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
-  console.log(property)
   return (
     <>
       <div className={styles.header}>

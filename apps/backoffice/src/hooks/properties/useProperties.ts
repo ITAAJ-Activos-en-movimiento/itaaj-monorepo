@@ -7,6 +7,5 @@ export const useProperties = () => {
     queryFn: () => getPropertiesApi(),
   });
 
-  console.log(properties)
   return { isLoading, properties: properties?.items };
 };

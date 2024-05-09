@@ -45,6 +45,5 @@ export const runConversation = async (messages: any) => {
     });
 
     const info = response.choices[0].message;
-console.log(info)
     return info;
 }

@@ -54,7 +54,6 @@ var login = function (_a) {
                 case 1:
                     result = _b.sent();
                     user = result[0];
-                    console.log(user);
                     if (user.length <= 0)
                         throw new Error("Invalid credentials");
                     if (user.locked)

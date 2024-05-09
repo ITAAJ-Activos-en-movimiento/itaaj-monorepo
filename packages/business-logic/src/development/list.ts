@@ -37,7 +37,6 @@ export const getAllDevelopments = async ({page = 1, limit = 1004, search= ''}: P
 
  const total = totalResult.length;
 
- console.log({total})
  const pages = Math.ceil(total / pageSize);
 
  const hasPreviousPage = page > 1;

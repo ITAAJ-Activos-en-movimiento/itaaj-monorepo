@@ -8,7 +8,6 @@ import Slider from './Slider';
 
 const Developments: NextPage = async () => {
   const developments = await developmentsApi();
-  console.log(developments)
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -21,7 +20,7 @@ const Developments: NextPage = async () => {
         <Link href='/developments' className={styles.btn}>Mostrar todos los desarrollos</Link>
       </div>
 
-    <Slider properties={developments} />
+    {/* <Slider properties={developments} /> */}
 
     </section>
   )

@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const createProposal = async (data: any) => {
 
-  console.log(data)
     try{
         const response = await axios.post('https://itaajrealty.com/api/api/v1/proposals', data );
 

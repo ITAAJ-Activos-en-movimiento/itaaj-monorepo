@@ -14,9 +14,7 @@ interface Props {
 
 const Details = ({ development, handleChange }: Props) => {
   const textareaRef = createRef<ChangeEvent<HTMLTextAreaElement>>();
-  console.log({ development });
   const handleEditorChange = (value: string) => {
-    console.log(value);
     const syntheticEvent: ChangeEvent<HTMLTextAreaElement> = {
       target: {
         value: value,

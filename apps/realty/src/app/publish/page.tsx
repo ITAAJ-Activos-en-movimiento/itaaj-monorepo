@@ -109,7 +109,7 @@ const CreateProperty = () => {
       alert("Propiedad enviado correctamente");
     } catch (err) {
       alert(`ERROR: ${err}`);
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -131,7 +131,7 @@ const CreateProperty = () => {
       }
     } catch (err) {
       alert("Error registrando el usuario");
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -157,7 +157,7 @@ const CreateProperty = () => {
       setIsPhone(false);
     } catch (err) {
       alert("Error logeando el usuario");
-      console.log(err);
+      console.error(err);
       setIsPhone(false);
     }
   };
@@ -181,14 +181,12 @@ const CreateProperty = () => {
     axios
       .get(url)
       .then((response) => {
-        console.log(response);
         const { results } = response.data;
         if (results && results.length > 0) {
           const { lat, lng } = results[0].geometry.location;
           setLatitud(lat);
           setLongitud(lng);
         }
-        console.log({ results });
       })
       .catch((error) => {
         console.error("Error al obtener las coordenadas", error);
@@ -222,7 +220,6 @@ const CreateProperty = () => {
         setIsPhone(true);
       }, 1000)
     }
-    console.log(tokenId)
     await setTokenId(credentialsResponse?.credential || "")
 
   };

@@ -13,8 +13,6 @@ export const useEditLead = () => {
             if(!data) return;
 
             const newCards = data.items.map((item: any) => {
-              console.log(card)
-              console.log(item)
               return item.id === card.id ? card : item
           });
 

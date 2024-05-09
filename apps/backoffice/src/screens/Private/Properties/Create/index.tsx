@@ -23,7 +23,6 @@ const CreateProperty = () => {
 
 
     const navigate = useNavigate();
-    console.log(property)
 
     const { isCreating, createProperty } = useCreateProperties();
 

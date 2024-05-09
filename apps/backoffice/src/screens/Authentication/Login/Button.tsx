@@ -20,7 +20,6 @@ const Button = () => {
             }
         })
       // const token = await loginOfficer({ username, password });
-      // console.log(token)
     //   if (typeof window !== "undefined") {
     //     // localStorage.setItem("token", token)
     //     localStorage.setItem("token", "torkeonevr ejurbiveb");

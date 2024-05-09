@@ -28,7 +28,6 @@ const Header = () => {
     document.body.style.overflow = "hidden";
     setOpenModalKYC(true);
   };
-  //    console.log(state, "STATE")
   return (
     <GoogleOAuthProvider clientId="259968467063-s0d076kvsf87se4bgmofbll4ivf6gom3.apps.googleusercontent.com">
       <header className={styles.header}>

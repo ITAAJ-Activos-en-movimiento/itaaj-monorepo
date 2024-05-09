@@ -46,8 +46,7 @@ const Properties = async ({
   const listaOrdenada = properties.items.sort(compararPorDesarrollo);
 //  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
   const pagesArray = Array.from({ length: properties.pageInfo.pages }, (_, index) => index + 1);
-  
- 
+
   return (
     <div>
       <div className={styles.header}>

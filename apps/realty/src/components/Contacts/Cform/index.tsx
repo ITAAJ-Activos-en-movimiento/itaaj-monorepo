@@ -48,7 +48,7 @@ const Cform = ({slug, closeModal, prevmsg, children} : Props) => {
         alert('El email de contacto NO puede enviarse en blanco')
       }
     }catch(err){
-        console.log(err)
+        console.error(err)
     }
   };
 

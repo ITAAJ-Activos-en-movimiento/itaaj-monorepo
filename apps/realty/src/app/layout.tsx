@@ -4,6 +4,7 @@ import { Footer, Header } from '@/components'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { AuthContextProvider } from '@/shared/context/AuthContext';
+import { SnackbarProvider } from '@/shared/snackbar/Snackbar';
 import MetaMask from "./MetaMask";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -124,15 +125,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <AuthContextProvider>
-        <MetaMask>
-          <body className={inter.className}>
-            <Header />
-            {children}
-            <Footer />
-          </body>
-        </MetaMask>
-      </AuthContextProvider>
+      <SnackbarProvider>
+        <AuthContextProvider>
+          <MetaMask>
+            <body className={inter.className}>
+              <Header />
+              {children}
+              <Footer />
+            </body>
+          </MetaMask>
+        </AuthContextProvider>
+      </SnackbarProvider>
     </html>
   );
 }

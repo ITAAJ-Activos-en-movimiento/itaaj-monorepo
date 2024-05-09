@@ -14,8 +14,10 @@ const business_logic_1 = require("@itaaj/business-logic");
 exports.getAllPropertiesRoute = {
     method: "GET",
     url: "/properties",
-    handler: (req, reply) => __awaiter(void 0, void 0, void 0, function* () {
-        const properties = yield (0, business_logic_1.getAllProperties)();
+    handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+        const { query } = request;
+        const { page, limit, search } = query;
+        const properties = yield (0, business_logic_1.getAllProperties)({ page: Number(page), limit: Number(limit), search: "" });
         reply.status(200).send(properties);
     }),
 };

@@ -17,7 +17,6 @@ const PropertyElement = ({ bathrooms, bedrooms, floor, price, total_area, image,
 
   
   const closeModaln = () => {
-    console.log('enter')
     router.push('?plane=open')
   }
 

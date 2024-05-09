@@ -14,14 +14,12 @@ const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handle
     axios
       .get(url)
       .then((response) => {
-        console.log(response);
         const { results } = response.data;
         if (results && results.length > 0) {
           const { lat, lng } = results[0].geometry.location;
           setLatitud(lat);
           setLongitud(lng);
         }
-        console.log({results})
       })
       .catch((error) => {
         console.error("Error al obtener las coordenadas", error);

@@ -17,7 +17,6 @@ exports.getPropertiesByDevelopmentRoute = {
     handler: (req, reply) => __awaiter(void 0, void 0, void 0, function* () {
         const { development } = req.params;
         const properties = yield (0, business_logic_1.getPropertiesByDevelopment)(development);
-        // console.log("PROPERTIES", properties)
         reply.status(200).send(properties);
     }),
 };

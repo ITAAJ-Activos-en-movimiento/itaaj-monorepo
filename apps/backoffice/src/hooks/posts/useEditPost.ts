@@ -11,7 +11,7 @@ export const useEditPost = () => {
         queryKey: ["posts"],
       });
     },
-    onError: (err) => console.log(err),
+    onError: (err) => console.error(err),
   });
 
   return { isEditing, editPost };

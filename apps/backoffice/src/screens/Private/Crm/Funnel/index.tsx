@@ -37,7 +37,6 @@ const Funnel = () => {
     await editLead({ ...lead, position, id: lead.id, stageId: status });
   };
 
-  console.log(leads)
   if (isLoading) {
     return <Loader />;
   }
@@ -109,7 +108,6 @@ const getAfterDropPrevNextIssue = (
     destination?.droppableId,
   );
 
-  console.log(beforeDropDestinationIssues)
   const droppedIssue = allIssues?.items.find(
     (issue: any) => issue.id === droppedIssueId,
   );

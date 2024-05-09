@@ -16,12 +16,10 @@
 //   const development = await developmentApi(params.slug);
 
 //   const properties = await propertiesByDevelopment(development.id);
-//   console.log("PROPERTIES", properties)
 //   // const fetchDataProperties =  async() => {
 //   //     const data = await propertiesByDevelopment(properties?.id)
 //   //     setPropertie(data);
 //   // }
-//   // console.log(propertie)
 //   // useEffect(() => {
 //   //     fetchData();
 //   //     fetchDataProperties();

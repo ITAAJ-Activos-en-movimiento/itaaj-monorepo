@@ -56,9 +56,8 @@ export const sendEmail = async (
 
   try {
     // mg.messages.create(DOMAIN, messageData).then(res => {
-    //   console.log(res);
     // }).catch(error => {
-    //   console.log(error);
+    //   console.error(error);
     // });
 
     await resend.emails.send({
@@ -78,7 +77,7 @@ export const sendEmail = async (
     // const info = await mailerSend.email.send(emailParams);
     return generateCode ? code : undefined;
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
     throw new Error(error.message);
   }
 };
@@ -105,9 +104,8 @@ export const sendEmailCreatedWork = async (
 
   try {
     // mg.messages.create(DOMAIN, messageData).then(res => {
-    //   console.log(res);
     // }).catch(error => {
-    //   console.log(error);
+    //   console.error(error);
     // });
 
     await resend.emails.send({
@@ -127,7 +125,7 @@ export const sendEmailCreatedWork = async (
     // const info = await mailerSend.email.send(emailParams);
     return "Succesfully sent";
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
     throw new Error(error.message);
   }
 };

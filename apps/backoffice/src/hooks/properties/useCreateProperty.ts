@@ -11,7 +11,7 @@ export const useCreateProperties = () => {
           queryKey: ["properties"],
         });
       },
-      onError: (err) => console.log(err),
+      onError: (err) => console.error(err),
     });
 
   return { isCreating, createProperty };

@@ -8,7 +8,6 @@ export const getPropertiesByDevelopmentRoute: RouteOptions = {
     const { development } = req.params as {development: string};
     
     const properties = await getPropertiesByDevelopment(development);
-    // console.log("PROPERTIES", properties)
     reply.status(200).send(properties);
   },
 };

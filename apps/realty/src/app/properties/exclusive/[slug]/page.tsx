@@ -43,7 +43,6 @@ const Property = ({ params }: { params: { slug: string } }) => {
     }
   }
 
-  console.log(actualImage)
   const fetchData =  async() => {
     setLoading(true);
     const data = await propertiesBySlug(params.slug);
@@ -56,7 +55,6 @@ const Property = ({ params }: { params: { slug: string } }) => {
       fetchData();
   }, [])
 
-  console.log(property)
   return (
     <>
     {loading? <p>Cargando...</p> : (

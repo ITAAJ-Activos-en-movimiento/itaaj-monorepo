@@ -12,7 +12,6 @@ export const registerUser = async (data: User): Promise<string | Error> => {
     if (!EMAIL_REGEX.test(data.email)) {
         throw new Error("The email provided is not valid");
       }
-    console.log(data);
     const salt = genSaltSync(10);
     const hashedPassword = hashSync(data.password, salt);
     const result = await getDbInstance().insert(users).values({

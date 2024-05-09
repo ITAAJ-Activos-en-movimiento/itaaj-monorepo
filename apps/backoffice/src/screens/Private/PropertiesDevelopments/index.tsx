@@ -10,7 +10,6 @@ const PropertiesModel = () => {
   const [, setSearch] = useState<string>("");
   const { properties, isLoading } = usePropertiesDevelopments();
 
-  console.log("DATITA", properties)
   return (
     <div className={styles.container}>
       <HeaderPage title="Modelos de Desarrollos ">

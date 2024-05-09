@@ -7,7 +7,6 @@ export const loginEmailUserRoute: RouteOptions = {
     handler: async (request, reply) => {
         const { body } = request;
         const data = body as { email: string };
-        console.log(data)
         const user = await loginEmail({email: data.email});
         
         reply.status(201).send({ token: user?.token, type: user?.type });

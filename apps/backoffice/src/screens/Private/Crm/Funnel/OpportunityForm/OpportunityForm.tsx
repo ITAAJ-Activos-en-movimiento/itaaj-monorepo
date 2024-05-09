@@ -18,7 +18,6 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
 
   const { id: editId, ...editValues } = leadToEdit;
   const isEditSession = Boolean(editId);
-  console.log(editValues)
   const { formState, handleChange } = useForm<any>({
     name: '',
     dueDate: '',

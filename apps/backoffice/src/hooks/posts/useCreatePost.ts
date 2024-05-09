@@ -10,7 +10,7 @@ export const useCreatePost = () => {
         queryKey: ["posts"],
       });
     },
-    onError: (err) => console.log(err),
+    onError: (err) => console.error(err),
   });
 
   return { isCreating, createPost };

@@ -29,7 +29,7 @@ export const useUploadImage = () => {
             setUrl(data.url);
             setIsLoading(false);
         } catch (error) {
-            console.log(error)
+            console.error(error)
             setIsLoading(false);
         }
     };

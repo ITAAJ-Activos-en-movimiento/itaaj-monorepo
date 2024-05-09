@@ -6,7 +6,6 @@ import { ChevronsRight } from "react-feather";
 
 const Blog = async () => {
   const posts = await getPostsApi();
-  console.log(posts);
 
   const truncateExcerpt = (text: string, limit: number) => {
     const words = text.split(" ");

@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { Register } from "./components/auth/Register";
 import { ReactElement, ReactNode, useState } from "react";
 import { Login } from "./components/auth/Login";
+import { Recover } from "./components/auth/Recover";
 
 interface KYCModalProps {
   openModal: boolean;
@@ -19,7 +20,8 @@ const KYCModal = ({ openModal, setOpenModal }: KYCModalProps) => {
 
   const formAuth: { [key: string]: ReactNode } = {
     "LOGIN": <Login setOpenModal={setOpenModal} setStateFormAuth={setStateFormAuth} />,
-    "REGISTER": <Register setOpenModal={setOpenModal} setStateFormAuth={setStateFormAuth} />
+    "REGISTER": <Register setOpenModal={setOpenModal} setStateFormAuth={setStateFormAuth} />,
+    "RECOVER": <Recover setOpenModal={setOpenModal} setStateFormAuth={setStateFormAuth} />
   }
 
   return (

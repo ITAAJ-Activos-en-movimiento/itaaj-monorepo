@@ -46,7 +46,6 @@ export const getAllModelsProperties = async ({page = 1, limit = 1004, search= ''
 
  const total = totalResult.length;
 
- console.log({total})
  const pages = Math.ceil(total / pageSize);
 
  const hasPreviousPage = page > 1;

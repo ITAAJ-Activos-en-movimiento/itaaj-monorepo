@@ -14,8 +14,10 @@ const business_logic_1 = require("@itaaj/business-logic");
 exports.getAllLeadsRoute = {
     method: 'GET',
     url: '/leads',
-    handler: (req, reply) => __awaiter(void 0, void 0, void 0, function* () {
-        const leads = yield (0, business_logic_1.getAllLeads)();
+    handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+        const { query } = request;
+        const { page, limit, search } = query;
+        const leads = yield (0, business_logic_1.getAllLeads)({ page: Number(page), limit: Number(limit), search });
         reply.status(200).send(leads);
     })
 };

@@ -59,3 +59,46 @@ export const Register = async (body: any) => {
     return { message: response.data.message, error: true, status: response.status };
   }
 }
+
+export const RecoverAccount = async (body: any) => {
+  try {
+    const response = await axios.post("http://localhost:8000/api/v1/auth/recover", body);
+    const { message, error } = response.data;
+    return { message, error };
+  } catch (error: any) {
+    const { data } = error.response;
+    throw data;
+  }
+}
+
+export const RecoverAccountValidateToken = async (token: string) => {
+  try {
+    const response = await axios.get(`http://localhost:8000/api/v1/mi-cuenta/recuperar?token=${token}`);
+    return response.data;
+  } catch (error: any) {
+    const { data } = error.response;
+    throw data
+  }
+}
+
+export const RecoverAccountChangePassword = async (body: any) => {
+  try {
+    const response = await axios.post(`http://localhost:8000/api/v1/mi-cuenta/cambiar-contrasena`, body);
+    const { message, error } = response.data;
+    return { message, error };
+  } catch (error: any) {
+    const { data } = error.response;
+    throw data
+  }
+}
+
+export const RecoverAccountValidateCode = async (body: any) => {
+  try {
+    const response = await axios.post("http://localhost:8000/api/v1/auth/recover", body);
+    const { message, error } = response.data;
+    return { message, error };
+  } catch (error: any) {
+    const { data } = error.response;
+    throw data;
+  }
+}

@@ -22,6 +22,7 @@ export const users = pgTable('users', {
     last_login: varchar('last_login'),
     login_attempts: integer('login_attempts'),
     locked: boolean('locked').default(false),
+    public_key: varchar('public_key', { length: 256 }),
     birthdate: timestamp('birthdate'),
     createdAt: timestamp('created_at').defaultNow(),
 }, (users) => {

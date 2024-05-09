@@ -17,6 +17,7 @@ export interface UserProps {
   residence?: string
   identification?: string
   checkTerms?: boolean
+  public_key?: string
 }
 
 export const Register = ({ setOpenModal, setStateFormAuth }: { 
@@ -33,7 +34,8 @@ export const Register = ({ setOpenModal, setStateFormAuth }: {
     roleId: null,
     residence: "",
     identification: "",
-    checkTerms: false
+    checkTerms: false,
+    public_key: ""
   });
 
   const refContentStep = useRef(null);
@@ -45,8 +47,9 @@ export const Register = ({ setOpenModal, setStateFormAuth }: {
   };
 
   const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
-    setUser((user) => ({ ...user, [name]: value || checked }));
+    const { name, value, checked, type } = e.target;
+    const valUser = type === 'checkbox' ? checked : value;
+    setUser((user) => ({ ...user, [name]: valUser }));
   };
   
   return (
@@ -57,7 +60,11 @@ export const Register = ({ setOpenModal, setStateFormAuth }: {
         handleChangeUser={handleChangeUser}
         setStateFormAuth={setStateFormAuth}
       />
-      <StepConnectToWallet moveStep={handleChangeStep} />
+      <StepConnectToWallet 
+        moveStep={handleChangeStep} 
+        user={user}
+        setUser={setUser}
+      />
       <StepSelectRole 
         moveStep={handleChangeStep}
         setRole={setRole}

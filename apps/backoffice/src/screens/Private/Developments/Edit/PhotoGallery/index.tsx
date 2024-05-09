@@ -30,8 +30,6 @@ const PhotoGallery = ({ oldUrls, setImages }: GalleryProps) => {
     setImages((prev) => ([...prev, url]))
   }, [initialUrls]);
 
-  console.log(urls)
-
   useEffect(() => {
     const mergedUrls = [...oldUrls, ...initialUrls];
     setUrls(mergedUrls)

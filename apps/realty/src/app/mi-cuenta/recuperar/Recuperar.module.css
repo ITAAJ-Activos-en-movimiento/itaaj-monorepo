@@ -1,0 +1,78 @@
+
+.boxAccount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.account{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 60%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.account h3{
+  font-weight: 600;
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.account button{
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: .5rem;
+  margin-top: 1.5rem;
+}
+
+.account > p{
+  text-align: center;
+  opacity: .5;
+  margin-block: 4rem;
+  margin-bottom: 2rem;
+}
+
+.account a{
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.account .register{
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--main-color);
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+}
+
+.account .buton{
+  background-color: var(--main-color) !important;
+}
+
+.account .register{
+  background-color: #fff;
+  color: var(--main-color);
+}
+
+.field {
+  width: 100%;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: .5rem;
+}
