@@ -8,6 +8,7 @@ import {
 import MapProperties from "./MapProperties";
 import PropertiesWithMap from "./PropertiesWithMap";
 import Link from "next/link";
+import Search from "./Search";
 
 const Properties = async ({
   searchParams,
@@ -17,7 +18,6 @@ const Properties = async ({
     search?: string;
     page?: string;
     limit?: string;
-
   };
 }) => {
   const developments = await developmentsApi();
@@ -51,10 +51,8 @@ const Properties = async ({
     <div>
       <div className={styles.header}>
         <h2>Filtros</h2>
-        <select name="" id="">
-          <option value="">Estado</option>
-        </select>
-        <select name="" id="">
+      <Search value={searchParams?.search} />
+        {/* <select name="" id="">
           <option value="">Colonia</option>
         </select>
         <select name="" id="">
@@ -71,11 +69,11 @@ const Properties = async ({
         </select>
         <select name="" id="">
           <option value="">Baños</option>
-        </select>
+        </select> */}
       </div>
       <PropertiesWithMap
-        developments={Number(searchParams?.page) > 1? []: developments.items}
-        properties={listaOrdenada}
+        developments={Number(searchParams?.page) > 1? []: developments.items.filter((property: any) => searchParams?.search ? property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) : property)}
+        properties={listaOrdenada.filter((property: any) => searchParams?.search? property.state.toLowerCase().includes(searchParams?.search?.toLowerCase()) : property)}
         searchParams={searchParams}
         locations={locations}
       />

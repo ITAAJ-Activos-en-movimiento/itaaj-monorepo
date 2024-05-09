@@ -80,7 +80,7 @@ useEffect(() => {
     type: developmentInfo?.type,
     partner: developmentInfo?.partner,
   });
-
+  setImages(developmentInfo?.images || []);
   setDescription(developmentInfo?.description);
 
 }, [isLoading])
