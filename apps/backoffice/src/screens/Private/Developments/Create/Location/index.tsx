@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handleChange}: any) => {
   const obtenerCoordenadas = () => {
-    const address = formState.address+' '+formState.city+' '+formState.state+' '+formState.country;
+    const address = formState?.address+' '+formState?.city+' '+formState?.state+' '+formState?.country;
     const direccionFormateada = address.split(" ").join("+");
     const API_KEY = "AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg"; // Reemplaza con tu propia API key de Google Maps Geocoding API
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${direccionFormateada}&key=${API_KEY}`;

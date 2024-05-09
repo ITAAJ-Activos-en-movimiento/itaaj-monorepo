@@ -7,5 +7,5 @@ export const useProperties = () => {
     queryFn: () => getPropertiesApi(),
   });
 
-  return { isLoading, properties };
+  return { isLoading, properties: properties?.items };
 };

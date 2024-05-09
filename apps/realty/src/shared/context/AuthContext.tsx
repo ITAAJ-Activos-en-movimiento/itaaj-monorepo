@@ -76,23 +76,27 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   }
 
   const register = async (user: any) => {
-    const response = await Register(user);
-    if (response.error) {
-      push("/");      
-      snackbar.error({ message: response.message }); 
-      return;
-    }
+    try {
+      const response = await Register(user);
+      if (response.error) {
+        push("/");      
+        snackbar.error({ message: response.message }); 
+        return;
+      }
 
-    if (Object.entries(response.data).length !== 0) {
-      setUser(response.data);
-      setIsAuthenticated(true);
-    }
+      if (Object.entries(response.data).length !== 0) {
+        setUser(response.data);
+        setIsAuthenticated(true);
+      }
 
-    if (!response.error) {
-      push("/dashboard");
-      snackbar.success({ message: response.message }); 
-    } else {
-      snackbar.error({ message: response.message }); 
+      if (!response.error) {
+        push("/dashboard");
+        snackbar.success({ message: response.message }); 
+      } else {
+        snackbar.error({ message: response.message }); 
+      }
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -115,6 +119,6 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider children={children} value={value} />
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   )
 }

@@ -32,8 +32,7 @@ const Slider = ({properties}: any) => {
      
     navigation
 >
-          {properties.sort((property:any) => property.price - property.price)
-.map((property: any) => (
+          {properties?.items?.sort((property:any) => property.price - property.price)?.map((property: any) => (
         <SwiperSlide key={property.id} >
         <PropertyCard {...property} loc='developments' />
     </SwiperSlide>

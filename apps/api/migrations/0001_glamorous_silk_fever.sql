@@ -1,0 +1,1 @@
+ALTER TABLE "developments" DROP COLUMN IF EXISTS "bathrooms_medium";

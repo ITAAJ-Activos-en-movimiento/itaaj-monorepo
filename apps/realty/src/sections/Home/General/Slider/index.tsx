@@ -32,7 +32,7 @@ const Slider = ({properties}: any) => {
      
     navigation
 >
-          {properties
+          {properties?.items
 ?.filter((property: any) => property.category == 'general')
 .sort((property:any) => property.price - property.price)
 .map((property: any) => (

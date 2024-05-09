@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  grid-template-columns: 40rem 1fr;
+  max-width: 140rem;
+  margin-inline: auto;
+}
+
+.header{
+  margin-top: 4rem;
+}

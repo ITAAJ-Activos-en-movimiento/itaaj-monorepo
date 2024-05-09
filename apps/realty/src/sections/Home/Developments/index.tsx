@@ -8,7 +8,6 @@ import Slider from './Slider';
 
 const Developments: NextPage = async () => {
   const developments = await developmentsApi();
-
   return (
     <section className={styles.section}>
       <div className={styles.header}>

@@ -1,7 +1,9 @@
 .footer{
+  position: relative;
     display: flex;
     flex-direction: column;
     background-color: #0C0F24;
+    z-index: 9999999999999;
    }
    
    .container{

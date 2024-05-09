@@ -64,7 +64,7 @@ const CreateProperty = () => {
     address: "",
     city: "",
     state: "",
-    country: "Mexico",
+    country: "México",
     price: 0,
     description: "",
     area: {
@@ -411,7 +411,7 @@ const CreateProperty = () => {
               </div>
             </div>
             <div className={styles.col}>
-              <div className={styles.field}>
+              {/* <div className={styles.field}>
                 <label>Estado del inmueble</label>
                 <select onChange={handleChange} name="propertyStatus" id="">
                   <option value="">Selecciona</option>
@@ -421,7 +421,7 @@ const CreateProperty = () => {
                   <option value="A reformar">A reformar</option>
                   <option value="Reformado">Reformado</option>
                 </select>
-              </div>
+              </div> */}
               <div className={styles.field}>
                 <label>Antigüedad</label>
                 <select onChange={handleChange} name="antiquity" id="">
@@ -476,7 +476,7 @@ const CreateProperty = () => {
               longitude: longitud,
             }}
           />
-          {/* <div className={styles.property_map}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="700" height="450" loading="lazy" ></iframe></div> */}
+          {/* <div className={styles.property_map}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMéxico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="700" height="450" loading="lazy" ></iframe></div> */}
         </div>
 
         <div className={styles.field}>

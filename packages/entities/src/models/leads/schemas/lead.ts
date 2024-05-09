@@ -13,4 +13,17 @@ export interface Lead extends Base {
     city: string;
     country: string;
     source: string;
+    userId: string;
+    funnelId: string;
+    contactId: string;
+    account: string;
+    contactName: string;
+    person: string;
+    personName: string;
+    currency: string;
+    value: number;
+    potential: number;
+    dueDate: string;
+    stageId: string;
+    position: number;
 }

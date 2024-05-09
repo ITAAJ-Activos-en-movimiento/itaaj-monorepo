@@ -7,9 +7,10 @@ interface Props {
   slug: any
   closeModal?: Function
   prevmsg?: string
+  children?: any
 }
 
-const Cform = ({slug, closeModal, prevmsg} : Props) => {
+const Cform = ({slug, closeModal, prevmsg, children} : Props) => {
 
   const pmsg = prevmsg ? prevmsg : "";
 
@@ -68,6 +69,7 @@ const Cform = ({slug, closeModal, prevmsg} : Props) => {
        <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alta en itaaj</p>
       </label>
       <button disabled={info.name.length < 3 || info.phone.length < 4 || info.email.length < 5} className={styles.btn } type='submit'>Contactar</button>
+      {children}
       </form>
     );
 };

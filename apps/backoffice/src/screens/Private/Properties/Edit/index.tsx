@@ -1,38 +1,35 @@
-import React, { useState } from "react";
-import { Button, Field,  Input, TextEditor } from "@/components";
+import React, { useEffect, useState } from "react";
+import { Button, Field, Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/constant-definitions";
-import { v4 as uuid } from "uuid";
+import { useProperty } from "@/hooks/properties/useProperty";
 
 // const placeholderImage = "https://via.placeholder.com/300x300";
 
-const CreatePropety: React.FC = () => {
-
+const EditPropety: React.FC = () => {
+  const { isLoading, property: propertyInfo } = useProperty();
   const [property, setProperty] = useState({
-    id: uuid(),
-    name: "",
-    address: "",
-    city: "",
-    state: "",
-    country: "",
-    price: 0,
-    description: "",
-    area: {},
-    images: [],
-    garage: 0,
-    bedrooms: 0,
-    bathrooms: 0,
+    name: propertyInfo?.name,
+    address: propertyInfo?.address,
+    city: propertyInfo?.city,
+    state: propertyInfo?.state,
+    country: propertyInfo?.country,
+    price: propertyInfo?.price,
+    description: propertyInfo?.description,
+    area: propertyInfo?.area,
+    images: propertyInfo?.images,
+    garage: propertyInfo?.garage,
+    bedrooms: propertyInfo?.bedrooms,
+    bathrooms: propertyInfo?.bathrooms,
     antiquity: 0,
     balcony: 0,
     kitcken: 0,
-    propertyStatus: "",
-    type: "condo",
-    createdAt: new Date().toString(),
-    category: "general",
+    propertyStatus: propertyInfo?.propertyStatus,
+    type: propertyInfo?.type,
+    category: propertyInfo?.category,
     partner: "",
   });
-
 
   const [amenities, setAmenities] = useState<any[]>([]);
   const addAmenities = () => {
@@ -57,7 +54,7 @@ const CreatePropety: React.FC = () => {
     amenities.map((amenity) => {
       newAmenities.push(amenity.text);
     });
-   
+
     navigate(`/${PrivateRoutes.PROPERTIES}`, { replace: true });
   };
 
@@ -75,15 +72,43 @@ const CreatePropety: React.FC = () => {
     setProperty((prev) => ({ ...prev, area: { ...prev.area, [name]: value } }));
   };
 
+  useEffect(() => {
+    setProperty({
+      name: propertyInfo?.name,
+      address: propertyInfo?.address,
+      city: propertyInfo?.city,
+      state: propertyInfo?.state,
+      country: propertyInfo?.country,
+      price: propertyInfo?.price,
+      description: propertyInfo?.description,
+      area: propertyInfo?.area,
+      images: propertyInfo?.images,
+      garage: propertyInfo?.garage,
+      bedrooms: propertyInfo?.bedrooms,
+      bathrooms: propertyInfo?.bathrooms,
+      antiquity: 0,
+      balcony: 0,
+      kitcken: 0,
+      propertyStatus: propertyInfo?.propertyStatus,
+      type: propertyInfo?.type,
+      category: propertyInfo?.category,
+      partner: "",
+    });
+  }, [isLoading]);
+
   return (
     <div className={styles.container}>
       <div className={styles.section}>
         <Field label="Property Name">
-          <Input name="name" onChange={handleChange} />
+          <Input name="name" value={property.name} onChange={handleChange} />
         </Field>
 
         <Field label="Address">
-          <Input name="address" onChange={handleChange} />
+          <Input
+            name="address"
+            value={property.address}
+            onChange={handleChange}
+          />
         </Field>
 
         <Field label="City">
@@ -180,10 +205,8 @@ const CreatePropety: React.FC = () => {
       <div className={styles.sidebar}>
         <div className={styles.section}>
           <h3>Images</h3>
-       
-          <div className={styles.preview_container}>
-           
-          </div>
+
+          <div className={styles.preview_container}></div>
         </div>
         <div className={styles.section}>
           <Field label="Property Status">
@@ -222,4 +245,4 @@ const CreatePropety: React.FC = () => {
   );
 };
 
-export default CreatePropety;
+export default EditPropety;

@@ -1,0 +1,78 @@
+.container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+}
+
+.form{
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 80px #0000000f;
+    border-radius: 1.2rem;
+    width: 40rem;
+    height: 38rem;
+    padding: 3rem;
+    margin-bottom: 10rem;
+}
+
+.form img{
+    margin: 0rem auto;
+    display: block;
+    margin-bottom: 1.8rem;
+}
+
+.form h3{
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: .2rem;
+    color: rgba(0, 0, 0, .8);
+    margin-bottom: 3rem;
+}
+
+.form h4{
+    font-weight: 500;
+}
+
+.welcome{
+    margin-bottom: 4rem;
+}
+
+.input {
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    overflow: hidden;
+    padding-left: .5rem;
+}
+
+.input input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 1.4rem;
+    outline: none;
+}
+
+.input input::placeholder{
+    color: rgba(0, 0, 0, .3);
+}
+
+.form button{
+    background-color: #16A1B8;
+    border: none;
+    width: 100%;
+    height: 4rem;
+    border-radius: .5rem;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.btn{
+    margin-top: 2rem;
+}

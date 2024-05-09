@@ -7,5 +7,5 @@ export const useDevelopments = () => {
     queryFn:  getDevelopmentsApi,
   });
 
-  return { isLoading, developments };
+  return { isLoading, developments: developments?.items };
 };

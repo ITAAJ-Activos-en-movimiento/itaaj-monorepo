@@ -1,13 +1,10 @@
 "use client";
 import { useState } from 'react';
 import { useSDK } from '@metamask/sdk-react';
-import styles from '../KYCModal.module.css';
 import { UserProps } from './auth/Register';
-import Web3 from 'web3';
-import axios from 'axios';
-import { Register } from '@/services';
-import useAuthContext from '@/shared/hooks/useAuthContext';
 import { useSnackbar } from '@/shared/snackbar/Snackbar';
+import styles from '../KYCModal.module.css';
+import useAuthContext from '@/shared/hooks/useAuthContext';
 
 interface StepProps { 
   moveStep: (prop: number) => void
@@ -101,15 +98,16 @@ export const StepRegisterAccount = ({ moveStep, handleChangeUser, user, setState
   )
 }
 
-export const StepConnectToWallet = ({ moveStep }: StepProps) => {
+export const StepConnectToWallet = ({ moveStep, user, setUser }: StepProps) => {
   const { sdk, connected, chainId, account } = useSDK();
   const [isRequestingAccounts, setIsRequestingAccounts] = useState(false);
 
   const connect = async () => {
     try {
-      if (!isRequestingAccounts && sdk) {
+      if (!isRequestingAccounts && sdk && setUser) {
         setIsRequestingAccounts(true);
-        await sdk.connect();
+        const wallet: any = await sdk.connect();
+        setUser({ ...user, public_key: wallet[0] })
         moveStep(1);
       }
     } catch (err) {
@@ -156,7 +154,6 @@ export const StepSelectRole = ({ moveStep, setUser, user, setRole }: StepProps) 
     setRole && setRole(role);
     moveStep(1);
   }
-  
   return (
     <div className={styles.selectRole}>
       <button onClick={() => handleClickProfile(1, "INVESTOR")}>Eres inversionista</button>
@@ -181,7 +178,12 @@ export const StepAdditionalData = ({ handleChangeUser, user, role, setOpenModal 
   }
 
   const registerUser = async (): Promise<void> => {
-    await action.register(user);
+    try {
+      await action.register(user);
+      setOpenModal && setOpenModal(false);
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const formByRole = {

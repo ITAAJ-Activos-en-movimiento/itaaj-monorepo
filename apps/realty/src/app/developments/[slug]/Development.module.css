@@ -69,22 +69,26 @@
 }
 
 .picture .photos{
-    position: absolute;
-    bottom: 1rem;
     border: 1px solid var(--main-color);
     color: var(--main-color);
     background-color: #fff;
     font-weight: 600;
     padding:  1rem;
     border-radius: 1rem;
-    left: 1rem;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: .8rem;
 }
 
-
+.image_info{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 
 .property .price{
     width: 9rem;
@@ -538,15 +542,12 @@
 }
 
 .picture .tres{
-    position: absolute;
-    bottom: 1rem;
     border: 1px solid var(--main-color);
     color: var(--main-color);
     background-color: #fff;
     font-weight: 600;
     padding:  1rem;
     border-radius: 1rem;
-    left: 12rem;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -554,15 +555,25 @@
 }
 
 .picture .lett {
-    position: absolute;
-    bottom: 1rem;
     border: 1px solid var(--main-color);
     color: var(--main-color);
     background-color: #fff;
     font-weight: 600;
     padding:  1rem;
     border-radius: 1rem;
-    left: 24rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.picture .lettre {
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    background-color: #fff;
+    font-weight: 600;
+    padding:  1rem;
+    border-radius: 1rem;
     font-size: 1.2rem;
     display: flex;
     align-items: center;

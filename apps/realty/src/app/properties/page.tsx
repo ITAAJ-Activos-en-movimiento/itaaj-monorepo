@@ -6,11 +6,25 @@ import {
   properties as propertiesApi,
 } from "@/services";
 import MapProperties from "./MapProperties";
+import PropertiesWithMap from "./PropertiesWithMap";
+import Link from "next/link";
 
-const Properties = async () => {
-  const properties = await propertiesApi();
+const Properties = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    type?: string;
+    search?: string;
+    page?: string;
+    limit?: string;
 
-  const newLocations = properties.map((property: any) => property.location);
+  };
+}) => {
+  const developments = await developmentsApi();
+  const properties = await propertiesApi({ page: Number(searchParams?.page), limit: Number(searchParams?.limit) });
+
+
+  const newLocations = properties.items.map((property: any) => property.location);
   const locations = newLocations.filter((loca: any) => loca.latitude !== 0);
 
   function compararPorDesarrollo(a: any, b: any): number {
@@ -27,24 +41,14 @@ const Properties = async () => {
       return 0;
     }
   }
-  
-  // Ordenar la lista utilizando la función de comparación personalizada
-  const listaOrdenada = properties.sort(compararPorDesarrollo);
-  const developmentVistos = new Set<string>();
-const listaUnica = listaOrdenada.filter((item: any) => {
-  if (item.development !== null) {
-    if (!developmentVistos.has(item.development)) {
-      developmentVistos.add(item.development);
-      return true;
-    }
-    return false;
-  }
-  return true; // Mantener todas las instancias con development nulo
-});
 
+  // Ordenar la lista utilizando la función de comparación personalizada
+  const listaOrdenada = properties.items.sort(compararPorDesarrollo);
+//  const listaUnica = listaOrdenada.filter((item: any) => !item.development);
+  const pagesArray = Array.from({ length: properties.pageInfo.pages }, (_, index) => index + 1);
 
   return (
-    <>
+    <div>
       <div className={styles.header}>
         <h2>Filtros</h2>
         <select name="" id="">
@@ -69,6 +73,22 @@ const listaUnica = listaOrdenada.filter((item: any) => {
           <option value="">Baños</option>
         </select>
       </div>
+      <PropertiesWithMap
+        developments={Number(searchParams?.page) > 1? []: developments.items}
+        properties={listaOrdenada}
+        searchParams={searchParams}
+        locations={locations}
+      />
+
+      <div className={styles.pagination}>
+        {pagesArray.map((page: number) => (
+          <span key={page}><Link style={{
+            backgroundColor: Number(searchParams?.page) == Number(page) ? "var(--main-color)" : "#fff",
+            color: Number(searchParams?.page) == Number(page) ? "#fff" : "#000"
+          }}  href={`?page=${page}&limit=${10}`} >{page} </Link></span>
+        ))}
+      </div>
+      {/* 
       {properties.length == 0 ? (
         <div className={styles.notProperties}>
           <div>
@@ -79,21 +99,8 @@ const listaUnica = listaOrdenada.filter((item: any) => {
       ) : (
         <div>
           <div className={styles.filters}>
-            <h2 className={styles.title}>
-              Viviendas y casas en venta en Mexico
-            </h2>
-            <p>
-              {
-                properties.filter((property: any) => !property.development)
-                  .length
-              }{" "}
-              usadas y{" "}
-              {
-                properties.filter((property: any) => property.development)
-                  .length
-              }{" "}
-              de obra nueva
-            </p>
+       
+       
             <div className={styles.option}>
               <span>
                 <i className="bx bx-info-circle"></i>
@@ -109,20 +116,13 @@ const listaUnica = listaOrdenada.filter((item: any) => {
               </select>
             </div>
           </div>
-          <div className={styles.container_body} >
-            <div className={styles.properties}>
-              {listaUnica?.map((property: any) => (
-                <Property key={property.id} {...property} />
-              ))}
-            </div>
-            <div className={styles.map}>
-              <MapProperties locations={locations} />
-
-            </div>
+          <div className={styles.container_body}>
+          
+          
           </div>
         </div>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

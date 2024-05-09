@@ -822,9 +822,9 @@ export default [
    continentName: "Africa"
  },
  {
-   countryName: "Mexico",
+   countryName: "México",
    population: "112468855",
-   capital: "Mexico City",
+   capital: "México City",
    continentName: "North America"
  },
  {

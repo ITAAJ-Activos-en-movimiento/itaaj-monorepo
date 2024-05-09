@@ -1,3 +1,4 @@
+"use client"
 import { FC, PropsWithChildren, createContext, useContext, useMemo } from "react";
 import { SnackbarProvider as NotistackProvider, enqueueSnackbar, closeSnackbar } from 'notistack';
 import { SnackbarError, SnackbarInfo, SnackbarSuccess, SnackbarType, SnackbarWarning } from "./SnackbarAlert";

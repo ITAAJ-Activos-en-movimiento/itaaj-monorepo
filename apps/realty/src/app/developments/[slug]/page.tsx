@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { PropertyElement } from '@/components/Developments';
 import Image from 'next/image';
 import { DivisaFormater } from '@/utils';
-import { Camera, Globe, Info } from 'react-feather';
+import { Camera, Globe, Info, Image as ImageIcon } from 'react-feather';
 import Map from './Map';
 import Modal from '@/containers/Modal';
 import Floorplans from './Plane';
@@ -31,6 +31,9 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
         <div className={styles.picture}>
           <span className={styles.tag}>OBRA NUEVA</span>
           <Image src={development.images?.length > 2 ? development?.images[0] : ''} alt='Imagen numero 1 de la propiedad' width={800} height={800} objectFit='cover' />
+          <div className={styles.image_info}>
+
+          
           <Link href='?photos=true' className={styles.photos}><Camera size={14} /> {development?.images?.length} Fotos</Link>
           {development.owner && (
           <Link href={development.owner} className={styles.tres}><Info size={14} /> Brochure</Link>
@@ -38,7 +41,11 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
           {development.virtualTourUrl && (
             <Link href={development.virtualTourUrl} className={styles.lett}><Globe size={14} />360</Link>
           )}
+                {development.video && (
+            <Link href={development.video} className={styles.lettre}><ImageIcon size={14} />Video</Link>
+          )}
       
+      </div>
         
         </div>
         <div className={styles.details}>
@@ -85,7 +92,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
             <h2 className={styles.title_property}>
               Inmuebles de este desarrollo...
             </h2>
-            <Properties properties={properties} />
+            <Properties properties={properties.items} />
           </div>
 
           <h2 className={styles.title_property}>

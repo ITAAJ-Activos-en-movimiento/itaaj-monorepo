@@ -14,6 +14,8 @@ const dashboard_1 = __importDefault(require("./dashboard"));
 const development_1 = __importDefault(require("./development"));
 const messages_1 = __importDefault(require("./messages"));
 const proposals_1 = __importDefault(require("./proposals"));
+const posts_1 = __importDefault(require("./posts"));
+const funnels_1 = require("./funnels");
 const routes = [
     health_check_1.healthCheckRoute,
     ...auth_1.default,
@@ -24,7 +26,9 @@ const routes = [
     ...dashboard_1.default,
     ...development_1.default,
     ...messages_1.default,
-    ...proposals_1.default
+    ...proposals_1.default,
+    ...posts_1.default,
+    ...funnels_1.funnelsRoutes
 ];
 const registerRoutes = (fastify) => {
     // console.warn("registering routes", routes);

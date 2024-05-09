@@ -1,11 +1,11 @@
-import { createDevelopmentApi } from "@/services";
+import { deleteDevelopmentApi } from "@/services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useDeleteDevelopment = () => {
   const queryClient = useQueryClient();
-  const { isLoading: isCreating, mutate: createDevelopment } =
+  const { isLoading: isCreating, mutate: deleteDevelopment } =
     useMutation({
-      mutationFn: createDevelopmentApi,
+      mutationFn: deleteDevelopmentApi,
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ["developments"],
@@ -14,5 +14,5 @@ export const useDeleteDevelopment = () => {
       onError: (err) => console.error(err),
     });
 
-  return { isCreating, createDevelopment };
+  return { isCreating, deleteDevelopment };
 };

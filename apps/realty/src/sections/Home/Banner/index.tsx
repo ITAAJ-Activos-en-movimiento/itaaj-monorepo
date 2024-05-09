@@ -3,6 +3,7 @@ import styles from './Banner.module.css'
 import { Search } from 'react-feather'
 import Image from 'next/image'
 import Link from 'next/link'
+import SearchProperties from './Search'
 
 const Banner = () => {
 
@@ -42,20 +43,7 @@ const Banner = () => {
             <li><Link href='/properties'>Portafolio</Link></li>
           </ul>
 
-          <div className={styles.params}>
-            <select name="" id="">
-              <option value="departament">Viviendas</option>
-              <option value="new">Obra nueva</option>
-              <option value="offerts">Promociones</option>
-              <option value="office">Oficina</option>
-              <option value="terreno">Terreno</option>
-              <option value="building">Edificio</option>
-            </select>
-            <div>
-              <input type="search" placeholder='Buscar propiedades en estados, etc...' />
-              <Link href='/properties' className={styles.btn} ><Search size={20} /> <span>Buscar</span></Link>
-            </div>
-          </div>
+      <SearchProperties />
         </div>
       </div>
       
@@ -91,6 +79,15 @@ const Banner = () => {
               />
               <h3>Valora tu casa</h3>
             </div>
+            <Link href='/hipotecas' className={styles.box}>
+              <Image
+                src="/hipo_icon.svg"
+                width={45}
+                height={45}
+                alt="Calcula tu hipoteca"
+              />
+              <h3>Calcula tu hipoteca</h3>
+            </Link>
             <Link href='/itabot' className={styles.box}>
               <Image
                 src="/value.png"

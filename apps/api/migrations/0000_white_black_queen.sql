@@ -1,25 +1,26 @@
 CREATE TABLE IF NOT EXISTS "developments" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
-	"name" varchar(256) NOT NULL,
-	"slug" varchar(256) NOT NULL,
+	"name" varchar(256),
+	"slug" varchar(256),
 	"description" text,
-	"address" varchar(256) NOT NULL,
-	"city" varchar(256) NOT NULL,
-	"state" varchar(256) NOT NULL,
-	"country" varchar(256) NOT NULL,
+	"address" varchar(256),
+	"city" varchar(256),
+	"state" varchar(256),
+	"country" varchar(256),
 	"neighborhood" varchar(256),
 	"households" varchar(256),
 	"street" varchar(256),
 	"external_number" varchar(256),
 	"internal_number" varchar(256),
-	"location" jsonb NOT NULL,
-	"price" integer NOT NULL,
+	"location" jsonb,
+	"price" integer,
 	"area" varchar(256),
 	"garage" integer,
 	"images" varchar(256)[],
 	"amenities" varchar(256)[],
 	"bedrooms" varchar(256),
 	"bathrooms" varchar(256),
+	"bathrooms_medium" varchar,
 	"image" varchar(256),
 	"owner" varchar(256),
 	"virtualTourUrl" varchar(256),
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS "developments" (
 
 CREATE TABLE IF NOT EXISTS "leads" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
-	"name" varchar(256) NOT NULL,
+	"name" varchar(256),
 	"email" varchar(256) NOT NULL,
 	"phone" varchar(255),
 	"gender" varchar(256),
@@ -48,6 +49,15 @@ CREATE TABLE IF NOT EXISTS "leads" (
 	"type" varchar(256),
 	"status" varchar(50),
 	"source" varchar(255),
+	"userId" varchar,
+	"currency" varchar,
+	"funnelId" varchar,
+	"contactId" varchar,
+	"contactName" varchar,
+	"personName" varchar,
+	"value" integer,
+	"potential" integer,
+	"stageId" varchar,
 	"reportes" varchar(256),
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT leads_email PRIMARY KEY("email")
@@ -79,6 +89,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"external_number" varchar(256),
 	"internal_number" varchar(256),
 	"location" jsonb,
+	"bathrooms_medium" varchar(255),
 	"price" integer,
 	"floor" varchar(256),
 	"area" jsonb,
@@ -86,7 +97,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"images" varchar(256)[],
 	"amenities" varchar(256)[],
 	"bedrooms" integer,
-	"bathrooms" numeric,
+	"bathrooms" integer,
 	"image" varchar(256),
 	"owner" varchar(256),
 	"virtualTourUrl" varchar(256),
@@ -98,7 +109,10 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"category" varchar(256),
 	"partner" varchar(256),
 	"development" varchar(256),
-	"created_at" timestamp DEFAULT now()
+	"created_at" timestamp DEFAULT now(),
+	"zipcode" integer,
+	"floorPlans" varchar(256)[],
+	"status" varchar(256) DEFAULT 'active'
 );
 
 CREATE TABLE IF NOT EXISTS "proposals" (
@@ -109,6 +123,7 @@ CREATE TABLE IF NOT EXISTS "proposals" (
 	"phone" varchar(256),
 	"proposal" varchar(256),
 	"funding" varchar(256),
+	"userId" varchar,
 	"funds" varchar(256),
 	"development" varchar(256),
 	"created_at" timestamp DEFAULT now()
@@ -116,23 +131,28 @@ CREATE TABLE IF NOT EXISTS "proposals" (
 
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
-	"name" varchar(256) NOT NULL,
-	"residence" varchar(11) NOT NULL,
-	"lastname" varchar(256) NOT NULL,
+	"roleId" varchar(256),
+	"residence" varchar(256),
+	"identification" varchar(11),
+	"name" varchar(256),
+	"lastname" varchar(256),
 	"email" varchar(256) NOT NULL,
-	"password" varchar(256) NOT NULL,
-	"phone" integer,
+	"password" varchar(256),
+	"phone" varchar,
+	"code" integer,
 	"gender" varchar(256),
+	"isOfficer" boolean DEFAULT false,
+	"isAdmin" boolean DEFAULT false,
 	"city" varchar(256),
 	"state" varchar(256),
 	"country" varchar(256),
 	"method" varchar(256),
 	"status" varchar(50),
-	"last_login" varchar(50),
+	"last_login" varchar,
 	"login_attempts" integer,
 	"locked" boolean DEFAULT false,
 	"birthdate" timestamp,
-	"created_at" timestamp DEFAULT now() NOT NULL,
+	"created_at" timestamp DEFAULT now(),
 	CONSTRAINT users_email PRIMARY KEY("email")
 );
 
@@ -142,6 +162,47 @@ CREATE TABLE IF NOT EXISTS "roles" (
 	"description" text,
 	"status" boolean,
 	"created_at" timestamp DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS "posts" (
+	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
+	"title" varchar(256) NOT NULL,
+	"slug" varchar(256),
+	"author" varchar(256),
+	"category" varchar(256),
+	"description" text,
+	"tags" varchar(256)[],
+	"excerpt" text,
+	"content" text,
+	"featuredImage" varchar(256),
+	"socialImage" varchar(256),
+	"seoTitle" varchar(256),
+	"seoDescription" text,
+	"seoKeywords" varchar(256)[],
+	"canonicalUrl" varchar(256),
+	"relatedPosts" varchar(256)[],
+	"commentsEnabled" boolean,
+	"comments" jsonb,
+	"likes" integer,
+	"shares" integer,
+	"views" integer,
+	"rating" integer,
+	"language" varchar(256),
+	"duration" varchar(256),
+	"location" varchar(256),
+	"source" varchar(256),
+	"inGeneral" boolean,
+	"company" varchar(256),
+	"status" varchar(256),
+	"createdAt" timestamp DEFAULT now() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "funnels" (
+	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
+	"name" varchar(256) NOT NULL,
+	"stages" jsonb[],
+	"status" varchar(256),
+	"createdAt" timestamp DEFAULT now() NOT NULL
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "leads_id_index" ON "leads" ("id");

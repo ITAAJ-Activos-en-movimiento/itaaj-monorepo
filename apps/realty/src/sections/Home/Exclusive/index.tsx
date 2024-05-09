@@ -9,7 +9,7 @@ import Slider from './Slider';
 
 const Exclusive: NextPage = async () => {
 
-  const properties = await propertiesApi();
+  const properties = await propertiesApi({ page: 1, limit: 1004 });
 
   return (
     <section className={styles.section}>

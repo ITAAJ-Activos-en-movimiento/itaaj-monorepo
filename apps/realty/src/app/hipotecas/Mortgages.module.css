@@ -1,0 +1,106 @@
+.banner {
+    background-image: url("/hipoteca.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;padding-bottom: 5rem;
+}
+
+.card{
+    background-color: #fff;
+    width: 60rem;
+    height: max-content;
+    margin-top: 5rem;
+    border-radius: .5rem;
+    padding: 4rem;
+    padding-inline: 8rem;
+    display: grid;
+}
+.field {
+    margin-bottom: 2rem;
+}
+
+.field p{
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.field select{
+    height: 4rem;
+}
+
+.field input{
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding-inline: 1rem;
+}
+
+
+.btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner button{
+    background-color: var(--main-color);
+    padding-inline: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.info{
+    font-size: 1.2rem;
+    margin-top: 4rem;
+}
+
+.section{
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    padding-block: 4rem;
+}
+
+.section h2{
+    margin-bottom: 3rem;
+}
+
+.section ul li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.4rem;
+}
+
+.section ul li h3{
+    font-size: 1.6rem;
+}
+
+.section ul li p{
+    font-size: 1.4rem;
+}
+
+.number{
+    background-color: #EEEEEE;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section details{
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding: 2rem .5rem;
+}
+
+.card a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}

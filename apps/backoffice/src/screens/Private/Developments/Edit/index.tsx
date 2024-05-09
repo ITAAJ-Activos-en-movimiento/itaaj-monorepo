@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Field,  Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import { useNavigate } from "react-router-dom";
-import { useDevelopment, useEditDevelopment, useUploadImage } from "@/hooks";
+import { useDevelopment, useEditDevelopment } from "@/hooks";
 import { Image, Info, List, MapPin } from "react-feather";
 import Location from "./Location";
 import PhotoGallery from "./PhotoGallery";
@@ -18,9 +18,8 @@ const EditDevelopment: React.FC = () => {
   const [latitud, setLatitud] = useState(developmentInfo?.latitud);
   const [description, setDescription] = useState(developmentInfo?.description);
 
+  const [images, setImages] = useState(developmentInfo?.images || []);
 
-
-  const { isLoading: isLoadingImage, urls, uploadImage } = useUploadImage();
 
   const [development, setProperty] = useState<Partial<Development>>({
     name: developmentInfo?.name,
@@ -81,10 +80,13 @@ useEffect(() => {
     type: developmentInfo?.type,
     partner: developmentInfo?.partner,
   });
+
+  setDescription(developmentInfo?.description);
+
 }, [isLoading])
 
 const onSubmit = () => {
-  editDevelopment({ ...development, slug: developmentInfo.slug, images: [...developmentInfo.images, ...urls,], location: { longitude: longitud, latitude: latitud }, description }, {
+  editDevelopment({ ...development, images, slug: developmentInfo.slug, location: { longitude: longitud, latitude: latitud }, description }, {
       onSuccess: () => {
           navigate('/developments')
       }
@@ -195,7 +197,7 @@ const onSubmit = () => {
         )}
 
         {options == 'photo' && (
-            <PhotoGallery isLoading={isLoadingImage} urls={development.images} uploadImage={uploadImage} />
+            <PhotoGallery oldUrls={development.images || []} setImages={setImages} />
         )}
         {/* 
 {options == 'floor' && (

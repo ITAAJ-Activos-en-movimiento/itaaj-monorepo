@@ -3,55 +3,57 @@
 import styles from './Deals.module.css'
 import Image from 'next/image'
 import { NextPage } from 'next'
-import { useEffect, useState } from 'react';
-import { ArrowUp, Download } from 'react-feather';
+// import { useEffect, useState } from 'react';
+import Project from './Project';
 
 const Deals: NextPage = ()  => {
   
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/hipotesis.pdf'; // Ruta relativa al archivo PDF
-    link.download = 'Hipotesis_de_Inversion.pdf'; // Nombre de archivo para descargar
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.click();
-  };
+  // const handleDownload = () => {
+  //   const link = document.createElement('a');
+  //   link.href = '/hipotesis.pdf'; // Ruta relativa al archivo PDF
+  //   link.download = 'Hipotesis_de_Inversion.pdf'; // Nombre de archivo para descargar
+  //   link.target = '_blank';
+  //   link.rel = 'noopener noreferrer';
+  //   link.click();
+  // };
 
-  const [properties, setProperties] = useState([]);
+  // const [properties, setProperties] = useState([]);
 
 
-  const fetchData =  async() => {
-      const data = await fetch(
-          'https://itaaj-api-v0.onrender.com/api/v1/properties',
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        const result: any = await data.json();
-        setProperties(result.items);
-  }
+  // const fetchData =  async() => {
+  //     const data = await fetch(
+  //         'https://itaaj-api-v0.onrender.com/api/v1/properties',
+  //         {
+  //           method: 'GET',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       );
+  //       const result: any = await data.json();
+  //       setProperties(result.items);
+  // }
 
-  useEffect(() => {
-      fetchData();
-  }, [])
+  // useEffect(() => {
+  //     fetchData();
+  // }, [])
   
   return (
     <>
-      <div className={styles.banner}>
+      {/* <div className={styles.banner}>
         <h1>Forma parte del Equipo de Desarroladores Inmobiliarios</h1>
         <h2>Conoce nuestros proyectos</h2>
         <p>Proyectos estructurados hacia el complimiento. <br /> Solides y transparencia de la estructura <strong>Jurídica, Financiera y Fiscal</strong> de cada proyecto.</p>
-      </div>
+      </div> */}
       
-      <section className={styles.info}>
+      {/* <section className={styles.info}>
         <h2>Nuestros proyectos se estructuran hacia la <strong>portabilidad de derechos</strong> y <strong>seguridad jurídica</strong> del equipo de desarrolladores.</h2>
-      </section>
+      </section> */}
       
+      <Project />
+
       <div className={styles.selling}>
-        <h2>Proyectos en curso</h2>
+        {/* <h2>Proyectos en curso</h2>
         <div className={styles.projects}>
           
           {properties
@@ -85,9 +87,8 @@ const Deals: NextPage = ()  => {
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
             
-     
       </div>
       
       <div className={styles.invesment_back}>

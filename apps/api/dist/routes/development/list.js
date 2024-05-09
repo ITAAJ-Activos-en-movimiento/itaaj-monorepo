@@ -14,8 +14,10 @@ const business_logic_1 = require("@itaaj/business-logic");
 exports.getAllDevelopmentsRoute = {
     method: "GET",
     url: "/developments",
-    handler: (req, reply) => __awaiter(void 0, void 0, void 0, function* () {
-        const developments = yield (0, business_logic_1.getAllDevelopments)();
+    handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
+        const { query } = request;
+        const { page, limit, search } = query;
+        const developments = yield (0, business_logic_1.getAllDevelopments)({ page: Number(page), limit: Number(limit), search: "" });
         reply.status(200).send(developments);
     }),
 };

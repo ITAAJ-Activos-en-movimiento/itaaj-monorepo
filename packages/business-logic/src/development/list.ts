@@ -1,40 +1,61 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { developments } from "@itaaj/entities";
+import { StatusType, developments } from "@itaaj/entities";
+import { and, eq } from "drizzle-orm";
 
-export const getAllDevelopments = () => {
-  const result = getDbInstance()
-    .select({
-      id: developments.id,
-      name: developments.name,
-      slug: developments.slug,
-      description: developments.description,
-      address: developments.address,
-      city: developments.city,
-      state: developments.state,
-      country: developments.country,
-      neighborhood: developments.neighborhood,
-      street: developments.street,
-      external_number: developments.external_number,
-      internal_number: developments.internal_number,
-      location: developments.location,
-      price: developments.price,
-      area: developments.area,
-      garage: developments.garage,
-      images: developments.images,
-      amenities: developments.amenities,
-      bedrooms: developments.bedrooms,
-      bathrooms: developments.bathrooms,
-      image: developments.image,
-      owner: developments.owner,
-      virtualTourUrl: developments.virtualTourUrl,
-      video: developments.video,
-      antiquity: developments.antiquity,
-      propertyStatus: developments.propertyStatus,
-      category: developments.category,
-      type: developments.type,
-      partner: developments.partner,
-      blockchainId: developments.blockchainId,
-    })
-    .from(developments);
-  return result;
+interface Query {
+  status: StatusType;
+  name?: { $regex: string; $options: string };
+  account?: string;
+}
+
+interface Params {
+  account?: string;
+  page?: number;
+  limit?: number;
+  search?: string;
+}
+
+export const getAllDevelopments = async ({page = 1, limit = 1004, search= ''}: Params) => {
+ const query: Query = { status: StatusType.ACTIVE }
+
+ if(search){
+    query.name = { $regex: search, $options: 'i' };
+  }
+ 
+ const pageSize = limit;
+ const skip = (page - 1) * pageSize;
+
+ let result = await getDbInstance()
+ .select()
+ .from(developments)
+ .limit(pageSize)
+ .offset(skip);
+ 
+ const totalResult = await getDbInstance()
+ .select()
+ .from(developments)
+
+ const total = totalResult.length;
+
+ const pages = Math.ceil(total / pageSize);
+
+ const hasPreviousPage = page > 1;
+ const previousPage = hasPreviousPage ? page - 1 : page;
+ const hasNextPage = page < pages;
+ const nextPage = hasNextPage ? page + 1 : page;
+
+
+ 
+ return {
+  count: total,
+  items: result,
+  pageInfo: {
+    page,
+    pages,
+    hasPreviousPage,
+    hasNextPage,
+    nextPage,
+    previousPage,
+  },
+};
 };

@@ -12,7 +12,8 @@ import { changeLanguage } from "@/utils";
 import Share from "./Share";
 import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
-
+import { properties as propertiesApi } from "@/services";
+import { dateFormater } from "@/utils/date-formter";
 const Property = async ({
   params,
   searchParams,
@@ -21,6 +22,7 @@ const Property = async ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const property = await propertiesBySlug(params.slug.toString());
+  const properties = await propertiesApi({ page: 1, limit: 10004 });
 
   // const prevImage = () => {
   //   if(actualImageIn == 0){
@@ -69,57 +71,23 @@ const Property = async ({
           <i className="bx bx-arrow-back"></i> Volver
         </Link>
       </div>
-      <div className={styles.images}>
-        <div className={styles.photo1}>
-          <Image
-            src={property?.images[0]}
-            alt="Imagen numero 1 de la propiedad"
-            width={800}
-            height={500}
-          />
-        </div>
-        <div className={styles.images_container}>
-          <div className={styles.small_photo}>
-            <Image
-              src={property?.images[1]}
-              alt="Imagen numero 2 de la propiedad"
-              width={200}
-              height={200}
-            />
-          </div>
 
-          {property?.images[2] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[2]}
-                alt="Imagen numero 3 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-          {property?.images[3] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[3]}
-                alt="Imagen numero 4 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-          {property?.images[4] && (
-            <div className={styles.small_photo}>
-              <Image
-                src={property?.images[4]}
-                alt="Imagen numero 5 de la propiedad"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+      <section className={styles.mosaic_grid}>
+        {property?.images.slice(0, 5).map((img: string) => (
+          <figure key={img}>
+            <Image
+              src={img}
+              height="545"
+              fetchPriority="high"
+              loading="eager"
+              width={948}
+              
+              alt={property?.description}
+            />
+          </figure>
+        ))}
+      </section>
+
       <div className={styles.container}>
         <div>
           <div className={styles.main}>
@@ -140,14 +108,24 @@ const Property = async ({
               <i className="bx bx-bath"></i>
               <p>{property?.bathrooms} baños</p>
             </div>
+            {property?.area?.land_area.length > 0 && (
+
             <div>
               <i className="bx bx-area"></i>
-              <p>{property?.area.total_area} m&sup2;</p>
-            </div>
+              <p style={{
+                textAlign: "center"
+              }}>Superficie Terreno <br /> {property?.area?.land_area} m&sup2;</p>
+            </div>      
+            )}
+            {property?.area.building_area.length > 0 && (
             <div>
               <i className="bx bx-building-house"></i>
-              <p>{property?.foor} planta</p>
+              <p style={{
+                textAlign: "center"
+              }}>Superficie Construcción <br /> {property?.area?.building_area} m&sup2;</p>
             </div>
+            )}
+
           </div>
           <h2 className={styles.title_property}>
             <strong>{changeLanguage(property?.type)}</strong> en venta en{" "}
@@ -157,9 +135,9 @@ const Property = async ({
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: property?.description }}
           ></p>
-          <span className={styles.pricein}>
+          {/* <span className={styles.pricein}>
             {property.price > 8000000 ? "Precio en USD" : ""}
-          </span>
+          </span> */}
           <h2 className={styles.title_property}>Caracteristicas</h2>
           <div className={styles.specs}>
             <div>
@@ -169,13 +147,13 @@ const Property = async ({
                 <h3>{changeLanguage(property?.type)}</h3>
               </span>
             </div>
-            <div>
+            {/* <div>
               <i className="bx bx-bed"></i>
               <span>
                 <p>Habitaciones</p>
                 <h3>{property?.bedrooms}</h3>
               </span>
-            </div>
+            </div> */}
             <div>
               <i className="bx bx-timer"></i>
               <span>
@@ -194,26 +172,44 @@ const Property = async ({
               </span>
             </div>
             <div>
-              <i className="bx bx-chair"></i>
+            <i className='bx bxs-car-garage' ></i>
               <span>
-                <p>Amueblado</p>
-                <h3>No</h3>
+                <p>Estacionamientos</p>
+                <h3>{property?.garage}</h3>
               </span>
             </div>
-            <div>
+            {/* <div>
               <i className="bx bx-buildings"></i>
               <span>
                 <p>Planta</p>
                 <h3>{property?.floor} planta</h3>
               </span>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <i className="bx bx-wrench"></i>
               <span>
                 <p>Estado</p>
                 <h3>{property?.propertyStatus}</h3>
               </span>
-            </div>
+            </div> */}
+          </div>
+
+          <div style={{
+            marginTop: 20
+          }} >
+            <p style={{
+              fontSize: 15
+            }} >{dateFormater(property?.createdAt)}</p>
+          </div>
+
+          <div style={{
+            marginTop: 20
+          }} >
+            <p style={{
+              fontSize: 15
+            }} >Código de propiedad: <span style={{
+              fontWeight:600
+            }} >{property?.blockchainId}</span></p>
           </div>
 
           <h2 className={styles.title_property}>
@@ -222,8 +218,8 @@ const Property = async ({
           <div className={styles.map}>
             <Map
               location={{
-                latitude: property.location.longitude,
-                longitude: property.location.latitude,
+                latitude: property.location.latitude,
+                longitude: property.location.longitude,
               }}
             />
             <p>
@@ -237,23 +233,31 @@ const Property = async ({
 
           <h2 className={styles.title_property}>Propiedades similares...</h2>
 
-          {/* <div className={styles.properties_list}>
-          {property
-            ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
-            .map((property: any) => (
-              <PropertyCard key={property.uuid} {...property} />
-            ))}
-        </div> */}
+          <div className={styles.properties_list}>
+            {properties?.items
+              ?.filter(
+                (prop: any) =>
+                  prop.category == "general" && prop.slug !== property.slug
+              )
+              .slice(0, 3)
+              .map((property: any) => (
+                <PropertyCard key={property.uuid} {...property} />
+              ))}
+          </div>
         </div>
-        <div className={styles.form}>
-          <Cform slug={"PROP@" + params.slug} />
-          <Link
-            href={whatsappLink}
-            target="_blank"
-            className={styles.btn_whatsapp}
+        <div className={styles.form_t}>
+          <Cform
+            slug={"PROP@" + params.slug}
           >
-            Escríbenos por Whatsapp
-          </Link>
+ <Link
+                href={whatsappLink}
+                target="_blank"
+                className={styles.btn_whatsapp}
+              >
+                Escríbenos por Whatsapp
+              </Link>
+
+          </Cform>
         </div>
       </div>
       <Modal property={property.uuid} />

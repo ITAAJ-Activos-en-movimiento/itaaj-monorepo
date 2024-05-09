@@ -40,7 +40,8 @@ export const login = async ({ email, password }: Partial<User>) => {
     id: user.id, 
     email: user.email, 
     name: user.name, 
-    lastname: user.lastname
+    lastname: user.lastname,
+    public_key: user.public_key
   }
   //  await user.save();
 

@@ -1,69 +1,84 @@
-import { Button, Field, Input, TextEditor } from '@/components'
+import { Button } from '@/components'
 import styles from './Create.module.css'
 import { Image, Info, List, MapPin } from 'react-feather'
-import { useState } from 'react'
 import PhotoGallery from './PhotoGallery'
 import Location from './Location'
 import { useCreateDevelopment, useForm, useUploadImage } from '@/hooks'
 import { Development } from '@itaaj/entities'
+// import { useNavigate } from 'react-router-dom'
+import { useMultistep } from '@/hooks/form/useMultistep'
+import Details from './Details'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+const INITIAL_DATA = {
+    price: 0,
+    name: '',
+    type: '',
+    antiquity: 0,
+    description: '',
+    address: '',
+    city: '',
+    state: '',
+    country: '',
+    households: '',
+    street: '',
+    location: {
+        longitude: 0,
+        latitude: 0,
+    },
+    area: '',
+    images: [],
+    bathrooms: '',
+    bedrooms: '',
+}
+
 const CreateDevelopment = () => {
-    const [options, setOptions] = useState('overview');
+    const { isCreating, createDevelopment } = useCreateDevelopment();
+    const { isLoading, urls, uploadImage } = useUploadImage();
+    const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
     const [longitud, setLongitud] = useState(0);
     const [latitud, setLatitud] = useState(0);
-    const [description, setDescription] = useState('');
-
-
-    const { isLoading, urls, uploadImage } = useUploadImage();
-
-    const { formState: development, handleChange } = useForm<Partial<Development>>({
-        price: 0,
-        name: '',
-        type: '',
-        antiquity: 0,
-        description: '',
-        address: '',
-        city: '',
-        state: '',
-        country: '',
-        households: '',
-        street: '',
-        location: {
-            longitude: 0,
-            latitude: 0,
-        },
-        area: '',
-        images: [],
-        bathrooms: '',
-        bedrooms: '',
-
-    });
+    // const [description, setDescription] = useState('');
 
     const navigate = useNavigate();
 
-    const { isCreating, createDevelopment } = useCreateDevelopment();
 
     const onSubmit = () => {
-        createDevelopment({ ...development, images: urls, location: { longitude: longitud, latitude: latitud }, description }, {
+        createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud } }, {
             onSuccess: () => {
                 navigate('/developments')
             }
         })
     }
 
-    const handleEditorChange = (value: any) => {
-        setDescription(value);
-    };
 
+  const removeImage = (image: string) => {
+    const images = development?.images?.filter((img) => img !== image);
+    setFormState(prev => ({...prev, images: images}));
+  }
 
+  useEffect(() => {
+    if(urls.length > 0 && !development.images?.includes(urls[urls.length - 1])){
+    const ima = development.images || [];
+    setFormState(prev => ({...prev, images: [...ima, urls[urls.length - 1]]}))
+  }
+
+  }, [urls, development.images, setFormState]);
+
+    const { step, goTo } = useMultistep([
+        <Details  development={development} handleChange={handleChange}  />,
+        <Location setLongitud={setLongitud} latitud={latitud} longitud={longitud} setLatitud={setLatitud} formState={development} handleChange={handleChange}  />,
+        <PhotoGallery remove={removeImage} development={development} isLoading={isLoading} uploadImage={uploadImage} urls={development.images} handleChange={handleChange}  />
+
+    ])
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Development info</h3>
+                <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Información</h3>
                 <div className={styles.buttons}>
-                    <Button variant='cancel'>View</Button>
-                    <Button loading={isCreating} onClick={onSubmit}>Save</Button>
+                    <Button variant='cancel'>Vista</Button>
+                    <Button loading={isCreating} onClick={onSubmit}>Guardar</Button>
                 </div>
 
             </div>
@@ -71,105 +86,29 @@ const CreateDevelopment = () => {
                 <div className={styles.options}>
                     <ul>
                         {/* <li><Grid color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => setOptions('overview')}>Overview</button></li> */}
-                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('overview')} > Details       </button> </li>
-                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('location')}>Location</button> </li>
-                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />       <button onClick={() => setOptions('photo')}> Photo Gallery </button> </li>
+                        <li><List color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => goTo(0)} > Detalles </button> </li>
+                        <li><MapPin color='rgba(0, 0, 0, 0.65)' size={18} /> <button onClick={() => goTo(1)}>Ubicación</button> </li>
+                        <li><Image color='rgba(0, 0, 0, 0.65)' size={18} />  <button onClick={() => goTo(2)}> Galería de fotos </button> </li>
                         {/* <li><Video color='rgba(0, 0, 0, 0.65)' size={18} />       <button> Videos        </button> </li> */}
                         {/* <li><Codesandbox color='rgba(0, 0, 0, 0.65)' size={18} /> <button> 3D Tours      </button> </li> */}
-                        {/* <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Floorplans    </button> </li> */}
+                        {/* <li><Columns color='rgba(0, 0, 0, 0.65)' size={18} />     <button onClick={() => setOptions('floor')}> Planos    </button> </li> */}
                         {/* <li><FileText color='rgba(0, 0, 0, 0.65)' size={18} />    <button> Documents     </button> </li> */}
                     </ul>
 
                 </div>
-                {options == 'overview' && (
 
-                    <div className={styles.content}>
-                        <h3>General details</h3>
-                        <p className={styles.subtitle}>A brief description of these settings</p>
-                        <div className={styles.col}>
-
-                            <Field label='Bedrooms'>
-                                <Input value={development.bedrooms} name='bedrooms' onChange={handleChange} />
-                            </Field>
-                            <Field label='Bathrooms'>
-                                <Input value={development.bathrooms} name='bathrooms' onChange={handleChange} />
-                            </Field>
-
-                        </div>
-
-                        <div className={styles.col}>
-
-                            <Field label='Development price (From)'>
-                                <Input type='number' value={development.price} name='price' onChange={handleChange} />
-                            </Field>
-
-                            <Field label='Households'>
-                                <Input value={development.households} name='households' onChange={handleChange} />
-                            </Field>
-
-
-
-
-                        </div>
-
-                        <h3>Development details</h3>
-                        <p className={styles.subtitle}>A brief description of these settings</p>
-                        <Field label='Development name'>
-                            <Input name='name' value={development.name} onChange={handleChange} />
-                        </Field>
-                        <Field label='Area'>
-                            <Input name='area' value={development.area} placeholder='De 91 m2 a 128 m2' onChange={handleChange} />
-                        </Field>
-
-                        <div className={styles.col}>
-
-                            <Field label='Development type'>
-                                <Input name='type' value={development.type} onChange={handleChange} />
-                            </Field>
-
-                            <Field label='Antiquity'>
-                                <Input type='number' name='antiquity' value={development.antiquity} onChange={handleChange} />
-                            </Field>
-                        </div>
-
-                        <Field label='Video URL'>
-                                <Input type='text' value={development.video} name='video' onChange={handleChange} />
-                            </Field>
-
-                            <Field label='360 Tour URL'>
-                                <Input value={development.virtualTourUrl} name='virtualTourUrl' onChange={handleChange} />
-                            </Field>
-
-
-                            <Field label='PDF URL'>
-                                <Input value={development.owner} name='owner' onChange={handleChange} />
-                            </Field>
-
-
-
-                        <div className={styles.divider}>
-
-                            <Field label='Development description'>
-                                <TextEditor
-                                    value={description}
-                                    onChange={handleEditorChange}
-                                />
-                            </Field>
-                        </div>
-                    </div>
-                )}
-
-                {options == 'photo' && (
+                {step}
+                {/* {options == 'photo' && (
                     <PhotoGallery isLoading={isLoading} urls={urls} uploadImage={uploadImage} />
-                )}
+                )} */}
                 {/* 
 {options == 'floor' && (
                 <Floorplants handleChange={handleChange} />
             )} */}
 
-                {options == 'location' && (
+                {/* {options == 'location' && (
                     <Location setLongitud={setLongitud} latitud={latitud} longitud={longitud} setLatitud={setLatitud} formState={development} handleChange={handleChange} />
-                )}
+                )} */}
             </div>
 
         </div>

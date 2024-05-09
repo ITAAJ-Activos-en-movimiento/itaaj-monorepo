@@ -30,7 +30,7 @@ const Sell = () => {
     <>
       <div className={styles.banner}>
         <div className={styles.image}>
-        {/* <Image src='/mexico.jpg' width={1600} height={468} alt='Mexico' objectFit='cover' />           */}
+        {/* <Image src='/México.jpg' width={1600} height={468} alt='México' objectFit='cover' />           */}
         </div>
         <div className={styles.banner_content}>
           <div>
