@@ -32,7 +32,7 @@ const Blog = async () => {
           </div>
           <div className={styles.bn_img}>
             <Image
-              src={posts[0]?.featuredImage}
+              src={posts?.[0]?.featuredImage}
               width={550}
               height={400}
               alt={posts?.[0].title}
@@ -46,7 +46,7 @@ const Blog = async () => {
               <p>{truncateExcerpt(posts[0]?.excerpt, 26)}</p>
               <Link
                 className={styles.show_more}
-                href={`/blog/${posts[0]?.slug}`}
+                href={`/blog/${posts?.[0]?.slug}`}
               >
                 Ver más <ChevronsRight />{" "}
               </Link>
