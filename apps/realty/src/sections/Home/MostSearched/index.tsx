@@ -26,7 +26,7 @@ const MostSearched = () => {
         </ul>
         <ul>
             <li><Link href='/properties'>Obra nueva México</Link></li>
-            <li><Link href='/properties'>Obra nueva Merida</Link></li>
+            <li><Link href='/properties'>Obra nueva Mérida</Link></li>
             <li><Link href='/properties'>Obra nueva Ciudad de México</Link></li>
             <li><Link href='/properties'>Departametos en venta Toluca</Link></li>
             <li><Link href='/properties'>Departametos en venta Queretaro</Link></li>
@@ -42,10 +42,10 @@ const MostSearched = () => {
         </ul>
         <ul>
             <li><Link href='/properties'>Lofts en México</Link></li>
-            <li><Link href='/properties'>Lofts en Merida</Link></li>
+            <li><Link href='/properties'>Lofts en Mérida</Link></li>
             <li><Link href='/properties'>Lofts en Ciudad de México</Link></li>
             <li><Link href='/properties'>Casas en venta Oaxaca</Link></li>
-            <li><Link href='/properties'>Casas en venta Merida</Link></li>
+            <li><Link href='/properties'>Casas en venta Mérida</Link></li>
             <li><Link href='/properties'>Casas en venta Monterrey</Link></li>
             <li><Link href='/properties'>Casas en venta Cuernavaca</Link></li>
             <li><Link href='/properties'>Casas en venta León</Link></li>
@@ -59,12 +59,12 @@ const MostSearched = () => {
    
         <ul>
             <li><Link href='/properties'>Casas de campo en venta</Link></li>
-            <li><Link href='/properties'>Oficinas en venta Merida</Link></li>
+            <li><Link href='/properties'>Oficinas en venta Mérida</Link></li>
             <li><Link href='/properties'>Casas en la playa</Link></li>
             <li><Link href='/properties'>Casas de pueblo</Link></li>
             <li><Link href='/properties'>Casas prefabricadas baratas</Link></li>
-            <li><Link href='/properties'>Terrenos en venta Merida</Link></li>
-            <li><Link href='/properties'>Departamentos en venta Merida</Link></li>
+            <li><Link href='/properties'>Terrenos en venta Mérida</Link></li>
+            <li><Link href='/properties'>Departamentos en venta Mérida</Link></li>
             <li><Link href='/properties'>Departamentos reformados</Link></li>
             <li><Link href='/properties'>Locales en venta</Link></li>
             <li><Link href='/properties'>Obra nueva</Link></li>

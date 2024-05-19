@@ -18,7 +18,6 @@ const Search = ({ value }: { value?: string }) => {
           <option value="Estado de México">Estado de México</option>
           <option value="Morelos">Morelos</option>
           <option value="Yucatán">Yucatán</option>
-          <option value="Tulum">Tulum</option>
           <option value="Quintana Roo">Quintana Roo</option>
         </select>
   )

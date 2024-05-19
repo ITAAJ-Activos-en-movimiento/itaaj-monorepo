@@ -73,7 +73,7 @@ const Footer = () => {
             <li>¿Quiénes somos?</li>
             <li>Nuestro Equipo</li>
             <li><Link href='/terminos-condiciones'>Términos y condiciones</Link></li>
-            <li><Link href='/politicas-devolucion'>Política de devolucion</Link></li>
+            <li><Link href='/politicas-devolucion'>Política de devolución</Link></li>
             <li>Tecnología Blockchain</li>
           </ul>
           <ul>
@@ -90,8 +90,8 @@ const Footer = () => {
             </Link>
           </ul>
           <ul>
-            <li className={styles.title}>Contactanos</li>
-            <li>Rio Pánuco 91. Int 22 Colonia Cuauhtémoc Ciudad de México</li>
+            <li className={styles.title}>Contáctanos</li>
+            <li>Río Pánuco 91. Int 22 Colonia Cuauhtémoc Ciudad de México</li>
             <li>+52 1 999 547 1508</li>
             <li>contacto@itaaj.com.mx</li>
           </ul>
