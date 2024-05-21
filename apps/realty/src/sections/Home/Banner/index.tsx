@@ -37,11 +37,11 @@ const Banner = () => {
       <div className={styles.search}>
         <div className={styles.content}>
           <h2>Todos tenemos un sitio</h2>
-          <ul>
+          {/* <ul>
             <li><Link href='/properties'>Comprar</Link></li>
             <li><Link href='/properties'>Obra nueva</Link></li>
             <li><Link href='/properties'>Portafolio</Link></li>
-          </ul>
+          </ul> */}
 
       <SearchProperties />
         </div>

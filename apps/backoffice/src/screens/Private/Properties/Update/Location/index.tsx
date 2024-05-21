@@ -64,12 +64,12 @@ const Location = ({
     <div className={styles.content}>
       <h3>Editar Detalles de ubicación</h3>
 
-      <Field label="Dirección">
+      <Field label="Calle y Colonia">
         <Input value={address} name="address" onChange={handleChange} />
       </Field>
 
       <div className={styles.col}>
-        <Field label="Ciudad">
+        <Field label="Alcaldia/Municipio/Poblado">
           <Input value={city} name="city" onChange={handleChange} />
         </Field>
 
