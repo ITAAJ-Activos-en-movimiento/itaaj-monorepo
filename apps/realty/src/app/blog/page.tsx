@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronsRight } from "react-feather";
 
 const Blog = async () => {
-  // const posts = await getPostsApi();
+  const posts = await getPostsApi();
 
   const truncateExcerpt = (text: string, limit: number) => {
     const words = text.split(" ");
@@ -24,7 +24,7 @@ const Blog = async () => {
         </div>
       </div>
 
-      {/* <div className={styles.container_banner}>
+      <div className={styles.container_banner}>
         <div className={styles.card_principal}>
           <div className={styles.new}>
             <span>Nuevo</span>
@@ -33,7 +33,7 @@ const Blog = async () => {
             <Image
               src={posts?.[0]?.featuredImage}
               width={550}
-              height={400}
+              height={320}
               alt={posts?.[0].title}
             />
           </div>
@@ -90,7 +90,7 @@ const Blog = async () => {
             )
           )}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -29,11 +29,11 @@
   background-color: #fff;
   border-radius: 4rem;
   padding: 4rem;
-  height: 50rem;
+  height: 40rem;
   width: 60%;
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 4rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin-top: -10rem;
@@ -50,6 +50,10 @@
   justify-content: space-between;
 }
 
+.banner h1{
+  line-height: 3rem;
+  margin-bottom: 1rem;
+}
 .banner h5 {
   background-color: #e0f5f3;
   padding: 0.4rem;
