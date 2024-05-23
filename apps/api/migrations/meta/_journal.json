@@ -15,6 +15,13 @@
       "when": 1714528723008,
       "tag": "0001_glamorous_silk_fever",
       "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1716428381279,
+      "tag": "0002_wide_hulk",
+      "breakpoints": false
     }
   ]
 }
