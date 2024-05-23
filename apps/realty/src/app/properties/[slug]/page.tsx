@@ -89,6 +89,19 @@ const Property = async ({
             />
           </figure>
         ))}
+         {property?.images?.slice(5).map((img: string) => (
+          <figure className={styles.more_imgs} key={img}>
+            <Image
+              src={img}
+              height="545"
+              fetchPriority="high"
+              loading="eager"
+              width={948}
+              
+              alt={property?.description}
+            />
+          </figure>
+        ))}
       </section>
 
       <div className={styles.container}>
@@ -216,7 +229,7 @@ const Property = async ({
           </div>
 
           <h2 className={styles.title_property}>
-            {property?.city}, {property?.country}
+          {property?.address}, {property?.city}, {property?.country}
           </h2>
           <div className={styles.map}>
             <Map

@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm";
 import {
+  boolean,
   integer,
   jsonb,
   pgTable,
@@ -35,6 +36,7 @@ export const properties = pgTable("properties", {
   bathrooms: integer("bathrooms"),
   image: varchar("image", { length: 256 }),
   owner: varchar("owner", { length: 256 }),
+  completedAddress: boolean("completedAddress"),
   virtualTourUrl: varchar("virtualTourUrl", { length: 256 }),
   video: varchar("video", { length: 256 }),
   antiquity: integer("antiquity"),

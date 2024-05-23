@@ -297,8 +297,15 @@
     margin-top: 2rem;
     gap: 2rem;
 }
+
+.more_imgs{
+    display: none;
+}
 @media screen and (max-width: 768px) {
 
+    .more_imgs{
+        display: inline-flex;
+    }
     .mosaic_grid {
         display: flex !important;
         width: 100%;
@@ -320,5 +327,9 @@
           width:300rem;
           height: 100% !important;
           object-fit: cover;
+      }
+
+      .container{
+        grid-template-columns: 1fr;
       }
 }
