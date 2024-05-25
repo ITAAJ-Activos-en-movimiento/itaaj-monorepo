@@ -46,6 +46,7 @@ export interface Property extends Base {
   bedrooms: number;
   bathrooms: number;
   bathroomsMedium: number;
+  completedAddress: boolean;
   image: string;
   owner: string;
   virtualTourUrl: string;

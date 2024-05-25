@@ -23,12 +23,12 @@ const CreateProperty = () => {
 
 
     const navigate = useNavigate();
-    console.log(property)
+    console.log({property})
 
     const { isCreating, createProperty } = useCreateProperties();
 
     const onSubmit = () => {
-        createProperty({ ...property, category: Category.GENERAL, images: urls, image: url, location: { longitude: longitud, latitude: latitud }, description }, {
+        createProperty({ ...property, category: Category.GENERAL, completedAddress: String(property.completedAddress) == "true" ? true : false , images: urls, image: url, location: { longitude: longitud, latitude: latitud }, description }, {
             onSuccess: () => {
                 navigate('/properties')
             }

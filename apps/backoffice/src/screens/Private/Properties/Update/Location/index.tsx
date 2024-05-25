@@ -14,7 +14,7 @@ interface ubicationProps {
   state: string;
   zipcode: string;
   country: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 const Location = ({
@@ -79,12 +79,20 @@ const Location = ({
       </div>
 
       <div className={styles.col}>
-        <Field label="Codigo postal">
+        <Field label="Código postal">
           <Input value={zipcode} name="zipcode" onChange={handleChange} />
         </Field>
 
-        <Field label="Pais">
+        <Field label="País">
           <Input value={country} name="country" onChange={handleChange} />
+        </Field>
+
+        <Field label="¿Deseas mostrar información exacta?">
+      <select  name="completedAddress" onChange={handleChange}>
+      <option value="false">No</option>
+        <option value="true">Si</option>
+      </select>
+
         </Field>
       </div>
 

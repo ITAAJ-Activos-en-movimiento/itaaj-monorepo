@@ -25,6 +25,7 @@ const UpdateProperty = () => {
     state: propertyInfo?.state || "",
     country: propertyInfo?.country || "",
     price: propertyInfo?.price || 0,
+    completedAddress: propertyInfo?.completedAddress,
     bathrooms_medium: propertyInfo?.bathrooms_medium || "",
     description: propertyInfo?.description || "",
     area: {
@@ -53,8 +54,8 @@ const UpdateProperty = () => {
   const [floorPlans, seFloorPlans] = useState([""]);
 
   const [options, setOptions] = useState("overview");
-  const [longitud, setLongitud] = useState(0);
-  const [latitud, setLatitud] = useState(0);
+  const [longitud, setLongitud] = useState(propertyInfo?.location?.longitude);
+  const [latitud, setLatitud] = useState(propertyInfo?.location?.latitude);
   const [description, setDescription] = useState(propertyInfo?.description || "");
 
   // const { developments } = useDevelopments();
@@ -66,6 +67,7 @@ const UpdateProperty = () => {
   const onSubmitUpdate = () => {
     editProperty({
       ...property,
+      completedAddress: String(property.completedAddress) == "true" ? true : false,
       id: propertyInfo.id,
       image: url,
       images,
@@ -155,6 +157,7 @@ const UpdateProperty = () => {
         images: propertyInfo.images || [],
         garage: propertyInfo.garage || 0,
         bedrooms: propertyInfo.bedrooms || 0,
+        completedAddress: String(property.completedAddress) == "true" ? true : false,
         bathrooms: propertyInfo.bathrooms || 0,
         antiquity: propertyInfo.antiquity || 0,
         balcony: propertyInfo.balcony || 0,
@@ -171,6 +174,8 @@ const UpdateProperty = () => {
       });
       setImages(propertyInfo?.images || []);
       setDescription(propertyInfo?.description)
+      setLongitud(propertyInfo?.location?.longitude);
+      setLatitud(propertyInfo?.location?.latitude);
     }
 
   }, [propertyInfo]);

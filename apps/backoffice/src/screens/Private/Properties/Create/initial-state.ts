@@ -10,6 +10,7 @@ const initialPropertyState = {
     city: '',
     state: '',
     country: '',
+    completedAddress: "" || false,
     floor: '',
     street: '',
     garage: 0,

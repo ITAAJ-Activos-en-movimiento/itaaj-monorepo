@@ -39,30 +39,38 @@ const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handle
     <h3>General details</h3>
     <p className={styles.subtitle}>A brief description of these settings</p>
 
-    <Field label='Address'>
+    <Field label='Calle y Colonia'>
         <Input  name='address' onChange={handleChange} />
     </Field>
 
     <div className={styles.col}>
 
-    <Field label='City'>
+    <Field label='Alcaldia/Municipio/Poblado'>
         <Input name='city' onChange={handleChange} />
     </Field>
 
-    <Field label='State'>
+    <Field label='Estado'>
         <Input name='state' onChange={handleChange} />
     </Field>
     </div>
 
     <div className={styles.col}>
 
-    <Field label='Zipcode'>
+    <Field label='Código postal'>
         <Input name='zipcode' onChange={handleChange} />
     </Field>
 
-    <Field label='Country'>
+    <Field label='País'>
         <Input name='country' onChange={handleChange}  />
     </Field>
+
+    <Field label="¿Deseas mostrar información exacta?">
+      <select  name="completedAddress" onChange={handleChange}>
+      <option value="false">No</option>
+        <option value="true">Si</option>
+      </select>
+
+        </Field>
     </div>
     {/* <Formulario formState={formState} latitud={latitud} longitud={longitud} setLatitud={setLatitud} setLongitud={setLongitud} /> */}
   

@@ -83,7 +83,8 @@ useEffect(() => {
   });
   setImages(developmentInfo?.images || []);
   setDescription(developmentInfo?.description);
-
+  setLongitud(developmentInfo?.location?.longitud);
+  setLatitud(developmentInfo?.location?.latitud);
 }, [isLoading])
 
 const onSubmit = () => {

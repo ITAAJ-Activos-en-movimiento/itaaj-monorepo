@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "cc010b39-34f8-482a-9513-9e610072eb1c",
+  "id": "8a1e273f-0e08-475b-aba4-11b192259810",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -132,12 +132,6 @@
         "bathrooms": {
           "name": "bathrooms",
           "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bathrooms_medium": {
-          "name": "bathrooms_medium",
-          "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
@@ -603,6 +597,12 @@
         "owner": {
           "name": "owner",
           "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completedAddress": {
+          "name": "completedAddress",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         },

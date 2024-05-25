@@ -39,28 +39,28 @@ const Location = ({city, state, address, country, longitud, latitud, setLatitud,
     <h3>General details</h3>
     <p className={styles.subtitle}>A brief description of these settings</p>
 
-    <Field label='Address'>
+    <Field label='Calle y Colonia'>
         <Input  name='address' value={address} onChange={handleChange} />
     </Field>
 
     <div className={styles.col}>
 
-    <Field label='City'>
+    <Field label='Alcaldia/Municipio/Poblado'>
         <Input name='city' value={city} onChange={handleChange} />
     </Field>
 
-    <Field label='State'>
+    <Field label='Estado'>
         <Input name='state' value={state} onChange={handleChange} />
     </Field>
     </div>
 
     <div className={styles.col}>
 
-    <Field label='Zipcode'>
+    <Field label='Código postal'>
         <Input name='zipcode' onChange={handleChange} />
     </Field>
 
-    <Field label='Country'>
+    <Field label='País'>
         <Input name='country' value={country} onChange={handleChange}  />
     </Field>
     </div>
