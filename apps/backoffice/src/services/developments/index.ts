@@ -6,6 +6,12 @@ export const getDevelopmentsApi = async () => {
   return data;
 };
 
+export const generateMarketAnalysis = async (state: string) => {
+  const { data } = await itaajApi.post(`/market-analysis`, { state: state });
+  return data;
+};
+
+
 export const getDevelopmentApi = async (slug: string) => {
   const { data } = await itaajApi.get(`/developments/${slug}`);
   return data;

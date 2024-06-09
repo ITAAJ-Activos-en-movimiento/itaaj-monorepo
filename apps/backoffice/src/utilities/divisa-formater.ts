@@ -6,7 +6,7 @@ interface CurrencyFormatOptions {
     thousandsSeparator?: string;
    }
    
-   export const DivisaFormater = ({value, currency = 'COP', format = 'es-CO', minFractionDigits = 0, thousandsSeparator = '.'}: CurrencyFormatOptions) => {
+   export const DivisaFormater = ({value, currency = 'MXN', format = 'es-MX', minFractionDigits = 0, thousandsSeparator = ','}: CurrencyFormatOptions) => {
     const formatter = new Intl.NumberFormat(format, {
       style: 'currency',
       currency,

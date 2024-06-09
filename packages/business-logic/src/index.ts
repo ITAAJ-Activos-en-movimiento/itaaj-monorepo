@@ -12,3 +12,4 @@ export * from './proposals';
 export * from './users';
 export * from './posts';
 export * from './funnels';
+export * from './market-analysis';

@@ -1,0 +1,36 @@
+.property_image{
+    width: 20rem;
+    height: 15rem;
+    object-fit: contain;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.images img{
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.picture{
+    width: 20rem;
+    height: 15rem;
+    position: relative;
+}
+
+.close{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .8);
+    right: 0;
+    z-index: 990;
+    top: -10px;
+    border-radius: 50rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

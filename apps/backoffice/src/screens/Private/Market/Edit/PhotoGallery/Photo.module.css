@@ -1,0 +1,12 @@
+.property_image{
+    width: 20rem;
+    height: 15rem;
+    object-fit: contain;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}

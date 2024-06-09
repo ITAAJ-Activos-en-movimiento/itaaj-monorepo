@@ -14,6 +14,7 @@ interface Props {
 const Funnel = () => {
   const { isLoading, funnel } = useFunnel();
   const { leads } = useLeads();
+  console.log(leads)
   const { editLead } = useEditLead();
 
   const isPositionChanged = ({ destination, source }: Props) => {
@@ -37,7 +38,6 @@ const Funnel = () => {
     await editLead({ ...lead, position, id: lead.id, stageId: status });
   };
 
-  console.log(leads)
   if (isLoading) {
     return <Loader />;
   }
@@ -67,7 +67,7 @@ const Funnel = () => {
 
                   <div className={styles.space} {...provided.droppableProps} ref={provided.innerRef}>
                     {leads?.items
-                      ?.filter((lead: any) => lead.stageId == stage.stageId)
+                      ?.filter((lead: any) => lead.id && lead.stageId == stage.stageId)
                       .map((lead: any, index: number) => (
                         <Draggable key={lead.id}  draggableId={JSON.stringify(lead)} index={index}>
                           {(provided, snapshot) => (

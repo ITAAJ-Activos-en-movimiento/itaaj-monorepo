@@ -1,0 +1,114 @@
+.container{
+    background-color: #fff;
+    border-radius: 1rem;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    padding-block: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.header h3{
+    font-weight: 600;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+.buttons{
+    display: flex;
+    gap: 2rem;
+}
+
+.buttons button{
+    min-width: 6rem;
+}
+
+.options{
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    width: 22rem;
+    padding-left: 2rem;
+    height: 91vh;
+    padding-top: 2rem;   
+}
+
+.options ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.options ul li{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.options ul li button{
+    font-weight: 500;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, .7);
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+}
+
+.main h3{
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+}
+
+.main .subtitle{
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, .7);
+    margin-bottom: 3rem;
+}
+
+.col{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.divider{
+    margin-top: 2rem;
+}
+
+.content{
+    width: min(1200px, 90%);
+    margin-inline: auto;
+}
+
+.results{
+    margin-top: 4rem;
+}
+
+.numbers{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.numbers h3{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.table{
+    margin-top: 4rem;
+}
+
+.inputs{
+    margin-top: 4rem;
+}
