@@ -5,13 +5,12 @@ import { useForm, useUploadImage } from '@/hooks'
 import { Development } from '@itaaj/entities'
 // import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useGenerateAnalysis } from '@/hooks/developments/useGenerateAnalysis'
 import { DivisaFormater } from '@/utilities'
-import Chart from 'chart.js/auto'; 
 import BarChart from '../Bar'
 import { Table } from '@/containers'
 import PropertyRow from '../Table/PropertyRow'
+import { colonias, municipios } from './data'
 
 const INITIAL_DATA = {
     price: 0,
@@ -35,14 +34,13 @@ const INITIAL_DATA = {
     bedrooms: '',
 }
 
-
-
 const CreateAnalysis = () => {
-    const { isLoading, urls, uploadImage } = useUploadImage();
-    const { formState: development, handleChange, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
+    const { urls } = useUploadImage();
+    const { formState: development, setFormState } = useForm<Partial<Development>>(INITIAL_DATA);
 
-    const [ state, setState ] = useState("")
-
+    const [ state, setState ] = useState("aguascalientes")
+    const [ municipio, setMunicipio ] = useState("")
+    const [ colonia, setColonia ] = useState("")
 
     const { isGenerating, generate, data } = useGenerateAnalysis();
 
@@ -60,7 +58,7 @@ const CreateAnalysis = () => {
             <div className={styles.header}>
                 <h3><Info color='rgba(0, 0, 0, 0.65)' size={20} /> Información</h3>
                 <div className={styles.buttons}>
-                    <Button variant="third" loading={isGenerating} onClick={() => generate(state)}>Generar</Button>
+                    <Button variant="third" loading={isGenerating} onClick={() => generate({state, municipio, colonia})}>Generar</Button>
                     <Button loading={false}>Guardar</Button>
                 </div>
 
@@ -96,6 +94,25 @@ const CreateAnalysis = () => {
                         <option value="yucatan">Yucatán</option>
                     </select>
                     </Field>
+                    <Field label='Municipio' >
+
+<select onChange={({target}) => setMunicipio(target.value)} >
+<option value="">Seleccionar municipio</option>
+
+    {municipios[state]?.map((muni) => (
+        <option value={muni.value}>{muni.label}</option>
+    ))}
+</select>
+</Field>
+<Field label='Colonia' >
+
+<select onChange={({target}) => setColonia(target.value)} >
+    <option value="">Seleccionar colonia</option>
+{colonias[municipio]?.map((col) => (
+        <option value={col.value}>{col.label}</option>
+    ))}
+</select>
+</Field>
 
                 </div>
 

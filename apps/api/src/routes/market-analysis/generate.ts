@@ -1,5 +1,4 @@
-import { createDevelopment, createProperty, generateMarketAnalysis } from "@itaaj/business-logic";
-import { Development } from "@itaaj/entities";
+import { generateMarketAnalysis } from "@itaaj/business-logic";
 import { RouteOptions } from "fastify";
 
 export const generateMarketAnalysisRoute: RouteOptions = {
@@ -7,7 +6,7 @@ export const generateMarketAnalysisRoute: RouteOptions = {
   url: "/market-analysis",
   handler: async (request, reply) => {
     const { body } = request;
-    const data = body as { state: string };
+    const data = body as { state: string, municipio: string, colonia: string };
     const lead = await generateMarketAnalysis(data);
     reply.status(201).send(lead);
   },

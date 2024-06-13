@@ -20,7 +20,7 @@ const DistributionChart: React.FC<DistributionChartProps> = ({ data }) => {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Distribución Cantidad de Propiedades por rando de precio',
+            label: 'Distribución Cantidad de Propiedades por rango de precio',
             data: values,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

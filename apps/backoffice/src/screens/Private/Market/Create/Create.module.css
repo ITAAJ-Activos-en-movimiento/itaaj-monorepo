@@ -111,4 +111,10 @@
 
 .inputs{
     margin-top: 4rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.inputs select{
+    min-width: max-content;
 }

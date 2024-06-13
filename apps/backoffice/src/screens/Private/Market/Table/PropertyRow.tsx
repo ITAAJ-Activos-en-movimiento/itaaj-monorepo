@@ -1,8 +1,5 @@
 import { Modal, Table } from "@/containers";
-import { Development } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
-import Menus from "@/components/Shared/Menus";
-import { useDeleteDevelopment } from "@/hooks";
 import { Link } from "react-router-dom";
 
 interface Props {

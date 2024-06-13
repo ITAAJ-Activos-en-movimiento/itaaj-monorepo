@@ -6,8 +6,8 @@ export const getDevelopmentsApi = async () => {
   return data;
 };
 
-export const generateMarketAnalysis = async (state: string) => {
-  const { data } = await itaajApi.post(`/market-analysis`, { state: state });
+export const generateMarketAnalysis = async ({state, municipio, colonia}: { state: string, municipio: string, colonia: string }) => {
+  const { data } = await itaajApi.post(`/market-analysis`, { state: state, municipio, colonia });
   return data;
 };
 
