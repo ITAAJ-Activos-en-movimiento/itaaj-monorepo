@@ -1,4 +1,4 @@
-import { Button, Field } from "@/components";
+import { Button, Field, Input } from "@/components";
 import styles from "./Create.module.css";
 import { Info } from "react-feather";
 import { useForm, useUploadImage } from "@/hooks";
@@ -43,11 +43,18 @@ const CreateAnalysis = () => {
   const [state, setState] = useState("aguascalientes");
   const [municipio, setMunicipio] = useState("");
   const [colonia, setColonia] = useState("");
+  const [maxPrice, setMaxPrice] = useState(0);
+
 
   const { isGenerating, generate, data } = useGenerateAnalysis();
 
   const download = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data.properties);
+    const modifiedProperties = data.properties.map((property: any) => ({
+        ...property,
+        liga: `https://century21mexico.com${property.urlCorrectaPropiedad}`
+      }));
+
+    const worksheet = XLSX.utils.json_to_sheet(modifiedProperties);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Propiedades');
 
@@ -94,7 +101,7 @@ const CreateAnalysis = () => {
           <Button
             variant="third"
             loading={isGenerating}
-            onClick={() => generate({ state, municipio, colonia })}
+            onClick={() => generate({ state, municipio, colonia, maxPrice })}
           >
             Generar
           </Button>
@@ -155,6 +162,9 @@ const CreateAnalysis = () => {
                 <option value={col.value}>{col.label}</option>
               ))}
             </select>
+          </Field>
+          <Field label="Precio máximo">
+            <Input type="number" placeholder="ej: 3000000" onChange={({ target }) => setMaxPrice(Number(target.value))} />
           </Field>
         </div>
 

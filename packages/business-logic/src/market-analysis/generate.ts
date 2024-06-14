@@ -17,7 +17,7 @@ interface PropertyData {
   fechaModificacion: string;
 }
 
-export const generateMarketAnalysis = async ({ state, municipio, colonia }: { state: string, municipio: string, colonia: string }) => {
+export const generateMarketAnalysis = async ({ state, municipio, colonia, maxPrice }: { state: string, municipio: string, colonia: string, maxPrice: number }) => {
   let properties: PropertyData[] = [];
   const centuryProperties = await centuryScrapping({ state, municipio, colonia });
   // const propiedadesProperties = await PropiedadesScrapping();
@@ -26,6 +26,9 @@ export const generateMarketAnalysis = async ({ state, municipio, colonia }: { st
   // properties.push(...propiedadesProperties);
  
   properties = properties.filter((property) => property.precios.vista.precio !== null && property.m2C > 0)
+
+  properties = properties.filter((property) => property.precios.vista.precio <= maxPrice);
+
     
   const preciosProp = properties.map((propiedad) =>
     Number(propiedad.precios.vista.precio)
