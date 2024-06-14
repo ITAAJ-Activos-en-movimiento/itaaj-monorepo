@@ -82,6 +82,10 @@ export const municipios: { [key: string]: { label: string, value: string }[]} = 
         "value": "azcapotzalco"
     },
     {
+        "label": "Iztapalapa",
+        "value": "iztapalapa"
+    },
+    {
         "label": "Benito Juárez",
         "value": "benito-juarez"
     },

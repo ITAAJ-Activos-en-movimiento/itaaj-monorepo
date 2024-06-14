@@ -1,5 +1,5 @@
 import { Loader } from '@/components';
-import { PrivateRoutes, PublicRoutes } from '@/constant-definitions';
+import { PrivateRoutes } from '@/constant-definitions';
 import { useUser } from '@/hooks';
 import { Navigate, Outlet } from 'react-router-dom';
 
@@ -13,19 +13,16 @@ const PublicValidationFragment = (
 )
 
 const GuardRoute = ({privateValidation}: Props) => {
-  const { isLoading, user } = useUser();
+  const { isLoading } = useUser();
 
   if(isLoading) return <Loader />
 
-  return user ? (
-    privateValidation ? (
+  return privateValidation ? (
         PrivateValidationFragment
     ): (
       PublicValidationFragment
     )
-) : (
-    <Navigate replace to={PublicRoutes.LOGIN} />
-) 
+
 }
 
 export default GuardRoute
