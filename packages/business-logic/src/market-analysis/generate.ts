@@ -97,11 +97,19 @@ export const generateMarketAnalysis = async ({ state, municipio, colonia, maxPri
   //     }
 
   // }
+  const umbral = totalPrecioPorMetroCuadrado + 0.15 * desviacionEstandar;
+  const propiedadesSinCaras = properties.filter((propiedad) => {
+    const precioPorMetroCuadrado = propiedad.precios.vista.precio / (propiedad.m2C + propiedad.m2T);
+    return precioPorMetroCuadrado <= umbral;
+  });
+
+  const totalPrecioPorMetroCuadradoSinCaras = calcularPrecioPromedioPorMetroCuadrado(propiedadesSinCaras);
+
 
   return {
     properties: properties,
     precioPromedio: precioPromedio,
-    precioPorMetro: totalPrecioPorMetroCuadrado,
+    precioPorMetro: totalPrecioPorMetroCuadradoSinCaras,
     distribucion: distribucion,
     desviacionEstandar: desviacionEstandar,
     amount: Number(properties.length),
