@@ -3,6 +3,32 @@ import axios from "axios";
 import { PropiedadesScrapping } from "./scrapping-propc";
 import { centuryScrapping } from "./scrapping-century";
 
+const samples = {
+  2: 1.880,
+  3: 1.024,
+  4: 0.729,
+  5: 0.577,
+  6: 0.483,
+  7: 0.419,
+  8: 0.373,
+  9: 0.337,
+  10: 0.308,
+  11: 0.285,
+  12: 0.266,
+  13: 0.249,
+  14: 0.235,
+  15: 0.223,
+  16: 0.212,
+  17: 0.203,
+  18: 0.194,
+  19: 0.187,
+  20: 0.180,
+  21: 0.180,
+  22: 0.180,
+  23: 0.180,
+  24: 0.180,
+  25: 0.153
+}
 interface PropertyData {
   precios: {
     vista: { precio: number };
@@ -42,10 +68,8 @@ export const generateMarketAnalysis = async ({ state, municipio, colonia, maxPri
 
   const precioPromedio = sumaPrecios / preciosProp.length;
 
-  console.log({precioPromedio});
 
   const totalPrecioPorMetroCuadrado = calcularPrecioPromedioPorMetroCuadrado(properties);
-  console.log({totalPrecioPorMetroCuadrado})
 
   const preciosPorMetroCuadrado = properties.map(
     (propiedad) => propiedad.precios.vista.precio / (propiedad.m2C + propiedad.m2T)
@@ -97,14 +121,36 @@ export const generateMarketAnalysis = async ({ state, municipio, colonia, maxPri
   //     }
 
   // }
-  const propiedadesSinCaras = properties
-  const totalPrecioPorMetroCuadradoSinCaras = calcularPrecioPromedioPorMetroCuadrado(propiedadesSinCaras);
 
+  console.log(properties)
+
+  const propertiesByOrder = preciosPorMetroCuadrado.sort((a, b) => a - b);
+
+  const range = propertiesByOrder[propertiesByOrder.length - 1] - propertiesByOrder[0];
+  const total = propertiesByOrder.reduce((a, c) => a + c, 0);
+  const centralLimit = total / propertiesByOrder.length;
+
+
+  console.log(propertiesByOrder.length)
+
+  const upLimit = propertiesByOrder.length > 25 ?  centralLimit + (range * 0.153) + range : centralLimit + (range * samples[properties.length]) 
+  const downLimit =  propertiesByOrder.length > 25 ?  centralLimit  - ( 0.153 * range) :  centralLimit - (range * samples[properties.length])
+
+  console.log({upLimit})
+  console.log({downLimit})
+
+  const propiedadesSinCaras = propertiesByOrder.filter((property) => property <= upLimit && property);
+  console.log(propiedadesSinCaras)
+
+  // const totalPrecioPorMetroCuadradoSinCaras = calcularPrecioPromedioPorMetroCuadrado(propiedadesSinCaras);
+
+  const prome = propiedadesSinCaras.reduce((a,c) => a + c, 0)
+  const prometotal = prome / propiedadesSinCaras.length; 
 
   return {
     properties: properties,
     precioPromedio: precioPromedio,
-    precioPorMetro: totalPrecioPorMetroCuadradoSinCaras,
+    precioPorMetro: prometotal,
     distribucion: distribucion,
     desviacionEstandar: desviacionEstandar,
     amount: Number(properties.length),
@@ -128,9 +174,11 @@ function calcularPrecioPromedioPorMetroCuadrado(propiedades: PropertyData[]): nu
   let sumaPrecios = 0;
   let sumaMetrosCuadrados = 0;
 
+  console.log(propiedades)
   propiedades.forEach(propiedad => {
-      sumaPrecios += Number(propiedad.precios.vista.precio);
-      sumaMetrosCuadrados += (propiedad.m2C + propiedad.m2T);
+    console.log({propiedad})
+      sumaPrecios += Number(propiedad?.precios.vista.precio);
+      sumaMetrosCuadrados += (propiedad?.m2C + propiedad?.m2T);
   });
 
   // Calcular el precio promedio por metro cuadrado
