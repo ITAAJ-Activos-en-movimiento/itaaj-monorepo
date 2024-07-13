@@ -38,7 +38,7 @@ const Documents = ({ openModal, setOpenModal }: DocumentsProps) => {
         },
       }}
     >
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
         <div className={styles.header}>
           <div>
             <h2>Documentos</h2>
@@ -50,17 +50,13 @@ const Documents = ({ openModal, setOpenModal }: DocumentsProps) => {
           </div>
           <ul className={styles.documents}>
             <li className={styles.documentButton} onClick={handleDownloadFiles}>
-              <p><b>Contrato de Comisio Mercantil</b></p> {/* SOLO PARA BROKERS */}
+              <p><b>Contrato de Comisio Mercantil</b></p> 
             </li>
           </ul>
-          {/* <div>
-            <p>Una vez que haya terminado de descargar, haga clic en el botón a continuación para reconocer que ha revisado estos documentos. Necesitará usar su billetera para completar este paso.</p>
-          </div> */}
+         
         </div>
-        {/* <div className={styles.footer}>
-          <button disabled>Reconocer con Wallet</button>
-        </div> */}
-      </div>
+      
+      </div> */}
     </Modal>
   )
 }
