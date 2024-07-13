@@ -92,11 +92,11 @@ const Properties = ({ properties }: { properties: unknown[] }) => {
               },
             }}
           >
-            <Cform
+            {/* <Cform
               slug={"SDEV@" + property.slug}
               closeModal={closeModal}
               prevmsg={"Me interesa Inmueble: " + property.slug}
-            />
+            /> */}
           </Modal>
         </Fragment>
       ))}
