@@ -28,7 +28,7 @@ const VerifyIdentity = ({ openModal, setOpenModal }: VerifyIdentityProps) => {
         },
       }}
     >
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
         <div className={styles.header}>
           <div>
             <h2>Verificar Identidad</h2>
@@ -67,7 +67,7 @@ const VerifyIdentity = ({ openModal, setOpenModal }: VerifyIdentityProps) => {
         <div className={styles.footer}>
           <button>Verificar</button>
         </div>
-      </div>
+      </div> */}
     </Modal>
   )
 }
