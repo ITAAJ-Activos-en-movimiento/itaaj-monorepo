@@ -41,7 +41,7 @@ const KYCModal = ({ openModal, setOpenModal }: KYCModalProps) => {
         },
       }}
     >
-      { formAuth[stateFormAuth] }
+      {/* { formAuth[stateFormAuth] } */}
     </Modal>
   );
 };
