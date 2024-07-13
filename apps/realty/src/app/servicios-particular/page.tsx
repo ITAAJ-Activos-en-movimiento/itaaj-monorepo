@@ -251,7 +251,7 @@ const Particulars:NextPage = () => {
           },
         }}
       >
-        <Cform slug={"SRVPART@"+slug} closeModal={closeModal} prevmsg={slug + ":"}/>
+        {/* <Cform slug={"SRVPART@"+slug} closeModal={closeModal} prevmsg={slug + ":"}/> */}
       </Modal>
       
      
