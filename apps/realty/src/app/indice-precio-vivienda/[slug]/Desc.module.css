@@ -1,0 +1,84 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info{
+    padding: 2rem;
+    color: #333;
+}
+
+.info h1{
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 4rem;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header h4{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.header span{
+    display: inline-flex;
+    background-color: rgba(0, 0, 0, .1);
+    padding-inline: 2rem;
+    padding-block: .5rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+}
+
+.main_pricing{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.info_card{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f4f4fc;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+}
+
+.info_card h3{
+    font-size: 1.8rem;
+}
+
+.info_card p{
+    font-size: 1.4rem;
+}
+
+.grid_info{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 2rem;
+}
+
+.grid_info .info_card{
+    width: 50%;
+    padding: 0;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+.middle_title{
+    margin-top: 4rem;
+}

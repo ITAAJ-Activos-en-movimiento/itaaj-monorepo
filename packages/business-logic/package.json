@@ -13,6 +13,7 @@
   "dependencies": {
     "@itaaj/data-sources": "workspace:^",
     "@itaaj/entities": "workspace:^",
+    "@react-google-maps/api": "^2.19.2",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "drizzle-orm": "^0.28.2",

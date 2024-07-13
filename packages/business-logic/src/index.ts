@@ -13,3 +13,4 @@ export * from './users';
 export * from './posts';
 export * from './funnels';
 export * from './market-analysis';
+export * from './search';
