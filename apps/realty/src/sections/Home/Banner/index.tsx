@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './Banner.module.css'
-import { Search } from 'react-feather'
 import Image from 'next/image'
 import Link from 'next/link'
 import SearchProperties from './Search'
+import Search from '@/components/Search'
 
 const Banner = () => {
 
   return (
+<>
+
     <section className={styles.section}>
         <div  className="home-hero-video" style={{ position: "relative", width: '100%', height: '60vh', overflow: 'hidden',  }} data-video-id="3337">
       <iframe
@@ -51,7 +53,11 @@ const Banner = () => {
       <div className={styles.options}>
           <h2>Te acompañamos en todo el proceso</h2>
           <div className={styles.boxs}>
-            <Link className={styles.box} href="/blockchain">
+            <Link href="?search=route" className={styles.box} >
+                <Image src="/commute_time.svg" width={40} height={40} alt='Buscar por trayecto' />
+                <h3>Buscar por trayecto</h3>
+            </Link>
+            {/* <Link className={styles.box} href="/blockchain">
                 <Image
                   src="/blockchain.png"
                   width={48}
@@ -108,10 +114,14 @@ const Banner = () => {
               />
 
               <h3>Protege tu casa</h3>
-            </div>
+            </div> */}
           </div>
         </div>
     </section>
+
+<Search />
+
+</>
   )
 }
 

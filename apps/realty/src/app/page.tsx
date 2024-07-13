@@ -1,5 +1,4 @@
 // import Image from 'next/image'
-import Search from '@/components/Search'
 import styles from './page.module.css'
 // import dynamic from 'next/dynamic'
 import { Banner, General, MostSearched, Publish, Questions, Way } from '@/sections'
@@ -19,7 +18,6 @@ export default function Home() {
     <Way />
     <Questions />
     <MostSearched />
-    <Search />
     </main>
     </>
     

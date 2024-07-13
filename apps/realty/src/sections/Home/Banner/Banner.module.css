@@ -105,6 +105,8 @@
 }
 
 .options .boxs .box {
+  display: flex;
+  gap: 1rem;
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
@@ -113,9 +115,9 @@
 
 .box h3 {
   font-weight: 600;
-  margin-top: 1rem;
-  font-size: 1.3rem;
-  color: rgba(0, 0, 0, .8);
+  font-size: 1.6rem;
+  color: #333;
+  line-height: 1.8rem;
 }
 
 @media screen and (max-width: 768px) {
