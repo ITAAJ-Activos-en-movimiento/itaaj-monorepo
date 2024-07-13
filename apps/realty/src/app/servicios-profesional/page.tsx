@@ -268,11 +268,11 @@ Precio: 2, 000 pesos más IVA.
           },
         }}
       >
-        <Cform
+        {/* <Cform
           slug={"SRVPROF@" + slug}
           closeModal={closeModal}
           prevmsg={slug + ":"}
-        />
+        /> */}
       </Modal>
 
       {/* {count == 0? (
