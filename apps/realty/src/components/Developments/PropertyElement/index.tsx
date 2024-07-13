@@ -59,7 +59,7 @@ const PropertyElement = ({ bathrooms, bedrooms, floor, price, total_area, image,
           },
         }}
       >
-        <Cform slug={"SDEV@"+slug} closeModal={closeModal} prevmsg={"Me interesa Inmueble: " + slug}/>
+        {/* <Cform slug={"SDEV@"+slug} closeModal={closeModal} prevmsg={"Me interesa Inmueble: " + slug}/> */}
       </Modal>
 
   </>
