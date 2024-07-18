@@ -84,6 +84,39 @@ const PriceIndexDesc = () => {
             </div>
           </div>
         </div>
+
+        <h4 className={styles.middle_title} >Precio m² por número de baños</h4>
+        <div className={styles.grid_info} >
+        <div className={styles.info_card} >
+            <Image src="/1room.svg" width={25} height={25} alt="Area Icono" />
+            <div>
+              <h3>$5.285 /m²</h3>
+              <p>Precio por 1 baño</p>
+            </div>
+          </div>
+          <div className={styles.info_card} >
+            <Image src="/3room.svg" width={25} height={25} alt="Area Icono" />
+            <div>
+              <h3>$5.442 /m²</h3>
+              <p>Precio de 3 baños</p>
+            </div>
+          </div>
+          <div className={styles.info_card} >
+            <Image src="/2room.svg" width={25} height={25} alt="Area Icono" />
+            <div>
+              <h3>$5.442 /m²</h3>
+              <p>Precio de 2 baños</p>
+            </div>
+          </div>
+          <div className={styles.info_card} >
+            <Image src="/4room.svg" width={25} height={25} alt="Area Icono" />
+            <div>
+              <h3>$5.442 /m²</h3>
+              <p>Precio de más de 3 baños</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <Map />

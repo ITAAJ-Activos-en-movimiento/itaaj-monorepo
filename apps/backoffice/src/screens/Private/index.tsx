@@ -14,7 +14,7 @@ import Funnel from "./Crm/Funnel";
 import PropertiesModel from "./PropertiesDevelopments";
 import CreatePropertyModel from "./PropertiesDevelopments/Create";
 import Market from "./Market";
-import CreateAnalysis from "./Market/Create";
+import { CreateIndex } from "@/features/PriceIndex/screens";
 
 const Private = () => {
   return (
@@ -44,7 +44,7 @@ const Private = () => {
         <Route path="/crm/funnels" element={<CRM />} />
 
         <Route path="/market" element={<Market />} />
-        <Route path="/market/create" element={<CreateAnalysis />} />
+        <Route path="/market/create" element={<CreateIndex />} />
 
 
 

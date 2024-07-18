@@ -15,17 +15,17 @@ interface PropertyData {
     fechaAlta: string;
     fechaModificacion: string;
   }
-export const centuryScrapping = async ({ state, municipio, colonia }: { state: string, municipio: string, colonia: string }) => {
+export const centuryScrapping = async ({ state, municipality, neighborhood }: { state: string, municipality: string, neighborhood: string }) => {
    let properties = []
     let base_url =""
   
-    if(municipio == "naucalpan"){
+    if(municipality == "naucalpan"){
         base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
-         state.toLowerCase() + "/en-municipio_" + municipio;
+         state.toLowerCase() + "/en-municipio_" + municipality;
       
      }else{
         base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
-         state.toLowerCase() + "/en-municipio_" + municipio ;
+         state.toLowerCase() + "/en-municipio_" + municipality ;
      }
 
 

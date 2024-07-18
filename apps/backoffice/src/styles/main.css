@@ -106,8 +106,7 @@ summary {
 
 select{
     border: none;
-    padding: 1rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
     font-size: 1.4rem;
     font-weight: 400;
     background-color: #fff;
@@ -233,7 +232,7 @@ summary {
 select{
     border: none;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
     font-size: 1.4rem;
     font-weight: 400;
     background-color: #fff;

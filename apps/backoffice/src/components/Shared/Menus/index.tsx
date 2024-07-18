@@ -1,6 +1,7 @@
 import React, {
   Dispatch,
   FC,
+  PropsWithChildren,
   ReactNode,
   SetStateAction,
   createContext,
@@ -89,18 +90,18 @@ const Toggle = ({ id, children }: { id: string, children?: ReactNode }) => {
   );
 };
 
-interface ListProps {
+interface ListProps extends PropsWithChildren{
   id: string;
-  children: ReactNode;
+  children: ReactNode
 }
 
-const List: React.FC<ListProps> = ({ id, children }) => {
+const List: React.FC<ListProps> = ({ children, id }) => {
   const { openId, position, close } = useContext(MenusContext);
   const ref = useOutsideClick<HTMLUListElement>({ handler: close, listenCapturing: true });
   if (openId !== id) return null;
 
-  return createPortal(
-    <ul
+  const content = (
+<ul
       className={styles.list}
       style={{
         top: position && position.y,
@@ -108,7 +109,11 @@ const List: React.FC<ListProps> = ({ id, children }) => {
       }}
       ref={ref}>
       {children}
-    </ul>,
+    </ul>
+  )
+
+  return createPortal(
+    content,
     document.body,
   );
 };

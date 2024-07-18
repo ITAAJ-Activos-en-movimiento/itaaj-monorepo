@@ -12,6 +12,7 @@ import { Table } from "@/containers";
 import PropertyRow from "../Table/PropertyRow";
 import { colonias, municipios } from "./data";
 import * as XLSX from 'xlsx';
+import ControlChart from "@/components/ControlChart";
 
 const INITIAL_DATA = {
   price: 0,
@@ -174,18 +175,19 @@ const CreateAnalysis = () => {
 
             <h3>
               Precio por Metro Cuadrado:{" "}
-              {DivisaFormater({ value: data?.precioPorMetro })}
+              {DivisaFormater({ value: data?.pricePerSquareMeter })}
             </h3>
             <h3>
               Desviación Estandar:{" "}
-              {DivisaFormater({ value: data?.desviacionEstandar })}
+              {DivisaFormater({ value: data?.standardDeviation })}
             </h3>
             <h3>
-              Precio Promedio: {DivisaFormater({ value: data?.precioPromedio })}
+              Precio Promedio: {DivisaFormater({ value: data?.averagePrice })}
             </h3>
           </div>
 
           <div>
+            <ControlChart data={data?.dataPoints} limits={{ median: data?.median, lowerLimit: data?.lowerLimit, upperLimit: data?.upperLimit }} />
             {data?.distribucion && <BarChart data={data?.distribucion} />}
           </div>
           <div className={styles.table}>

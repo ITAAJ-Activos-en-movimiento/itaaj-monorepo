@@ -30,7 +30,7 @@ const SideMenu = ({active, setActive} : Props) => {
                 <li><Link href='/properties'>Comprar</Link></li>
                 <li><Link href='/sell'>Vender</Link></li>
                 {/* <li><Link href='/'>Actualidad</Link></li> */}
-                <li><Link href='/'>Indice de precios</Link></li>
+                <li><Link href='/indice-precio-vivienda'>Índice de precios</Link></li>
                 {/* <li><Link href='/'>Tasacion online</Link></li> */}
                 <li><Link href='/'>Hipotecas</Link></li>
                 <li><Link href='/itabot'>Sofia asistente AI online</Link></li>

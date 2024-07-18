@@ -68,10 +68,10 @@ const Header = () => {
           <Link href="/publish" className={styles.publish}>
             {content}
           </Link>
-          <button className={styles.login} onClick={handleClickAccess}>
+          <Link href="/login" className={styles.login} >
             <User size={18} />
             <span>{state.isAuthenticated ? "Mi Perfil" : "Acceder"}</span>
-          </button>
+          </Link>
         </div>
 
         <SideMenu active={active} setActive={setActive} />

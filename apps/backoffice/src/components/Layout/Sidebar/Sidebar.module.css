@@ -1,11 +1,12 @@
 .sidebar{
-    /* grid-row: 1 / -1; */
     background-color: #fff;
-    border-right: 2px solid rgba(0, 0, 0, .1);
-    border-radius: 1rem;
+    border-right: 1px solid rgba(0, 0, 0, .05);
+    border-top-right-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 5rem;
+    padding-left: .6rem;
 }
 
 .sidebar button{
@@ -27,7 +28,7 @@
     display: inline-flex;
     background-color: transparent;
     padding: .5rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
     margin-top: 1rem;
     display: flex;
     align-items: center;
@@ -36,5 +37,9 @@
 }
 
 .sidebar a:hover{
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.nav a p{
+    display: none;
 }

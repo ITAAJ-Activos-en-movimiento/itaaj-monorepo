@@ -1,34 +1,14 @@
 import { Development } from "@itaaj/entities";
-import axios from "axios";
-import { PropiedadesScrapping } from "./scrapping-propc";
 import { centuryScrapping } from "./scrapping-century";
+import { calculatePricesByBedrooms } from "../price-index";
 
-const samples = {
-  2: 1.880,
-  3: 1.024,
-  4: 0.729,
-  5: 0.577,
-  6: 0.483,
-  7: 0.419,
-  8: 0.373,
-  9: 0.337,
-  10: 0.308,
-  11: 0.285,
-  12: 0.266,
-  13: 0.249,
-  14: 0.235,
-  15: 0.223,
-  16: 0.212,
-  17: 0.203,
-  18: 0.194,
-  19: 0.187,
-  20: 0.180,
-  21: 0.180,
-  22: 0.180,
-  23: 0.180,
-  24: 0.180,
-  25: 0.153
-}
+const samples: Record<number, number> = {
+  2: 1.880, 3: 1.024, 4: 0.729, 5: 0.577, 6: 0.483, 7: 0.419, 8: 0.373, 9: 0.337,
+  10: 0.308, 11: 0.285, 12: 0.266, 13: 0.249, 14: 0.235, 15: 0.223, 16: 0.212,
+  17: 0.203, 18: 0.194, 19: 0.187, 20: 0.180, 21: 0.180, 22: 0.180, 23: 0.180,
+  24: 0.180, 25: 0.153
+};
+
 interface PropertyData {
   precios: {
     vista: { precio: number };
@@ -43,146 +23,137 @@ interface PropertyData {
   fechaModificacion: string;
 }
 
-export const generateMarketAnalysis = async ({ state, municipio, colonia, maxPrice }: { state: string, municipio: string, colonia: string, maxPrice: number }) => {
-  let properties: PropertyData[] = [];
-  const centuryProperties = await centuryScrapping({ state, municipio, colonia });
-  // const propiedadesProperties = await PropiedadesScrapping();
-  
-  properties.push(...centuryProperties);
-  // properties.push(...propiedadesProperties);
- 
-  properties = properties.filter((property) => property.precios.vista.precio !== null && property.m2C > 0)
+interface AdjustedPriceData {
+  adjustedPricePerSquareMeter: number;
+  upperLimit: number;
+  lowerLimit: number;
+  median: number;
+  dataPoints: {price: number, included: boolean}[];
+}
 
-  properties = properties.filter((property) => property.precios.vista.precio <= maxPrice);
+export const generateMarketAnalysis = async ({ state, municipality, neighborhood, maxPrice }: { state: string, municipality: string, neighborhood: string, maxPrice: number }) => {
+  try {
+    let properties: PropertyData[] = await centuryScrapping({ state, municipality, neighborhood });
+    properties = properties.filter(property => 
+      property.precios.vista.precio !== null && 
+      property.m2C > 0 &&
+      property.precios.vista.precio <= maxPrice
+    );
 
-    
-  const preciosProp = properties.map((propiedad) =>
-    Number(propiedad.precios.vista.precio)
-  );
+    const pricesPerSquareMeter = properties.map(property => 
+      property.precios.vista.precio / (property.m2C + property.m2T)
+    );
 
-  const sumaPrecios = preciosProp.reduce(
-    (acc, precio) => acc + Number(precio),
-    0
-  );
+    const adjustedPriceData = calculateAdjustedPricePerSquareMeter(pricesPerSquareMeter);
 
+    const adjustedProperties = properties.map(property => ({
+      ...property,
+      adjustedPrice: adjustedPriceData.adjustedPricePerSquareMeter * (property.m2C + property.m2T),
+      adjustedPricePerSquareMeter: adjustedPriceData.adjustedPricePerSquareMeter
+    }));
 
-  const precioPromedio = sumaPrecios / preciosProp.length;
+    const averageAdjustedPrice = calculateAverage(adjustedProperties.map(p => p.adjustedPrice));
+    const priceDistribution = calculatePriceDistribution(adjustedProperties);
+    const standardDeviation = calculateStandardDeviation(adjustedProperties.map(p => p.adjustedPricePerSquareMeter));
 
+    return {
+      properties: adjustedProperties,
+      averagePrice: averageAdjustedPrice,
+      pricePerSquareMeter: adjustedPriceData.adjustedPricePerSquareMeter,
+      priceDistribution,
+      standardDeviation,
+      amount: properties.length,
+      upperLimit: adjustedPriceData.upperLimit,
+      lowerLimit: adjustedPriceData.lowerLimit,
+      median: adjustedPriceData.median,
+      dataPoints: adjustedPriceData.dataPoints,
+    };
+  } catch (error) {
+    console.error("Error in generateMarketAnalysis:", error);
+    throw error;
+  }
+};
 
-  const totalPrecioPorMetroCuadrado = calcularPrecioPromedioPorMetroCuadrado(properties);
+function calculateAverage(values: number[]): number {
+  if (values.length === 0) return 0;
+  return values.reduce((sum, val) => sum + val, 0) / values.length;
+}
 
-  const preciosPorMetroCuadrado = properties.map(
-    (propiedad) => propiedad.precios.vista.precio / (propiedad.m2C + propiedad.m2T)
-  );
-
-
-  
-  const precios = properties.map((propiedad) => propiedad.precios.vista.precio);
-  const distribucion = {
-    "<1M": precios.filter((precio) => precio < 1000000).length,
-    "1M-2M": precios.filter((precio) => precio >= 1000000 && precio < 2000000)
-      .length,
-    "2M-3M": precios.filter((precio) => precio >= 2000000 && precio < 3000000)
-      .length,
-    "3M-4M": precios.filter((precio) => precio >= 3000000 && precio < 4000000)
-      .length,
-    ">4M": precios.filter((precio) => precio >= 4000000).length,
-  };
-
-
-  //Desviación Estandar
-  const promedio = totalPrecioPorMetroCuadrado;
-  const sumatoriaDiferenciasCuadrado = preciosPorMetroCuadrado.reduce(
-    (sum, precio) => sum + Math.pow(precio - totalPrecioPorMetroCuadrado, 2),
-    0
-  );
-
-  const varianza = sumatoriaDiferenciasCuadrado / preciosPorMetroCuadrado.length;
-  const desviacionEstandar = Math.sqrt(varianza);
-
-  // for (let i = 0; i < data.totalHits; i++) {
-
-  // }
-
-  // for (let i = 0; i < 5; i++) {
-  //     let url = base_url;
-  //     if(i > 1){
-  //         url =  base_url + "pagina_" + String(i)
-  //     }
-
-  //     const { data, status } = await axios.get(url, {
-  //         params: {
-  //             json: "true"
-  //         }
-  //     });
-
-  //     if (status == 200){
-  //         console.log(data)
-  //     }
-
-  // }
-
-  console.log(properties)
-
-  const propertiesByOrder = preciosPorMetroCuadrado.sort((a, b) => a - b);
-
-  const range = propertiesByOrder[propertiesByOrder.length - 1] - propertiesByOrder[0];
-  const total = propertiesByOrder.reduce((a, c) => a + c, 0);
-  const centralLimit = total / propertiesByOrder.length;
-
-
-  console.log(propertiesByOrder.length)
-
-  const upLimit = propertiesByOrder.length > 25 ?  centralLimit + (range * 0.153) + range : centralLimit + (range * samples[properties.length]) 
-  const downLimit =  propertiesByOrder.length > 25 ?  centralLimit  - ( 0.153 * range) :  centralLimit - (range * samples[properties.length])
-
-  console.log({upLimit})
-  console.log({downLimit})
-
-  const propiedadesSinCaras = propertiesByOrder.filter((property) => property <= upLimit && property);
-  console.log(propiedadesSinCaras)
-
-  // const totalPrecioPorMetroCuadradoSinCaras = calcularPrecioPromedioPorMetroCuadrado(propiedadesSinCaras);
-
-  const prome = propiedadesSinCaras.reduce((a,c) => a + c, 0)
-  const prometotal = prome / propiedadesSinCaras.length; 
-
+function calculatePriceDistribution(properties: (PropertyData & { adjustedPrice: number })[]): Record<string, number> {
+  const prices = properties.map(p => p.adjustedPrice);
   return {
-    properties: properties,
-    precioPromedio: precioPromedio,
-    precioPorMetro: prometotal,
-    distribucion: distribucion,
-    desviacionEstandar: desviacionEstandar,
-    amount: Number(properties.length),
+    "<1M": prices.filter(p => p < 1000000).length,
+    "1M-2M": prices.filter(p => p >= 1000000 && p < 2000000).length,
+    "2M-3M": prices.filter(p => p >= 2000000 && p < 3000000).length,
+    "3M-4M": prices.filter(p => p >= 3000000 && p < 4000000).length,
+    ">4M": prices.filter(p => p >= 4000000).length,
   };
-};
+}
 
-const calculateDaysPublished = (fechaAlta: string) => {
-  const today = new Date();
-  const publishedDate = new Date(fechaAlta);
-  const timeDifference = today.getTime() - publishedDate.getTime();
-  return Math.floor(timeDifference / (1000 * 3600 * 24));
-};
+function calculateStandardDeviation(values: number[]): number {
+  if (values.length < 2) return 0;
+  const average = calculateAverage(values);
+  const squareDiffs = values.map(value => {
+    const diff = value - average;
+    return diff * diff;
+  });
+  const avgSquareDiff = calculateAverage(squareDiffs);
+  return Math.sqrt(avgSquareDiff);
+}
 
+function calculateMedian(values: number[]): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  if (sorted.length % 2 === 0) {
+    return (sorted[middle - 1] + sorted[middle]) / 2;
+  }
+  return sorted[middle];
+}
 
-function calcularPrecioPromedioPorMetroCuadrado(propiedades: PropertyData[]): number {
-  if (propiedades.length === 0) {
-      return 0; // En caso de que el arreglo esté vacío, retornar 0 o NaN según convenga.
+function calculateAdjustedPricePerSquareMeter(pricesPerSquareMeter: number[]): AdjustedPriceData {
+
+  if (pricesPerSquareMeter.length === 0) {
+    return {
+      adjustedPricePerSquareMeter: 0,
+      upperLimit: 0,
+      lowerLimit: 0,
+      median: 0,
+      dataPoints: []
+    };
   }
 
-  // Calcular la suma total de precios y de metros cuadrados
-  let sumaPrecios = 0;
-  let sumaMetrosCuadrados = 0;
+  pricesPerSquareMeter.sort((a, b) => a - b);
+  const n = pricesPerSquareMeter.length;
+  const range = pricesPerSquareMeter[n - 1] - pricesPerSquareMeter[0];
+  const centralLimit = calculateAverage(pricesPerSquareMeter);
 
-  console.log(propiedades)
-  propiedades.forEach(propiedad => {
-    console.log({propiedad})
-      sumaPrecios += Number(propiedad?.precios.vista.precio);
-      sumaMetrosCuadrados += (propiedad?.m2C + propiedad?.m2T);
-  });
+  const sampleFactor = n > 25 ? 0.153 : samples[n] || 0.153;
+  const upperLimit = centralLimit + (range * sampleFactor);
+  const lowerLimit = centralLimit - (range * sampleFactor);
+  const median = calculateMedian(pricesPerSquareMeter);
 
-  // Calcular el precio promedio por metro cuadrado
-  const precioPromedioPorMetroCuadrado = sumaPrecios / sumaMetrosCuadrados;
+  const filteredPrices = pricesPerSquareMeter.filter(p => p >= lowerLimit && p <= upperLimit);
+  const adjustedPricePerSquareMeter = calculateAverage(filteredPrices);
 
-  return precioPromedioPorMetroCuadrado;
+  const dataPoints = pricesPerSquareMeter.map(price => ({
+    price,
+    included: price >= lowerLimit && price <= upperLimit
+  }));
+
+
+  return {
+    adjustedPricePerSquareMeter,
+    upperLimit,
+    lowerLimit,
+    median,
+    dataPoints
+  };
+}
+
+function calculateDaysListed(listingDate: string): number {
+  const today = new Date();
+  const publishedDate = new Date(listingDate);
+  const timeDifference = today.getTime() - publishedDate.getTime();
+  return Math.floor(timeDifference / (1000 * 3600 * 24));
 }
