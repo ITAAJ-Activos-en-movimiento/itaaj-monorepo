@@ -13,11 +13,12 @@ const UsersTable = ({ search }: Props) => {
 
   return (
     <Menus>
-      <Table columns="1fr 1fr 1fr 5rem">
+      <Table columns="1fr 1fr 1fr 1fr 3rem">
         <Table.Header>
           <div>Nombre</div>
           <div>Apellido</div>
           <div>Correo</div>
+          <div>Telefono</div>
         </Table.Header>
         <Table.Body<Post>
           data={users}

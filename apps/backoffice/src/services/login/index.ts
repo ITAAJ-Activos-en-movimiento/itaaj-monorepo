@@ -31,3 +31,8 @@ export const login = async (email: string) => {
   const { data } = await itaajApi.post("/auth/login/email", { email });
   return data;
 };
+
+export const deleteUserApi = async (id: string) => {
+  const { data } = await itaajApi.patch(`/users/${id}/delete`);
+  return data;
+};

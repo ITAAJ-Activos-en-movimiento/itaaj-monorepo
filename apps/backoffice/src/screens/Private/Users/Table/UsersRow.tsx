@@ -1,7 +1,7 @@
 import { Modal, Table } from "@/containers";
 import { User } from "@itaaj/entities";
 import Menus from "@/components/Shared/Menus";
-import { useDeletePost } from "@/hooks";
+import { useDeleteUser } from "@/hooks";
 
 interface Props {
   user: Partial<User>;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const UsersRow = ({ user }: Props) => {
-  const { deletePost } = useDeletePost();
+  const { deleteUser } = useDeleteUser();
   return (
     <Table.Row>
       <div>
@@ -46,12 +46,23 @@ const UsersRow = ({ user }: Props) => {
       </div>
 
       <div>
+        <h3
+          style={{
+            fontWeight: "500",
+            fontSize: 13,
+          }}
+        >
+          {user.phone}
+        </h3>
+      </div>
+
+      <div>
         <Modal>
           <Menus.Menu>
             <Menus.Toggle id={user.id!} />
             <Menus.List id={user.id!}>
               <Menus.Button>Ver</Menus.Button>
-              <Menus.Button onClick={() => deletePost(user.id!)}>
+              <Menus.Button onClick={() => deleteUser(user.id!)}>
                 Eliminar
               </Menus.Button>
             </Menus.List>
