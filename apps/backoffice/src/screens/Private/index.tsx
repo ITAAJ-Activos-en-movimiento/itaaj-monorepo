@@ -15,6 +15,8 @@ import PropertiesModel from "./PropertiesDevelopments";
 import CreatePropertyModel from "./PropertiesDevelopments/Create";
 import Market from "./Market";
 import { CreateIndex } from "@/features/PriceIndex/screens";
+import NewBlog from "./Blogs/New";
+import EditBlog from "./Blogs/Edit";
 
 const Private = () => {
   return (
@@ -33,21 +35,23 @@ const Private = () => {
 
         <Route path="proposals" element={<Proposals />} />
 
-        <Route path="properties/developments/create" element={<CreatePropertyModel />} />
+        <Route
+          path="properties/developments/create"
+          element={<CreatePropertyModel />}
+        />
 
         <Route path="properties/create" element={<CreateProperty />} />
         <Route path="properties/:slug" element={<UpdateProperty />} />
 
         <Route path="blogs" element={<Blog />} />
+        <Route path="blogs/create" element={<NewBlog />} />
+        <Route path="blogs/edit" element={<EditBlog />} />
 
         <Route path="/crm/funnels/:id" element={<Funnel />} />
         <Route path="/crm/funnels" element={<CRM />} />
 
         <Route path="/market" element={<Market />} />
         <Route path="/market/create" element={<CreateIndex />} />
-
-
-
       </Route>
     </Routes>
   );

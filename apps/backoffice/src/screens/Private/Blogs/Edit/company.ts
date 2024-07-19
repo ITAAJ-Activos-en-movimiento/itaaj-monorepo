@@ -1,0 +1,15 @@
+export const categories = [
+  { name: "Alquiler", value: "Alquiler" },
+  { name: "Compraventa", value: "Compraventa" },
+  { name: "Energia", value: "Energia" },
+  { name: "Famosos", value: "Famosos" },
+  { name: "Finanzas", value: "Finanzas" },
+  { name: "Inmobiliarias", value: "Inmobiliarias" },
+  { name: "Inspiración", value: "Inspiración" },
+  { name: "Mascotas", value: "Mascotas" },
+  { name: "Noticias", value: "Noticias" },
+  { name: "Sector", value: "Sector" },
+  { name: "Suministros", value: "Suministros" },
+  { name: "Opinión", value: "Opinión" },
+  { name: "Vender", value: "Vender" },
+];

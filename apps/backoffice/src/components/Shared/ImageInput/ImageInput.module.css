@@ -1,8 +1,6 @@
-.formbold_file_input{
+.formbold_file_input {
   width: 100%;
-  padding: 1.2rem 0;
-  padding-right: 4rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: #fff;
   font-weight: 500;
   font-size: 1.6rem;
@@ -20,29 +18,27 @@
   z-index: 999;
   cursor: pointer;
   z-index: 999999999;
-
 }
 
 .formbold_file_input label {
-  position: relative;
-  border: 1px dashed #e0e0e0;
-  border-radius: .5rem;
-  min-height: 18rem;
+  border-radius: 0.5rem;
+  min-height: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4.8rem;
+  padding: 5rem;
   text-align: center;
   background-color: transparent;
+  border: 1px dashed #e0e0e0;
 }
 
-.loader_image{
+.loader_image {
   height: 5rem;
   width: 100%;
   z-index: 9999;
 }
 
-.formbold_drop_file{
+.formbold_drop_file {
   display: block;
   font-weight: 600;
   color: #333;
@@ -62,13 +58,13 @@
   font-weight: 300;
   font-size: 1.4rem;
   display: inline-block;
-  padding: .8rem 2.8rem;
-  border-radius: .5rem;
+  padding: 0.8rem 2.8rem;
+  border-radius: 0.5rem;
   background-color: var(--primary-color);
   color: #fff;
-} 
+}
 
-.preview{
+.preview {
   position: absolute;
   top: 0;
   left: calc(50% - 100px);
@@ -79,6 +75,6 @@
   z-index: 0;
 }
 
-.formbold_file_input button{
+.formbold_file_input button {
   margin-top: 1rem;
 }

@@ -1,51 +1,57 @@
-import 'dotenv/config';
+import "dotenv/config";
 import fastify from "fastify";
-import fastifyCors from '@fastify/cors';
-import { initDataSources } from '@itaaj/data-sources';
-import { registerRoutes } from '../routes';
+import fastifyCors from "@fastify/cors";
+import { initDataSources } from "@itaaj/data-sources";
+import { registerRoutes } from "../routes";
 
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173', 'https://itaajrealty.com', 'https://www.itaajrealty.com', 'https://admin-itaaj.vercel.app'],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:5173",
+    "https://itaajrealty.com",
+    "https://www.itaajrealty.com",
+    "https://admin-itaaj.vercel.app",
+  ],
 };
 
 type Admin = {
-    id: string;
+  id: string;
 };
 
 declare module "fastify" {
-    interface FastifyRequest {
-        admin: Admin;
-    }
+  interface FastifyRequest {
+    admin: Admin;
+  }
 }
 
 const main = async () => {
-     await initDataSources({
-       postgres: { url: DATABASE_CONNECTION }
-    });
+  await initDataSources({
+    postgres: { url: DATABASE_CONNECTION },
+  });
 
-    const server = fastify({
-        logger: true
-    });
+  const server = fastify({
+    logger: true,
+  });
 
-    server.register(fastifyCors, corsOptions);
-    server.register(
-        (instance, options, next) => {
-            registerRoutes(instance);
-            next();
-        },
-        { prefix: 'api/v1' },
-    );
+  server.register(fastifyCors, corsOptions);
+  server.register(
+    (instance, options, next) => {
+      registerRoutes(instance);
+      next();
+    },
+    { prefix: "api/v1" }
+  );
 
-
-    server.listen({port: Number(PORT), host: HOST}, (err, address) => {
-        if (err) {
-            server.log.error(err);
-            process.exit(1);
-        }
-        server.log.info(`Backend App is running at ${address}`);
-        server.log.info('Press CTRL-c to stop');
-    })
-}
+  server.listen({ port: Number(PORT), host: HOST }, (err, address) => {
+    if (err) {
+      server.log.error(err);
+      process.exit(1);
+    }
+    server.log.info(`Backend App is running at ${address}`);
+    server.log.info("Press CTRL-c to stop");
+  });
+};
 
 void main();

@@ -53,6 +53,7 @@ const BlogRow = ({ post }: Props) => {
 
             <Menus.List id={post.id!}>
               <Menus.Button>Ver</Menus.Button>
+              <Menus.LinkTo to={`edit?post=${post.slug!}`}>Editar</Menus.LinkTo>
               <Menus.Button onClick={() => deletePost(post.id!)}>
                 Eliminar
               </Menus.Button>
