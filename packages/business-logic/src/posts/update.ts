@@ -3,7 +3,6 @@ import { Post, posts } from "@itaaj/entities";
 import { eq } from "drizzle-orm";
 
 export const updatePost = async (
-  id: string,
   data: Partial<Post>
 ): Promise<boolean | Error> => {
   try {
@@ -11,13 +10,13 @@ export const updatePost = async (
     const updatedPost = await db
       .update(posts)
       .set({ ...data })
-      .where(eq(posts.id, id))
+      .where(eq(posts.id, data.id))
       .returning();
 
     if (updatedPost.length > 0) {
       return true;
     } else {
-      return new Error(`No post found with id ${id}`);
+      return new Error(`No post found with id ${data.id}`);
     }
   } catch (error) {
     return error as Error;
