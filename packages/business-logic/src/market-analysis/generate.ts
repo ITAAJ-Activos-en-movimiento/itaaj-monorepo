@@ -66,6 +66,11 @@ export const generateMarketAnalysis = async ({ state, municipality, neighborhood
     const priceDistribution = calculatePriceDistribution(adjustedProperties);
     const standardDeviation = calculateStandardDeviation(adjustedProperties.map(p => p.adjustedPricePerSquareMeter));
 
+    properties = properties.map((property) => ({
+      ...property,
+      precioReal: property.precios.vista.precio
+    }))
+
     return {
       properties: properties,
       averagePrice: averageAdjustedPrice,
