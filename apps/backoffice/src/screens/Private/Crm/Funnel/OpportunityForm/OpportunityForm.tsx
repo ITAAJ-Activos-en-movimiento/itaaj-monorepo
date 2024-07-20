@@ -11,7 +11,7 @@ interface Props {
 const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
     const { funnel } = useFunnel();
   const { contacts } = useContacts();
-  const { users } = useUsers(); 
+  const { users } = useUsers({}); 
 
   const { isCreating, createLead } = useCreateLead();
   const isWorking = isCreating ;
