@@ -1,0 +1,236 @@
+.card{
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.05);
+    flex-direction: row;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.carousel{
+    height: 375px;
+    width: 367px;
+    min-width: unset;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+}
+
+.badge{
+    position: absolute;
+    bottom: 8px;
+    font-size: 1.2rem;
+    color: #fff;
+    left: 8px;
+    background-color: rgba(29, 29, 29, .5);
+    padding: 2px 8px;
+    height: 2.4rem;
+    font-weight: 400;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.banner{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 1.5rem 0 0;
+    background-color: #eaebf7;
+    width: calc(100% - 367px);
+    padding: 8px 16px;
+}
+
+.image_list{
+    display: block;
+    list-style: none;
+    padding: 0;
+    transition-property: transform, -webkit-transform;
+    width: 100%;
+    will-change: transform, transition-timing, transition-duration;
+}
+
+.image_list li{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    user-select: none;
+}
+
+.image_list li img{
+    display: block;
+    margin:  0 auto;
+    pointer-events: none;
+    touch-action: none;
+    height: 257px;
+    width: 367px;
+    object-fit: cover;
+}
+
+.carousel_preview{
+    max-height: 115px;
+    overflow: hidden;
+    border-radius: 0 0 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+    gap: .5rem;
+}
+
+.carousel_preview > div{
+    width: 181px;
+    height: 119px;
+    background-color: #f1f1f1;
+}
+
+.carousel_preview > div img{
+    height: 119px;
+    width: 181px;
+    object-fit: cover;
+}
+
+.info{
+    margin-top: 4.8rem;
+    max-width: 100%;
+    padding: 1.5rem;
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+}
+
+.description{
+    font-size: 1.4rem;
+    white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis; 
+       width: 40rem;
+       -webkit-box-orient: vertical;
+       -webkit-line-clamp: 2;
+       display: -webkit-box;
+       white-space: normal;
+       width: 95%;
+       color: rgba(0, 0, 0, .8);
+}
+
+.contact{
+    border-top: 1px solid #f8f8f8;
+    padding-top: 1.5rem;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.contact button{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-align: center;
+    border-radius: .5rem;
+    font-weight: 600;
+    padding: 0 1.5rem;
+    height: 4rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.contact > div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact > div a{
+    border: 1px solid var(--main-color);
+    border-radius: .5rem;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--main-color);
+}
+
+.banner h4{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #353535;
+}
+
+.banner h4 span{
+    font-weight: 400;
+}
+
+.price_composite{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price{
+    position: relative;
+    white-space: nowrap;
+    color: #353535;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.time_ago{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.title{
+    font-size: 1.5rem;
+    color: #353535;
+    font-weight: 400;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: .5rem;
+}
+
+.title .type{
+    font-weight: 700;
+}
+
+.features{
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+    font-size: 1.4rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.features li{
+    flex: 0 1 33%;
+    display: flex;
+    align-items: center;
+    color: #353535;
+    font-weight: 400;
+    padding: 1.5rem 1.5rem 0 0;
+    gap: .5rem;
+}
+
+.features li i{
+    font-size: 2rem;
+}

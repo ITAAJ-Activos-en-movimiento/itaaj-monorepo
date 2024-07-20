@@ -24,7 +24,7 @@ const PostForm = ({ postToEdit = {}, onCloseModal }: Props) => {
 
   const [content, setContent] = useState("");
   const { user } = useUser();
-  const { isLoading, urls, url, uploadImage } = useUploadImage();
+  const { isLoading, url, uploadImage } = useUploadImage();
  
   const { isCreating, createPost } = useCreatePost();
 

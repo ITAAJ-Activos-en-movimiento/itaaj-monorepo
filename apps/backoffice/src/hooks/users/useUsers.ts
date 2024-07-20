@@ -5,10 +5,10 @@ interface UseUserParams {
   search?: string;
 }
 
-export const useUsers = ({ search = "" }: UseUserParams) => {
+export const useUsers = ({ search }: UseUserParams) => {
   const { isLoading, data: users } = useQuery({
     queryKey: ["users", search],
-    queryFn: () => getUsers({ search }), // Pasa el parámetro de búsqueda a la función getUsers
+    queryFn: () => getUsers({ search: search || "" }), // Pasa el parámetro de búsqueda a la función getUsers
   });
 
   return { isLoading, users };

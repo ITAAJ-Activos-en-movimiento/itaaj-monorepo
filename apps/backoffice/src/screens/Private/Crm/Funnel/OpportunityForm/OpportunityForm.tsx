@@ -13,7 +13,6 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
   const { funnel } = useFunnel();
   console.log("FUNNEL", funnel);
   const { id: funnelId } = funnel;
-
   const { users } = useUsers({});
 
   const { isCreating, createLead } = useCreateLead();

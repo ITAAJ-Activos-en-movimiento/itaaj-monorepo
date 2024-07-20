@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@itaaj/entities": "workspace:^",
     "@metamask/detect-provider": "^2.0.0",
     "@metamask/sdk-react": "^0.15.0",
     "@react-google-maps/api": "^2.19.2",

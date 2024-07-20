@@ -1,6 +1,7 @@
 import { Development } from "@itaaj/entities";
 import { centuryScrapping } from "./scrapping-century";
 import { calculatePricesByBedrooms } from "../price-index";
+import { remaxScrapping } from "./scrapping-remax";
 
 const samples: Record<number, number> = {
   2: 1.880, 3: 1.024, 4: 0.729, 5: 0.577, 6: 0.483, 7: 0.419, 8: 0.373, 9: 0.337,
@@ -32,13 +33,21 @@ interface AdjustedPriceData {
 }
 
 export const generateMarketAnalysis = async ({ state, municipality, neighborhood, maxPrice }: { state: string, municipality: string, neighborhood: string, maxPrice: number }) => {
+  
+  
   try {
     let properties: PropertyData[] = await centuryScrapping({ state, municipality, neighborhood });
+    const remaxProperties =  await remaxScrapping();
+    
+    properties.push(...remaxProperties)
+    
     properties = properties.filter(property => 
       property.precios.vista.precio !== null && 
       property.m2C > 0 &&
       property.precios.vista.precio <= maxPrice
     );
+
+
 
     const pricesPerSquareMeter = properties.map(property => 
       property.precios.vista.precio / (property.m2C + property.m2T)
@@ -48,6 +57,7 @@ export const generateMarketAnalysis = async ({ state, municipality, neighborhood
 
     const adjustedProperties = properties.map(property => ({
       ...property,
+      precioReal: property.precios.vista.precio, 
       adjustedPrice: adjustedPriceData.adjustedPricePerSquareMeter * (property.m2C + property.m2T),
       adjustedPricePerSquareMeter: adjustedPriceData.adjustedPricePerSquareMeter
     }));
@@ -56,8 +66,13 @@ export const generateMarketAnalysis = async ({ state, municipality, neighborhood
     const priceDistribution = calculatePriceDistribution(adjustedProperties);
     const standardDeviation = calculateStandardDeviation(adjustedProperties.map(p => p.adjustedPricePerSquareMeter));
 
+    properties = properties.map((property) => ({
+      ...property,
+      precioReal: property.precios.vista.precio
+    }))
+
     return {
-      properties: adjustedProperties,
+      properties: properties,
       averagePrice: averageAdjustedPrice,
       pricePerSquareMeter: adjustedPriceData.adjustedPricePerSquareMeter,
       priceDistribution,
