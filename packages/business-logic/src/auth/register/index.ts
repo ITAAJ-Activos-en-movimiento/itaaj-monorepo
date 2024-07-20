@@ -1,26 +1,31 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { User, users } from "@itaaj/entities"
+import { User, users } from "@itaaj/entities";
 import { genSaltSync, hashSync } from "bcrypt";
-import * as jwt from 'jsonwebtoken';
+import * as jwt from "jsonwebtoken";
 
 const { JWT_SECRET } = process.env;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
 export const registerUser = async (data: User): Promise<string | Error> => {
-    if (!EMAIL_REGEX.test(data.email)) {
-        throw new Error("The email provided is not valid");
-      }
-    console.log(data);
-    const salt = genSaltSync(10);
-    const hashedPassword = hashSync(data.password, salt);
-    const result = await getDbInstance().insert(users).values({
-        ...data,
-        password: hashedPassword
-    }).returning();
-    
-    const token = jwt.sign({id: result[0].id}, JWT_SECRET!, {expiresIn: '5d'});
+  if (!EMAIL_REGEX.test(data.email)) {
+    throw new Error("The email provided is not valid");
+  }
+  console.log(data);
+  const salt = genSaltSync(10);
+  const hashedPassword = hashSync(data.password, salt);
+  const result = await getDbInstance()
+    .insert(users)
+    .values({
+      ...data,
+      password: hashedPassword,
+      status: "active",
+    })
+    .returning();
 
-    return token;
-}
+  const token = jwt.sign({ id: result[0].id }, JWT_SECRET!, {
+    expiresIn: "5d",
+  });
+
+  return token;
+};

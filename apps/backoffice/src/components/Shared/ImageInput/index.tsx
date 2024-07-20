@@ -1,15 +1,14 @@
-import React, { useRef } from 'react'
-import Loader from '../Loader';
-import styles from './ImageInput.module.css'
-import { Button } from '..';
+import React, { useRef } from "react";
+import Loader from "../Loader";
+import styles from "./ImageInput.module.css";
+import { Button } from "..";
 
-interface Props  extends React.InputHTMLAttributes<HTMLInputElement>{
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   loading?: boolean;
   uploadImage: (image: any) => Promise<void>;
-
 }
 
-const ImageInput = ({loading, uploadImage, src, ...rest}: Props) => {
+const ImageInput = ({ loading, uploadImage, src, ...rest }: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
@@ -20,33 +19,41 @@ const ImageInput = ({loading, uploadImage, src, ...rest}: Props) => {
 
   const uploadHandler = async (e: any) => {
     uploadImage(e.target.files[0]);
-};
+  };
 
   return (
-    <div>
     <div className={styles.formbold_file_input}>
-      <input type="file" name="image" id="image"  {...rest} ref={fileInputRef} onChange={uploadHandler} />
+      <input
+        type="file"
+        name="image"
+        id="image"
+        {...rest}
+        ref={fileInputRef}
+        onChange={uploadHandler}
+      />
       <label htmlFor="image">
-        {loading? 
-          <Loader small={true} primary={true} />         
-        : (
+        {loading ? (
+          <Loader small={true} primary={true} />
+        ) : (
           <div>
             {src ? (
-                <img src={src} alt="" width={100} height={100} />
-            ): (
-<>
-<span className={styles.formbold_drop_file} >Subir fotos</span>
-              <span className={styles.formbold_or} >Selecciona un archivo.</span>
-              <Button onClick={handleButtonClick} loading={loading} >Explorar fotos</Button>
-</>
+              <img src={src} alt="" width={100} height={100} />
+            ) : (
+              <>
+                <span className={styles.formbold_drop_file}>Subir fotos</span>
+                <span className={styles.formbold_or}>
+                  Selecciona un archivo.
+                </span>
+                <Button onClick={handleButtonClick} loading={loading}>
+                  Explorar fotos
+                </Button>
+              </>
             )}
-           
           </div>
         )}
       </label>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default ImageInput
+export default ImageInput;

@@ -1,17 +1,17 @@
 import { Modal, Table } from "@/containers";
-import { Post } from "@itaaj/entities";
+import { User } from "@itaaj/entities";
 import Menus from "@/components/Shared/Menus";
-import { useDeletePost } from "@/hooks";
+import { useDeleteUser } from "@/hooks";
 
 interface Props {
-  post: Partial<Post>;
+  user: Partial<User>;
   index?: number;
   selected?: boolean;
   onSelect?: () => void;
 }
 
-const BlogRow = ({ post }: Props) => {
-  const { deletePost } = useDeletePost();
+const UsersRow = ({ user }: Props) => {
+  const { deleteUser } = useDeleteUser();
   return (
     <Table.Row>
       <div>
@@ -21,7 +21,7 @@ const BlogRow = ({ post }: Props) => {
             fontSize: 13,
           }}
         >
-          {post.title}
+          {user.name}
         </h3>
       </div>
       <div>
@@ -31,7 +31,17 @@ const BlogRow = ({ post }: Props) => {
             fontSize: 13,
           }}
         >
-          {post.category}
+          {user.lastname}
+        </h3>
+      </div>
+      <div>
+        <h3
+          style={{
+            fontWeight: "500",
+            fontSize: 13,
+          }}
+        >
+          {user.email}
         </h3>
       </div>
 
@@ -42,24 +52,21 @@ const BlogRow = ({ post }: Props) => {
             fontSize: 13,
           }}
         >
-          {post.createdAt ? new Date(post.createdAt).toISOString() : ""}
+          {user.phone}
         </h3>
       </div>
 
       <div>
         <Modal>
           <Menus.Menu>
-            <Menus.Toggle id={post.id!} />
-
-            <Menus.List id={post.id!}>
+            <Menus.Toggle id={user.id!} />
+            <Menus.List id={user.id!}>
               <Menus.Button>Ver</Menus.Button>
-              <Menus.LinkTo to={`edit?post=${post.slug!}`}>Editar</Menus.LinkTo>
-              <Menus.Button onClick={() => deletePost(post.id!)}>
+              <Menus.Button onClick={() => deleteUser(user.id!)}>
                 Eliminar
               </Menus.Button>
             </Menus.List>
           </Menus.Menu>
-
           <Modal.Window title="" name="delete">
             <div></div>
           </Modal.Window>
@@ -69,4 +76,4 @@ const BlogRow = ({ post }: Props) => {
   );
 };
 
-export default BlogRow;
+export default UsersRow;

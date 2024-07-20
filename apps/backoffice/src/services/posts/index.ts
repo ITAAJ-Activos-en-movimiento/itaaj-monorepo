@@ -21,11 +21,11 @@ export const deletePostApi = async (uuid: string) => {
 };
 
 export const updatePostApi = async (post: Partial<Post>) => {
-  const { data } = await itaajApi.put(`/posts`, post);
+  const { data } = await itaajApi.put(`/posts/${post.id}`, post);
   return data;
 };
 
-export const getPostByIdApi = async (uuid: string) => {
-  const { data } = await itaajApi.get(`/posts/get-one/${uuid}`);
+export const getPostByIdApi = async (slug: string) => {
+  const { data } = await itaajApi.get(`/posts/${slug}`);
   return data;
 };

@@ -8,6 +8,7 @@ import {
   BookOpen,
   Filter,
   Paperclip,
+  User,
 } from "react-feather";
 import Tooltip from "../Tooltip";
 
@@ -29,32 +30,37 @@ const Sidebar = () => {
               to="/properties-developments"
               title="Propiedades para desarrollos"
             >
-              <Paperclip size={20}  /> <p>Modelos de D.</p>{" "}
+              <Paperclip size={20} /> <p>Modelos de D.</p>{" "}
             </Link>
           </Tooltip>
           <Tooltip text="Propiedades">
             <Link to="/properties" title="Propiedades">
-              <Home size={20}  /> <p>Propiedades</p>{" "}
+              <Home size={20} /> <p>Propiedades</p>{" "}
             </Link>
           </Tooltip>
           <Tooltip text="Propuestas economicas">
             <Link to="/proposals" title="Proposals">
-              <Crosshair size={20}  /> <p>Propuestas</p>{" "}
+              <Crosshair size={20} /> <p>Propuestas</p>{" "}
             </Link>
           </Tooltip>
           <Tooltip text="Análisis de Mercado">
             <Link to="/market" title="Analisis de Mercado">
-              <BookOpen size={20}  /> <p>Análisis de M.</p>{" "}
+              <BookOpen size={20} /> <p>Análisis de M.</p>{" "}
             </Link>
           </Tooltip>
           <Tooltip text="Embudo de Ventas">
             <Link to="/crm/funnels" title="Embudo">
-              <Filter size={20}  /> <p>Embudo</p>{" "}
+              <Filter size={20} /> <p>Embudo</p>{" "}
             </Link>
           </Tooltip>
           <Tooltip text="Blog">
             <Link to="/blogs" title="Blog">
-              <BookOpen size={20}  /> <p>Blog</p>{" "}
+              <BookOpen size={20} /> <p>Blog</p>{" "}
+            </Link>
+          </Tooltip>
+          <Tooltip text="Users">
+            <Link to="/users" title="Users">
+              <User size={20} /> <p>Users</p>{" "}
             </Link>
           </Tooltip>
         </nav>
