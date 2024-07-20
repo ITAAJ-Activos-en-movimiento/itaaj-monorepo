@@ -10,6 +10,8 @@ import {
 import { DivisaFormater } from "@/utilities";
 import { Loader } from "@/components";
 import { Lead, Stage } from "@itaaj/entities";
+import { useState } from "react";
+import ViewOpportunityModal from "./View";
 
 interface Props {
   draggableId?: string;
@@ -19,10 +21,10 @@ interface Props {
 
 const Funnel = () => {
   const { isLoading, funnel } = useFunnel();
-  console.log("funnel", funnel);
   const { leads } = useLeads();
-  console.log("LEADS", leads);
   const { editLead } = useEditLead();
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
 
   const isPositionChanged = ({ destination, source }: Props) => {
     if (!destination) return false;
@@ -33,9 +35,8 @@ const Funnel = () => {
 
   const handleDrop = async ({ draggableId, destination, source }: Props) => {
     if (!isPositionChanged({ source, destination })) return;
-    const lead = (JSON.parse(draggableId || "{}") as any) || "";
+    const lead = (JSON.parse(draggableId || "{}") as Lead) || "";
     const status = destination?.droppableId;
-    console.log("ststus", status);
     const position = calculateIssueListPosition({
       leads,
       destination,
@@ -102,10 +103,14 @@ const Funnel = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
+                              onClick={() => {
+                                setSelectedLead(lead);
+                                setOpenModal(true);
+                              }}
                             >
-                              <h3 className={styles.title}>{lead.name}</h3>
+                              <h3 className={styles.title}>{lead.contactName}</h3>
                               <p className={styles.copy}>
-                                {lead.contactName} - {lead.personName}
+                                {lead.property} - {lead.reporter}
                               </p>
                               <span className={styles.price}>
                                 {DivisaFormater({
@@ -125,6 +130,12 @@ const Funnel = () => {
           ))}
         </div>
       </DragDropContext>
+      <ViewOpportunityModal
+        isOpen={openModal}
+        setOpen={setOpenModal}
+        onClose={() => setOpenModal(false)}
+        lead={selectedLead}
+      />
     </div>
   );
 };

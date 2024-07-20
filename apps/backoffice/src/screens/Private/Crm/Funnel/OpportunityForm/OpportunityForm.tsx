@@ -1,66 +1,73 @@
 import { Button, Field, Input } from "@/components";
-import { useCreateLead, useForm, useFunnel, useUsers } from "@/hooks";
+import { useCreateLead, useEditLead, useForm, useFunnel } from "@/hooks";
 import styles from "./Form.module.css";
 import { FormEvent, useEffect, useState } from "react";
-import { Lead, Stage, User } from "@itaaj/entities";
+import { Lead, Stage } from "@itaaj/entities";
 
 interface Props {
   leadToEdit?: Partial<Lead>;
   onCloseModal?: () => void;
+  setOpen: (isOpen: boolean) => void;
 }
 
-const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
+const OpportunityForm = ({ leadToEdit = {}, onCloseModal, setOpen }: Props) => {
+  console.log("VALORES", leadToEdit);
   const { funnel } = useFunnel();
-  console.log("FUNNEL", funnel);
   const { id: funnelId } = funnel;
-  const { users } = useUsers({});
 
   const { isCreating, createLead } = useCreateLead();
-  const isWorking = isCreating;
+  const { isEditing, editLead } = useEditLead();
+  const isWorking = isCreating || isEditing;
 
   const { id: editId, ...editValues } = leadToEdit;
   const isEditSession = Boolean(editId);
-  console.log(editValues);
+
   const {
     formState: leadData,
     handleChange,
     setFormState,
-  } = useForm<Partial<Lead>>({
-    name: "",
-    email: "",
-    state: "",
-    phone: "",
-    type: "",
-    gender: "",
-    reporter: "",
-    lead_status: "",
-    property: "",
-    city: "",
-    country: "",
-    source: "",
-    userId: "",
-    funnelId: "",
-    contactId: "",
-    contactName: "",
-    person: "",
-    personName: "",
-    currency: "",
-    value: 0,
-    potential: 0,
-    dueDate: "",
-    stageId: "",
-    position: 0,
-  });
-
-  const [activeStages, setActiveStages] = useState(
-    Array(funnel.stages.length).fill(false)
+  } = useForm<Partial<Lead>>(
+    isEditSession
+      ? editValues
+      : {
+          name: "",
+          email: "",
+          state: "",
+          phone: "",
+          type: "",
+          gender: "",
+          reporter: "",
+          lead_status: "",
+          property: "",
+          city: "",
+          country: "",
+          source: "",
+          userId: "",
+          funnelId: "",
+          contactId: "",
+          contactName: "",
+          person: "",
+          personName: "",
+          currency: "",
+          value: 0,
+          potential: 0,
+          dueDate: "",
+          stageId: "",
+          position: 0,
+        }
   );
 
-  const [selectedStage, setSelectedStage] = useState("");
-  console.log(setSelectedStage);
+  const [reporter, setReporter] = useState(leadData.reporter || "");
 
-  const handleClick = (indexId: number, stage: Stage) => {
-    console.log("EN EL HANDLECLICK", stage);
+  const [selectedStage, setSelectedStage] = useState(leadData.stageId || "");
+
+  const initialActiveStages = funnel.stages.map(
+    (stage, index) =>
+      index <= funnel.stages.findIndex((s) => s.name === leadData.stageId)
+  );
+  const [activeStages, setActiveStages] = useState(initialActiveStages);
+
+  const handleClick = (indexId: number) => {
     setFormState((prev) => ({
       ...prev,
       funnelId: funnelId,
@@ -70,23 +77,38 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
       (_v, index) => index <= indexId
     );
     setActiveStages(nuevosBotonesActivos);
+    setSelectedStage(funnel.stages[indexId].name);
   };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
+    setReporter(value);
+    setFormState((prev) => ({
+      ...prev,
+      reporter: value,
+    }));
+  };
+
+  console.log(reporter);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("ETAPA", selectedStage);
+    
+
     if (isEditSession) {
-      //   editProduct(
-      //     {
-      //       id: leadToEdit.id,
-      //       ...formState,
-      //     },
-      //     {
-      //       onSuccess() {
-      //         onCloseModal?.();
-      //       },
-      //     },
-      //   );
+      editLead(
+        {
+          ...leadData,
+          reporter,
+          id: leadToEdit.id,
+          stageId: selectedStage,
+        },
+        {
+          onSuccess() {
+            onCloseModal?.();
+          },
+        }
+      );
     } else {
       createLead(
         {
@@ -100,16 +122,18 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
         }
       );
     }
+
+    setOpen(false);
   };
 
   useEffect(() => {
-    setActiveStages((activeStages) => {
-      activeStages[0] = true;
-      return [...activeStages];
-    });
-  }, []);
-
-  console.log("ETAPA SELECCIONADA", selectedStage);
+    if (!isEditSession) {
+      setActiveStages((activeStages) => {
+        activeStages[0] = true;
+        return [...activeStages];
+      });
+    }
+  }, [isEditSession]);
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
@@ -179,10 +203,7 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
             <button
               className={activeStages[index] ? styles.active : ""}
               key={stage.name}
-              onClick={() => {
-                handleClick(index, stage);
-                setSelectedStage(stage.name);
-              }}
+              onClick={() => handleClick(index)}
               type="button"
             >
               {stage.name}
@@ -193,7 +214,8 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
       <Field label="Asignado a">
         <select
           name="reporter"
-          onChange={handleChange}
+          value={reporter}
+          onChange={handleSelectChange}
           style={{
             color:
               leadData.userId && leadData?.userId?.length > 0
@@ -201,12 +223,11 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
                 : "rgba(0,0,0,0.5)",
           }}
         >
-          <option value="">Sin asignar</option>
-          {users?.map((user: User) => (
-            <option value={user.id}>
-              {user.name} {user.lastname}
-            </option>
-          ))}
+          <option value="">"Sin asignar</option>
+          <option value="Pável Chalini">Pável Chalini</option>
+          <option value="Maria Lujan">Maria Lujan</option>
+          <option value="Axel">Axel</option>
+          <option value="Nestor Mosquera">Nestor Mosquera</option>
         </select>
       </Field>
 
@@ -215,16 +236,17 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal }: Props) => {
           <Input
             type="date"
             name="dueDate"
+            value={leadData.dueDate}
             onChange={handleChange}
             placeholder="Selecciona empresa"
           />
         </Field>
         <Field label="Probabilidad de la oportunidad">
           <Input
-            type="number "
+            type="number"
+            value={leadData.potential}
             name="potential"
             onChange={handleChange}
-            placeholder=""
           />
         </Field>
       </div>
