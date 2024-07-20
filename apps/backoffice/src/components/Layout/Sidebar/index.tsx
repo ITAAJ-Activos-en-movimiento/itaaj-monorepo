@@ -58,9 +58,9 @@ const Sidebar = () => {
               <BookOpen size={20} /> <p>Blog</p>{" "}
             </Link>
           </Tooltip>
-          <Tooltip text="Users">
-            <Link to="/users" title="Users">
-              <User size={20} /> <p>Users</p>{" "}
+          <Tooltip text="Usuarios">
+            <Link to="/users" title="Usuarios">
+              <User size={20} /> <p>Usuarios</p>{" "}
             </Link>
           </Tooltip>
         </nav>

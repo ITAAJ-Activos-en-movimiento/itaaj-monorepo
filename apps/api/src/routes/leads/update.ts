@@ -8,7 +8,6 @@ export const updateLeadRoutes: RouteOptions = {
     const { params, body } = request;
     const { leadId } = params as { leadId: string };
     const data = body as any;
-    console.log("enn la ruta", data);
     const lead = await updateLead(leadId, data);
 
     return reply.send(lead);

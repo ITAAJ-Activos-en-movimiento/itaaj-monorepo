@@ -1,7 +1,6 @@
 import {
   integer,
   pgTable,
-  primaryKey,
   timestamp,
   uniqueIndex,
   uuid,
@@ -36,6 +35,7 @@ export const leads = pgTable(
     reporter: varchar("reporter", { length: 256 }),
     dueDate: varchar("dueDate", { length: 256 }),
     createdAt: timestamp("created_at").defaultNow().notNull(),
+    position: integer("position")
   },
   (leads) => {
     return {

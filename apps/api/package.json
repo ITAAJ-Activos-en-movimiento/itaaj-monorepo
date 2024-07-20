@@ -18,8 +18,8 @@
     "@itaaj/data-sources": "workspace:*",
     "@itaaj/entities": "workspace:*",
     "dotenv": "^16.3.1",
-    "drizzle-kit": "^0.19.12",
-    "drizzle-orm": "^0.28.2",
+    "drizzle-kit": "0.19.13",
+    "drizzle-orm": "0.28.2",
     "fastify": "^4.21.0"
   },
   "devDependencies": {

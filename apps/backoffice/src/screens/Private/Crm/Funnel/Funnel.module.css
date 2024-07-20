@@ -16,14 +16,13 @@
 .funnel_header{
     position: relative;
     border: 1px solid rgba(0, 0, 0, .1);
-    padding: 2rem;
+    padding: 2.5rem;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
     background-color: #F7F7F7;
     border-right: none;
-    height: 4rem;
     
 }
 

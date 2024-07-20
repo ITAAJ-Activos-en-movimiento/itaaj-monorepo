@@ -1,23 +1,18 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { Lead, leads } from "@itaaj/entities";
-import { eq } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/node-postgres";
+import { leads } from "@itaaj/entities";
+import { InferInsertModel, eq } from "drizzle-orm";
 
 export const updateLead = async (
   leadId: string,
-  data: any
+  data: InferInsertModel<typeof leads>
 ): Promise<any | Error> => {
   try {
-    console.log("en la logica de negocio", leadId);
-    console.log("en la logica de negocio la data", data);
-    const infoInstance = await getDbInstance();
-    const db = drizzle(infoInstance, { schema: { leads } });
-    const result = await db
+    const { createdAt, id, ...dataWithoutDate } = data;
+    const result = await getDbInstance()
       .update(leads)
-      .set({ ...data })
-      .where(eq(leads.id, leadId || ""))
-      .returning();
-    console.log("en la logica de negocio result", result);
+      .set(dataWithoutDate)
+      .where(eq(leads.id, leadId)).returning();
+
     return result[0];
   } catch (error) {
     console.log("ERROR EN EL ACTUALIZAR", error);

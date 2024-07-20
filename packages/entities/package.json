@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "drizzle-orm": "^0.28.2"
+    "drizzle-orm": "0.28.6"
   }
 }

@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "400e5cfe-9e1b-4db4-b4c8-4145b4ec80b3",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "c5e00737-8f6e-4dc3-97b5-cf173de681df",
+  "prevId": "400e5cfe-9e1b-4db4-b4c8-4145b4ec80b3",
   "tables": {
     "developments": {
       "name": "developments",
@@ -369,6 +369,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {

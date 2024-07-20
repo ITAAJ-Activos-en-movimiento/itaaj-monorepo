@@ -33,7 +33,9 @@ interface AdjustedPriceData {
 }
 
 export const generateMarketAnalysis = async ({ state, municipality, neighborhood, maxPrice }: { state: string, municipality: string, neighborhood: string, maxPrice: number }) => {
+  const remaxProperties =  await remaxScrapping();
   
+  return;
   
   try {
     let properties: PropertyData[] = await centuryScrapping({ state, municipality, neighborhood });
@@ -69,7 +71,7 @@ export const generateMarketAnalysis = async ({ state, municipality, neighborhood
     properties = properties.map((property) => ({
       ...property,
       precioReal: property.precios.vista.precio
-    }))
+    }));
 
     return {
       properties: properties,
