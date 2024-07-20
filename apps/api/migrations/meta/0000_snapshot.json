@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "8a1e273f-0e08-475b-aba4-11b192259810",
+  "id": "a160763a-a3d4-4624-bffb-65a0412d001d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -235,7 +235,7 @@
           "name": "email",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "phone": {
           "name": "phone",
@@ -351,8 +351,14 @@
           "primaryKey": false,
           "notNull": false
         },
-        "reportes": {
-          "name": "reportes",
+        "reporter": {
+          "name": "reporter",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dueDate": {
+          "name": "dueDate",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": false
@@ -375,14 +381,7 @@
         }
       },
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "leads_email": {
-          "name": "leads_email",
-          "columns": [
-            "email"
-          ]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "messages": {
@@ -881,7 +880,7 @@
         },
         "status": {
           "name": "status",
-          "type": "varchar(50)",
+          "type": "varchar(256)",
           "primaryKey": false,
           "notNull": false
         },

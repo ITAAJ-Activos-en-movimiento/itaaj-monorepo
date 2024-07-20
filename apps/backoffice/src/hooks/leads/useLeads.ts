@@ -7,7 +7,5 @@ export const useLeads = () => {
     queryFn: getLeads,
   });
 
-
-
   return { isLoading, leads };
 };
