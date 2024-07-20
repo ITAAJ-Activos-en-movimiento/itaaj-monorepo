@@ -1,56 +1,11 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { StatusType, leads } from "@itaaj/entities"
+import { leads } from "@itaaj/entities";
+import { eq } from "drizzle-orm";
 
-interface Query {
-    status: StatusType;
-    name?: { $regex: string; $options: string };
-    account?: string;
-}
+export const getAllLeads = () => {
+  const result = getDbInstance()
+    .select()
+    .from(leads);
 
-interface Params {
-    account?: string;
-    page?: number;
-    limit?: number;
-    search?: string;
-}
-
-export const getAllLeads = async ({page = 1, limit = 14, search= ''}: Params) => {
-    const result = await getDbInstance().select({}).from(leads)
-
- const query: Query = { status: StatusType.ACTIVE }
-
- if(search){
-    query.name = { $regex: search, $options: 'i' };
-  }
- 
- const pageSize = limit;
- const skip = (page - 1) * pageSize;
-
- const total = result.length;
-
-//  const items = await result
-//    .find(query)
-//    .skip(skip)
-//    .limit(pageSize)
-//    .sort({createdAt: -1 })
-
- const pages = Math.ceil(total / pageSize);
-
- const hasPreviousPage = page > 1;
- const previousPage = hasPreviousPage ? page - 1 : page;
- const hasNextPage = page < pages;
- const nextPage = hasNextPage ? page + 1 : page;
-
- return {
-   count: total,
-   items: result,
-   pageInfo: {
-     page,
-     pages,
-     hasPreviousPage,
-     hasNextPage,
-     nextPage,
-     previousPage,
-   },
- };
-}
+  return result;
+};

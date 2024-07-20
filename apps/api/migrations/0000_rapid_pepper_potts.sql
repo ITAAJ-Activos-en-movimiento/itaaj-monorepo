@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS "developments" (
 CREATE TABLE IF NOT EXISTS "leads" (
 	"id" uuid DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(256),
-	"email" varchar(256) NOT NULL,
+	"email" varchar(256),
 	"phone" varchar(255),
 	"gender" varchar(256),
 	"lead_status" varchar(256),
@@ -57,9 +57,9 @@ CREATE TABLE IF NOT EXISTS "leads" (
 	"value" integer,
 	"potential" integer,
 	"stageId" varchar,
-	"reportes" varchar(256),
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	CONSTRAINT leads_email PRIMARY KEY("email")
+	"reporter" varchar(256),
+	"dueDate" varchar(256),
+	"created_at" timestamp DEFAULT now() NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "messages" (
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"state" varchar(256),
 	"country" varchar(256),
 	"method" varchar(256),
-	"status" varchar(50),
+	"status" varchar(256),
 	"last_login" varchar,
 	"login_attempts" integer,
 	"locked" boolean DEFAULT false,
