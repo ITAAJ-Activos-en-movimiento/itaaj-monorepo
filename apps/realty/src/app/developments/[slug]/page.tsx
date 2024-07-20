@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import Photos from './Photos';
 import Cform from '@/components/Contacts/Cform'
 import Properties from './Properties';
-import Share from '@/app/properties/[slug]/Share';
+import Share from '@/app/properties-old/[slug]/Share';
 
 const Development = async ({ params, searchParams }: { params: { slug: string }, searchParams?: { [key: string]: string | string[] | undefined } }) => {
   const development = await developmentApi(params.slug);

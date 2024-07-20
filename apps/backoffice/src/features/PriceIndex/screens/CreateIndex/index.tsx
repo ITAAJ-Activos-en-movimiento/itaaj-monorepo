@@ -8,9 +8,12 @@ import { useGenerateAnalysis } from "@/hooks/developments/useGenerateAnalysis";
 import { DivisaFormater } from "@/utilities";
 import ControlChartRandom from "@/components/ControlChartRandom";
 import ControlChart from "@/components/ControlChart";
+import { useDownloadProperties } from "../../hooks/useDownloadProperties";
 
 const CreateIndex = () => {
     const { isGenerating, generate, data } = useGenerateAnalysis();
+  const { download } = useDownloadProperties(data?.properties);
+
   const [state, setState] = useState("");
   const [municipality, setMunicipality] = useState("");
   const [cologne, setCologne] = useState("");
@@ -35,7 +38,7 @@ const CreateIndex = () => {
   return (
     <div className={styles.container}>
       <Header>
-        <Button variant="third">Descargar Propiedades</Button>
+        <Button onClick={download} variant="third">Descargar Propiedades</Button>
         <Button loading={isGenerating} onClick={() => generate({ state, municipio: municipality, colonia: cologne, maxPrice: 900000000 })} >Generar</Button>
       </Header>
 
@@ -101,6 +104,20 @@ const CreateIndex = () => {
                 <div>
                     <h3>{DivisaFormater({ value: data?.averagePrice?.toFixed(0) })}</h3>
                     <p>Precio medio</p>
+                </div>
+          </div>
+          <div className={styles.card}>
+            <div></div>
+                <div>
+                    <h3>{data?.properties?.length}</h3>
+                    <p>Tamaño total de la muestra </p>
+                </div>
+          </div>
+          <div className={styles.card}>
+            <div></div>
+                <div>
+                    <h3>{data?.dataPoints.filter((dat: any) => dat.included)?.length}</h3>
+                    <p>Muestra en Límites de control</p>
                 </div>
           </div>
         </div>

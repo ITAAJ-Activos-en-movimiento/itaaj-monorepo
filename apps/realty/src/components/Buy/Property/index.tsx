@@ -1,82 +1,115 @@
-'use client'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import styles from './Property.module.css'
-import Link from 'next/link'
-import { DivisaFormater } from '@/utils/divisa-formater'
-import { Mail } from 'react-feather'
-import Cform from '@/components/Contacts/Cform'
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import styles from "./Property.module.css";
+import Link from "next/link";
+import { DivisaFormater } from "@/utils/divisa-formater";
+import { Mail } from "react-feather";
+import Cform from "@/components/Contacts/Cform";
 //@ts-ignore
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
-const Property = ({images, id, isDevelopment, price, type, floor, development, name, category, bedrooms, bathrooms, area, description, slug}:any) => {
-
-  const [modalIsOpen, setModalIsOpen] = useState(false); 
+const Property = ({
+  images,
+  id,
+  isDevelopment,
+  price,
+  type,
+  floor,
+  development,
+  name,
+  category,
+  bedrooms,
+  bathrooms,
+  area,
+  description,
+  slug,
+}: any) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const Showmodal = () => {
     setModalIsOpen(true);
   };
 
-  function closeModal () {
+  function closeModal() {
     setModalIsOpen(false);
-  };  
+  }
 
-  const [url, setUrl] = useState<string>('');
-  
+  const [url, setUrl] = useState<string>("");
+
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${url} por la siguinte propiedad ${url}/${slug}`;
 
-
   useEffect(() => {
-    setUrl(window.location.href)
-  }, [])
+    setUrl(window.location.href);
+  }, []);
   return (
-  <>
-
-    <div className={styles.card}>
-    <Link href={!isDevelopment?  `/properties/${slug}` : `/developments/${slug}`} >
-      {images.length > 0 && images[0].includes('/') && (
-        <Image src={images[0]} width={500} height={500} alt={name} objectFit='cover' />
-
-      )}
-    </Link>
-      <div>
-      <Link replace href={`/properties/${category == 'exclusive'? category+"/" : ''}${slug}`} >
-       <div className={styles.header}>
-        <h2>ITAAJ &middot; Experto inmobiliario</h2>
-       </div>
-       <div className={styles.content}>
-        <span className={styles.price}>{DivisaFormater({value: price})}</span>
-        <p className={styles.title} ><strong>{type}</strong> {name}</p>
-       </div>
-       <div className={styles.amenities}>
+    <>
+      <div className={styles.card}>
+        <Link
+          href={
+            !isDevelopment ? `/properties/${slug}` : `/developments/${slug}`
+          }
+        >
+          {images.length > 0 && images[0].includes("/") && (
+            <Image
+              src={images[0]}
+              width={500}
+              height={500}
+              alt={name}
+              objectFit="cover"
+            />
+          )}
+        </Link>
         <div>
-        <i className='bx bx-bed' ></i>
-        <p>{bedrooms} habs.</p>
+          <Link
+            replace
+            href={`/properties/${
+              category == "exclusive" ? category + "/" : ""
+            }${slug}`}
+          >
+            <div className={styles.header}>
+              <h2>ITAAJ &middot; Experto inmobiliario</h2>
+            </div>
+            <div className={styles.content}>
+              <span className={styles.price}>
+                {DivisaFormater({ value: price })}
+              </span>
+              <p className={styles.title}>
+                <strong>{type}</strong> {name}
+              </p>
+            </div>
+            <div className={styles.amenities}>
+              <div>
+                <i className="bx bx-bed"></i>
+                <p>{bedrooms} habs.</p>
+              </div>
+              <div>
+                <i className="bx bx-bath"></i>
+                <p>{bathrooms} baños</p>
+              </div>
+              <div>
+                <i className="bx bx-area"></i>
+                <p>{area.total_area} m&sup2;</p>
+              </div>
+            </div>
+            <div className={styles.description}>
+              <p dangerouslySetInnerHTML={{ __html: description }}></p>
+            </div>
+          </Link>
+          <div className={styles.options}>
+            <button onClick={() => Showmodal()} className={styles.message}>
+              <Mail /> Contactar{" "}
+            </button>
+            <Link href={whatsappLink} target="_blank">
+              <i className="bx bxl-whatsapp"></i> Mensaje
+            </Link>
+          </div>
         </div>
-        <div>
-        <i className='bx bx-bath' ></i>
-        <p>{bathrooms} baños</p>
-        </div>
-        <div>
-        <i className='bx bx-area' ></i>
-        <p>{area.total_area} m&sup2;</p>
-        </div>
-      
-       </div>
-       <div className={styles.description}>
-          <p  dangerouslySetInnerHTML={{ __html: description }}></p>
-        </div>
-      </Link>
-       <div className={styles.options}>
-        <button onClick={() => Showmodal()} className={styles.message} ><Mail />  Contactar </button>
-        <Link href={whatsappLink} target="_blank"><i className='bx bxl-whatsapp'></i> Mensaje</Link>
-       </div>
       </div>
-      </div>
 
-    <Modal
+      <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel='Contacto'
+        contentLabel="Contacto"
         style={{
           overlay: {
             backgroundColor: "rgba(0,0,0,0.2)",
@@ -93,7 +126,7 @@ const Property = ({images, id, isDevelopment, price, type, floor, development, n
         {/* <Cform slug={"PROP@"+slug} closeModal={closeModal} prevmsg={"Me interesa Inmueble: " + slug}/> */}
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Property
+export default Property;
