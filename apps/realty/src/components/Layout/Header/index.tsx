@@ -34,19 +34,19 @@ const Header = () => {
       <header className={styles.header}>
         <div className={styles.options}>
           <button className={styles.btn} onClick={() => setActive(true)}>
-            <Menu size={20} />
+            <Menu size={20} color={"#fff"} />
           </button>
           <Link href="/" className={styles.logo}>
-            <Image
+            {/* <Image
               src="/isotipo.png"
               alt="Logo Itaaj Realty"
               width={20}
               height={40}
-            />
+            /> */}
             <h3>{logo}</h3>
           </Link>
           <nav className={styles.nav}>
-            <Link href="/properties?page=1&limit=10">Comprar</Link>
+            <Link href="/comprar/viviendas">Comprar</Link>
             <Link href="/vende-tu-propiedad">Vender</Link>
             <Link href="/deals" className={styles.mid}>
               Portafolio de desarrolladores

@@ -1,6 +1,7 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { StatusType, developments } from "@itaaj/entities";
-import { and, eq } from "drizzle-orm";
+import { StatusType, developments, properties } from "@itaaj/entities";
+import { and, eq, isNotNull, sql } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
 
 interface Query {
   status: StatusType;
@@ -25,12 +26,22 @@ export const getAllDevelopments = async ({page = 1, limit = 1004, search= ''}: P
  const pageSize = limit;
  const skip = (page - 1) * pageSize;
 
- let result = await getDbInstance()
+ 
+ let developmentsQuery = await getDbInstance()
  .select()
  .from(developments)
  .limit(pageSize)
  .offset(skip);
  
+ const propertiesResult = await getDbInstance().select()
+ .from(properties);
+
+ const result = developmentsQuery.map(development => ({
+  ...development,
+  properties: propertiesResult.filter(property => property.development === development.id)
+}));
+
+console.log(result)
  const totalResult = await getDbInstance()
  .select()
  .from(developments)

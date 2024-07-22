@@ -42,7 +42,7 @@ export const developments = pgTable("developments", {
   blockchainId: varchar("blockchainId", { length: 256 }),
   category: varchar("category", { length: 256 }),
   partner: varchar("partner", { length: 256 }),
-  development: varchar("development", { length: 256 }),
+  development: uuid("development"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

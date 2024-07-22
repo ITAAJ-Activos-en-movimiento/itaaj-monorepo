@@ -24,7 +24,7 @@ const Development = async ({ params, searchParams }: { params: { slug: string },
   return (
     <>
       <div className={styles.header}>
-        <Link href='/properties'><i className='bx bx-arrow-back' ></i> Volver</Link>
+        <Link href='/comprar/viviendas'><i className='bx bx-arrow-back' ></i> Volver</Link>
       </div>
 
       <div className={styles.info}>

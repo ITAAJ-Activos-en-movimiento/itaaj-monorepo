@@ -1,4 +1,5 @@
 import { Base } from "../../../common";
+import { Property } from "../../properties";
 
 export interface LocationDevelopment {
   latitude: number;
@@ -41,4 +42,5 @@ export interface Development extends Base {
   type: string;
   blockchainId: string;
   partner: string;
+  properties: Property[];
 }

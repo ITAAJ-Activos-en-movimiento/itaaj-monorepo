@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "400e5cfe-9e1b-4db4-b4c8-4145b4ec80b3",
+  "id": "edb09990-1ebb-4224-8b30-3bb3ef97573a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -197,7 +197,7 @@
         },
         "development": {
           "name": "development",
-          "type": "varchar(256)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
@@ -369,6 +369,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {
@@ -655,7 +661,7 @@
         },
         "development": {
           "name": "development",
-          "type": "varchar(256)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },

@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS "developments" (
 	"blockchainId" varchar(256),
 	"category" varchar(256),
 	"partner" varchar(256),
-	"development" varchar(256),
+	"development" uuid,
 	"created_at" timestamp DEFAULT now()
 );
 
@@ -59,7 +59,8 @@ CREATE TABLE IF NOT EXISTS "leads" (
 	"stageId" varchar,
 	"reporter" varchar(256),
 	"dueDate" varchar(256),
-	"created_at" timestamp DEFAULT now() NOT NULL
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"position" integer
 );
 
 CREATE TABLE IF NOT EXISTS "messages" (
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"blockchainId" varchar(256),
 	"category" varchar(256),
 	"partner" varchar(256),
-	"development" varchar(256),
+	"development" uuid,
 	"created_at" timestamp DEFAULT now(),
 	"zipcode" integer,
 	"floorPlans" varchar(256)[],

@@ -5,3 +5,4 @@ export * from './get-by-slug';
 export * from './list-models';
 export * from './list';
 export * from './update';
+export * from './list-properties-developments';

@@ -4,16 +4,17 @@ import Link from "next/link";
 import React from "react";
 import styles from "./PropertyCard.module.css";
 import Image from "next/image";
-import { Property } from "@itaaj/entities";
+import { Development, Property } from "@itaaj/entities";
 import { DivisaFormater, changeLanguage } from "@/utils";
-import { Mail } from "react-feather";
+import { ArrowRight, ChevronRight, Mail } from "react-feather";
 
-const PropertyCard = (property: Property) => {
+const DevelopmentCard = (property: Development) => {
 const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${window.location.href} por la siguiente propiedad ${window.location.href}/:slug`;
 
   return (
     <article className={styles.card}>
-      <Link title="" href={`viviendas/${property.slug}`} className={styles.carousel}>
+      <Link title={property.name} href={`/developments/${property.slug}`} className={styles.carousel}>
+        <span className={styles.new} >OBRA NUEVA</span>
         <div className={styles.badge}>1/{property.images.length}</div>
         <div>
           <ul className={styles.image_list}>
@@ -50,7 +51,7 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te
         <h4>Itaaj Realty - <span>Experto inmobiliario</span></h4>
       </div>
       <div className={styles.info} >
-        <Link title="" href={`viviendas/${property.slug}`}>
+        <Link title=""  href={`/developments/${property.slug}`}>
             <h3 className={styles.header} >
                 <span className={styles.price_composite}>
                     <span className={styles.price} >{ DivisaFormater({ value: property.price }) }</span>
@@ -62,10 +63,27 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te
                 <li><i className="bx bx-bed"></i> {property.bedrooms} habs.</li>
                 <li><i className="bx bx-bath"></i> {property.bathrooms} baños</li>
                 <li><i className="bx bx-area"></i> {property.area.building_area} m² </li>
-                <li><i className="bx bx-building"></i> {property.floor} Piso</li>
+                <li><i className="bx bx-building"></i> {property.households} Departamentos</li>
                 <li><i className="bx bx-car-garage"></i> {property.garage} Estaciona...</li>
+                <li></li>
             </ul>
-            <p className={styles.description} dangerouslySetInnerHTML={{ __html: property.description }}></p>      
+            <div>
+              <h4 className={styles.other_title} >OTROS INMUEBLES DEL DESARROLLO</h4>
+              <ul className={styles.properties_list} >
+                {property.properties.slice(0,3).map((prop) => (
+                  <li>
+                    <Link href={`/developments/${property.slug}`} >
+                      <span className={styles.prop_price} >{DivisaFormater({ value: prop.price })}</span>
+                      <span>{prop.bedrooms} habs.</span>
+                      <span>{prop.area.building_area} m²</span>
+                    </Link>
+
+                  </li>
+                ))}
+              </ul>
+
+              <Link  className={styles.more} href={`/developments/${property.slug}`}>Mostrar más inmuebles de la promoción <ChevronRight /></Link>
+            </div>
         </Link>
 
         <div className={styles.contact} >
@@ -83,4 +101,4 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te
   );
 };
 
-export default PropertyCard;
+export default DevelopmentCard;

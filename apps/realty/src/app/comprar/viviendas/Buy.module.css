@@ -1,0 +1,88 @@
+.header{
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header select{
+    max-width: 15rem;
+}
+
+.header button{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding-inline: 2rem;
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: 500;
+}
+
+.title{
+    font-size: 2rem;
+    color: #353535;
+}
+
+.subtitle{
+    margin-bottom: 2rem;
+}
+
+.filter{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter select{
+    width: max-content;
+}
+
+.filter p{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.4rem;
+}
+
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+   }
+   
+   .pagination span{
+    display: inline-flex;
+ 
+   }
+
+   .pagination span button{
+    display: inline-flex;
+    border: 1px solid rgba(0,0,0,0.1);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
+
+   .header{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+   }
+ 
+   @media screen and (max-width:768px) {
+    .map_view{
+        display: none;
+    }
+   }

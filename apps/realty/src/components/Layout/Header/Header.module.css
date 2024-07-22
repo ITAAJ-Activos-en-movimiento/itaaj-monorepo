@@ -6,6 +6,8 @@
     border-bottom: 1px solid #f1f1f1;
     padding: .5rem 16px .5rem 2rem;
     /* height: 5.5rem; */
+    background-color: var(--main-color);
+    color: #fff;
 }
 
 .options{
@@ -22,7 +24,8 @@
 .logo{
     font-size: 2.6rem;
     font-weight: 600;
-    color: #0c0f24;
+    /* color: #0c0f24; */
+    color: #fff;
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -43,10 +46,10 @@
     font-weight: 600;
     font-size: 1.3rem;
     padding-inline: 1.5rem;
-    background-color: var(--main-color);
+    background-color: #fff;
     padding-block: 1rem;
     border-radius: .8rem;
-    color: #fff;
+    color: var(--main-color);
 }
 
 .login *:first-child {
@@ -65,8 +68,8 @@
     display: flex;
     align-items: center;
     font-weight: 600;
-    color: var(--main-color);
-    border: 1px solid var(--main-color);
+    color: #fff;
+    border: 1px solid #fff;
     background-color: transparent;
     font-size: 1.3rem;
 }
@@ -81,7 +84,7 @@
     padding-inline: 1.5rem;
     margin-right: -1rem;
     font-size: 1.3rem;
-
+    color: #fff;
 }
 
 .label_button:hover{
@@ -103,6 +106,7 @@
     font-size: 1.4rem;
     padding: 1rem;
     border-radius: .5rem;
+    color: #fff;
 }
 
 .nav a:hover{
