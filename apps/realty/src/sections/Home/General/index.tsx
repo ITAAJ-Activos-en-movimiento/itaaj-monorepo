@@ -25,8 +25,6 @@ const General = async () => {
             </div>
 
             <Slider properties={properties} />
-            
-
         </section>
     )
 }
