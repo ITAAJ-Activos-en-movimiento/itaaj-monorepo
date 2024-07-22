@@ -55,7 +55,7 @@ const Funnel = () => {
     <div>
       <div className={styles.header}>
         <h2>{funnel?.name}</h2>
-        <OpportunityModal />
+        <OpportunityModal setOpen={() => {}} />
       </div>
 
       <DragDropContext onDragEnd={handleDrop}>

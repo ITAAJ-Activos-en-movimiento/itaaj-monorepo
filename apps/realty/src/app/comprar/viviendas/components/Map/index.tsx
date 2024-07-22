@@ -55,6 +55,7 @@ const Map = ({ properties }: { properties: any }) => {
         >
           {properties.items.map((property: any) => (
             <Marker
+            key={property.id}
               position={{
                 lat: property.location.latitude,
                 lng: property.location.longitude,

@@ -71,7 +71,7 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te
               <h4 className={styles.other_title} >OTROS INMUEBLES DEL DESARROLLO</h4>
               <ul className={styles.properties_list} >
                 {property.properties.slice(0,3).map((prop) => (
-                  <li>
+                  <li key={prop.id} > 
                     <Link href={`/developments/${property.slug}`} >
                       <span className={styles.prop_price} >{DivisaFormater({ value: prop.price })}</span>
                       <span>{prop.bedrooms} habs.</span>

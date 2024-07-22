@@ -62,7 +62,7 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal, setOpen }: Props) => {
   const [selectedStage, setSelectedStage] = useState(leadData.stageId || "");
 
   const initialActiveStages = funnel.stages.map(
-    (stage, index) =>
+    (_stage, index) =>
       index <= funnel.stages.findIndex((s) => s.name === leadData.stageId)
   );
   const [activeStages, setActiveStages] = useState(initialActiveStages);
