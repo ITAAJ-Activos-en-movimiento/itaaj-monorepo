@@ -34,15 +34,15 @@ const Header = () => {
       <header className={styles.header}>
         <div className={styles.options}>
           <button className={styles.btn} onClick={() => setActive(true)}>
-            <Menu size={20} color={"#fff"} />
+            <Menu size={20} color={"#000"} />
           </button>
           <Link href="/" className={styles.logo}>
-            {/* <Image
+            <Image
               src="/isotipo.png"
               alt="Logo Itaaj Realty"
               width={20}
               height={40}
-            /> */}
+            /> 
             <h3>{logo}</h3>
           </Link>
           <nav className={styles.nav}>
