@@ -7,11 +7,10 @@ import { Lead, Stage } from "@itaaj/entities";
 interface Props {
   leadToEdit?: Partial<Lead>;
   onCloseModal?: () => void;
-  setOpen: (isOpen: boolean) => void;
+  setOpen?: (isOpen: boolean) => void;
 }
 
 const OpportunityForm = ({ leadToEdit = {}, onCloseModal, setOpen }: Props) => {
-  console.log("VALORES", leadToEdit);
   const { funnel } = useFunnel();
   const { id: funnelId } = funnel;
 
@@ -89,11 +88,8 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal, setOpen }: Props) => {
     }));
   };
 
-  console.log(reporter);
-
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
 
     if (isEditSession) {
       editLead(
@@ -123,7 +119,7 @@ const OpportunityForm = ({ leadToEdit = {}, onCloseModal, setOpen }: Props) => {
       );
     }
 
-    setOpen(false);
+    setOpen!(false);
   };
 
   useEffect(() => {

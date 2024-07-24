@@ -30,6 +30,11 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.delete{
+  background-color: #B43F3F;
+  color: #fff;
+}
+
 .third {
   color: #333;
   border: 1px solid rgba(0, 0, 0, 0.1);
