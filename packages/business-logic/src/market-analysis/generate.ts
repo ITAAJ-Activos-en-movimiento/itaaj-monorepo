@@ -57,6 +57,11 @@ export const generateMarketAnalysis = async ({ type, state, municipality, neighb
 
     const adjustedPriceData = calculateAdjustedPricePerSquareMeter(pricesPerSquareMeter);
 
+    const propertiesWithinLimits = properties.filter(property => {
+      const pricePerSquareMeter = property.precios.vista.precio / (property.m2C + property.m2T);
+      return pricePerSquareMeter >= adjustedPriceData.lowerLimit && pricePerSquareMeter <= adjustedPriceData.upperLimit;
+    });
+
     const adjustedProperties = properties.map(property => ({
       ...property,
       precioReal: property.precios.vista.precio, 
@@ -75,6 +80,8 @@ export const generateMarketAnalysis = async ({ type, state, municipality, neighb
 
     return {
       properties: properties,
+      adjustedProperties,
+      propertiesWithinLimits,
       averagePrice: averageAdjustedPrice,
       pricePerSquareMeter: adjustedPriceData.adjustedPricePerSquareMeter,
       priceDistribution,
