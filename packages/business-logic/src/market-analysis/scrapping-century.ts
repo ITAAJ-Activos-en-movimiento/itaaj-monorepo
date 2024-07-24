@@ -19,29 +19,33 @@ export const centuryScrapping = async ({ type, state, municipality, neighborhood
    let properties = []
     let base_url =""
     let actualType = "";
+
     if(type == "house"){
       actualType = "tipo_casa"
     }else{
       actualType = "tipo_departamento"
     }
+
+    console.log({municipality})
     if(municipality == "naucalpan"){
-        base_url = "https://century21mexico.com/v/resultados/{type}/operacion_venta/en-pais_mexico/en-estado_" +
+        base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
          state.toLowerCase() + "/en-municipio_" + municipality;
       
      }else{
-        base_url = "https://century21mexico.com/v/resultados/{type}/operacion_venta/en-pais_mexico/en-estado_" +
+        base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
          state.toLowerCase() + "/en-municipio_" + municipality ;
      }
 
+     console.log({base_url})
+     console.log({actualType})
 
-  const { data, status } = await axios.get(base_url.replace("{type}", actualType), {
+     const new_url = base_url.replace("{type}", actualType)
+  const { data, status } = await axios.get(base_url, {
     params: {
       json: "true",
     },
   });
 
-  console.log(data.results)
-   
   const amount = Math.ceil(Number(data.totalHits) / 100);
   properties.push(...data.results)
   for (let i = 1; i < amount; i++) {
