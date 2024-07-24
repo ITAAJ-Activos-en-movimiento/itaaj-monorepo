@@ -15,21 +15,26 @@ interface PropertyData {
     fechaAlta: string;
     fechaModificacion: string;
   }
-export const centuryScrapping = async ({ state, municipality, neighborhood }: { state: string, municipality: string, neighborhood: string }) => {
+export const centuryScrapping = async ({ type, state, municipality, neighborhood }: { type: string, state: string, municipality: string, neighborhood: string }) => {
    let properties = []
     let base_url =""
-  
+    let actualType = "";
+    if(type == "house"){
+      actualType = "typo_casa"
+    }else{
+      actualType = "tipo_departamento"
+    }
     if(municipality == "naucalpan"){
-        base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
+        base_url = "https://century21mexico.com/v/resultados/{type}/operacion_venta/en-pais_mexico/en-estado_" +
          state.toLowerCase() + "/en-municipio_" + municipality;
       
      }else{
-        base_url = "https://century21mexico.com/v/resultados/tipo_casa/operacion_venta/en-pais_mexico/en-estado_" +
+        base_url = "https://century21mexico.com/v/resultados/{type}/operacion_venta/en-pais_mexico/en-estado_" +
          state.toLowerCase() + "/en-municipio_" + municipality ;
      }
 
 
-  const { data, status } = await axios.get(base_url, {
+  const { data, status } = await axios.get(base_url.replace("{type}", actualType), {
     params: {
       json: "true",
     },

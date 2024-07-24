@@ -17,6 +17,8 @@ const CreateIndex = () => {
   const [state, setState] = useState("");
   const [municipality, setMunicipality] = useState("");
   const [cologne, setCologne] = useState("");
+  const [type, setType] = useState("");
+
 
   const handleChange = (selectedOption: Option | null) => {
     if (selectedOption) {
@@ -39,17 +41,17 @@ const CreateIndex = () => {
     <div className={styles.container}>
       <Header>
         <Button onClick={download} variant="third">Descargar Propiedades</Button>
-        <Button loading={isGenerating} onClick={() => generate({ state, municipio: municipality, colonia: cologne, maxPrice: 900000000 })} >Generar</Button>
+        <Button loading={isGenerating} onClick={() => generate({ type, state, municipio: municipality, colonia: cologne, maxPrice: 900000000 })} >Generar</Button>
       </Header>
 
       <div className={styles.content}>
         <div className={styles.options}>
           <Field label="Tipo">
-            <select name="" id="">
+            <select onChange={({ target }) => setType(target.value)} name="" id="">
               <option value="">Todos</option>
-              <option value="">Casa</option>
-              <option value="">Departamento</option>
-              <option value="">Terreno</option>
+              <option value="house">Casa</option>
+              <option value="department">Departamento</option>
+              <option value="terrain">Terreno</option>
             </select>
           </Field>
           <Field label="Estado del Inmueble">

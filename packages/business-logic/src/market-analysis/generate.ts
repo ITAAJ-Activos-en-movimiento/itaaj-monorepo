@@ -32,16 +32,16 @@ interface AdjustedPriceData {
   dataPoints: {price: number, included: boolean}[];
 }
 
-export const generateMarketAnalysis = async ({ state, municipality, neighborhood, maxPrice }: { state: string, municipality: string, neighborhood: string, maxPrice: number }) => {
-  const remaxProperties =  await remaxScrapping();
+export const generateMarketAnalysis = async ({ type, state, municipality, neighborhood, maxPrice }: { type: string, state: string, municipality: string, neighborhood: string, maxPrice: number }) => {
+  // const remaxProperties =  await remaxScrapping();
   
-  return;
+  // return;
   
   try {
-    let properties: PropertyData[] = await centuryScrapping({ state, municipality, neighborhood });
-    const remaxProperties =  await remaxScrapping();
+    let properties: PropertyData[] = await centuryScrapping({ type, state, municipality, neighborhood });
+    // const remaxProperties =  await remaxScrapping();
     
-    properties.push(...remaxProperties)
+    // properties.push(...remaxProperties)
     
     properties = properties.filter(property => 
       property.precios.vista.precio !== null && 
