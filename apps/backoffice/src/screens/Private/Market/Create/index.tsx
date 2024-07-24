@@ -102,7 +102,7 @@ const CreateAnalysis = () => {
           <Button
             variant="third"
             loading={isGenerating}
-            onClick={() => generate({ state, municipio, colonia, maxPrice })}
+            onClick={() => generate({type: "department", state, municipio, colonia, maxPrice })}
           >
             Generar
           </Button>

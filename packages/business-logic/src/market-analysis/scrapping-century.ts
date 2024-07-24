@@ -20,7 +20,7 @@ export const centuryScrapping = async ({ type, state, municipality, neighborhood
     let base_url =""
     let actualType = "";
     if(type == "house"){
-      actualType = "typo_casa"
+      actualType = "tipo_casa"
     }else{
       actualType = "tipo_departamento"
     }
