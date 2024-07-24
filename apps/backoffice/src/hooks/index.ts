@@ -10,5 +10,6 @@ export { default as useDebounce } from './useDebounce';
 export * from './useGetPosts';
 export * from './useUploadImage';
 export * from './users';
-export * from './leads';
 export * from './contacts';
+export * from './leads';
+

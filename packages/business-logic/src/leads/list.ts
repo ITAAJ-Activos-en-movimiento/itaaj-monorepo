@@ -5,7 +5,8 @@ import { eq } from "drizzle-orm";
 export const getAllLeads = () => {
   const result = getDbInstance()
     .select()
-    .from(leads);
+    .from(leads)
+    .where(eq(leads.status, "active"));
 
   return result;
 };

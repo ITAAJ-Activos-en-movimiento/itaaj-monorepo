@@ -8,7 +8,7 @@ interface Props {
   leadToEdit?: Partial<Lead> | undefined;
   onCloseModal?: () => void;
   isEditing?: boolean;
-  setOpen: (isOpen: boolean) => void;
+  setOpen?: (isOpen: boolean) => void;
 }
 
 const OpportunityModal = ({ leadToEdit, isEditing, setOpen }: Props) => {

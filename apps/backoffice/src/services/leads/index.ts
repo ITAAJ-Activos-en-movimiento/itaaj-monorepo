@@ -15,3 +15,8 @@ export const getLeads = async () => {
   const { data } = await itaajApi.get(`/leads`);
   return data;
 };
+
+export const deleteLeadApi = async (id: string) => {
+  const { data } = await itaajApi.patch(`/leads/${id}/delete`);
+  return data;
+};
