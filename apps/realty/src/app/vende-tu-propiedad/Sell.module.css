@@ -4,6 +4,7 @@
     min-height: 35rem;
     display: flex;
 }
+
 .banner {
     width: min(90%, 1200px);
     margin-inline: auto;
