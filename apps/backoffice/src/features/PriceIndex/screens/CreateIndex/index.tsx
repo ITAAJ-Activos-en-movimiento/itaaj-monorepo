@@ -12,7 +12,7 @@ import { useDownloadProperties } from "../../hooks/useDownloadProperties";
 
 const CreateIndex = () => {
     const { isGenerating, generate, data } = useGenerateAnalysis();
-  const { download } = useDownloadProperties(data?.properties);
+  const { download } = useDownloadProperties(data?.propertiesWithinLimits);
 
   const [state, setState] = useState("");
   const [municipality, setMunicipality] = useState("");

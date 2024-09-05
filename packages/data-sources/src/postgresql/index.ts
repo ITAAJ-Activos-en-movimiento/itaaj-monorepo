@@ -11,7 +11,9 @@ export const initPostgres = async ({url}: InitPostgresOptions) => {
 
     const pool = new Pool({
         connectionString: url,
-        ssl: true
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
 
     const db = drizzle(pool);
