@@ -1,25 +1,21 @@
 import { Loader } from "@/components";
-import { useFunnels } from "@/hooks"
-import { useEffect } from "react"
+import { useFunnels } from "@/hooks";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CRM = () => {
-    const { isLoading, funnels } = useFunnels();
-    const navigate = useNavigate();
+  const { isLoading, funnels } = useFunnels();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (funnels == undefined) return;
+    navigate("/crm/funnels/" + funnels?.items[0]?.id);
+  }, [funnels]);
 
-    useEffect(() => {
-      if(funnels == undefined)
-        return
-        navigate("/crm/funnels/"+ funnels?.items[0]?.id)
-    }, [funnels])
+  if (isLoading) {
+    return <Loader />;
+  }
+  return <div></div>;
+};
 
-    if(isLoading){
-      return <Loader />
-    }
-    return (
-    <div></div>
-  )
-}
-
-export default CRM
+export default CRM;

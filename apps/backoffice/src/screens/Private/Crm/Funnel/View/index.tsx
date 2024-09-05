@@ -4,6 +4,9 @@ import styles from "./ViewOpportunityModal.module.css";
 import { DivisaFormater } from "@/utilities";
 import { Lead } from "@itaaj/entities";
 import OpportunityModal from "../OpportunityForm";
+import Button from "../../../../../components/Shared/Button/index";
+import { deleteLeadApi } from "@/services";
+import { useDeleteLead } from "@/hooks";
 
 interface ViewOpportunityModalProps {
   isOpen: boolean;
@@ -18,7 +21,13 @@ const ViewOpportunityModal: React.FC<ViewOpportunityModalProps> = ({
   onClose,
   lead,
 }) => {
+  const { deleteLead } = useDeleteLead();
   if (!isOpen || !lead) return null;
+
+  const handleDelete = async (id: string) => {
+    deleteLead(id);
+    setOpen(false);
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -89,6 +98,9 @@ const ViewOpportunityModal: React.FC<ViewOpportunityModalProps> = ({
           </div>
         </div>
         <div className={styles.footer_oportunity_vs}>
+          <Button variant="delete" onClick={() => handleDelete(lead.id!)}>
+            Eliminar
+          </Button>
           <OpportunityModal
             isEditing={true}
             leadToEdit={lead}
