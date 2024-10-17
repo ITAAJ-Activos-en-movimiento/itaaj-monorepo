@@ -1,31 +1,27 @@
-import { Pool } from "pg";
-import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { Pool } from 'pg';
+import { NodePgDatabase, drizzle } from  'drizzle-orm/node-postgres';
+import { migrate } from  'drizzle-orm/node-postgres/migrator';
 
-const { HOSTDB, PORTDB, USERDB, PASSWORDDB, DATABASE } = process.env;
 export interface InitPostgresOptions {
-  url?: string;
+    url?: string;
 }
 
-let dbInstace: any;
-export const initPostgres = async ({ url }: InitPostgresOptions) => {
-  const pool = new Pool({
-    host: HOSTDB,
-    port: Number(PORTDB),
-    user: USERDB,
-    password: PASSWORDDB,
-    database: DATABASE,
-    ssl: { rejectUnauthorized: false },
-  });
+let dbInstace: any; 
+export const initPostgres = async ({url}: InitPostgresOptions) => {
 
-  const db = drizzle(pool);
+    const pool = new Pool({
+        connectionString: url,
+        ssl: true
+    });
 
-  await migrate(db, {
-    migrationsFolder: "./migrations",
-  });
+    const db = drizzle(pool);
 
-  dbInstace = db;
-  console.info(`Postgres connection`);
-};
+    await migrate(db, {
+        migrationsFolder: './migrations'
+    });
+
+    dbInstace = db;
+    console.info(`Postgres connection`)
+}
 
 export const getDbInstance = () => dbInstace;

@@ -6,14 +6,7 @@ import { registerRoutes } from "../routes";
 
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "http://localhost:3001",
-    "http://localhost:5173",
-    "https://itaajrealty.com",
-    "https://www.itaajrealty.com",
-    "https://admin-itaaj.vercel.app",
-  ],
+  origin: "*",
 };
 
 type Admin = {
