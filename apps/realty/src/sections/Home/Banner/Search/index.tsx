@@ -19,6 +19,7 @@ function SearchProperties() {
           <option value="Yucatán">Yucatán</option>
           <option value="Quintana Roo">Quintana Roo</option>
         </select>
+        
       {/* <input type="search" onChange={({target}) => setSearch(target.value)} placeholder='Buscar propiedades en estados, etc...' /> */}
       <Link href={`/comprar/viviendas?search=${search}`} className={styles.btn} ><Search size={20} /> <span>Buscar</span></Link>
   
