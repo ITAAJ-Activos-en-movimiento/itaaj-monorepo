@@ -1,7 +1,7 @@
 export const properties = async ({ page, limit }: { page: number, limit: number }) => {
   try {
     const response = await fetch(
-      `https://itaajrealty.com/api/api/v1/properties?page=${page}&limit=${limit}`,
+      `https://itaaj.real-vision-api.cloud/api/v1/properties?page=${page}&limit=${limit}`,
       { cache: "no-store" }
     );
 
@@ -21,7 +21,7 @@ export const properties = async ({ page, limit }: { page: number, limit: number 
 export const propertiesByDevelopment = async (development: string) => {
   try {
     const response = await fetch(
-      `https://itaajrealty.com/api/api/v1/properties/${development}`,
+      `https://itaaj.real-vision-api.cloud/api/v1/properties/${development}`,
       { cache: "no-store" }
     );
 
@@ -41,7 +41,7 @@ export const propertiesByDevelopment = async (development: string) => {
 export const propertiesBySlug = async (slug: string) => {
   try {
     const response = await fetch(
-      `https://itaajrealty.com/api/api/v1/property/${slug}`,
+      `https://itaaj.real-vision-api.cloud/api/v1/property/${slug}`,
       { cache: "no-store" }
     );
 
