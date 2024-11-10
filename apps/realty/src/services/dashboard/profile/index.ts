@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchMyProfile = async (userId: string) => {
   try {
     const { data } = await axios.post(
-      'https://itaajrealty.com/api/api/v1/dashboard/profile',
+      'https://itaaj.real-vision-api.cloud/api/v1/dashboard/profile',
       { userId }
     )
     return data;
@@ -16,7 +16,7 @@ export const fetchMyProfile = async (userId: string) => {
 export const fetchMyDevelopments = async (userId: number) => {
   try{
     const { data } = await axios.post(
-      'https://itaajrealty.com/api/api/v1/dashboard/developments', 
+      'https://itaaj.real-vision-api.cloud/api/v1/dashboard/developments', 
       { userId }
     );
 
