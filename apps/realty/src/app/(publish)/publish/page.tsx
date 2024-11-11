@@ -1,26 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "./Publish.module.css";
-import Link from "next/link";
-import useTranslation from "next-translate/useTranslation";
-import Image from "next/image";
+import styles from './Publish.module.css';
 import axios from "axios";
-import { v4 as uuid } from "uuid";
-// import { useUploadImage } from '@/hooks/useUploadImage';
-// import Loader from '@/components/Loader';
-import { ArrowLeft, Loader } from "react-feather";
-// import Cookies from "js-cookie";
-
-import {
-  GoogleOAuthProvider,
-  GoogleLogin,
-  CredentialResponse,
-} from "@react-oauth/google";
+import Link from "next/link";
 import { useUploadImage } from "@/hooks";
-import Map from "../developments/[slug]/Map";
+import { CredentialResponse, GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { ArrowLeft, Loader } from "react-feather";
+import Map from "@/components/Search/Map";
 
-const CreateProperty = () => {
-  const { t } = useTranslation();
+const Publish = () => {
   const [type, setType] = useState("house");
 
   const [loading, setLoading] = useState(false);
@@ -242,24 +230,10 @@ const CreateProperty = () => {
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
   const whatsappLinkHelp = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com, porque necesito ayuda para valorar mi propiedad`;
 
+
   return (
     <GoogleOAuthProvider clientId="259968467063-s0d076kvsf87se4bgmofbll4ivf6gom3.apps.googleusercontent.com">
-      <header className={styles.header}>
-        {/* <nav className={styles.nav}>
-        <Link className={styles.logo} href='/'>
-        <Image src="/img/logos/isotipo.png" width={20} height={40} alt='Itaaj logo' />
-        <h2>Itaaj</h2>      
-        
-      </Link>
-      </nav> */}
-        {/* <div className={styles.options}>
-
-        <Link target="_blank" rel="noopener noreferrer" href={whatsappLink} passHref >
-              {t('common:contact')}
-        </Link>
-      </div> */}
-      </header>
-      <div className={styles.container}>
+         <div className={styles.container}>
         <Link href="/" className={styles.back}>
           <ArrowLeft /> Atras
         </Link>
@@ -683,15 +657,13 @@ const CreateProperty = () => {
       )}
 
       </div>
-
-
       <div className={styles.footer}>
-        <button style={{}} className={styles.opacity} onClick={onSubmit}>
+        <button className={styles.opacity}>
           Publicar
         </button>
       </div>
     </GoogleOAuthProvider>
-  );
-};
+  )
+}
 
-export default CreateProperty;
+export default Publish

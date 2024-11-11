@@ -13,10 +13,10 @@ function SearchProperties() {
  
     <select onChange={({ target }) => setSearch(target.value)} value={search} name="" id="">
           <option value="Estado">Estado</option>
-          <option value="Ciudad de México">Ciudad de México</option>
-          <option value="Estado de México">Estado de México</option>
+          <option value="Ciudad de Mexico">Ciudad de México</option>
+          <option value="Estado de Mexico">Estado de México</option>
           <option value="Morelos">Morelos</option>
-          <option value="Yucatán">Yucatán</option>
+          <option value="Yucatan">Yucatán</option>
           <option value="Quintana Roo">Quintana Roo</option>
         </select>
         

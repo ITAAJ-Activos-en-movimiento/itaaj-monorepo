@@ -41,6 +41,10 @@ const Properties = async ({
     limit: 14,
   });
 
+  console.log(searchParams)
+
+  console.log(properties)
+
   return (
     <MapProvider>
       <>
@@ -79,7 +83,9 @@ const Properties = async ({
 
             </div>
 
-            {properties.items.map((property: PropertyOrDevelopment) => {
+            {properties.items.filter((property: PropertyOrDevelopment) => (                property.state
+                  .toLowerCase()
+                  .includes((searchParams?.search as string)?.toLowerCase() || "")  )).map((property: PropertyOrDevelopment) => {
               if (property.itemType == "property") {
                 return <PropertyCard key={property.id} {...property} />;
               } else {
