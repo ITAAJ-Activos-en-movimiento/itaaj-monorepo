@@ -51,11 +51,11 @@ export const getAllDevelopmentsAndProperties = async ({
 
   let developmentsQuery = getDbInstance().select().from(developments);
 
-  if (state) {
-    const stateCondition = eq(properties.state, state);
-    resultProperties = resultProperties.where(stateCondition);
-    developmentsQuery = developmentsQuery.where(stateCondition);
-  }
+  // if (state) {
+  //   const stateCondition = eq(properties.state, state);
+  //   resultProperties = resultProperties.where(stateCondition);
+  //   developmentsQuery = developmentsQuery.where(stateCondition);
+  // }
 
   if (propertyType !== "undefined" && propertyType.length > 0) {
     console.log("Enter here", { propertyType });
@@ -103,12 +103,14 @@ export const getAllDevelopmentsAndProperties = async ({
   }));
 
   const allProperties: PropertiesWithType[] = [
-    ...resultDevelopments.map((property: PropertiesWithType) => ({
+    ...resultDevelopments
+    .filter((prop) => prop.state.includes(state ? state : ''))
+    .map((property: PropertiesWithType) => ({
       ...property,
       itemType: "development",
     })),
     ...resultProperties
-      .filter((prop) => prop.category == "general")
+      .filter((prop) => prop.category == "general" && prop.state.includes(state ? state : ''))
       .map((property: PropertiesWithType) => ({
         ...property,
         itemType: "property",
