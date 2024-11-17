@@ -39,6 +39,7 @@ const Properties = async ({
     type: tipo,
     page: Number(searchParams?.page || 1),
     limit: 14,
+    state: searchParams?.search as string || undefined
   });
 
   console.log(searchParams)

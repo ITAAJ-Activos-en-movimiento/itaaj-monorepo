@@ -17,9 +17,9 @@ export const developments = async () => {
     }
 }
 
-export const propertiesDevelopments = async ({ type, page, limit }: { type: string,page: number, limit: number }) => {
+export const propertiesDevelopments = async ({ type, page, limit, state }: { type: string,page: number, limit: number, state?: string }) => {
   try{
-      const response = await fetch(`https://itaaj.real-vision-api.cloud/api/v1/properties-developments?page=${page}&limit=${limit}&type=${type}`, { cache: 'no-store' });
+      const response = await fetch(`https://itaaj.real-vision-api.cloud/api/v1/properties-developments?page=${page}&limit=${limit}&type=${type}&state=${state}`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error('No se pudo obtener la lista de desarrollos.');
