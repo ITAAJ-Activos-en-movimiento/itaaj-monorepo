@@ -6,8 +6,8 @@ export const getAllPropertiesDevelopmentsRoute: RouteOptions = {
   url: "/properties-developments",
   handler: async (request, reply) => {
     const { query } = request;
-    const { page, limit, type, search } = query as {  type: string, page: number, limit: number, search: string };
-    const properties = await getAllDevelopmentsAndProperties({page: Number(page), limit: Number(limit), propertyType: type, search: ""});
+    const { page, limit, type, search, state } = query as {  type: string, page: number, limit: number, search: string; state: string };
+    const properties = await getAllDevelopmentsAndProperties({page: Number(page), limit: Number(limit), propertyType: type, search: "", state});
     reply.status(200).send(properties);
   },
 };
