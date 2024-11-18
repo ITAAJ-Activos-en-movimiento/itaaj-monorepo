@@ -46,8 +46,8 @@ const Map = ({ properties }: { properties: any }) => {
             marginTop: mapOffset > 10 ? (mapOffset > 2600 ? -1200 : 0) : 116,
           }}
           defaultCenter={{
-            lat: properties.items[0].location.latitude,
-            lng: properties.items[0].location.longitude,
+            lat: properties.items[0]?.location.latitude,
+            lng: properties.items[0]?.location.longitude,
           }}
           defaultZoom={4}
           gestureHandling={"greedy"}

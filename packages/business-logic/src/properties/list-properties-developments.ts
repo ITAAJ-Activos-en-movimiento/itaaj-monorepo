@@ -102,7 +102,11 @@ export const getAllDevelopmentsAndProperties = async ({
     ),
   }));
 
-  const allProperties: PropertiesWithType[] = [
+  let allProperties: PropertiesWithType[] = [];
+
+  if(state){
+
+  allProperties = [
     ...resultDevelopments
     .filter((prop) => prop.state.includes(state ? state : ''))
     .map((property: PropertiesWithType) => ({
@@ -116,6 +120,24 @@ export const getAllDevelopmentsAndProperties = async ({
         itemType: "property",
       })),
   ];
+}
+
+  if(!state){
+
+  allProperties = [
+    ...resultDevelopments
+    .map((property: PropertiesWithType) => ({
+      ...property,
+      itemType: "development",
+    })),
+    ...resultProperties
+      .filter((prop) => prop.category == "general")
+      .map((property: PropertiesWithType) => ({
+        ...property,
+        itemType: "property",
+      })),
+  ];
+}
 
   const total = allProperties.length;
 

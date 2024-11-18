@@ -35,16 +35,16 @@ const Properties = async ({
   const habitaciones = searchParams.habitaciones as string;
   const banos = searchParams.banos as string;
   // const properties = await propertiesApi({ page: 1, limit: 14 });
+  console.log("Search", (searchParams?.search as string))
+
+  const state = (searchParams?.search as string) ? (searchParams?.search as string) : undefined;
   const properties = await propertiesDevelopments({
     type: tipo,
     page: Number(searchParams?.page || 1),
     limit: 14,
-    state: searchParams?.search as string || undefined
+    state: state
   });
 
-  console.log(searchParams)
-
-  console.log(properties)
 
   return (
     <MapProvider>
