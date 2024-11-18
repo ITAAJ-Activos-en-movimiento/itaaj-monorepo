@@ -104,17 +104,23 @@ export const getAllDevelopmentsAndProperties = async ({
 
   let allProperties: PropertiesWithType[] = [];
 
-  if(state){
+  console.log("ESTATE", state)
+  
+  const informa = resultDevelopments.map((prop) => prop.state)
+
+
+
+  if(state !== 'undefined'){
 
   allProperties = [
     ...resultDevelopments
-    .filter((prop) => prop.state.includes(state ? state : ''))
+    .filter((prop) => normalizeText(prop.state).includes(state.toLowerCase() ? state.toLowerCase() : ''))
     .map((property: PropertiesWithType) => ({
       ...property,
       itemType: "development",
     })),
     ...resultProperties
-      .filter((prop) => prop.category == "general" && prop.state.includes(state ? state : ''))
+      .filter((prop) => prop.category == "general" && normalizeText(prop.state).includes(state.toLowerCase() ? state.toLowerCase() : ''))
       .map((property: PropertiesWithType) => ({
         ...property,
         itemType: "property",
@@ -122,7 +128,8 @@ export const getAllDevelopmentsAndProperties = async ({
   ];
 }
 
-  if(!state){
+  if(state == 'undefined'){
+    console.log("Enmter NO state", state)
 
   allProperties = [
     ...resultDevelopments
@@ -138,6 +145,8 @@ export const getAllDevelopmentsAndProperties = async ({
       })),
   ];
 }
+
+console.log(allProperties)
 
   const total = allProperties.length;
 
@@ -164,4 +173,11 @@ export const getAllDevelopmentsAndProperties = async ({
       previousPage,
     },
   };
+};
+
+const normalizeText = (text: string) => {
+  return text
+    .toLowerCase() // Convierte todo a minúsculas
+    .normalize("NFD") // Descompone caracteres con diacríticos
+    .replace(/[\u0300-\u036f]/g, ""); // Remueve diacríticos
 };
