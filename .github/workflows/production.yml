@@ -1,0 +1,44 @@
+name: Deploy Node.js API to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npx turbo prune --scope=api
+          npx turbo install
+
+      - name: Build API
+        run: |
+          npx turbo run build --scope=api --include-dependencies
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
+          cd /var/www/api
+          git pull origin main
+          npm install --production
+          npx turbo run build --scope=api
+          pm2 restart all || pm2 start dist/index.js --name "api"
+          EOF
