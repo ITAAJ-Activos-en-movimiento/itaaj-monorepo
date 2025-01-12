@@ -14,16 +14,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Configurar Node.js y pnpm
+      # Configurar Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18 # Cambia según tu versión
-          cache: 'pnpm'
 
+      # Instalar pnpm
       - name: Install pnpm
         run: |
-          npm install -g pnpm
+          corepack enable
+          corepack prepare pnpm@latest --activate
+      # Verificar que pnpm esté disponible
+      - name: Check pnpm version
+        run: |
+          pnpm --version
 
       # Instalar dependencias del monorepo
       - name: Install dependencies
