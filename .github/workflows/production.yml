@@ -64,7 +64,7 @@ jobs:
           ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           cd /var/www/api/itaaj-monorepo/apps/api || exit
           git pull origin main
-          pnpm install --frozen-lockfile
+          pnpm install
           pm2 delete all || true
           pm2 start "pnpm run dev" --name "api"
           EOF
