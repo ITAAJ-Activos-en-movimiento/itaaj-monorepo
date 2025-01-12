@@ -18,7 +18,6 @@ declare module "fastify" {
     admin: Admin;
   }
 }
-
 const main = async () => {
   await initDataSources({
     postgres: { url: DATABASE_CONNECTION },
