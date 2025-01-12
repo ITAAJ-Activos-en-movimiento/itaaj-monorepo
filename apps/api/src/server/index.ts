@@ -46,4 +46,5 @@ const main = async () => {
     server.log.info("Press CTRL-c to stop");
   });
 };
+
 void main();
