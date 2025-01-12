@@ -31,6 +31,15 @@ jobs:
           touch .env
           echo "${{ secrets.ENV }}" > .env
 
+      - name: Install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Check pnpm version
+        run: |
+          pnpm --version
+
       - name: Install dependencies
         working-directory: apps/api
         run: pnpm install
