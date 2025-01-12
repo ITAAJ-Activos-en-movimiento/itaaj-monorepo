@@ -63,9 +63,10 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           cd /var/www/api/itaaj-monorepo/apps/api || exit
-          sudo git pull origin main
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
           sudo git pull https://${{ secrets.PAT }}@github.com/ITAAJ-Activos-en-movimiento/itaaj-monorepo.git production
-          pnpm install
+          sudo pnpm install
           pm2 delete all || true
           pm2 start "pnpm run dev" --name "api"
           EOF
