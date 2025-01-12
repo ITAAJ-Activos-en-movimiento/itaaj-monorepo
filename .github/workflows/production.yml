@@ -49,13 +49,13 @@ jobs:
       # Desplegar en EC2
       - name: Deploy to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           # Variables
           APP_DIR="/var/www/api"
 
           # Sincronizar archivos
           mkdir -p $APP_DIR
-          rsync -avz --delete --exclude="node_modules" ./app/api/ ec2-user@${{ secrets.EC2_HOST }}:$APP_DIR
+          rsync -avz --delete --exclude="node_modules" ./app/api/ ubuntu@${{ secrets.EC2_HOST }}:$APP_DIR
 
           # Instalar dependencias de producción
           cd $APP_DIR
