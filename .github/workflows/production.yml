@@ -48,7 +48,7 @@ jobs:
 
           # Sincronizar archivos
           mkdir -p $APP_DIR
-          rsync -avz --delete --exclude="node_modules" ./apps/api/ ubuntu@${{ secrets.EC2_HOST }}:$APP_DIR
+          rsync -avz --delete --exclude="node_modules" ./ ubuntu@${{ secrets.EC2_HOST }}:$APP_DIR
 
           # Instalar dependencias de producción
           cd $APP_DIR
