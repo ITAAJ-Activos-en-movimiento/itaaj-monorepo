@@ -44,7 +44,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           # Variables
-          APP_DIR="/var/www/api"
+          APP_DIR="/var/www/api/itaaj-realty"
 
           # Sincronizar archivos
           mkdir -p $APP_DIR
