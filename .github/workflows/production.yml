@@ -60,5 +60,5 @@ jobs:
           pnpm install --prod
 
           # Reiniciar la API con PM2
-          pm2 restart api || pm2 start dist/index.js --name "api"
+          pm2 restart api || pm2 start "pnpm run dev" --name "api"
           EOF
