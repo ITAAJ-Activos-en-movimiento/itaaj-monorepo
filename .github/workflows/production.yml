@@ -1,59 +1,61 @@
-name: Deploy Node.js API to EC2
+name: CI/CD app-api to EC2
 
 on:
   push:
     branches:
       - production
+    paths:
+      - 'apps/api/**'
+  workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup .env
+        working-directory: apps/api
+        run: |
+          touch .env
+          echo "${{ secrets.ENV }}" > .env
+
+      - name: Install dependencies
+        working-directory: apps/api
+        run: pnpm install
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout del código
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # Configurar Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18 # Cambia según tu versión
-
-      # Instalar pnpm
-      - name: Install pnpm
+      - name: Setup SSH
         run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-      # Verificar que pnpm esté disponible
-      - name: Check pnpm version
-        run: |
-          pnpm --version
-
-      # Instalar dependencias del monorepo
-      - name: Install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
-          # Variables
-          APP_DIR="/var/www/api/itaaj-realty"
-
-          # Sincronizar archivos
-          mkdir -p $APP_DIR
-          rsync -avz --delete --exclude="node_modules" ./ ubuntu@${{ secrets.EC2_HOST }}:$APP_DIR
-
-          # Instalar dependencias de producción
-          cd $APP_DIR
-          pnpm install --prod
-
-          # Reiniciar la API con PM2
-          pm2 restart api || pm2 start "pnpm run dev" --name "api"
+          ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+          cd /var/www/api/itaaj-monorepo/apps/api || exit
+          git pull origin main
+          pnpm install --frozen-lockfile
+          pm2 stop api || true
+          pm2 start "pnpm run dev" --name "api"
           EOF
