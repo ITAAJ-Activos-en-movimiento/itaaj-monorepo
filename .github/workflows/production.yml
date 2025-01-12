@@ -10,35 +10,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout del código
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Configurar Node.js y pnpm
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 
+          node-version: 18 # Cambia según tu versión
+          cache: 'pnpm'
 
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+
+      # Instalar dependencias del monorepo
       - name: Install dependencies
         run: |
-          npm install
-          npx turbo prune --scope=api
-          npx turbo install
+          pnpm install --frozen-lockfile
 
+      # Construir la API específica
       - name: Build API
         run: |
-          npx turbo run build --scope=api --include-dependencies
+          pnpm --filter ./app/api... run build
 
+      # Configuración del servidor SSH
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
+      # Desplegar en EC2
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
-          cd /var/www/api
-          git pull origin main
-          npm install --production
-          npx turbo run build --scope=api
-          pm2 restart all || pm2 start dist/index.js --name "api"
+          # Variables
+          APP_DIR="/var/www/api"
+
+          # Sincronizar archivos
+          mkdir -p $APP_DIR
+          rsync -avz --delete --exclude="node_modules" ./app/api/ ec2-user@${{ secrets.EC2_HOST }}:$APP_DIR
+
+          # Instalar dependencias de producción
+          cd $APP_DIR
+          pnpm install --prod
+
+          # Reiniciar la API con PM2
+          pm2 restart api || pm2 start dist/index.js --name "api"
           EOF
