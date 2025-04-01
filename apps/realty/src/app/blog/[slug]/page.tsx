@@ -130,8 +130,8 @@ const Post = async ({ params }: Props) => {
                 <div>
                   <div className={styles.banner_card}>
                     <h5>{post?.category}</h5>
-                    <h3>{truncateExcerpt(posts[0]?.title, 10)}</h3>
-                    <span>{truncateExcerpt(posts[0]?.excerpt, 20)}</span>
+                    <h3>{truncateExcerpt(post?.title, 10)}</h3>
+                    <span>{truncateExcerpt(post?.excerpt, 20)}</span>
                     <Link
                       className={styles.show_more}
                       href={`/blog/${post?.slug}`}

@@ -1,5 +1,5 @@
 export const getPostsApi = async () => {
-  const response = await fetch("https://itaaj.real-vision-api.cloud/api/v1/posts", {
+  const response = await fetch("https://itaaj.nevobit.io/api/v1/posts", {
     cache: "no-store",
   });
 
@@ -13,7 +13,7 @@ export const getPostsApi = async () => {
 };
 
 export const getPostBySlugApi = async (slug: string) => {
-  const response = await fetch(`https://itaaj.real-vision-api.cloud/api/v1/posts/${slug}`, {
+  const response = await fetch(`https://itaaj.nevobit.io/api/v1/posts/${slug}`, {
     cache: "no-store",
   });
 
