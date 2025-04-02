@@ -11,7 +11,7 @@ const Banner = () => {
 <>
 
     <section className={styles.section}>
-        <div  className="home-hero-video" style={{ position: "relative", width: '100%', height: '60vh', overflow: 'hidden',  }} data-video-id="3337">
+        {/* <div  className="home-hero-video" style={{ position: "relative", width: '100%', height: '60vh', overflow: 'hidden',  }} data-video-id="3337">
       <iframe
         src="https://app.vidzflow.com/v/H0LDXZjsnq?dq=576&amp;ap=true&amp;muted=true&amp;loop=true&amp;ctp=false&amp;bc=%234E5FFD&amp;controls="
         allow="fullscreen"
@@ -33,7 +33,7 @@ const Banner = () => {
     }}>
 
     </div>
-    </div>
+    </div> */}
   
       {/* <div className={styles.container_banner}></div> */}
       <div className={styles.search}>

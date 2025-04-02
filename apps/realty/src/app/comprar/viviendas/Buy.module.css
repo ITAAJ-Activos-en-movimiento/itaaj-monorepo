@@ -80,6 +80,24 @@
     align-items: flex-end;
     justify-content: space-between;
    }
+
+   @media (min-width: 980px) {
+    .list {
+        margin: 0;
+        max-width: 736px;
+    }
+}
+   @media screen and (min-width: 980px) and (min-width: 1600px) {
+    .list {
+        max-width: 860px;
+    }
+}
+ 
+   @media screen and (min-width: 980px) and (min-width: 2000px) {
+    .list {
+        max-width: 980px;
+    }
+}
  
    @media screen and (max-width:768px) {
     .map_view{

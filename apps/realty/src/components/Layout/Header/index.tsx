@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { Bell, Heart, Menu, User } from "react-feather";
+import { Bell, Heart, Menu, User, Volume } from "react-feather";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
@@ -47,14 +47,17 @@ const Header = () => {
           </Link>
           <nav className={styles.nav}>
             <Link href="/comprar/viviendas">Comprar</Link>
+            <Link href="/comprar/viviendas">Alquilar</Link>
             <Link href="/vende-tu-propiedad">Vender</Link>
-            <Link href="/deals" className={styles.mid}>
+            {/*<Link href="/deals" className={styles.mid}>
               Portafolio de desarrolladores
-            </Link>
+            </Link>*/}
             {/* <Link href='/agents' className={styles.mid} >Meta Agentes Itaaj</Link> */}
             <Link href="/blog" className={styles.mid}>
               Blog
             </Link>
+            <Link href="/vende-tu-propiedad">Guía de colonias</Link>
+            <Link href="/vende-tu-propiedad">Hipotecas</Link>
           </nav>
         </div>
         <div className={styles.options}>
@@ -64,6 +67,10 @@ const Header = () => {
           <button className={styles.label_button}>
             <Heart size={16} />
             <span>Mis listas</span>
+          </button>
+          <button className={styles.label_button}>
+            <Volume size={16} />
+            <span>Nuevos para ti</span>
           </button>
           <Link href="/publish" className={styles.publish}>
             {content}

@@ -45,8 +45,6 @@ const Properties = async ({
     state: state
   });
 
-  console.log(properties)
-
 
   return (
     <MapProvider>
@@ -55,6 +53,7 @@ const Properties = async ({
         <Container>
 
           <div
+          className={styles.list}
             style={{
               paddingBlock: 50,
             }}

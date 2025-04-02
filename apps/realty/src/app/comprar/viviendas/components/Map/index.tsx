@@ -40,7 +40,7 @@ const Map = ({ properties }: { properties: any }) => {
             position: "fixed",
             top: 0,
             right: 0,
-            width: "50%",
+            width: "45%",
             height: "100vh",
             transition: "0.3s",
             marginTop: mapOffset > 10 ? (mapOffset > 2600 ? -1200 : 0) : 116,
