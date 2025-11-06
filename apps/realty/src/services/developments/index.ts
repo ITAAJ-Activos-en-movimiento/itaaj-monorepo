@@ -2,7 +2,7 @@ import { useParams } from "next/navigation";
 
 export const developments = async () => {
     try{
-        const response = await fetch('https://itaaj.real-vision-api.cloud/api/v1/developments', { cache: 'no-store' });
+        const response = await fetch('https://itaaj-api-gt8a.onrender.com/api/v1/developments', { cache: 'no-store' });
 
       if (!response.ok) {
         throw new Error('No se pudo obtener la lista de desarrollos.');
@@ -17,7 +17,7 @@ export const developments = async () => {
     }
 }
 
-// const response = await fetch(`https://itaaj.real-vision-api.cloud/api/v1/properties-developments?page=${page}&limit=${limit}&type=${type}&state=${state}`, { cache: 'no-store' });
+// const response = await fetch(`https://itaaj-api-gt8a.onrender.com/api/v1/properties-developments?page=${page}&limit=${limit}&type=${type}&state=${state}`, { cache: 'no-store' });
 
 export const propertiesDevelopments = async ({ type, page, limit, state }: { type: string,page: number, limit: number, state?: string }) => {
   try{
@@ -39,7 +39,7 @@ export const propertiesDevelopments = async ({ type, page, limit, state }: { typ
 
 export const developmentApi = async (slug: string) => {
   try{
-      const response = await fetch(`https://itaaj.real-vision-api.cloud/api/v1/developments/${slug}`, { cache: 'no-store' });
+      const response = await fetch(`https://itaaj-api-gt8a.onrender.com/api/v1/developments/${slug}`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error('No se pudo obtener la lista de desarrollos.');

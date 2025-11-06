@@ -21,7 +21,7 @@ export const Access = async () => {
       RemoveSession();
       return { message: 'Token alterado', error: true };
     }
-    const response = await axios.post('https://itaaj.real-vision-api.cloud/api/v1/auth/access', {}, headers);
+    const response = await axios.post('https://itaaj-api-gt8a.onrender.com/api/v1/auth/access', {}, headers);
 
     const { user } = response.data;
     return { data: user, error: false };
@@ -34,7 +34,7 @@ export const Access = async () => {
 
 export const Login = async (body: any) => {
   try {
-    const response = await axios.post('https://itaaj.real-vision-api.cloud/api/v1/auth/login', body);
+    const response = await axios.post('https://itaaj-api-gt8a.onrender.com/api/v1/auth/login', body);
     const { token, user } = response.data;
 
     localStorage.setItem("tokene", token);
@@ -49,7 +49,7 @@ export const Login = async (body: any) => {
 
 export const Register = async (body: any) => {
   try {
-    const response = await axios.post("https://itaaj.real-vision-api.cloud/api/v1/auth/register", body);
+    const response = await axios.post("https://itaaj-api-gt8a.onrender.com/api/v1/auth/register", body);
     const { token, user } = response.data;
     localStorage.setItem("tokene", token);
     Cookies.set('tokene', token, { expires: 7 });
