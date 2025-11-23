@@ -1,0 +1,23 @@
+.content{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    grid-template-columns: 1fr 40rem;
+    gap: 2rem;
+}
+
+.container{
+    width: min(90%, 110rem);
+    margin: 0 auto;
+}
+
+@media screen and (max-width:768px) {
+    .content{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(90%, 110rem);
+        margin: 0 auto;
+    }   
+
+
+}

@@ -4,30 +4,37 @@ import { getServerSession } from "@/core/session";
 import { Property } from "@itaaj/entities";
 import Image from "next/image";
 import { DivisaFormater } from "@/utils";
+import { redirect } from "next/navigation";
 
-type Listing = {
-  id: string;
-  price: number;
-  title: string;
-  location: string;
-  area: number;
-  phoneValidated: boolean;
-};
+export const dynamic = "force-dynamic";
 
 const MyAds = async () => {
   const session = await getServerSession();
-  const res = await fetch(
-    `${process.env.INTERNAL_API_BASE}/properties/user/${session?.user.id}`,
-    {
-      cache: "no-store",
-      redirect: "manual",
+
+  if (!session?.user?.id) {
+    redirect("/login");
+  }
+
+  let listings: Property[] = [];
+  try {
+    const res = await fetch(
+      `${process.env.INTERNAL_API_BASE}/properties/user/${session.user.id}`,
+      {
+        cache: "no-store",
+        redirect: "manual",
+      }
+    );
+
+    if (res.ok) {
+      listings = (await res.json()) as Property[];
+    } else {
+      console.error("Error fetching user properties", res.status);
     }
-  );
+  } catch (err) {
+    console.error("Error fetching user properties", err);
+  }
 
-  const body = await res.json();
-  const totalAds = body.length;
-
-  const listings = body;
+  const totalAds = listings.length;
 
   return (
     <div className={styles.page}>

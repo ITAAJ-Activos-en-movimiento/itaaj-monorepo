@@ -61,37 +61,41 @@ const Properties = async ({
             <div className={styles.header}>
               <div>
                 <h2 className={styles.title}>
-                  Departamentos y casas en venta en México
+                  Departamentos y casas en renta en México
                 </h2>
                 <p className={styles.subtitle}>
                   {properties.countOld} usadas y {properties.countNew} de obra
                   nueva{" "}
                 </p>
-                <div>
-                  <div className={styles.filter}>
-                    <p>
-                      <Clock size={16} /> Ordenar:{" "}
-                    </p>
-                    <select name="" id="">
-                      <option value="">Más recientes</option>
-                      <option value="">Más baratos</option>
-                      <option value="">Más caros</option>
-                      <option value="">Más grandes (más m2)</option>
-                      <option value="">Más pequeños (menos m2)</option>
-                    </select>
-                  </div>
+
+                <div className={styles.filter}>
+                  <p>
+                    <Clock size={16} /> Ordenar:{" "}
+                  </p>
+                  <select name="" id="">
+                    <option value="">Más recientes</option>
+                    <option value="">Más baratos</option>
+                    <option value="">Más caros</option>
+                    <option value="">Más grandes (más m2)</option>
+                    <option value="">Más pequeños (menos m2)</option>
+                  </select>
                 </div>
               </div>
               <OpenMap />
             </div>
 
-            {properties.items.map((property: PropertyOrDevelopment) => {
-              if (property.itemType == "property") {
-                return <PropertyCard key={property.id} {...property} />;
-              } else {
-                return <DevelopmentCard key={property.id} {...property} />;
-              }
-            })}
+            {properties.items
+              .filter(
+                (property: PropertyOrDevelopment) =>
+                  property.transactionType == "rent"
+              )
+              .map((property: PropertyOrDevelopment) => {
+                if (property.itemType == "property") {
+                  return <PropertyCard key={property.id} {...property} />;
+                } else {
+                  return <DevelopmentCard key={property.id} {...property} />;
+                }
+              })}
 
             <Pagination pages={properties.pageInfo.pages} />
           </div>

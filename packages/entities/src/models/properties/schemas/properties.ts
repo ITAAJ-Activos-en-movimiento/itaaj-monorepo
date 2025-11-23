@@ -2,6 +2,12 @@ import { Base } from "../../../common";
 
 export enum PropertyType {
   HOUSE = "house",
+  HOUSING = 'housing',
+  PARKING = 'parking',
+  OFFICE = 'office',
+  STORAGE = 'storage',
+  LAND = 'land',
+  LOCAL = 'local',
   APARTAMENT = "apartament",
   CONDO = "condo",
   TOWNHOUSE = "townhouse",
@@ -38,7 +44,13 @@ export interface Property extends Base {
   external_number: string;
   internal_number: string;
   location: Location;
+  transactionType: 'sale' | 'rent' | 'share';
   price: number;
+  rentPrice: number;
+  lowDeposit: number;
+  alsoRent: boolean;
+  alsoSell: boolean;
+  
   area: Area;
   garage: number;
   images: string[];

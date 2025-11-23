@@ -1,0 +1,5 @@
+.btn{
+    background-color: transparent !important;
+    color: var(--main-color) !important;
+    font-weight: 600;
+}

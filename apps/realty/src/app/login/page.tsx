@@ -1,18 +1,15 @@
 "use client";
 import React from "react";
 import styles from "./Login.module.css";
-import {
-  GoogleOAuthProvider,
-  GoogleLogin,
-  CredentialResponse,
-} from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import LoginButton from "./LoginButton";
 
 const Login = () => {
-
   return (
     <GoogleOAuthProvider
-      clientId={"10748540302-3radc5uefaie52b9sfif74l8d5j1s3e9.apps.googleusercontent.com"}
+      clientId={
+        "203221248558-a6j3egm9pakf8d8c3m2be7vm18k802db.apps.googleusercontent.com"
+      }
     >
       <div className={styles.container}>
         <div className={styles.form}>
@@ -29,13 +26,6 @@ const Login = () => {
                 throw new Error("Function not implemented.");
               }}
             /> */}
-            <p className={styles.divider}> O </p>
-
-            <label htmlFor="">
-              Introduce tu email para iniciar sesión o crear una cuenta
-            </label>
-            <input type="text" placeholder="Correo" />
-            <button>Continuar</button>
           </form>
         </div>
       </div>

@@ -111,7 +111,6 @@ export default function PublishPage() {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      console.log("REPERTUI", data);
       const { data: res } = await axios.post(
         "https://itaaj-realty.onrender.com/api/v1/properties",
         {
@@ -122,6 +121,10 @@ export default function PublishPage() {
           area: { total_area: data.builtArea },
           status: "active",
           category: "general",
+          location: {
+            latitude: data.lat,
+            longitude: data.lng,
+          },
         },
         {
           headers: {

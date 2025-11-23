@@ -33,6 +33,11 @@ export const StepContact: React.FC<StepContactProps> = ({
   const [isAuthLoading, setIsAuthLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(!!session);
 
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // 👉 Si ya viene logeado desde el server, rellenamos datos de contacto
   useEffect(() => {
     if (!loading && session?.user) {
@@ -43,13 +48,15 @@ export const StepContact: React.FC<StepContactProps> = ({
       });
       setIsAuthenticated(true);
     }
-  }, [loading, session]);
+    // value lo usas solo para leer contactEmail en esta rama,
+    // no pasa nada si no lo pones en deps, pero si quieres ser estricto:
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, session, onChange]);
 
   const handleSubmit = async () => {
     await onSubmit();
   };
 
-  console.log("SESSION", session);
   const handleGoogleSuccess = async (
     credentialsResponse: CredentialResponse
   ) => {
@@ -100,7 +107,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           : "Entra o regístrate para publicar tu anuncio en Itaaj."}
       </p>
 
-      {!isAuthenticated && (
+      {!isAuthenticated && isMounted && (
         <>
           <div className={styles.socialButtons}>
             <GoogleLogin

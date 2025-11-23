@@ -27,6 +27,10 @@ export const properties = pgTable("properties", {
   location: jsonb("location"),
   bathrooms_medium: varchar("bathrooms_medium", { length: 255 }),
   price: integer("price"),
+  rentPrice: integer("rentPrice"),
+  lowDeposit: integer("lowDeposit"),
+  alsoRent: boolean('alsoRent'),
+  alsoSell: boolean('alsoSell'),
   floor: varchar("floor", { length: 256 }),
   area: jsonb("area"),
   garage: integer("garage"),
@@ -48,6 +52,8 @@ export const properties = pgTable("properties", {
   development: uuid("development"),
   createdAt: timestamp("created_at").defaultNow(),
   zipcode: integer("zipcode"),
+  transactionType: varchar('transactionType'),
+  
   floorPlans: varchar("floorPlans", { length: 256 }).array(),
   status: varchar("status", { length: 256 }).default("active"),
 });
