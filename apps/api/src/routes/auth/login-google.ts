@@ -9,7 +9,14 @@ export const loginGoogleRoute: RouteOptions = {
    const { body } = request;
    const data = body as string
    const user = await loginGoogle(data);
-   reply.status(200).send(user);
+    reply.setCookie("session", user.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60,
+        path: "/",
+      });
+   reply.status(200).send(user.user);
   }catch(err){
    reply.status(500).send(err);
   }

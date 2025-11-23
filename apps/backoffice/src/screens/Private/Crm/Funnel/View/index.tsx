@@ -5,7 +5,7 @@ import { DivisaFormater } from "@/utilities";
 import { Lead } from "@itaaj/entities";
 import OpportunityModal from "../OpportunityForm";
 import Button from "../../../../../components/Shared/Button/index";
-import { deleteLeadApi } from "@/services";
+// import { deleteLeadApi } from "@/services";
 import { useDeleteLead } from "@/hooks";
 
 interface ViewOpportunityModalProps {

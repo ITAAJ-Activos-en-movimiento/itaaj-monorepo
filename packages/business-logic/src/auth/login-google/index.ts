@@ -25,7 +25,6 @@ const verifyGoogle = async (token: string) => {
 }
 
 export const loginGoogle = async (id: string) => {
-  
      const {email, photo, name, last_name} = await verifyGoogle(id);
 
      const result = await getDbInstance().select().from(users!)
@@ -59,7 +58,7 @@ export const loginGoogle = async (id: string) => {
           newUser.password = hashSync(data.password, salt);
         
         //   await newUser.save();
-          const token = jwt.sign({uuid: newUser._id}, JWT_SECRET!, {expiresIn: '5d'});
+          const token = jwt.sign({id: newUser.id}, JWT_SECRET!, {expiresIn: '5d'});
           return { token };
 
      };
@@ -70,9 +69,9 @@ export const loginGoogle = async (id: string) => {
      user.login_attempts = 0;
     //  await user.save();
     
-     const token = jwt.sign({uuid: user._id}, JWT_SECRET!, {expiresIn: '24h'});
+     const token = jwt.sign({id: user.id}, JWT_SECRET!, {expiresIn: '5d'});
     
-     return {token};
+     return {token, user};
 }
 
 

@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fieldGroupSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 0 0 120px;
+}
+
+.label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.input,
+.select {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.4rem;
+}
+
+.inlineGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.rightActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.primaryButton,
+.primaryButtonSoft,
+.secondaryButton {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.primaryButton {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.primaryButtonSoft {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.secondaryButton {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+}
+
+.primaryButtonSoft:disabled,
+.primaryButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.foundBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+}
+
+.checkIcon {
+  font-size: 1.6rem;
+  color: #16a34a;
+  margin-top: 0.15rem;
+}
+
+.foundText {
+  font-size: 0.9rem;
+}
+
+.foundTitle {
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.foundAddress {
+  color: #374151;
+}
+
+.mapPlaceholder {
+  margin-top: 0.75rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+}
+
+.linkButton {
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #4f46e5;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.switchRow {
+  margin-top: 1rem;
+}
+
+.switchLabel {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.switchLabel input{
+    width: 2rem;
+    max-height: 2rem;
+}

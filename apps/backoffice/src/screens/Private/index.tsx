@@ -18,6 +18,7 @@ import { CreateIndex } from "@/features/PriceIndex/screens";
 import NewBlog from "./Blogs/New";
 import EditBlog from "./Blogs/Edit";
 import Users from "./Users";
+import Generator from "./Generator";
 
 const Private = () => {
   return (
@@ -55,6 +56,8 @@ const Private = () => {
         <Route path="/market/create" element={<CreateIndex />} />
 
         <Route path="users" element={<Users />} />
+        <Route path="/generator" element={<Generator />} />
+
       </Route>
     </Routes>
   );

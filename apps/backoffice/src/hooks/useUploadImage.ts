@@ -1,43 +1,42 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export const rvApi = axios.create({
-    baseURL:'https://real-vision-api.cloud/api/v1',
-    // baseURL:'http://localhost:8000/api/v1',
-    
-    headers: {
-        'api-key':
-            '291bd34bac86b4b84a11f0e8932beb92e6497e55a51ab72b511e427dc909f84de4791995f6672ed2a55e882a43c129d92d0c50b38ae69bda1f93ac5a4adc24af',
-    },
-});
-
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dv4bzgfpr/image/upload';
+const UPLOAD_PRESET = 'infoitaaj'; // lo configuras en Cloudinary
 
 export const useUploadImage = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [url, setUrl] = useState('');
-    const [urls, setUrls] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [url, setUrl] = useState('');
+  const [urls, setUrls] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const uploadImage = async (image: string | Blob ) => {
-        setIsLoading(true);
-        const formData = new FormData();
-        formData.append('image', image);
+  const uploadImage = async (image: string | Blob) => {
+    setIsLoading(true);
+    setErrorMessage('');
 
-        try {
-            const { data } = await rvApi.post('/upload/image', formData);
-            const newUrls: string[] = [...urls, data.url];
-            setUrls(newUrls);
-            setUrl(data.url);
-            setIsLoading(false);
-        } catch (error) {
-            console.log(error)
-            setIsLoading(false);
-        }
-    };
+    const formData = new FormData();
+    formData.append('file', image); // Cloudinary exige "file"
+    formData.append('upload_preset', UPLOAD_PRESET);
 
-    return {
-        isLoading,
-        url,
-        uploadImage,
-        urls,
-    };
+    try {
+      const { data } = await axios.post(CLOUDINARY_URL, formData);
+
+      const newUrls = [...urls, data.secure_url];
+      setUrls(newUrls);
+      setUrl(data.secure_url);
+    } catch (error: any) {
+      console.log(error);
+      setErrorMessage(error?.message || 'Upload failed');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return {
+    isLoading,
+    url,
+    uploadImage,
+    urls,
+    errorMessage,
+  };
 };

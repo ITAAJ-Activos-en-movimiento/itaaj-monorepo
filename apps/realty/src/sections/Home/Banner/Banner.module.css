@@ -17,20 +17,21 @@
   width: 100%;
   margin-inline: auto;
   z-index: 9;
+  margin-top: 4rem;
 }
 
 .content {
-  background: var(--second-color);
+  /* background: var(--second-color); */
   border-radius: 1.6rem;
-  box-shadow: 0 2px 32px rgba(31, 37, 115, .4);
-  margin-top: -12rem;
+  /* box-shadow: 0 2px 32px rgba(31, 37, 115, .4); */
+  /* margin-top: -12rem; */
   padding: 1.6rem 1.6rem 2.4rem;
 }
 
 .content h2 {
-  text-align: center;
-  color: #fff;
-  font-size: 2rem;
+  text-align: left;
+  color: #333;
+  font-size: 2.5rem;
 }
 
 .content ul {

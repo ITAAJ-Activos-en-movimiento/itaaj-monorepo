@@ -8,7 +8,7 @@ const Blog = async () => {
   const posts = await getPostsApi();
 
   const truncateExcerpt = (text: string, limit: number) => {
-    const words = text.split(" ");
+    const words = text?.split(" ") || '';
     if (words.length > limit) {
       return words.slice(0, limit).join(" ") + " ...";
     } else {
@@ -76,8 +76,8 @@ const Blog = async () => {
                 <div>
                   <div className={styles.banner_card}>
                     <h5>{post?.category}</h5>
-                    <h3>{truncateExcerpt(posts[0]?.title, 10)}</h3>
-                    <span>{truncateExcerpt(posts[0]?.excerpt, 20)}</span>
+                    <h3>{truncateExcerpt(post?.title, 10)}</h3>
+                    <span>{truncateExcerpt(post?.excerpt, 20)}</span>
                     <Link
                       className={styles.show_more}
                       href={`/blog/${post?.slug}`}

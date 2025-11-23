@@ -1,8 +1,8 @@
 .content{
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    grid-template-columns: 1fr 40rem;
     gap: 2rem;
 }
 

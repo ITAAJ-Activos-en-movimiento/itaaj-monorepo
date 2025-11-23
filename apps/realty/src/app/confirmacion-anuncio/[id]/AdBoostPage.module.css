@@ -1,0 +1,313 @@
+.page {
+  display: grid;
+  grid-template-columns: 3fr 5fr 3fr;
+  gap: 2.4rem;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 3.2rem 2.4rem 4.8rem;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #222222;
+}
+
+/* Columna izquierda */
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.adCard {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border: 0.1rem solid #e6e6f0;
+}
+
+.adImage {
+  width: 100%;
+  padding: 1.6rem 1.6rem 0;
+  box-sizing: border-box;
+}
+
+.adImage img{
+  border-radius: 1rem;
+}
+
+.adIllustration {
+  width: 100%;
+  height: 16rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(135deg, #ffe2e9, #e4f0ff);
+}
+
+.adInfo {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: 2.0rem;
+  font-weight: 700;
+}
+
+.badge {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999rem;
+  background-color: #ffefe0;
+  color: #c25a00;
+  text-transform: uppercase;
+}
+
+/* Texto anuncio */
+
+.adTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.adMeta {
+  font-size: 1.2rem;
+  color: #666666;
+  margin: 0 0 0.8rem 0;
+}
+
+/* Botones generales */
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.8rem;
+  background-color: #2f3fe8;
+  color: #ffffff;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background-color: #2634c0;
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #2f3fe8;
+  background-color: #ffffff;
+  color: #2f3fe8;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondaryButton:hover {
+  background-color: #f2f4ff;
+}
+
+.secondaryButtonFull {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.0rem 1.6rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #2f3fe8;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondaryButtonFull:hover {
+  background-color: #2634c0;
+}
+
+/* Card "Publica otro anuncio" */
+
+.adCreateCard {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.6rem;
+  border: 0.1rem solid #e6e6f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.createTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.createText {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #555555;
+}
+
+.outlineButton {
+  margin-top: 0.8rem;
+  width: fit-content;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #2f3fe8;
+  background-color: transparent;
+  color: #2f3fe8;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.outlineButton:hover {
+  background-color: #f2f4ff;
+}
+
+/* Columna central */
+
+.centerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem;
+}
+
+.productRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.6rem 0;
+}
+
+.productMain {
+  flex: 1;
+}
+
+.productTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.productDescription {
+  font-size: 1.3rem;
+  color: #444444;
+  margin: 0 0 0.6rem;
+}
+
+.linkButton {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #2f3fe8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.productAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+  min-width: 12rem;
+}
+
+.productPrice {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.divider {
+  height: 0.1rem;
+  background-color: #e6e6f0;
+}
+
+/* Columna derecha */
+
+.rightColumn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.valuationCard {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.8rem 1.6rem;
+  border: 0.1rem solid #e6e6f0;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.valuationTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem;
+}
+
+.valuationText {
+  font-size: 1.3rem;
+  color: #444444;
+  margin: 0 0 1.6rem;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .rightColumn {
+    order: 3;
+  }
+
+  .centerColumn {
+    order: 2;
+  }
+
+  .leftColumn {
+    order: 1;
+  }
+
+  .productRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productAside {
+    align-items: flex-start;
+  }
+
+  .secondaryButtonFull {
+    width: 100%;
+  }
+}

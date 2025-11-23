@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.checkboxItem{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    margin-bottom: .5rem;
+}
+.checkboxItem input{
+    width: 2rem;
+    max-height: 2rem;
+}
+
+.textarea {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 0.75rem;
+  font-size: 1.4rem;
+  resize: vertical;
+}
+
+.helper {
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.extrasGroup {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.extraColumn {
+  flex: 1;
+  min-width: 260px;
+}
+
+.subheading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.primaryButton {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+}

@@ -5,7 +5,6 @@ import slugify from "slugify";
 export const createProperty = async (
   data: Property
 ): Promise<Property | Error> => {
-  console.log(data)
   const slug = slugify(data.name, {
     lower: true
   });
@@ -15,6 +14,7 @@ export const createProperty = async (
     .insert(properties)
     .values({...data, slug, blockchainId})
     .returning();
+
   return result;
 };
 

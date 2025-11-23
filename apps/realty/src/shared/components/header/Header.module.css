@@ -1,0 +1,99 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 56px;
+  padding: 8px 16px 8px 8px;
+  justify-content: space-between;
+  background: #303ab2;
+  color: #fff;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.publishBtn {
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 1rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  min-height: 4rem;
+  height: 2.5rem;
+  padding-inline: 1.6rem;
+}
+
+.accessBtn {
+  background-color: #fff;
+  color: #303ab2;
+  border-radius: 1rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  min-height: 4rem;
+  height: 2.5rem;
+  padding-inline: 1.6rem;
+}
+
+.brandText {
+  color: #fff;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+@media screen and (max-width: 1500px) {
+  .nav .link:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 950px) {
+
+  .brandText{
+    font-size: 2.2rem;
+    margin-left: -1rem;
+  }
+  
+  .nav .link {
+    display: none;
+  }
+
+  .separator > .link:first-child {
+    display: none;
+  }
+
+  .separator .link:nth-child(2) span {
+    display: none;
+  }
+
+  .separator .link:nth-child(3) span {
+    display: none;
+  }
+
+  .separator .link:nth-child(1) span {
+    display: none;
+  }
+}

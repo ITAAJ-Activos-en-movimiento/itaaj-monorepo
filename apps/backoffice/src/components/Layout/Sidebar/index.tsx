@@ -11,6 +11,7 @@ import {
   User,
 } from "react-feather";
 import Tooltip from "../Tooltip";
+import { TableOfContents } from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -61,6 +62,11 @@ const Sidebar = () => {
           <Tooltip text="Usuarios">
             <Link to="/users" title="Usuarios">
               <User size={20} /> <p>Usuarios</p>{" "}
+            </Link>
+          </Tooltip>
+          <Tooltip text="Generador de contenido">
+            <Link to="/generator" title="Generador de contenido">
+              <TableOfContents size={20} /> <p>Generador de contenido</p>{" "}
             </Link>
           </Tooltip>
         </nav>
