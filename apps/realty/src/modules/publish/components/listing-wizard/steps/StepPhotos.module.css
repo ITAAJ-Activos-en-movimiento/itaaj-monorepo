@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.helper {
+  font-size:1.4rem;
+  color: #6b7280;
+}
+
+.dropzone {
+  margin-top: 0.25rem;
+  border-radius: 12px;
+  border: 2px dashed #c4c6d5;
+  background: #f9fafb;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone:hover {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.dropzoneContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.dropzoneTitle {
+  font-weight: 600;
+  color: #111827;
+}
+
+.dropzoneSubtitle {
+  font-size: 1.3rem;
+  color: #6b7280;
+}
+
+.selectButton {
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploading {
+  font-size: 1.3rem;
+  color: #4b5563;
+}
+
+.error {
+  font-size: 1.3rem;
+  color: #b91c1c;
+}
+
+.galleryWrapper {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.subheading {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.galleryHelper {
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.gallery {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.photoCard {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background: #f3f4f6;
+}
+
+.photo {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.removeButton {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(15, 23, 42, 0.7);
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.primaryButton {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+}
+
+.primaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

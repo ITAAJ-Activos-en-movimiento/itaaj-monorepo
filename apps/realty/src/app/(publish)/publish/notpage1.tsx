@@ -58,7 +58,6 @@ const CreateProperty = () => {
   const [isPhone, setIsPhone] = useState(false);
   const [tokenId, setTokenId] = useState("");
 
-
   const [property, setProperty] = useState({
     name: "",
     address: "",
@@ -91,7 +90,7 @@ const CreateProperty = () => {
     setLoading(true);
     try {
       await axios.post(
-        "https://itaajrealty.com/api/api/v1/properties",
+        "https://itaaj-realty.onrender.com/api/v1/properties",
         {
           ...property,
           images: urls,
@@ -116,7 +115,7 @@ const CreateProperty = () => {
   const onSubmitRegister = async () => {
     try {
       const { data } = await axios.post(
-        "https://itaajrealty.com/api/api/v1/auth/register",
+        "https://itaaj-realty.onrender.com/api/v1/auth/register",
         user,
         {
           headers: {
@@ -136,10 +135,10 @@ const CreateProperty = () => {
   };
 
   const onSubmitLoginGoogle = async () => {
-    const token = localStorage.getItem("tokene")
+    const token = localStorage.getItem("tokene");
     try {
       const { data } = await axios.post(
-        "https://itaajrealty.com/api/api/v1/auth/login-google",
+        "https://itaajrealty.com/api/v1/auth/login-google",
         token,
         {
           headers: {
@@ -220,11 +219,10 @@ const CreateProperty = () => {
       await setTokenId(() => token_id);
       setTimeout(() => {
         setIsPhone(true);
-      }, 1000)
+      }, 1000);
     }
-    console.log(tokenId)
-    await setTokenId(credentialsResponse?.credential || "")
-
+    console.log(tokenId);
+    await setTokenId(credentialsResponse?.credential || "");
   };
 
   const handleGoogleError = () => {};
@@ -236,7 +234,7 @@ const CreateProperty = () => {
     password: "",
     roleId: 3,
     residence: "",
-    identification: ""
+    identification: "",
   });
 
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
@@ -663,27 +661,26 @@ const CreateProperty = () => {
         )}
 
         {isPhone && (
-
-        <div className={styles.overlay}>
-          <div className={styles.modal}>
-            <div className={styles.account}>
-              <h4>Ingresa tu número de teléfono</h4>
-              <div className={styles.field}>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={handleChangeUser}
-                  placeholder="Teléfono"
-                />
+          <div className={styles.overlay}>
+            <div className={styles.modal}>
+              <div className={styles.account}>
+                <h4>Ingresa tu número de teléfono</h4>
+                <div className={styles.field}>
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={handleChangeUser}
+                    placeholder="Teléfono"
+                  />
+                </div>
+                <button onClick={onSubmitLoginGoogle} className={styles.buton}>
+                  Continuar
+                </button>
               </div>
-              <button onClick={onSubmitLoginGoogle} className={styles.buton}>Continuar</button>
             </div>
           </div>
-        </div>
-      )}
-
+        )}
       </div>
-
 
       <div className={styles.footer}>
         <button style={{}} className={styles.opacity} onClick={onSubmit}>

@@ -1,9 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Footer, Header } from '@/components'
-import { Inter } from 'next/font/google'
-import { AuthContextProvider } from '@/shared/context/AuthContext';
+import { Footer } from "@/components";
+import { Inter } from "next/font/google";
+import { AuthContextProvider } from "@/shared/context/AuthContext";
 import MetaMask from "./MetaMask";
+import Header from "@/shared/components/header";
+import { Sidebar } from "@/shared/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,14 +18,11 @@ export const metadata: Metadata = {
   keywords: ["Inmuebles", "Propiedades", "Departamentos", "Casas", "Lofts"],
 };
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
-
   return (
     <html lang="es">
       <head>
@@ -40,7 +39,7 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1263776837578791');
             fbq('track', 'PageView');
-          `
+          `,
           }}
         />
         <script
@@ -58,23 +57,33 @@ export default function RootLayout({
               });
               return false;
             }
-            `
+            `,
           }}
         />
-        <noscript><img height="1" width="1" style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1263776837578791&ev=PageView&noscript=1"
-        /></noscript>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1263776837578791&ev=PageView&noscript=1"
+          />
+        </noscript>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4461YFKK2V">
-        </script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-4461YFKK2V"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
           gtag('config', 'G-4461YFKK2V');            
-          ` }} />
+          `,
+          }}
+        />
 
         <script
           async
@@ -104,30 +113,34 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '178858151857801');
             fbq('track', 'PageView');
-            `
+            `,
           }}
         />
         <noscript>
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=178858151857801&ev=PageView&noscript=1"
           />
         </noscript>
 
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+        <link
+          href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet"
+        />
 
         <link
           href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"
         />
       </head>
-          <body className={inter.className}>
-            <Header />
-            {children}
-            <Footer />
-          </body>
+      <body className={inter.className}>
+        <Header />
+        <Sidebar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

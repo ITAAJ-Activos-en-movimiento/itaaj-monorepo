@@ -4,7 +4,7 @@ export const createProposal = async (data: any) => {
 
   console.log(data)
     try{
-        const response = await axios.post('https://itaaj.nevobit.io/api/v1/proposals', data );
+        const response = await axios.post('https://itaaj-realty.onrender.com/api/v1/proposals', data );
 
       // if (!response.ok) {
       //   throw new Error('No se pudo obtener la lista de propiedades.');

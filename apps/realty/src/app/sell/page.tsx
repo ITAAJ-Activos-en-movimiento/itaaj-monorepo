@@ -18,7 +18,7 @@ const Sell = () => {
     e.preventDefault();
 
     try {
-      await axios.post("https://itaajrealty.com/api/api/v1/leads", { ...info });
+      await axios.post("https://itaajrealty.com/api/v1/leads", { ...info });
       alert("Informacion enviada correctamente");
     } catch (err) {
       console.log(err);

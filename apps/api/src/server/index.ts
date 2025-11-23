@@ -3,6 +3,7 @@ import fastify from "fastify";
 import fastifyCors from "@fastify/cors";
 import { initDataSources } from "@itaaj/data-sources";
 import { registerRoutes } from "../routes";
+import cookie from "@fastify/cookie";
 
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
@@ -28,6 +29,10 @@ const main = async () => {
   });
 
   server.register(fastifyCors, corsOptions);
+  server.register(cookie, {
+  secret: process.env.COOKIE_SECRET || "change-me",
+});
+
   server.register(
     (instance, options, next) => {
       registerRoutes(instance);

@@ -35,7 +35,7 @@ const Cform = ({ slug, closeModal, prevmsg, children }: Props) => {
     e.preventDefault();
     try {
       if (info.email != "") {
-        await axios.post("https://itaajrealty.com/api/api/v1/messages", {
+        await axios.post("https://itaaj-realty.onrender.com/api/v1/messages", {
           ...info,
         });
         alert("Informacion enviada. Pronto nos pondremos en contacto contigo");

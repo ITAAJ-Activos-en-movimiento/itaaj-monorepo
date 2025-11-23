@@ -7,3 +7,4 @@ export * from './list';
 export * from './update';
 export * from './list-properties-developments';
 export * from './get-by-user';
+export * from './get-by-id';

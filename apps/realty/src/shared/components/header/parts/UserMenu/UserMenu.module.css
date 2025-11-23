@@ -1,0 +1,103 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.userButton {
+  background-color: #fff;
+  border: none;
+  border-radius: 4rem;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.08);
+  color: #666;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.arrow {
+  font-size: 1.2rem;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: 4.5rem;
+  min-width: 28rem;
+  background-color: #fff;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.2rem;
+  padding: 1.6rem;
+  z-index: 999;
+}
+
+.userInfo {
+  margin-bottom: 1.2rem;
+}
+
+.userName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #111;
+}
+
+.userEmail {
+  font-size: 1.2rem;
+  color: #111;
+  margin: 0;
+}
+
+.divider {
+  height: 0.1rem;
+  background-color: #e5e5e5;
+  margin: 1.2rem 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+    color: #111;
+
+}
+
+.item:hover {
+  background-color: #f4f5ff;
+}
+
+.icon {
+  font-size: 1.6rem;
+}
+
+.logoutButton {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #2334e4;
+  font-weight: 600;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logoutButton:hover {
+  text-decoration: underline;
+}

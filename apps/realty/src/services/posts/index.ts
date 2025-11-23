@@ -1,5 +1,5 @@
 export const getPostsApi = async () => {
-  const response = await fetch("https://itaaj.nevobit.io/api/v1/posts", {
+  const response = await fetch("https://itaaj-realty.onrender.com/api/v1/posts", {
     cache: "no-store",
   });
 
@@ -13,7 +13,7 @@ export const getPostsApi = async () => {
 };
 
 export const getPostBySlugApi = async (slug: string) => {
-  const response = await fetch(`https://itaaj.nevobit.io/api/v1/posts/${slug}`, {
+  const response = await fetch(`https://itaaj-realty.onrender.com/api/v1/posts/${slug}`, {
     cache: "no-store",
   });
 
@@ -28,7 +28,7 @@ export const getPostBySlugApi = async (slug: string) => {
 
 {
   /**export const getPostsApi = async () => {
-  const response = await fetch("https://itaajrealty.com/api/api/v1/posts", {
+  const response = await fetch("https://itaajrealty.com/api/v1/posts", {
     cache: "no-store",
   });
 
