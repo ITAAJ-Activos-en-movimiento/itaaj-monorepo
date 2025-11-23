@@ -66,6 +66,8 @@ export interface PublishFormData {
   lat?: number;
   lng?: number;
   owner?: string;
+
+  shareCom: boolean;
 }
 
 const steps = [
@@ -80,13 +82,14 @@ const steps = [
 const INITIAL_DATA: PublishFormData = {
   adType: "housing",
   propertyType: null,
-  transactionType: null,
-  alsoRent: false,
+  transactionType: "rent",
+  alsoRent: true,
   alsoSell: false,
   photos: [],
   interiorExtras: [],
   exteriorExtras: [],
   owner: "",
+  shareCom: false,
 };
 
 export default function PublishPage() {

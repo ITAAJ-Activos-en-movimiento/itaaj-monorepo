@@ -164,7 +164,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
                   })
                 }
               />
-              <span className={styles.suffix}>€/mes</span>
+              <span className={styles.suffix}>$/mes</span>
             </div>
           </div>
 
@@ -177,7 +177,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
                   onChange({ communityFeesIncluded: e.target.checked })
                 }
               />
-              Gastos de comunidad incluidos en el precio
+              Gastos de mantenimiento incluidos en el precio
             </label>
 
             <label className={styles.switchLabel}>
@@ -186,7 +186,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
                 checked={!!value.lowDeposit}
                 onChange={(e) => onChange({ lowDeposit: e.target.checked })}
               />
-              Se requiere menos de dos meses de fianza
+              Se requiere menos de dos meses de deposito
             </label>
           </div>
         </>
@@ -209,7 +209,32 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
           <span className={styles.suffix}>m²</span>
         </div>
       </div>
+      <div className={styles.formFieldFull}>
+        <label className={styles.switchLabel}>
+          <input
+            type="checkbox"
+            checked={value.shareCom}
+            onChange={(e) => onChange({ shareCom: e.target.checked })}
+          />
+          Comparto comisión
+        </label>
+      </div>
 
+      {value.shareCom && (
+        <>
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Porcentaje *</label>
+            <div className={styles.inputWithSuffix}>
+              <input
+                className={styles.input}
+                type="number"
+                placeholder="Ej. 10"
+              />
+              <span className={styles.suffix}>/procentaje</span>
+            </div>
+          </div>
+        </>
+      )}
       {/* Habitaciones / baños – como botones 0 1 2 3 4 +5 */}
       <div className={styles.inlineGroup}>
         <div className={styles.fieldGroup}>
@@ -253,34 +278,34 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
         <label className={styles.label}>Antigüedad</label>
         <select
           className={styles.select}
-          value={value.propertyType ?? ""}
+          value={value.age ?? ""}
           onChange={(e) => onChange({ propertyType: e.target.value || null })}
         >
           <option value="">Selecciona</option>
-          <option value="">Menos de 1 año</option>
-          <option value="">1 a 5 años</option>
-          <option value="">5 a 10 años</option>
-          <option value="">10 a 20 años</option>
-          <option value="">20 a 30 años</option>
-          <option value="">30 a 50 años</option>
-          <option value="">50 a 70 años</option>
-          <option value="">70 a 100 años</option>
-          <option value="">+100 años</option>
+          <option value="1">Menos de 1 año</option>
+          <option value="2">1 a 5 años</option>
+          <option value="3">5 a 10 años</option>
+          <option value="4">10 a 20 años</option>
+          <option value="5">20 a 30 años</option>
+          <option value="6">30 a 50 años</option>
+          <option value="7">50 a 70 años</option>
+          <option value="8">70 a 100 años</option>
+          <option value="9">+100 años</option>
         </select>
       </div>
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Estado del inmueble</label>
         <select
           className={styles.select}
-          value={value.propertyType ?? ""}
+          value={value.state ?? ""}
           onChange={(e) => onChange({ propertyType: e.target.value || null })}
         >
           <option value="">Selecciona</option>
-          <option value="">Casi nuevo</option>
-          <option value="">Muy bien</option>
-          <option value="">Bien</option>
-          <option value="">A reformar</option>
-          <option value="">Renovado</option>
+          <option value="1">Casi nuevo</option>
+          <option value="2">Muy bien</option>
+          <option value="3">Bien</option>
+          <option value="4">A reformar</option>
+          <option value="5">Renovado</option>
         </select>
       </div>
       {/* Aquí podrías agregar selects de antigüedad, estado, certificado, etc. */}

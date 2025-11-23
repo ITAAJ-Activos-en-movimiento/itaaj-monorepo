@@ -91,6 +91,10 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"location" jsonb,
 	"bathrooms_medium" varchar(255),
 	"price" integer,
+	"rentPrice" integer,
+	"lowDeposit" integer,
+	"alsoRent" boolean,
+	"alsoSell" boolean,
 	"floor" varchar(256),
 	"area" jsonb,
 	"garage" integer,
@@ -112,6 +116,7 @@ CREATE TABLE IF NOT EXISTS "properties" (
 	"development" uuid,
 	"created_at" timestamp DEFAULT now(),
 	"zipcode" integer,
+	"transactionType" varchar,
 	"floorPlans" varchar(256)[],
 	"status" varchar(256) DEFAULT 'active'
 );

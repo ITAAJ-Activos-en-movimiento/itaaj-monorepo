@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "5f0fb3c8-9495-4cc9-90e7-2fbe0a300f61",
-  "prevId": "2a0e55e7-9826-4ae9-9626-dcdcb5d921a7",
+  "id": "79244543-3ec9-49c3-9dd6-6ca9deb56b00",
+  "prevId": "e1077038-d9fc-43b1-bdd5-a90c3c1e05c8",
   "tables": {
     "developments": {
       "name": "developments",
@@ -559,7 +559,7 @@
         },
         "lowDeposit": {
           "name": "lowDeposit",
-          "type": "integer",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         },

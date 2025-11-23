@@ -1,0 +1,1 @@
+ALTER TABLE "properties" ALTER COLUMN "lowDeposit" SET DATA TYPE boolean;

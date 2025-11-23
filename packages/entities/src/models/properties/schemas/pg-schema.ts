@@ -28,7 +28,7 @@ export const properties = pgTable("properties", {
   bathrooms_medium: varchar("bathrooms_medium", { length: 255 }),
   price: integer("price"),
   rentPrice: integer("rentPrice"),
-  lowDeposit: integer("lowDeposit"),
+  lowDeposit: boolean("lowDeposit"),
   alsoRent: boolean('alsoRent'),
   alsoSell: boolean('alsoSell'),
   floor: varchar("floor", { length: 256 }),

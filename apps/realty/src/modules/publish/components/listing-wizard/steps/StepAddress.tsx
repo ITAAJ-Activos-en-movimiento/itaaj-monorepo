@@ -91,23 +91,6 @@ export const StepAddress: React.FC<StepAddressProps> = ({
               Ocultar dirección exacta (costo adicional)
             </label>
           </div>
-
-          <div className={styles.fieldGroup}>
-            <label className={styles.label}>Orientación</label>
-            <select
-              className={styles.select}
-              value={value.orientation ?? ""}
-              onChange={(e) =>
-                onChange({ orientation: e.target.value || null })
-              }
-            >
-              <option value="">Selecciona</option>
-              <option value="N">Norte</option>
-              <option value="S">Sur</option>
-              <option value="E">Este</option>
-              <option value="W">Oeste</option>
-            </select>
-          </div>
         </>
       )}
       <>

@@ -139,7 +139,7 @@ export const StepContact: React.FC<StepContactProps> = ({
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Teléfono (opcional)</label>
+        <label className={styles.label}>Teléfono</label>
         <input
           type="tel"
           className={styles.input}

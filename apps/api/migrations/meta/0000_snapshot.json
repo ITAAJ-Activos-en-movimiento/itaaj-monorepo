@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "2a0e55e7-9826-4ae9-9626-dcdcb5d921a7",
+  "id": "e1077038-d9fc-43b1-bdd5-a90c3c1e05c8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "developments": {
@@ -551,6 +551,30 @@
           "primaryKey": false,
           "notNull": false
         },
+        "rentPrice": {
+          "name": "rentPrice",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lowDeposit": {
+          "name": "lowDeposit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "alsoRent": {
+          "name": "alsoRent",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "alsoSell": {
+          "name": "alsoSell",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
         "floor": {
           "name": "floor",
           "type": "varchar(256)",
@@ -675,6 +699,12 @@
         "zipcode": {
           "name": "zipcode",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "transactionType": {
+          "name": "transactionType",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": false
         },
