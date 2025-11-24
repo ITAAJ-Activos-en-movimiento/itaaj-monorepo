@@ -6,18 +6,17 @@ import Image from "next/image";
 import { DivisaFormater } from "@/utils";
 import { Suspense } from "react";
 
-export const dynamic = "force-dynamic";
-
 type PageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function AdBoostPageContainer({ params }: PageProps) {
+  const { id } = await params;
   let listing: Property | null = null;
 
   try {
     const res = await fetch(
-      `${process.env.INTERNAL_API_BASE}/properties/${params.id}/listing`,
+      `${process.env.INTERNAL_API_BASE}/properties/${id}/listing`,
       {
         cache: "no-store",
         redirect: "manual",

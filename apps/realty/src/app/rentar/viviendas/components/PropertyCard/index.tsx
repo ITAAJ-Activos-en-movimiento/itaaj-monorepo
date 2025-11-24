@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import React from "react";
@@ -9,18 +9,22 @@ import { DivisaFormater, changeLanguage } from "@/utils";
 import { Mail } from "react-feather";
 
 const PropertyCard = (property: Property) => {
-const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${window.location.href} por la siguiente propiedad ${window.location.href}/:slug`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina por la siguiente propiedad slug`;
 
   return (
     <article className={styles.card}>
-      <Link title="" href={`viviendas/${property.slug}`} className={styles.carousel}>
+      <Link
+        title=""
+        href={`viviendas/${property.slug}`}
+        className={styles.carousel}
+      >
         <div className={styles.badge}>1/{property.images.length}</div>
         <div>
           <ul className={styles.image_list}>
             <li>
               <Image
                 alt="Foto casa"
-                src={property.images[0]}
+                src={property.images[0] ? property.images[0] : ""}
                 width={400}
                 height={400}
               />
@@ -47,36 +51,63 @@ const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te
         </div>
       </Link>
       <div className={styles.banner}>
-        <h4>Itaaj Realty - <span>Experto inmobiliario</span></h4>
+        <h4>
+          Itaaj Realty - <span>Experto inmobiliario</span>
+        </h4>
       </div>
-      <div className={styles.info} >
+      <div className={styles.info}>
         <Link title="" href={`viviendas/${property.slug}`}>
-            <h3 className={styles.header} >
-                <span className={styles.price_composite}>
-                    <span className={styles.price} >{ DivisaFormater({ value: property.price }) }</span>
-                    <span className={styles.time_ago}>Novedad</span>
-                </span>
-                <span className={styles.title} ><span className={styles.type}>{changeLanguage(property.type)}</span> en {property.city}, {property.state}</span>
-            </h3>
-            <ul className={styles.features} >
-                <li><i className="bx bx-bed"></i> {property.bedrooms} habs.</li>
-                <li><i className="bx bx-bath"></i> {property.bathrooms} baños</li>
-                <li><i className="bx bx-area"></i> {property.area.building_area} m² </li>
-                <li><i className="bx bx-building"></i> {property.floor} Piso</li>
-                <li><i className="bx bx-car-garage"></i> {property.garage} Estaciona...</li>
-            </ul>
-            <p className={styles.description} dangerouslySetInnerHTML={{ __html: property.description }}></p>      
+          <h3 className={styles.header}>
+            <span className={styles.price_composite}>
+              <span className={styles.price}>
+                {DivisaFormater({ value: property.price })}
+              </span>
+              <span className={styles.time_ago}>Novedad</span>
+            </span>
+            <span className={styles.title}>
+              <span className={styles.type}>
+                {changeLanguage(property.type)}
+              </span>{" "}
+              en {property.city}, {property.state}
+            </span>
+          </h3>
+          <ul className={styles.features}>
+            <li>
+              <i className="bx bx-bed"></i> {property.bedrooms} habs.
+            </li>
+            <li>
+              <i className="bx bx-bath"></i> {property.bathrooms} baños
+            </li>
+            <li>
+              <i className="bx bx-area"></i> {property.area.building_area} m²{" "}
+            </li>
+            <li>
+              <i className="bx bx-building"></i> {property.floor} Piso
+            </li>
+            <li>
+              <i className="bx bx-car-garage"></i> {property.garage}{" "}
+              Estaciona...
+            </li>
+          </ul>
+          <p
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: property.description }}
+          ></p>
         </Link>
 
-        <div className={styles.contact} >
-            <div>
+        <div className={styles.contact}>
+          <div>
             <button>
               <Mail size={18} /> Contactar{" "}
             </button>
-            <Link href={whatsappLink.replace(":slug", property.slug)} target="_blank">
-              <i style={{ fontSize: 18 }} className="bx bxl-whatsapp"></i> Mensaje
+            <Link
+              href={whatsappLink.replace(":slug", property.slug)}
+              target="_blank"
+            >
+              <i style={{ fontSize: 18 }} className="bx bxl-whatsapp"></i>{" "}
+              Mensaje
             </Link>
-            </div>
+          </div>
         </div>
       </div>
     </article>

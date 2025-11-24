@@ -1,26 +1,29 @@
-// import Image from 'next/image'
-import styles from './page.module.css'
-// import dynamic from 'next/dynamic'
-import { Banner, General, MostSearched, Publish, Questions, Way } from '@/sections'
-// import { Footer } from '@/components'
-import Developments from '@/sections/Home/Developments'
- 
+import styles from "./page.module.css";
+import {
+  Banner,
+  General,
+  MostSearched,
+  Publish,
+  Questions,
+  Way,
+} from "@/sections";
+import Developments from "@/sections/Home/Developments";
+import { Suspense } from "react";
+
 // const Header = dynamic(() => import('../components/Layout/Header'), { ssr: false })
 export default function Home() {
   return (
-    <>
-    <main className={styles.main}>
-    <Banner />
-    <Developments />
-    {/* <Exclusive /> */}
-    <Publish />
-    <General />
-    <Way />
-    <Questions />
-    <MostSearched />
-    </main>
-    </>
-    
-  )
+    <Suspense>
+      <main className={styles.main}>
+        <Banner />
+        <Developments />
+        {/* <Exclusive /> */}
+        <Publish />
+        <General />
+        <Way />
+        <Questions />
+        <MostSearched />
+      </main>
+    </Suspense>
+  );
 }
-

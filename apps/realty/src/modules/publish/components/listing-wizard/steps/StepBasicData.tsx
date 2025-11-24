@@ -181,11 +181,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
             </label>
 
             <label className={styles.switchLabel}>
-              <input
-                type="checkbox"
-                checked={!!value.lowDeposit}
-                onChange={(e) => onChange({ lowDeposit: e.target.checked })}
-              />
+              <input type="checkbox" />
               Se requiere menos de dos meses de deposito
             </label>
           </div>

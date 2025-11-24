@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from 'next/headers'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
 
   const response = NextResponse.next({
@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
   });
 
   if (request.nextUrl.pathname.startsWith("/dashboard")) {
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const token = cookieStore.get('tokene')?.value
     if (!token) return NextResponse.redirect(new URL("/", request.url));
     return response;

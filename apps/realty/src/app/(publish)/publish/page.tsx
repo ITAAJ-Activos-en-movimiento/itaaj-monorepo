@@ -33,7 +33,7 @@ export interface PublishFormData {
   salePrice?: number;
   rentPrice?: number;
   communityFeesIncluded?: boolean;
-  lowDeposit?: boolean;
+  lowDeposit?: number;
   builtArea?: number;
   bedrooms?: number;
   bathrooms?: number;
@@ -90,6 +90,7 @@ const INITIAL_DATA: PublishFormData = {
   exteriorExtras: [],
   owner: "",
   shareCom: false,
+  lowDeposit: 10,
 };
 
 export default function PublishPage() {

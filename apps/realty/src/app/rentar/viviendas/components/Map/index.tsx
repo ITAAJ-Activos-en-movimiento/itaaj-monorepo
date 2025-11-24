@@ -35,37 +35,39 @@ const Map = ({ properties }: { properties: any }) => {
 
   return (
     <APIProvider apiKey="AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg">
-        <MapView
-          style={{
-            position: "fixed",
-            top: 0,
-            right: 0,
-            width: "45%",
-            height: "100vh",
-            transition: "0.3s",
-            marginTop: mapOffset > 10 ? (mapOffset > 2600 ? -1200 : 0) : 116,
-          }}
-          defaultCenter={{
-            lat: properties.items[0]?.location.latitude,
-            lng: properties.items[0]?.location.longitude,
-          }}
-          defaultZoom={4}
-          gestureHandling={"greedy"}
-          disableDefaultUI={true}
-        >
-          {properties.items.map((property: any) => (
-            <Marker
+      <MapView
+        style={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          width: "45%",
+          height: "100vh",
+          transition: "0.3s",
+          marginTop: mapOffset > 10 ? (mapOffset > 2600 ? -1200 : 0) : 116,
+        }}
+        defaultCenter={{
+          lat: properties.items[0]?.location.latitude,
+          lng: properties.items[0]?.location.longitude,
+        }}
+        defaultZoom={4}
+        gestureHandling={"greedy"}
+        disableDefaultUI={true}
+      >
+        {properties.items.map((property: any) => (
+          <Marker
             key={property.id}
-              position={{
-                lat: property.location.latitude,
-                lng: property.location.longitude,
-              }}
-            />
-          ))}
-          <button onClick={closeMap} className={styles.btn_close} > <X color="var(--main-color)" size={24} /> </button>
-        </MapView>
+            position={{
+              lat: property.location?.latitude,
+              lng: property.location?.longitude,
+            }}
+          />
+        ))}
+        <button onClick={closeMap} className={styles.btn_close}>
+          {" "}
+          <X color="var(--main-color)" size={24} />{" "}
+        </button>
+      </MapView>
     </APIProvider>
-
   );
 };
 

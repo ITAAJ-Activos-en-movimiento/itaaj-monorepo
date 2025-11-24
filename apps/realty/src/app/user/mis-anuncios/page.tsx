@@ -5,6 +5,7 @@ import { Property } from "@itaaj/entities";
 import Image from "next/image";
 import { DivisaFormater } from "@/utils";
 import { redirect } from "next/navigation";
+import Delete from "./Delete";
 
 export const dynamic = "force-dynamic";
 
@@ -80,7 +81,7 @@ const MyAds = async () => {
                     {/* <button className={styles.primaryButton}>
                       Validar teléfono
                     </button> */}
-                    <button className={styles.iconButton}>Eliminar</button>
+                    <Delete id={listing.id} />
                     <button className={styles.iconButton}>Modificar</button>
                   </div>
                 </div>

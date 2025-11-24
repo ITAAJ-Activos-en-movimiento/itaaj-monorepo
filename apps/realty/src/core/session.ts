@@ -13,7 +13,7 @@ export type Session = { user: SessionUser } | null;
 
 export async function getServerSession(): Promise<Session> {
   try {
-    const cookieHeader = headers().get("cookie") ?? "";
+    const cookieHeader = (await headers()).get("cookie") ?? "";
 
     const res = await fetch(`${process.env.INTERNAL_API_BASE}/auth/session`, {
       headers: { cookie: cookieHeader },

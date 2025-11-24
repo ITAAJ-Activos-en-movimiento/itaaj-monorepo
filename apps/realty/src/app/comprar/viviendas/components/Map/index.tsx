@@ -31,8 +31,22 @@ const Map = ({ properties }: { properties: any }) => {
 
   const mapOffset = scrollTop * 0.5;
 
-  if (!isMapOpen) return null;
+  if (!isMapOpen) {
+    return (
+      <div style={{ display: "none" }} /> // mantiene vivo el mapa
+    );
+  }
 
+  useEffect(() => {
+    return () => {
+      const mapContainer = document.querySelector(".mapboxgl-map, .gm-style");
+      if (mapContainer && mapContainer.parentNode) {
+        try {
+          mapContainer.parentNode.removeChild(mapContainer);
+        } catch (_) {}
+      }
+    };
+  }, []);
   return (
     <APIProvider apiKey="AIzaSyDkIBMfRbprW49ISOGe6gS70OOVq79SnhI">
       <MapView
