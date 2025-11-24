@@ -8,6 +8,8 @@ import cookie from "@fastify/cookie";
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
   origin: "*",
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+
 };
 
 type Admin = {

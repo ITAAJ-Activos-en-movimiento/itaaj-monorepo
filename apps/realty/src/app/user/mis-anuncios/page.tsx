@@ -52,7 +52,7 @@ const MyAds = async () => {
             <h2 className={styles.sectionTitle}>Propiedades en venta</h2>
 
             {listings.map((listing: Property) => (
-              <article className={styles.listingCard}>
+              <article className={styles.listingCard} key={listing.id}>
                 <div className={styles.listingImageWrapper}>
                   {listing?.images?.[0] ? (
                     <Image

@@ -10,7 +10,7 @@ const Delete = ({ id }: { id: string }) => {
     try {
       setDeleting(true);
       const { data: res } = await axios.patch(
-        `https://itaaj-realty.onrender.com/api/v1/properties/${id}delete`,
+        `http://localhost:8000/api/v1/properties/${id}/delete`,
         {
           headers: {
             "api-key":
@@ -18,13 +18,17 @@ const Delete = ({ id }: { id: string }) => {
           },
         }
       );
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     } finally {
       setDeleting(false);
     }
   };
   return (
     <button onClick={handleDelete} className={styles.iconButton}>
-      Eliminar
+      {deleting ? "Eliminando" : "Eliminar"}
     </button>
   );
 };

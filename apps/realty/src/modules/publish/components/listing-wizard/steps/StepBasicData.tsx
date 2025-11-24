@@ -226,7 +226,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
                 type="number"
                 placeholder="Ej. 10"
               />
-              <span className={styles.suffix}>/procentaje</span>
+              <span className={styles.suffix}>%</span>
             </div>
           </div>
         </>
@@ -275,7 +275,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
         <select
           className={styles.select}
           value={value.age ?? ""}
-          onChange={(e) => onChange({ propertyType: e.target.value || null })}
+          onChange={(e) => onChange({ age: e.target.value || null })}
         >
           <option value="">Selecciona</option>
           <option value="1">Menos de 1 año</option>
@@ -294,7 +294,7 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
         <select
           className={styles.select}
           value={value.state ?? ""}
-          onChange={(e) => onChange({ propertyType: e.target.value || null })}
+          onChange={(e) => onChange({ state: e.target.value || null })}
         >
           <option value="">Selecciona</option>
           <option value="1">Casi nuevo</option>
