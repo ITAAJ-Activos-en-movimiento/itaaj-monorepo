@@ -70,7 +70,7 @@ const Properties = async ({
           {properties.items
             .filter(
               (property: PropertyOrDevelopment) =>
-                property.transactionType == "rent"
+                property.transactionType == "rent" || property.alsoRent
             )
             .map((property: PropertyOrDevelopment) => {
               if (property.itemType == "property") {

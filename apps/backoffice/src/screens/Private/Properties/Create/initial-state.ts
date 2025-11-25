@@ -10,7 +10,7 @@ const initialPropertyState = {
     city: '',
     state: '',
     country: '',
-    completedAddress: "" || false,
+    completedAddress: false,
     floor: '',
     street: '',
     garage: 0,
@@ -27,7 +27,10 @@ const initialPropertyState = {
     images: [],
     bathrooms: 0,
     bedrooms: 0,
-    categoty: "general"
+    categoty: "general",
+    alsoRent: false,
+    alsoSell: false
+
 
  
 }

@@ -11,17 +11,15 @@ import Cform from "@/components/Contacts/Cform";
 import Properties from "./Properties";
 import Share from "@/app/rentar/viviendas/[slug]/Share";
 
-const Development = async ({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
-  const development = await developmentApi(params.slug);
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+const Development = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const development = await developmentApi(slug);
   const properties = await propertiesByDevelopment(development.id);
-  const slug = params.slug;
-  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj Realty por la siguiente propiedad ${slug}`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj Realty por la siguiente propiedad`;
 
   return (
     <>
@@ -35,7 +33,11 @@ const Development = async ({
         <div className={styles.picture}>
           <span className={styles.tag}>OBRA NUEVA</span>
           <Image
-            src={development.images?.length > 2 ? development?.images[0] : ""}
+            src={
+              development.images?.length > 2
+                ? development?.images[0]
+                : "/house-placeholder.jpg"
+            }
             alt="Imagen numero 1 de la propiedad"
             width={800}
             height={800}

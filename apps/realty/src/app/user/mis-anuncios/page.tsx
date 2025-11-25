@@ -6,6 +6,7 @@ import Image from "next/image";
 import { DivisaFormater } from "@/utils";
 import { redirect } from "next/navigation";
 import Delete from "./Delete";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -67,6 +68,11 @@ const MyAds = async () => {
                 </div>
 
                 <div className={styles.listingInfo}>
+                  <span className={styles.percentage}>
+                    Procentaje compartido{" "}
+                    {listing.lowDeposit ? listing.lowDeposit : 20}%
+                  </span>
+
                   <div className={styles.listingHeader}>
                     <span className={styles.listingPrice}>
                       {DivisaFormater({ value: listing.price })} MXN
@@ -82,7 +88,14 @@ const MyAds = async () => {
                       Validar teléfono
                     </button> */}
                     <Delete id={listing.id} />
-                    <button className={styles.iconButton}>Modificar</button>
+                    <Link
+                      href={`/${
+                        listing.alsoRent ? "rentar" : "comprar"
+                      }/viviendas/${listing.slug}`}
+                      className={styles.iconButton}
+                    >
+                      Ver
+                    </Link>
                   </div>
                 </div>
               </article>

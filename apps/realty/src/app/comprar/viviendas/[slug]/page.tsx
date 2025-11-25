@@ -11,13 +11,14 @@ import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
 import { dateFormater } from "@/utils/date-formter";
-const Property = async ({
-  params,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
-  const property = await propertiesBySlug(params.slug.toString());
+
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+const Property = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const property = await propertiesBySlug(slug.toString());
   const properties = await propertiesApi({ page: 1, limit: 10004 });
 
   // const prevImage = () => {
@@ -28,7 +29,6 @@ const Property = async ({
   //   }
   //   setActualImage(property.images[actualImageIn])
   // }
-  console.log("PROP", property);
 
   // const nextImage = () => {
   //   const index = property.images.length;
@@ -62,7 +62,6 @@ const Property = async ({
 
   // if(loading) return <p>Cargando...</p>
 
-  console.log(property);
   return (
     <>
       <div className={styles.header}>
@@ -280,7 +279,7 @@ const Property = async ({
           </div>
         </div>
         <div className={styles.form_t}>
-          <Cform slug={"PROP@" + params.slug}>
+          <Cform slug={"PROP@" + slug}>
             <Link
               href={whatsappLink}
               target="_blank"

@@ -12,14 +12,14 @@ import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
 import { dateFormater } from "@/utils/date-formter";
 import { Suspense } from "react";
-const Property = async ({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
-  const property = await propertiesBySlug(params.slug.toString());
+
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+const Property = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const property = await propertiesBySlug(slug);
   const properties = await propertiesApi({ page: 1, limit: 10004 });
 
   // const prevImage = () => {
@@ -74,7 +74,7 @@ const Property = async ({
         {property?.images.slice(0, 5).map((img: string) => (
           <figure key={img}>
             <Image
-              src={img}
+              src={img ?? "/house-placeholder.jpg"}
               height="545"
               fetchPriority="high"
               loading="eager"
@@ -86,7 +86,7 @@ const Property = async ({
         {property?.images?.slice(5).map((img: string) => (
           <figure className={styles.more_imgs} key={img}>
             <Image
-              src={img}
+              src={img ?? "/house-placeholder.jpg"}
               height="545"
               fetchPriority="high"
               loading="eager"
@@ -117,7 +117,7 @@ const Property = async ({
               <i className="bx bx-bath"></i>
               <p>{property?.bathrooms} baños</p>
             </div>
-            {property?.area?.land_area.length > 0 && (
+            {property?.area?.land_area?.length > 0 && (
               <div>
                 <i className="bx bx-area"></i>
                 <p
@@ -129,7 +129,7 @@ const Property = async ({
                 </p>
               </div>
             )}
-            {property?.area.building_area.length > 0 && (
+            {property?.area?.building_area?.length > 0 && (
               <div>
                 <i className="bx bx-building-house"></i>
                 <p
@@ -144,7 +144,7 @@ const Property = async ({
             )}
           </div>
           <h2 className={styles.title_property}>
-            <strong>{changeLanguage(property?.type)}</strong> en venta en{" "}
+            <strong>{changeLanguage(property?.type)}</strong> en renta en{" "}
             {property?.city}
           </h2>
           <p
@@ -177,12 +177,12 @@ const Property = async ({
                 <h3>
                   De{" "}
                   {property?.antiquity?.toString().length == 3
-                    ? property?.antiquity.toString().substring(0, 1) +
+                    ? property?.antiquity?.toString().substring(0, 1) +
                       "-" +
-                      property?.antiquity.toString().substring(1)
-                    : property?.antiquity.toString().substring(0, 2) +
+                      property?.antiquity?.toString().substring(1)
+                    : property?.antiquity?.toString().substring(0, 2) +
                       "-" +
-                      property?.antiquity.toString().substring(2)}{" "}
+                      property?.antiquity?.toString().substring(2)}{" "}
                   años
                 </h3>
               </span>
@@ -279,7 +279,7 @@ const Property = async ({
           </div>
         </div>
         <div className={styles.form_t}>
-          <Cform slug={"PROP@" + params.slug}>
+          <Cform slug={"PROP@" + slug}>
             <Link
               href={whatsappLink}
               target="_blank"

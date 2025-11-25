@@ -225,6 +225,14 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
                 className={styles.input}
                 type="number"
                 placeholder="Ej. 10"
+                value={value.lowDeposit ?? 0}
+                onChange={(e) =>
+                  onChange({
+                    lowDeposit: e.target.value
+                      ? Number(e.target.value)
+                      : undefined,
+                  })
+                }
               />
               <span className={styles.suffix}>%</span>
             </div>

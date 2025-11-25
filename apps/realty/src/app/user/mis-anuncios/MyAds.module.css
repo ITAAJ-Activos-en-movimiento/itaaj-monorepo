@@ -103,6 +103,7 @@
   box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.06);
   overflow: hidden;
   padding: 1.6rem;
+  position: relative;
 }
 
 .listingImageWrapper {
@@ -300,6 +301,12 @@
   background: #f3f4ff;
 }
 
+.spin{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
 /* RESPONSIVE */
 
 @media (max-width: 1024px) {
@@ -319,4 +326,10 @@
   .productAside {
     align-items: flex-start;
   }
+}
+
+.percentage{
+  font-weight: 600;
+  position: absolute;
+  right: 20px;
 }

@@ -2,15 +2,18 @@
 import React, { useState } from "react";
 import styles from "./MyAds.module.css";
 import axios from "axios";
+import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Delete = ({ id }: { id: string }) => {
   const [deleting, setDeleting] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     try {
       setDeleting(true);
       const { data: res } = await axios.patch(
-        `http://localhost:8000/api/v1/properties/${id}/delete`,
+        `https://itaaj-realty.onrender.com/api/v1/properties/${id}/delete`,
         {
           headers: {
             "api-key":
@@ -19,16 +22,21 @@ const Delete = ({ id }: { id: string }) => {
         }
       );
 
-      console.log(res);
+      router.refresh();
     } catch (err) {
-      console.log(err);
     } finally {
       setDeleting(false);
     }
   };
   return (
     <button onClick={handleDelete} className={styles.iconButton}>
-      {deleting ? "Eliminando" : "Eliminar"}
+      {deleting ? (
+        <span className={styles.spin}>
+          <Loader size={18} /> Eliminando
+        </span>
+      ) : (
+        "Eliminar"
+      )}
     </button>
   );
 };

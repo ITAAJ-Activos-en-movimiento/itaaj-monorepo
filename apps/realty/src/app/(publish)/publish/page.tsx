@@ -125,6 +125,7 @@ export default function PublishPage() {
           area: { total_area: data.builtArea },
           status: "active",
           category: "general",
+          antiquity: data.age,
           location: {
             latitude: data.lat,
             longitude: data.lng,
