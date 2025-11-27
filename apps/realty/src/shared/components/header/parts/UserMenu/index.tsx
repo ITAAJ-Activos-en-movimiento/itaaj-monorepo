@@ -5,6 +5,7 @@ import styles from "./UserMenu.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Bell, Cog, Heart, Home, Mail, Trash } from "lucide-react";
+import { useLogout } from "@/modules/auth/hooks/useLogout";
 
 type User = {
   name?: string;
@@ -16,6 +17,7 @@ export const UserMenu = ({ user }: { user: User }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { logout, loading } = useLogout();
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -34,35 +36,36 @@ export const UserMenu = ({ user }: { user: User }) => {
       href: "/user/mis-anuncios",
     },
     {
-      label: "Mis listas",
-      icon: <Heart strokeWidth="1px" size={18} />,
-      href: "/lists",
+      label: "Otros anuncios compartidos",
+      icon: <Home strokeWidth="1px" size={18} />,
+      href: "/user/otros-anuncios",
     },
-    {
-      label: "Mis alertas",
-      icon: <Bell strokeWidth="1px" size={18} />,
-      href: "/alerts",
-    },
-    {
-      label: "Mis mensajes",
-      icon: <Mail strokeWidth="1px" size={18} />,
-      href: "/messages",
-    },
-    {
-      label: "Mi perfil",
-      icon: <Cog strokeWidth="1px" size={18} />,
-      href: "/profile",
-    },
-    {
-      label: "Mis descartados",
-      icon: <Trash strokeWidth="1px" size={18} />,
-      href: "/discarded",
-    },
+    // {
+    //   label: "Mis listas",
+    //   icon: <Heart strokeWidth="1px" size={18} />,
+    //   href: "/lists",
+    // },
+    // {
+    //   label: "Mis alertas",
+    //   icon: <Bell strokeWidth="1px" size={18} />,
+    //   href: "/alerts",
+    // },
+    // {
+    //   label: "Mis mensajes",
+    //   icon: <Mail strokeWidth="1px" size={18} />,
+    //   href: "/messages",
+    // },
+    // {
+    //   label: "Mi perfil",
+    //   icon: <Cog strokeWidth="1px" size={18} />,
+    //   href: "/profile",
+    // },
+    // {
+    //   label: "Mis descartados",
+    //   icon: <Trash strokeWidth="1px" size={18} />,
+    //   href: "/discarded",
+    // },
   ];
-
-  const handleLogout = () => {
-    router.push("/logout");
-  };
 
   return (
     <div className={styles.wrapper} ref={menuRef}>
@@ -104,7 +107,7 @@ export const UserMenu = ({ user }: { user: User }) => {
 
           <div className={styles.divider} />
 
-          <button className={styles.logoutButton} onClick={handleLogout}>
+          <button className={styles.logoutButton} onClick={logout}>
             ↩ Cerrar sesión
           </button>
         </div>

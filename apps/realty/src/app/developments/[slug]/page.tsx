@@ -160,7 +160,7 @@ const Development = async ({ params }: PageProps) => {
         </div>
 
         <Photos price={development.price} photos={development.images} />
-        <Modal property={development.uuid} />
+        <Modal property={development.id} />
       </div>
     </>
   );

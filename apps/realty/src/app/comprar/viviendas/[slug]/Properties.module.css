@@ -21,6 +21,12 @@
     cursor: pointer;
 }
 
+.list{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .mosaic_grid {
     grid-template-areas:
         "photo1 photo2 photo4"

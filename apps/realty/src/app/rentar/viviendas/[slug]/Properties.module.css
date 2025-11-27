@@ -21,6 +21,22 @@
     cursor: pointer;
 }
 
+
+.userInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfo span{
+  font-size: 1.4rem;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .mosaic_grid {
     grid-template-areas:
         "photo1 photo2 photo4"

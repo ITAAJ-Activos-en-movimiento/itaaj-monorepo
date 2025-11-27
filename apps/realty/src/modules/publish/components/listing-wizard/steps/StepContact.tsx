@@ -38,20 +38,32 @@ export const StepContact: React.FC<StepContactProps> = ({
     setIsMounted(true);
   }, []);
 
-  // 👉 Si ya viene logeado desde el server, rellenamos datos de contacto
   useEffect(() => {
     if (!loading && session?.user) {
       const user = session.user;
-      onChange({
-        contactEmail: value.contactEmail || user.email,
-        owner: user.id,
-      });
-      setIsAuthenticated(true);
+
+      const nextEmail = value.contactEmail || user.email;
+      const nextOwner = user.id;
+
+      if (value.contactEmail !== nextEmail || value.owner !== nextOwner) {
+        onChange({
+          contactEmail: nextEmail,
+          owner: nextOwner,
+        });
+      }
+
+      if (!isAuthenticated) {
+        setIsAuthenticated(true);
+      }
     }
-    // value lo usas solo para leer contactEmail en esta rama,
-    // no pasa nada si no lo pones en deps, pero si quieres ser estricto:
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, session, onChange]);
+  }, [
+    loading,
+    session,
+    value.contactEmail,
+    value.owner,
+    onChange,
+    isAuthenticated,
+  ]);
 
   const handleSubmit = async () => {
     await onSubmit();

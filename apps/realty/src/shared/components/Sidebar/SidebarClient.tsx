@@ -60,111 +60,111 @@ export function SidebarClient() {
         </div>
 
         <nav className={styles.section}>
-          <Link
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Ayuda y sugerencias
-          </Link>
+          </Link> */}
           <Link
-            href="/"
+            href="/comprar/viviendas"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Comprar
           </Link>
           <Link
-            href="/"
+            href="/rentar/viviendas"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Rentar
           </Link>
           <Link
-            href="/"
+            href="/vende-tu-propiedad"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Vender
           </Link>
           <Link
-            href="/"
+            href="/blog"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Actualidad
           </Link>
-          <Link
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Índice de precios
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Guia de barrios
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Novedades
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Buscador de inmobiliarias
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Tasacion online
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Hipotecas
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Publicadores profesionales
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Publicadores particulares
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Vende con agencia
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             href="/"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Itaaj Seguros
-          </Link>
+          </Link> */}
         </nav>
       </aside>
     </>

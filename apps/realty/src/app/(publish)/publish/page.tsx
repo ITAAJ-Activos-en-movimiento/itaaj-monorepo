@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styles from "./Publish.module.css";
 import { Stepper } from "@/modules/publish/components/listing-wizard/Stepper";
 import { StepBasicData } from "@/modules/publish/components/listing-wizard/steps/StepBasicData";
@@ -12,6 +12,10 @@ import { StepSelectType } from "@/modules/publish/components/listing-wizard/step
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+
+function generateRef() {
+  return Math.random().toString(36).substring(2, 8).toUpperCase(); // EJ: “A9X3ZB”
+}
 
 export type AdType =
   | "housing"
@@ -100,9 +104,9 @@ export default function PublishPage() {
 
   const router = useRouter();
 
-  const updateData = (partial: Partial<PublishFormData>) => {
+  const updateData = useCallback((partial: Partial<PublishFormData>) => {
     setData((prev) => ({ ...prev, ...partial }));
-  };
+  }, []);
 
   const next = () => {
     setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
@@ -115,11 +119,13 @@ export default function PublishPage() {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
+
+      const ref = generateRef();
       const { data: res } = await axios.post(
         "https://itaaj-realty.onrender.com/api/v1/properties",
         {
           ...data,
-          name: data.adType + " " + data.city + " " + data.transactionType,
+          name: `${data.adType} - ${data.city} · Ref-${ref}`,
           price: data.salePrice || data.rentPrice,
           images: data.photos,
           area: { total_area: data.builtArea },

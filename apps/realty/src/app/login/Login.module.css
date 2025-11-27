@@ -88,3 +88,101 @@
     height: 2.4rem;
     width: 2.4rem;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  background-color: #f8f8f8;
+}
+
+.content {
+  max-width: 40rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  margin-block: 4rem;
+  padding-block: 5rem;
+  padding-inline: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.googleBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.4rem;
+  border: 1px solid #000;
+  justify-content: center;
+  border-radius: 1rem;
+  padding-block: 0.8rem;
+}
+
+.googleBtn svg {
+  width: 1.8rem;
+}
+
+.btn {
+  background-color: #262e8e;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  padding-block: 1rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-block: 2rem;
+}
+
+.divider::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  border-bottom: 1px solid #dcdcdc;
+  margin-right: 0.5rem;
+  width: 150px;
+}
+
+.divider::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  border-bottom: 1px solid #dcdcdc;
+  margin-left: 0.5rem;
+  width: 150px;
+}
+
+.footer {
+  margin-top: 2rem;
+}
+
+.footer img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}

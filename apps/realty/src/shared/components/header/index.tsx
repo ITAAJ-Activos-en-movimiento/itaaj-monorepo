@@ -37,7 +37,7 @@ const Header = async () => {
           >
             Vender
           </Link>
-          <Link className={styles.link} title="Itaaj Life" href="/actualidad">
+          <Link className={styles.link} title="Itaaj Life" href="/blog">
             Actualidad
           </Link>
           <Link

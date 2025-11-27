@@ -25,7 +25,7 @@ const PostForm = ({ postToEdit = {}, onCloseModal }: Props) => {
   const [content, setContent] = useState("");
   const { user } = useUser();
   const { isLoading, url, uploadImage } = useUploadImage();
- 
+
   const { isCreating, createPost } = useCreatePost();
 
   const { formState: post, handleChange } = useForm(
@@ -35,7 +35,7 @@ const PostForm = ({ postToEdit = {}, onCloseModal }: Props) => {
           company: "",
           title: "",
           category: "",
-          author: user?.uuid,
+          author: user?.id,
           featuredImage: url,
           socialImage: url,
           language: "",

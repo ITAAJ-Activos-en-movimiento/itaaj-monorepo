@@ -47,7 +47,7 @@ const TableV1 = <T extends DataRecord>({
         </thead>
         <tbody>
           {data?.map((d) => (
-            <tr key={d.uuid}>
+            <tr key={d.id}>
               {headers.map((header) => (
                 <td key={header}>
                   {" "}
@@ -75,7 +75,7 @@ const TableV1 = <T extends DataRecord>({
           ))}
         </tbody>
       </table>
-       <div className={styles.table_footer}>
+      <div className={styles.table_footer}>
         <div className={styles.show}>
           <span>
             Showing {showInit}-{showEnd} of {count} results

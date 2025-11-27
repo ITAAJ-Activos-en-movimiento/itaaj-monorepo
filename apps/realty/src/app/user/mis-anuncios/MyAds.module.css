@@ -104,6 +104,7 @@
   overflow: hidden;
   padding: 1.6rem;
   position: relative;
+    margin-bottom: 2rem;
 }
 
 .listingImageWrapper {
@@ -332,4 +333,16 @@
   font-weight: 600;
   position: absolute;
   right: 20px;
+}
+
+.userInfo{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 10px;
+  top: 45px;
+}
+
+.userInfo span{
+  font-size: 1.4rem;
 }

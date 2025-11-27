@@ -11,6 +11,7 @@ import Modal from "@/containers/Modal";
 import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
 import { dateFormater } from "@/utils/date-formter";
+import SharePdf from "@/app/rentar/viviendas/[slug]/SharePdf";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -103,7 +104,10 @@ const Property = async ({ params }: PageProps) => {
             <p className={styles.price}>
               Precio {DivisaFormater({ value: property?.price })}
             </p>
-            <Share />
+            <div className={styles.list}>
+              <SharePdf slug={property.slug} />
+              <Share />
+            </div>
           </div>
           <Link href="?proposal=open" className={styles.price_sug}>
             <i className="bx bx-share-alt"></i> Realizar Propuesta
@@ -274,25 +278,25 @@ const Property = async ({ params }: PageProps) => {
               )
               .slice(0, 3)
               .map((property: any) => (
-                <PropertyCard key={property.uuid} {...property} />
+                <PropertyCard key={property.id} {...property} />
               ))}
           </div>
         </div>
         <div className={styles.form_t}>
-          <Cform slug={"PROP@" + slug}>
-            <Link
-              href={whatsappLink}
-              target="_blank"
-              className={styles.btn_whatsapp}
-            >
-              Escríbenos por Whatsapp
-            </Link>
-          </Cform>
+          {/* <Cform slug={"PROP@" + slug}> */}
+          <Link
+            href={whatsappLink}
+            target="_blank"
+            className={styles.btn_whatsapp}
+          >
+            Escríbenos por Whatsapp
+          </Link>
+          {/* </Cform> */}
         </div>
       </div>
-      <Modal property={property.uuid} />
+      <Modal property={property.id} />
 
-      {/* <Modal open={open} closeModal={() => setOpen(!open)} property={property.uuid} /> */}
+      {/* <Modal open={open} closeModal={() => setOpen(!open)} property={property.id} /> */}
     </>
   );
 };

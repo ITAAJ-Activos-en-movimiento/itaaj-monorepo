@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MyAds.module.css";
 import { getServerSession } from "@/core/session";
-import { Property } from "@itaaj/entities";
+import { Property, User } from "@itaaj/entities";
 import Image from "next/image";
 import { DivisaFormater } from "@/utils";
 import { redirect } from "next/navigation";
@@ -18,6 +18,8 @@ const MyAds = async () => {
   }
 
   let listings: Property[] = [];
+  let user: User;
+
   try {
     const res = await fetch(
       `${process.env.INTERNAL_API_BASE}/properties/user/${session.user.id}`,
@@ -27,8 +29,21 @@ const MyAds = async () => {
       }
     );
 
+    const res2 = await fetch(
+      `${process.env.INTERNAL_API_BASE}/users/${session.user.id}`,
+      {
+        cache: "no-store",
+        redirect: "manual",
+      }
+    );
+
     if (res.ok) {
       listings = (await res.json()) as Property[];
+    } else {
+      console.error("Error fetching user properties", res.status);
+    }
+    if (res2.ok) {
+      user = (await res2.json()) as User;
     } else {
       console.error("Error fetching user properties", res.status);
     }
