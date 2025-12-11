@@ -19,13 +19,13 @@ const PropertyCard = (property: Property) => {
         href={`viviendas/${property.slug}`}
         className={styles.carousel}
       >
-        <div className={styles.badge}>1/{property.images.length}</div>
+        <div className={styles.badge}>1/{property.images?.length}</div>
         <div>
           <ul className={styles.image_list}>
             <li>
               <Image
                 alt="Foto casa"
-                src={property.images[0]}
+                src={property?.images[0] || "/dummy.webp"}
                 width={400}
                 height={400}
               />
@@ -36,7 +36,7 @@ const PropertyCard = (property: Property) => {
           <div>
             <Image
               alt="Foto casa"
-              src={property.images[1]}
+              src={property.images[1] || "/dummy.webp"}
               width={400}
               height={400}
             />
@@ -44,7 +44,7 @@ const PropertyCard = (property: Property) => {
           <div>
             <Image
               alt="Foto casa"
-              src={property.images[2]}
+              src={property.images[2] || "/dummy.webp"}
               width={400}
               height={400}
             />

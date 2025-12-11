@@ -1,8 +1,10 @@
-// app/api/property-pdf/route.ts
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium-min";
+import puppeteer from "puppeteer-core";
 
 export const runtime = "nodejs";
+
+export const maxDuration = 60;
 
 type Property = {
   slug: string;
@@ -35,6 +37,32 @@ type User = {
   phone: string;
 };
 
+const isDev = process.env.NODE_ENV === "development";
+
+const CHROMIUM_PACK_URL =
+  "https://github.com/Sparticuz/chromium/releases/download/v141.0.0/chromium-v141.0.0-pack.x64.tar";
+
+
+async function getBrowser() {
+  if (isDev) {
+    // En desarrollo usa puppeteer completo instalado en tu máquina
+    const puppeteerDev = await import("puppeteer");
+    return puppeteerDev.default.launch({
+      headless: true,
+    });
+  }
+
+  chromium.setGraphicsMode = false;
+
+  const executablePath = await chromium.executablePath(CHROMIUM_PACK_URL);
+
+  return puppeteer.launch({
+    args: chromium.args,
+    executablePath,
+    headless: true,
+  });
+}
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");
@@ -44,7 +72,7 @@ export async function GET(req: Request) {
   }
 
   const apiBase = process.env.INTERNAL_API_BASE;
-  const publicBase = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const publicBase = process.env.NEXT_PUBLIC_APP_URL ?? "https://itaajrealty.com";
 
   if (!apiBase) {
     return NextResponse.json(
@@ -90,10 +118,8 @@ export async function GET(req: Request) {
   });
 
   // 4. Puppeteer
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+    const browser = await getBrowser();
+
 
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });

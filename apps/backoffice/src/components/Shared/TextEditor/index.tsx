@@ -1,6 +1,11 @@
+"use client";
+
 import styles from "./TextEditor.module.css";
 import ReactQuill, { ReactQuillProps } from "react-quill";
-import "quill/dist/quill.snow.css";
+
+// IMPORTANTE: importar el CSS de react-quill, no de quill
+import "react-quill/dist/quill.snow.css";
+
 interface Props extends ReactQuillProps {
   className?: string;
 }
@@ -18,10 +23,14 @@ const TOOLBAR_OPTIONS = [
 ];
 
 const TextEditor = ({ className, ...rest }: Props) => {
+  const containerClass =
+    className === "page" ? "container_page" : styles.container;
+
   return (
-    <div className={className == "page" ? "container_page" : styles.container}>
+    <div className={containerClass}>
       <ReactQuill
         {...rest}
+        theme="snow"
         modules={{ toolbar: TOOLBAR_OPTIONS }}
         className={styles.editor}
       />

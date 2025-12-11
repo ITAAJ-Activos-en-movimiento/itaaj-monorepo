@@ -1,12 +1,6 @@
+import Banner from "@/modules/home/sections/Banner";
 import styles from "./page.module.css";
-import {
-  Banner,
-  General,
-  MostSearched,
-  Publish,
-  Questions,
-  Way,
-} from "@/sections";
+import { General, MostSearched, Publish, Questions, Way } from "@/sections";
 import Developments from "@/sections/Home/Developments";
 import { Suspense } from "react";
 

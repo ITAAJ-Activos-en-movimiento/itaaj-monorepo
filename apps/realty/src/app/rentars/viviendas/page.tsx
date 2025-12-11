@@ -17,22 +17,20 @@ type PropertyOrDevelopment = Property &
 const Properties = async ({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
-  const tipo = searchParams?.tipo as string;
-  // const properties = await propertiesApi({ page: 1, limit: 14 });
-  const currentPage = Number(searchParams.page || 1);
+  const { search, tipo, page } = await searchParams;
 
-  const state = (searchParams?.search as string)
-    ? (searchParams?.search as string)
-    : undefined;
+  const state = (search as string) ? (search as string) : undefined;
+
   const properties = await propertiesDevelopments({
-    type: tipo,
-    page: Number(searchParams?.page || 1),
-    limit: 140,
+    type: tipo as string,
+    page: Number(page || 1),
+    limit: 14,
     state: state,
   });
 
+  console.log(properties);
   return (
     <Suspense>
       <Container>
@@ -52,7 +50,7 @@ const Properties = async ({
                 nueva{" "}
               </p>
 
-              <div className={styles.filter}>
+              {/* <div className={styles.filter}>
                 <p>
                   <Clock size={16} /> Ordenar:{" "}
                 </p>
@@ -63,7 +61,7 @@ const Properties = async ({
                   <option value="">Más grandes (más m2)</option>
                   <option value="">Más pequeños (menos m2)</option>
                 </select>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -80,11 +78,7 @@ const Properties = async ({
               }
             })}
 
-          <Pagination
-            pages={properties.pageInfo.pages}
-            currentPage={currentPage}
-            searchParams={searchParams}
-          />
+          <Pagination pages={properties.pageInfo.pages} />
         </div>
       </Container>
 

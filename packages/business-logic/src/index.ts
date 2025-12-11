@@ -14,3 +14,4 @@ export * from './posts';
 export * from './funnels';
 export * from './market-analysis';
 export * from './search';
+export * from './listings'

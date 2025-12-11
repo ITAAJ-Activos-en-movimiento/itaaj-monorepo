@@ -1,0 +1,27 @@
+.container{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.title{
+    font-size: 2.2rem;
+    padding-block: 2rem;
+}
+
+.options{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.options a{
+    display: block;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.options a.active{
+    border: 1px solid rgba(0, 0, 0, 1);
+}

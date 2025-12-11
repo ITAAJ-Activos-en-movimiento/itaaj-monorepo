@@ -19,14 +19,14 @@ const Header = async () => {
           <Link
             className={styles.link}
             title="Comprar casas en Mexico"
-            href="/comprar/viviendas"
+            href="/comprar/viviendas/mexico/todas-las-zonas/l"
           >
             Comprar
           </Link>
           <Link
             className={styles.link}
             title="Rentar casas en Mexico"
-            href="/rentar/viviendas"
+            href="/rentar/viviendas/mexico/todas-las-zonas/l"
           >
             Rentar
           </Link>
@@ -40,20 +40,20 @@ const Header = async () => {
           <Link className={styles.link} title="Itaaj Life" href="/blog">
             Actualidad
           </Link>
-          <Link
+          {/* <Link
             className={styles.link}
             title="Guia de Colonias"
             href="/guia-de-colonias"
           >
             Guia de Colonias
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             className={styles.link}
             title="Compara tu hipoteca"
             href="/hipotecas"
           >
             Hipotecas
-          </Link>
+          </Link> */}
         </nav>
       </div>
       <div className={styles.separator}>
