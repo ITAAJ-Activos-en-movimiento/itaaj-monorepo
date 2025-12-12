@@ -6,7 +6,7 @@ export type ListingType = 'SALE' | 'RENT_LONG' | 'RENT_SHORT' | 'RENT_TO_OWN' | 
 export type ListingStatus = 'DRAFT' | 'REVIEW' | 'PUBLISHED' | 'PAUSED' | 'EXPIRED' | 'WITHDRAWN';
 export type ISODateString = string;
 
-const toSlug = (value: string) => {
+export const toSlug = (value: string) => {
   return value
     ?.toLowerCase()
     .normalize("NFD")
@@ -35,7 +35,7 @@ export interface Listing  {
     city: string;
     state: string;
     country: string;
-
+propertyType: string;
     createdAt: Date;
     updatedAt: Date;
     modality?: 'FULL_PROPERTY' | 'ROOM_SHARE' | 'RENT_TO_OWN' | 'AUCTION' | 'BANK_OWNED';
@@ -45,7 +45,21 @@ const listingConver: { [key: string]: string } = {
   SALE: "comprar",
   RENT_LONG: "rentar",
 };
-
+const listingPt: { [key: string]: string } = {
+  Casa: "viviendas",
+  house: "viviendas",
+  Departamento: "viviendas",
+  DEPARTAMENTO: "viviendas",
+  Condominio: "viviendas",
+  Estudio: "viviendas",
+  null: "viviendas",
+  Loft: "viviendas",
+  apartment: "viviendas",
+  landscape: "terrenos",
+  Terreno: "terrenos",
+  other: "edificios",
+  Oficina: 'oficinas'
+};
 
 interface Params {
   transaction?: string;        
@@ -83,6 +97,7 @@ const {
     bedrooms,
     bathrooms,
   } = params;
+  console.log({propertyType})
 
 
   let resultProperties = await getDbInstance()
@@ -94,11 +109,10 @@ const {
       .select()
       .from(developments) as Development[];
 
-      console.log(resultProperties)
     let listings: Listing[] = [...resultProperties.map((property) => ({
        id: property._id,
        slug: property.slug,
-       type: property.alsoRent ? 'RENT_LONG' as ListingType: 'SALE'  as ListingType,
+       type: property.alsoRent == true ? 'RENT_LONG' as ListingType : 'SALE'  as ListingType,
        listingStatus: 'PUBLISHED' as ListingStatus,
        images: property.images,
        location: property.location,
@@ -107,7 +121,7 @@ const {
        city: property.city,
        country: property.country,
        state: property.state,
-
+       propertyType: property.type,
        description: property.description,
        createdAt: property.createdAt,
        updatedAt: property.updatedAt,
@@ -119,6 +133,8 @@ const {
        listingStatus: 'PUBLISHED' as ListingStatus,
        images: development.images,
        price: development.price,
+              propertyType: development.type,
+
        location: development.location,
               city: development.city,
        country: development.country,
@@ -128,9 +144,7 @@ const {
        createdAt: development.createdAt,
        updatedAt: development.updatedAt,
      }))];
-
-     console.log(city)
-     listings = listings.filter((listing) => toSlug(listing.city) == city || toSlug(listing.state) == city || toSlug(listing.country) == city).filter((listing) => listingConver[listing.type] === transaction)
+     listings = listings.filter((listing) => toSlug(listing.city) == city || toSlug(listing.state) == city || toSlug(listing.country) == city).filter((listing) => listingConver[listing.type] === transaction).filter((listing) => listingPt[listing.propertyType] === propertyType)
      const total = listings.length;
 
    const paginatedItems = listings.slice(offset, offset + pageSize);

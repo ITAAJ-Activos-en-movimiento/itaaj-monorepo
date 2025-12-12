@@ -306,15 +306,15 @@ const Property = async ({ params }: PageProps) => {
             </div>
           </div>
           <div className={styles.form_t}>
-            {/* <Cform slug={"PROP@" + slug}> */}
-            <Link
-              href={whatsappLink}
-              target="_blank"
-              className={styles.btn_whatsapp}
-            >
-              Escríbenos por Whatsapp
-            </Link>
-            {/* </Cform> */}
+            <Cform slug={"PROP@" + slug}>
+              <Link
+                href={whatsappLink}
+                target="_blank"
+                className={styles.btn_whatsapp}
+              >
+                Escríbenos por Whatsapp
+              </Link>
+            </Cform>
           </div>
         </div>
         <Modal property={property.id} />

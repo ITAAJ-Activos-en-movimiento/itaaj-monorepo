@@ -7,7 +7,15 @@ import Image from "next/image";
 import { Property } from "@itaaj/entities";
 import { DivisaFormater, changeLanguage } from "@/utils";
 import { Mail } from "react-feather";
-
+export const toSlug = (value: string) => {
+  return value
+    ?.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+};
 const PropertyCard = (property: Property) => {
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina https://itaajrealty.com`;
   // const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina ${window.location.href} por la siguiente propiedad ${window.location.href}/:slug`;
@@ -16,7 +24,9 @@ const PropertyCard = (property: Property) => {
     <article className={styles.card}>
       <Link
         title=""
-        href={`viviendas/${property.slug}`}
+        href={`/${property.transaction}/${property.propertyType}/${toSlug(
+          property.city
+        )}/${property.slug}/d`}
         className={styles.carousel}
       >
         <div className={styles.badge}>1/{property.images?.length}</div>
@@ -57,7 +67,12 @@ const PropertyCard = (property: Property) => {
         </h4>
       </div>
       <div className={styles.info}>
-        <Link title="" href={`viviendas/${property.slug}`}>
+        <Link
+          title=""
+          href={`/${property.transaction}/${property.propertyType}/${
+            toSlug(property.city) || "mexico"
+          }/${property.slug}/d`}
+        >
           <h3 className={styles.header}>
             <span className={styles.price_composite}>
               <span className={styles.price}>

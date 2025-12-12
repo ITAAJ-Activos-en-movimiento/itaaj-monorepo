@@ -36,6 +36,8 @@ export interface Property extends Base {
   slug: string;
   description: string;
   address: string;
+  transaction: string;
+  propertyType: string;
   city: string;
   state: string;
   country: string;

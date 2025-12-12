@@ -14,14 +14,15 @@ import { dateFormater } from "@/utils/date-formter";
 import SharePdf from "@/app/rentars/viviendas/[slug]/SharePdf";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ zone: string }>;
 };
 
 const Property = async ({ params }: PageProps) => {
-  const { slug } = await params;
-  const property = await propertiesBySlug(slug.toString());
-  const properties = await propertiesApi({ page: 1, limit: 10004 });
+  const { zone } = await params;
+  console.log(zone);
 
+  const property = await propertiesBySlug(zone.toString());
+  const properties = await propertiesApi({ page: 1, limit: 10004 });
   // const prevImage = () => {
   //   if(actualImageIn == 0){
   //     setActualImageIn(property.images.length - 1);
@@ -283,7 +284,7 @@ const Property = async ({ params }: PageProps) => {
           </div>
         </div>
         <div className={styles.form_t}>
-          <Cform slug={"PROP@" + slug}>
+          <Cform slug={"PROP@" + zone}>
             <Link
               href={whatsappLink}
               target="_blank"

@@ -9,7 +9,7 @@ import Modal from "@/containers/Modal";
 import Photos from "./Photos";
 import Cform from "@/components/Contacts/Cform";
 import Properties from "./Properties";
-import Share from "@/app/rentar/viviendas/[slug]/Share";
+import Share from "@/app/rentars/viviendas/[slug]/Share";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

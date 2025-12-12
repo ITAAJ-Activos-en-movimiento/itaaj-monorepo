@@ -39,7 +39,7 @@ export const propertiesByDevelopment = async (development: string) => {
 export const propertiesBySlug = async (slug: string) => {
   try {
     const response = await fetch(
-      `https://itaaj-realty.onrender.com/api/v1/property/${slug}`,
+      `${process.env.INTERNAL_API_BASE}/property/${slug}`,
       { cache: "no-store" }
     );
 

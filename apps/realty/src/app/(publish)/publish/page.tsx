@@ -50,6 +50,7 @@ export interface PublishFormData {
   // Paso 2 – dirección
   city?: string;
   street?: string;
+  country?: string;
   streetNumber?: string;
   hideExactAddress?: boolean;
   orientation?: string | null;
@@ -95,6 +96,7 @@ const INITIAL_DATA: PublishFormData = {
   owner: "",
   shareCom: false,
   lowDeposit: 10,
+  country: "Mexico",
 };
 
 export default function PublishPage() {

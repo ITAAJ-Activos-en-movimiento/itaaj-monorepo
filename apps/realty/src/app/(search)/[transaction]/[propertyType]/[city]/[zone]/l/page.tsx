@@ -10,6 +10,7 @@ import styles from "./Listings.module.css";
 import Link from "next/link";
 import { PropertyCard } from "@/app/comprars/viviendas/components";
 import Pagination from "@/app/comprars/viviendas/components/Pagination";
+import { Metadata, ResolvingMetadata } from "next";
 
 export type ListingType =
   | "SALE"
@@ -69,6 +70,7 @@ export interface Listing {
   expiresAt?: ISODateString | null;
   metadata?: Record<string, unknown> | null;
   location: Location;
+  city: string;
   createdAt: Date;
   updatedAt: Date;
   modality?:
@@ -90,6 +92,33 @@ interface PageProps {
   }>;
 }
 
+export async function generateMetadata(
+  { params, searchParams }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { transaction, propertyType, city, neighborhood } = await params;
+  const { page } = await searchParams;
+
+  const listings = (await listingsApi({
+    page: Number(page || 1),
+    limit: 14,
+    transaction,
+    city,
+  })) as Result<Listing>;
+  const title =
+    listings.count +
+    " " +
+    propertyType.charAt(0).toUpperCase() +
+    "" +
+    propertyType.slice(1) +
+    " en " +
+    listingContent[transaction] +
+    " en " +
+    slugToPrettyText(city);
+  return {
+    title: title,
+  };
+}
 const Listings = async ({ searchParams, params }: PageProps) => {
   const { transaction, propertyType, city, neighborhood } = await params;
   const { search, tipo, page } = await searchParams;
@@ -100,6 +129,7 @@ const Listings = async ({ searchParams, params }: PageProps) => {
     page: Number(page || 1),
     limit: 14,
     transaction,
+    propertyType,
     city,
   })) as Result<Listing>;
 
@@ -138,11 +168,13 @@ const Listings = async ({ searchParams, params }: PageProps) => {
         {filteredListings.map((listing, index) => (
           <PropertyCard
             key={listing.slug + index}
+            transaction={transaction}
+            propertyType={propertyType}
             name={""}
             slug={listing.slug}
             description={""}
             address={""}
-            city={""}
+            city={listing.city}
             state={""}
             country={""}
             neighborhood={""}

@@ -52,7 +52,7 @@ const MyAds = async () => {
   }
 
   const totalAds = listings.length;
-
+  console.log(listings);
   return (
     <div className={styles.page}>
       <header className={styles.header}>
