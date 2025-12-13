@@ -66,6 +66,23 @@ export const StepContact: React.FC<StepContactProps> = ({
   ]);
 
   const handleSubmit = async () => {
+    if (value.contactPhone && value.contactPhone?.length > 0) {
+      const res = await fetch(
+        `https://itaaj-realty.onrender.com/api/v1/users/${value.owner}`,
+        {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ phone: value.contactPhone }),
+        }
+      );
+
+      if (!res.ok) {
+        console.error(await res.text());
+        alert("No se pudo guardar el telefono.");
+        return;
+      }
+    }
+
     await onSubmit();
   };
 

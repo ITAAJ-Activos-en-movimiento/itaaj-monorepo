@@ -106,7 +106,7 @@ const MyAds = async () => {
                     <Link
                       href={`/${
                         listing.alsoRent ? "rentar" : "comprar"
-                      }/viviendas/${listing.slug}`}
+                      }/viviendas/mexico/${listing.slug}/d`}
                       className={styles.iconButton}
                     >
                       Ver

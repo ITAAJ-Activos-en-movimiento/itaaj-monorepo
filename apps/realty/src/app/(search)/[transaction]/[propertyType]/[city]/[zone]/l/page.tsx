@@ -103,6 +103,7 @@ export async function generateMetadata(
     page: Number(page || 1),
     limit: 14,
     transaction,
+    propertyType,
     city,
   })) as Result<Listing>;
   const title =
