@@ -20,7 +20,10 @@ const Developments: NextPage = async () => {
           </p>
           <Divider />
         </div>
-        <Link href="/comprar/viviendas" className={styles.btn}>
+        <Link
+          href="/comprar/viviendas/mexico/todas-las-zonas/l"
+          className={styles.btn}
+        >
           Mostrar todos los desarrollos
         </Link>
       </div>

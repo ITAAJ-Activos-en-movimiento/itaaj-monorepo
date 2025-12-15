@@ -189,6 +189,23 @@ export const StepBasicData: React.FC<StepBasicDataProps> = ({
       )}
 
       <div className={styles.fieldGroup}>
+        <label className={styles.label}>Superficie terreno *</label>
+        <div className={styles.inputWithSuffix}>
+          <input
+            className={styles.input}
+            type="number"
+            placeholder="Ej. 150"
+            value={value.totalArea ?? ""}
+            onChange={(e) =>
+              onChange({
+                totalArea: e.target.value ? Number(e.target.value) : undefined,
+              })
+            }
+          />
+          <span className={styles.suffix}>m²</span>
+        </div>
+      </div>
+      <div className={styles.fieldGroup}>
         <label className={styles.label}>Superficie construida *</label>
         <div className={styles.inputWithSuffix}>
           <input

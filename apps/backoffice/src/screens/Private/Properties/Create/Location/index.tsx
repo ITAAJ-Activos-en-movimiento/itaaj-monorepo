@@ -1,12 +1,26 @@
-import { Field, Input } from '@/components'
-import styles from './Location.module.css'
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
-import { useEffect } from 'react'
-import axios from 'axios'
+import { Field, Input } from "@/components";
+import styles from "./Location.module.css";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import { useEffect } from "react";
+import axios from "axios";
 
-const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handleChange}: any) => {
+const Location = ({
+  longitud,
+  latitud,
+  setLatitud,
+  setLongitud,
+  formState,
+  handleChange,
+}: any) => {
   const obtenerCoordenadas = () => {
-    const address = formState.address+' '+formState.city+' '+formState.state+' '+formState.country;
+    const address =
+      formState.address +
+      " " +
+      formState.city +
+      " " +
+      formState.state +
+      " " +
+      formState.country;
     const direccionFormateada = address.split(" ").join("+");
     const API_KEY = "AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg"; // Reemplaza con tu propia API key de Google Maps Geocoding API
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${direccionFormateada}&key=${API_KEY}`;
@@ -21,7 +35,7 @@ const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handle
           setLatitud(lat);
           setLongitud(lng);
         }
-        console.log({results})
+        console.log({ results });
       })
       .catch((error) => {
         console.error("Error al obtener las coordenadas", error);
@@ -31,68 +45,77 @@ const Location = ({longitud, latitud, setLatitud, setLongitud, formState, handle
   useEffect(() => {
     setTimeout(() => {
       obtenerCoordenadas();
-    }, 3000)
+    }, 3000);
   }, [formState]);
 
   return (
     <div className={styles.content}>
-    <h3>General details</h3>
-    <p className={styles.subtitle}>A brief description of these settings</p>
+      <h3>General details</h3>
+      <p className={styles.subtitle}>A brief description of these settings</p>
 
-    <Field label='Calle y Colonia'>
-        <Input  name='address' onChange={handleChange} />
-    </Field>
+      <Field label="Calle y Colonia">
+        <Input
+          value={formState.address}
+          name="address"
+          onChange={handleChange}
+        />
+      </Field>
 
-    <div className={styles.col}>
-
-    <Field label='Alcaldia/Municipio/Poblado'>
-        <Input name='city' onChange={handleChange} />
-    </Field>
-
-    <Field label='Estado'>
-        <Input name='state' onChange={handleChange} />
-    </Field>
-    </div>
-
-    <div className={styles.col}>
-
-    <Field label='Código postal'>
-        <Input name='zipcode' onChange={handleChange} />
-    </Field>
-
-    <Field label='País'>
-        <Input name='country' onChange={handleChange}  />
-    </Field>
-
-    <Field label="¿Deseas mostrar información exacta?">
-      <select  name="completedAddress" onChange={handleChange}>
-      <option value="false">No</option>
-        <option value="true">Si</option>
-      </select>
-
+      <div className={styles.col}>
+        <Field label="Alcaldia/Municipio/Poblado">
+          <Input value={formState.city} name="city" onChange={handleChange} />
         </Field>
-    </div>
-    {/* <Formulario formState={formState} latitud={latitud} longitud={longitud} setLatitud={setLatitud} setLongitud={setLongitud} /> */}
-  
-    <Field>
-    <LoadScript googleMapsApiKey="AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg">
+
+        <Field label="Estado">
+          <Input value={formState.state} name="state" onChange={handleChange} />
+        </Field>
+      </div>
+
+      <div className={styles.col}>
+        <Field label="Código postal">
+          <Input
+            value={formState.zipcode}
+            name="zipcode"
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field label="País">
+          <Input
+            value={formState.country}
+            name="country"
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field label="¿Deseas mostrar información exacta?">
+          <select name="completedAddress" onChange={handleChange}>
+            <option value="false">No</option>
+            <option value="true">Si</option>
+          </select>
+        </Field>
+      </div>
+      {/* <Formulario formState={formState} latitud={latitud} longitud={longitud} setLatitud={setLatitud} setLongitud={setLongitud} /> */}
+
+      <Field>
+        <LoadScript googleMapsApiKey="AIzaSyA5SAL5LaKBmpsUYh1KUkeGyBBIeWMtJEg">
           <GoogleMap
             mapContainerStyle={{ height: "500px", width: "100%" }}
             center={{ lat: latitud, lng: longitud }}
             zoom={18}
           >
-            <MarkerF icon={
-              {
-                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                scaledSize: { width: 50, height: 50, equals: () => true},
-              }
-            } position={{ lat: latitud, lng: longitud }} />
+            <MarkerF
+              icon={{
+                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                scaledSize: { width: 50, height: 50, equals: () => true },
+              }}
+              position={{ lat: latitud, lng: longitud }}
+            />
           </GoogleMap>
         </LoadScript>
-    </Field>
+      </Field>
+    </div>
+  );
+};
 
-</div>
-  )
-}
-
-export default Location
+export default Location;

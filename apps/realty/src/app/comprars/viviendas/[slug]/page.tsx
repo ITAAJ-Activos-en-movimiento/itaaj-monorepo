@@ -12,6 +12,7 @@ import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
 import { dateFormater } from "@/utils/date-formter";
 import SharePdf from "@/app/rentars/viviendas/[slug]/SharePdf";
+import { getServerSession } from "@/core/session";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -21,6 +22,7 @@ const Property = async ({ params }: PageProps) => {
   const { slug } = await params;
   const property = await propertiesBySlug(slug.toString());
   const properties = await propertiesApi({ page: 1, limit: 10004 });
+  const session = await getServerSession();
 
   // const prevImage = () => {
   //   if(actualImageIn == 0){
@@ -105,7 +107,12 @@ const Property = async ({ params }: PageProps) => {
               Precio {DivisaFormater({ value: property?.price })}
             </p>
             <div className={styles.list}>
-              <SharePdf slug={property.slug} />
+              {session?.user && (
+                <SharePdf
+                  slug={property.slug}
+                  userId={session?.user.id || ""}
+                />
+              )}
               <Share />
             </div>
           </div>

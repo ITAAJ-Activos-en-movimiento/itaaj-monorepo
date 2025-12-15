@@ -14,6 +14,7 @@ import { dateFormater } from "@/utils/date-formter";
 import { Suspense } from "react";
 import { User } from "@itaaj/entities";
 import SharePdf from "./SharePdf";
+import { getServerSession } from "@/core/session";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -24,6 +25,7 @@ const Property = async ({ params }: PageProps) => {
   console.log({ slug });
   const property = await propertiesBySlug(slug);
   const properties = await propertiesApi({ page: 1, limit: 10004 });
+  const session = await getServerSession();
 
   let user: User | null = null;
 
@@ -127,7 +129,7 @@ const Property = async ({ params }: PageProps) => {
                 Precio {DivisaFormater({ value: property?.price })}
               </p>
               <div className={styles.list}>
-                <SharePdf slug={slug} />
+                <SharePdf slug={slug} userId={session?.user.id || ""} />
                 <Share />
               </div>
             </div>

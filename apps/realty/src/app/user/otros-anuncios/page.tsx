@@ -8,6 +8,9 @@ import { redirect } from "next/navigation";
 import Delete from "./Delete";
 import Link from "next/link";
 import { propertiesDevelopments } from "@/services";
+function removeAccents(text: string): string {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 const ESTADOS_MEXICO = [
   "Aguascalientes",
   "Baja California",
@@ -47,18 +50,21 @@ type PropertyOrDevelopment = Property &
   Development & {
     itemType: "property" | "development";
   };
-const MyAds = async ({
-  searchParams,
-}: {
-  searchParams?: { state?: string };
-}) => {
+
+type PageProps = {
+  searchParams: Promise<{ state: string }>;
+};
+
+const MyAds = async ({ searchParams }: PageProps) => {
   const session = await getServerSession();
 
   if (!session?.user?.id) {
     redirect("/login");
   }
-  const estadoBuscado = (searchParams?.state ?? "").toLowerCase().trim();
+  const { state } = await searchParams;
+  const estadoBuscado = removeAccents((state ?? "").toLowerCase().trim());
 
+  console.log(estadoBuscado);
   let user: User;
   let usersById: Record<string, User> = {};
 
@@ -134,7 +140,7 @@ const MyAds = async ({
       <form className={styles.searchBar} method="GET">
         <select
           name="state"
-          defaultValue={searchParams?.state || ""}
+          defaultValue={state || ""}
           className={styles.searchInput}
         >
           <option value="">Todos los estados</option>
@@ -149,6 +155,8 @@ const MyAds = async ({
           Buscar
         </button>
       </form>
+      <button>Venta</button>
+      <button>Renta</button>
 
       <div className={styles.layout}>
         <main className={styles.mainColumn}>
@@ -163,7 +171,7 @@ const MyAds = async ({
 
                 const pasaEstado =
                   !estadoBuscado ||
-                  property.state?.toLowerCase() === estadoBuscado;
+                  removeAccents(property.city?.toLowerCase()) === estadoBuscado;
 
                 return pasaDepositoYOwner && pasaEstado;
               })
@@ -271,9 +279,9 @@ const MyAds = async ({
               Publica gratis hasta 2 anuncios de cada tipo (vivienda, garaje,
               etc.)
             </p>
-            <button className={styles.outlineButton}>
+            <Link href="/publish" className={styles.outlineButton}>
               Publicar otro anuncio
-            </button>
+            </Link>
           </section>
 
           <section className={styles.sideCard}>

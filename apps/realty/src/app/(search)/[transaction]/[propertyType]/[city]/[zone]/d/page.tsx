@@ -12,6 +12,7 @@ import Cform from "@/components/Contacts/Cform";
 import { properties as propertiesApi } from "@/services";
 import { dateFormater } from "@/utils/date-formter";
 import SharePdf from "@/app/rentars/viviendas/[slug]/SharePdf";
+import { getServerSession } from "@/core/session";
 
 type PageProps = {
   params: Promise<{ zone: string }>;
@@ -20,6 +21,7 @@ type PageProps = {
 const Property = async ({ params }: PageProps) => {
   const { zone } = await params;
   console.log(zone);
+  const session = await getServerSession();
 
   const property = await propertiesBySlug(zone.toString());
   const properties = await propertiesApi({ page: 1, limit: 10004 });
@@ -45,7 +47,9 @@ const Property = async ({ params }: PageProps) => {
   const whatsappLink =
     typeof window !== "undefined"
       ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina itaajrealty.com por la siguiente propiedad ${window.location.href}`
-      : `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina itaajrealty.com por la siguiente propiedad: https://itaajrealty.com/properties/${property.slug}`;
+      : `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina itaajrealty.com por la siguiente propiedad: https://itaajrealty.com/${
+          property.alsoRent == true ? "rentar" : "comprar"
+        }/viviendas/mexico/${property.slug}/d`;
 
   // const fetchData =  async() => {
   //   setLoading(true);
@@ -106,7 +110,12 @@ const Property = async ({ params }: PageProps) => {
               Precio {DivisaFormater({ value: property?.price })}
             </p>
             <div className={styles.list}>
-              <SharePdf slug={property.slug} />
+              {session?.user && (
+                <SharePdf
+                  slug={property.slug}
+                  userId={session?.user.id || ""}
+                />
+              )}{" "}
               <Share />
             </div>
           </div>

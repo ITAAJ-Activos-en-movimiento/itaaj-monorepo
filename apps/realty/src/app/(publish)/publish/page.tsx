@@ -39,6 +39,7 @@ export interface PublishFormData {
   communityFeesIncluded?: boolean;
   lowDeposit?: number;
   builtArea?: number;
+  totalArea?: number;
   bedrooms?: number;
   bathrooms?: number;
   age?: string | null;
@@ -130,7 +131,7 @@ export default function PublishPage() {
           name: `${data.adType} - ${data.city} · Ref-${ref}`,
           price: data.salePrice || data.rentPrice,
           images: data.photos,
-          area: { total_area: data.builtArea },
+          area: { building_area: data.builtArea, land_area: data.totalArea },
           status: "active",
           category: "general",
           antiquity: data.age,

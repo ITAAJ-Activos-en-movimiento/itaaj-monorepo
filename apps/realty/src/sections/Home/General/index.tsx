@@ -21,7 +21,10 @@ const General = async () => {
           <p>Viviendas en México</p>
           <Divider />
         </div>
-        <Link href="/" className={styles.btn}>
+        <Link
+          href="/comprar/viviendas/mexico/todas-las-zonas/l"
+          className={styles.btn}
+        >
           Mostrar todos los inmuebles
         </Link>
       </div>

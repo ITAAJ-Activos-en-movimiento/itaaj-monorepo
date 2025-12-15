@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 
-const SharePdf = ({ slug }: { slug: string }) => {
+const SharePdf = ({ slug, userId }: { slug: string; userId: string }) => {
   const [loading, setLoading] = useState(false);
 
   const handleDownload = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/pdf?slug=${encodeURIComponent(slug)}`);
+      const res = await fetch(
+        `/api/pdf?slug=${encodeURIComponent(slug)}&userId=${userId}`
+      );
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

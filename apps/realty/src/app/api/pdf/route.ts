@@ -18,9 +18,11 @@ type Property = {
   bedrooms?: number;
   bathrooms?: number;
   garage?: number;
+  alsoRent?: boolean;
   area?: {
     land_area?: string;
     building_area?: string;
+    total_area?: string;
   };
   blockchainId?: string;
   owner: string;
@@ -66,6 +68,8 @@ async function getBrowser() {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");
+  const userId = searchParams.get("userId");
+
 
   if (!slug) {
     return NextResponse.json({ error: "slug es requerido" }, { status: 400 });
@@ -99,7 +103,7 @@ export async function GET(req: Request) {
   // 2. Traer dueño
   let user: User | null = null;
   try {
-    const userRes = await fetch(`${apiBase}/users/${property.owner}`, {
+    const userRes = await fetch(`${apiBase}/users/${userId}`, {
       cache: "no-store",
     });
 
@@ -160,7 +164,7 @@ function buildPropertyPdfHtml({
   const otherImages = property.images?.slice(1, 4) ?? [];
 
   const fullTitle = `${property?.description?.slice(0, 70) ?? ""}`;
-  const fullAddress = `${property.address}, ${property.city}, ${property.country}`;
+  const fullAddress = `${property.city}, ${property.country}`;
   const price = new Intl.NumberFormat("es-MX", {
     style: "currency",
     currency: "MXN",
@@ -411,8 +415,6 @@ function buildPropertyPdfHtml({
   <div class="page">
     <header class="header">
       <div class="logo">
-        <img src="https://i.ibb.co/q35HxYtZ/isotipo.png" alt="Itaaj Realty" style="height: 22px;" />
-        <span>Itaaj Realty</span>
       </div>
       <div class="header-right">
         <div>Ficha de propiedad</div>
@@ -420,7 +422,7 @@ function buildPropertyPdfHtml({
       </div>
     </header>
 
-    <h1 class="title">${fullTitle || "Propiedad en renta"}</h1>
+    <h1 class="title">${fullTitle || "Propiedad"}</h1>
     <p class="subtitle">${fullAddress}</p>
 
     <main class="layout">
@@ -444,7 +446,6 @@ function buildPropertyPdfHtml({
             Código de propiedad: <strong>${property.blockchainId ?? "-"}</strong>
           </div>
           <div class="chips">
-            <span class="chip">Renta</span>
             <span class="chip">${property.city}</span>
             ${
               property.bedrooms
@@ -462,9 +463,9 @@ function buildPropertyPdfHtml({
             <div class="details-item">
               <span>Superficie terreno</span>
               <strong>${
-                property.area?.land_area
-                  ? property.area.land_area + " m²"
-                  : "N/D"
+                property.area?.total_area
+                  ? property.area.total_area + " m²"
+                  : property.area?.land_area ? property.area?.land_area  : "N/D"
               }</strong>
             </div>
             <div class="details-item">
@@ -481,7 +482,7 @@ function buildPropertyPdfHtml({
             </div>
             <div class="details-item">
               <span>Tipo de operación</span>
-              <strong>Renta</strong>
+              <strong>${property.alsoRent == true? 'Renta' : 'Venta'}</strong>
             </div>
           </div>
 
@@ -502,6 +503,8 @@ function buildPropertyPdfHtml({
           }
 
         </div>
+                  <p class="map-note" >${property?.description}</p>
+
       </section>
 
       <aside class="sidebar">

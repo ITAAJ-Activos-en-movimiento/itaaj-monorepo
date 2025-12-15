@@ -154,9 +154,9 @@ const MyAds = async () => {
               Publica gratis hasta 2 anuncios de cada tipo (vivienda, garaje,
               etc.)
             </p>
-            <button className={styles.outlineButton}>
+            <Link href="/publish" className={styles.outlineButton}>
               Publicar otro anuncio
-            </button>
+            </Link>
           </section>
 
           <section className={styles.sideCard}>
