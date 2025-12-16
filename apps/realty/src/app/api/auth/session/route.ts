@@ -22,7 +22,7 @@ export async function GET() {
       redirect: "manual",
     });
       const text = await upstream.text();
-  const res = new NextResponse(text, { status: upstream.status });
+      const res = new NextResponse(text, { status: upstream.status });
 
 
     return res;

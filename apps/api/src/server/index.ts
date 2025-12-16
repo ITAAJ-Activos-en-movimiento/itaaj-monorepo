@@ -7,8 +7,13 @@ import cookie from "@fastify/cookie";
 
 const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
-  origin: "*",
+  origin: [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://itaajrealty.com"
+  ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  credentials: true,
 
 };
 

@@ -31,7 +31,7 @@ const ProeprtyCard = ({
       <picture className={styles.picture}>
         <Image
           src={
-            images && images?.length > 2 ? images[0] : "/img-placeholder.jpg"
+            images && images?.length > 1 ? images[0] : "/img-placeholder.jpg"
           }
           width={1050}
           height={150}

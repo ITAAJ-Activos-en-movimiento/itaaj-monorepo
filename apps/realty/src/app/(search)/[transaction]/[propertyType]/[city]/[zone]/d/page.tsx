@@ -71,7 +71,7 @@ const Property = async ({ params }: PageProps) => {
   return (
     <>
       <div className={styles.header}>
-        <Link href="/comprar/viviendas">
+        <Link href="/comprar/viviendas/mexico/todas-las-zonas/l">
           <i className="bx bx-arrow-back"></i> Volver
         </Link>
       </div>
