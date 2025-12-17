@@ -41,6 +41,7 @@ const Login = () => {
 
       setIsAuthenticated(true);
       router.push(`/user/mis-anuncios`);
+      router.refresh();
     } catch (error) {
       console.error(error);
       alert("Error al iniciar sesión con Google.");

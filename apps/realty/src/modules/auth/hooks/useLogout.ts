@@ -12,9 +12,8 @@ export const useLogout = () => {
 
     setLoading(true);
     try {
-      await fetch("https://itaaj-realty.onrender.com/api/v1/auth/logout", {
+      await fetch("/api/auth/logout", {
         method: "POST",
-        credentials: "include",
       });
 
       localStorage.removeItem("user");

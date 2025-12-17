@@ -151,7 +151,9 @@ export const StepAddress: React.FC<StepAddressProps> = ({
               type="button"
               className={styles.primaryButton}
               onClick={handleNext}
-              disabled={!value.street || !value.streetNumber}
+              disabled={
+                !value.street || !value.streetNumber || !value.lat || !value.lng
+              }
             >
               Siguiente
             </button>

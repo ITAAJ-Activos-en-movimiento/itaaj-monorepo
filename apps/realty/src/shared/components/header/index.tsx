@@ -57,30 +57,30 @@ const Header = async () => {
         </nav>
       </div>
       <div className={styles.separator}>
-        <Link
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Bell strokeWidth="1.5px" size={16} />
           <span>Mis alertas</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Heart strokeWidth="1.5px" size={16} />
           <span>Mis listas</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Megaphone strokeWidth="1.5px" size={16} />
           <span>Nuevos para ti</span>
-        </Link>
+        </Link> */}
         <div className={styles.buttons}>
           <Link
             className={`${styles.link} ${styles.publishBtn} `}
