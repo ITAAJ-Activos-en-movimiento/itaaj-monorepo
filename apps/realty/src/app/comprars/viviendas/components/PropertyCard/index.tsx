@@ -95,7 +95,7 @@ const PropertyCard = (property: Property) => {
               <i className="bx bx-bath"></i> {property.bathrooms} baños
             </li>
             <li>
-              <i className="bx bx-area"></i> {property.area.building_area} m²{" "}
+              <i className="bx bx-area"></i> {property.area.total_area} m²{" "}
             </li>
             <li>
               <i className="bx bx-building"></i> {property.floor} Piso

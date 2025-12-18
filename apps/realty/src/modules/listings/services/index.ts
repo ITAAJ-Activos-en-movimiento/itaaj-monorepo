@@ -1,7 +1,26 @@
-export const listings = async ({ page, limit, transaction, propertyType, city }: { page: number, limit: number, transaction: string, propertyType: string, city: string }) => {
+type ListingsQuery = {
+  page: number;
+  limit: number;
+  transaction: string;
+  propertyType: string;
+  city: string;
+  order?: string;
+};
+
+export const listings = async (query: ListingsQuery) => {
   try {
+      const params = new URLSearchParams();
+
+  params.set("page", String(query.page));
+  params.set("limit", String(query.limit));
+  params.set("transaction", query.transaction);
+  params.set("propertyType", query.propertyType);
+  params.set("city", query.city);
+
+    if (query.order) params.set("order", query.order);
+
     const response = await fetch(
-      `${process.env.INTERNAL_API_BASE}/listings?page=${page}&limit=${limit}&transaction=${transaction}&city=${city}&propertyType=${propertyType}`,
+      `${process.env.INTERNAL_API_BASE}/listings?${params.toString()}`,
     );
 
     if (!response.ok) {

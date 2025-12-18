@@ -1,5 +1,6 @@
 import { listings, listings as listingsApi } from "@/modules/listings/services";
 import {
+  Area,
   Category,
   Location,
   PropertyType,
@@ -11,6 +12,8 @@ import Link from "next/link";
 import { PropertyCard } from "@/app/comprars/viviendas/components";
 import Pagination from "@/app/comprars/viviendas/components/Pagination";
 import { Metadata, ResolvingMetadata } from "next";
+import { Clock } from "lucide-react";
+import { OrderSelect } from "@/modules/listings/components/OrderSelect";
 
 export type ListingType =
   | "SALE"
@@ -54,6 +57,10 @@ function slugToPrettyText(slug: string): string {
 }
 
 export interface Listing {
+  garage: number;
+  bathrooms: number;
+  bedrooms: number;
+  area: Area;
   organizationId?: string;
   propertyId?: string | null;
   slug: string;
@@ -97,7 +104,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { transaction, propertyType, city, neighborhood } = await params;
-  const { page } = await searchParams;
+  const { page, order } = await searchParams;
 
   const listings = (await listingsApi({
     page: Number(page || 1),
@@ -105,7 +112,9 @@ export async function generateMetadata(
     transaction,
     propertyType,
     city,
+    order: typeof order === "string" ? order : undefined,
   })) as Result<Listing>;
+
   const title =
     listings.count +
     " " +
@@ -122,9 +131,7 @@ export async function generateMetadata(
 }
 const Listings = async ({ searchParams, params }: PageProps) => {
   const { transaction, propertyType, city, neighborhood } = await params;
-  const { search, tipo, page } = await searchParams;
-
-  console.log(transaction, propertyType, city, neighborhood);
+  const { search, tipo, page, order } = await searchParams;
 
   const listings = (await listingsApi({
     page: Number(page || 1),
@@ -132,6 +139,7 @@ const Listings = async ({ searchParams, params }: PageProps) => {
     transaction,
     propertyType,
     city,
+    order: typeof order === "string" ? order : undefined,
   })) as Result<Listing>;
 
   const buildUrl = (newTransaction: string) => {
@@ -143,90 +151,107 @@ const Listings = async ({ searchParams, params }: PageProps) => {
   const filteredListings = listings.items;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>
-          {listings.count}{" "}
-          {propertyType.charAt(0).toUpperCase() + propertyType.slice(1)} en{" "}
-          {listingContent[transaction]} en {slugToPrettyText(city)}
-        </h1>
-        <div className={styles.options}>
-          <Link
-            className={transaction == "comprar" ? styles.active : ""}
-            href={buildUrl("comprar")}
-          >
-            Comprar
-          </Link>
-          <Link
-            className={transaction == "rentar" ? styles.active : ""}
-            href={buildUrl("rentar")}
-          >
-            Rentar
-          </Link>
+    <>
+      {propertyType == "viviendas" && (
+        <div className={styles.mainHeader}>
+          <select name="" id="">
+            <option value="">Tipo de vivienda</option>
+            <option value="Casa">Casa</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Loft">Departamento</option>
+            <option value="Estudio">Estudio</option>
+            <option value="Condominio">Condominio</option>
+          </select>
         </div>
+      )}
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>
+            {listings.count}{" "}
+            {propertyType.charAt(0).toUpperCase() + propertyType.slice(1)} en{" "}
+            {listingContent[transaction]} en {slugToPrettyText(city)}
+          </h1>
+          <div className={styles.subheader}>
+            <div className={styles.options}>
+              <Link
+                className={transaction == "comprar" ? styles.active : ""}
+                href={buildUrl("comprar")}
+              >
+                Comprar
+              </Link>
+              <Link
+                className={transaction == "rentar" ? styles.active : ""}
+                href={buildUrl("rentar")}
+              >
+                Rentar
+              </Link>
+            </div>
+            <div className={styles.order}>
+              <Clock strokeWidth="1.5px" />
+              <p>Ordenar:</p>
+              <OrderSelect styles={styles} />
+            </div>
+          </div>
+        </div>
+        <div>
+          {filteredListings.map((listing, index) => (
+            <PropertyCard
+              key={listing.slug + index}
+              transaction={transaction}
+              propertyType={propertyType}
+              name={""}
+              slug={listing.slug}
+              description={""}
+              address={""}
+              city={listing.city}
+              state={""}
+              country={""}
+              neighborhood={""}
+              street={""}
+              external_number={""}
+              internal_number={""}
+              price={listing.price}
+              rentPrice={listing.price}
+              lowDeposit={0}
+              alsoRent={false}
+              alsoSell={false}
+              garage={listing.garage || 0}
+              images={
+                listing.images || ["/dummy.webp", "/dummy.webp", "/dummy.webp"]
+              }
+              amenities={[]}
+              bedrooms={listing.bedrooms}
+              bathrooms={listing.bathrooms}
+              bathroomsMedium={0}
+              completedAddress={false}
+              image={""}
+              owner={""}
+              virtualTourUrl={""}
+              video={""}
+              antiquity={0}
+              propertyStatus={""}
+              blockchainId={""}
+              partner={""}
+              development={""}
+              floorPlans={[]}
+              floor={""}
+              zipcode={0}
+              uuid={""}
+              id={""}
+              location={listing.location}
+              transactionType={"rent"}
+              area={listing.area}
+              type={PropertyType.HOUSE}
+              category={Category.EXCLUSIVE}
+              status={StatusType.ACTIVE}
+              createdAt={listing.createdAt}
+              updatedAt={listing.updatedAt}
+            />
+          ))}
+        </div>
+        <Pagination pages={listings.pageInfo.pages} />
       </div>
-      <div>
-        {filteredListings.map((listing, index) => (
-          <PropertyCard
-            key={listing.slug + index}
-            transaction={transaction}
-            propertyType={propertyType}
-            name={""}
-            slug={listing.slug}
-            description={""}
-            address={""}
-            city={listing.city}
-            state={""}
-            country={""}
-            neighborhood={""}
-            street={""}
-            external_number={""}
-            internal_number={""}
-            price={listing.price}
-            rentPrice={listing.price}
-            lowDeposit={0}
-            alsoRent={false}
-            alsoSell={false}
-            garage={0}
-            images={
-              listing.images || ["/dummy.webp", "/dummy.webp", "/dummy.webp"]
-            }
-            amenities={[]}
-            bedrooms={0}
-            bathrooms={0}
-            bathroomsMedium={0}
-            completedAddress={false}
-            image={""}
-            owner={""}
-            virtualTourUrl={""}
-            video={""}
-            antiquity={0}
-            propertyStatus={""}
-            blockchainId={""}
-            partner={""}
-            development={""}
-            floorPlans={[]}
-            floor={""}
-            zipcode={0}
-            uuid={""}
-            id={""}
-            location={listing.location}
-            transactionType={"rent"}
-            area={{
-              building_area: 0,
-              land_area: 0,
-              total_area: 0,
-            }}
-            type={PropertyType.HOUSE}
-            category={Category.EXCLUSIVE}
-            status={StatusType.ACTIVE}
-            createdAt={listing.createdAt}
-            updatedAt={listing.updatedAt}
-          />
-        ))}
-      </div>
-      <Pagination pages={listings.pageInfo.pages} />
-    </div>
+    </>
   );
 };
 

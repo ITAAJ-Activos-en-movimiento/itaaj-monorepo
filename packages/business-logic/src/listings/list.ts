@@ -1,5 +1,5 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { Base, Development, Result, StatusType, developments, properties, Property, Location } from "@itaaj/entities";
+import { Base, Development, Result, StatusType, developments, properties, Property, Location, Area } from "@itaaj/entities";
 import { and, eq, gte, lte, or, sql } from "drizzle-orm";
 
 export type ListingType = 'SALE' | 'RENT_LONG' | 'RENT_SHORT' | 'RENT_TO_OWN' | 'AUCTION' | 'ROOM_RENT';
@@ -38,6 +38,7 @@ export interface Listing  {
 propertyType: string;
     createdAt: Date;
     updatedAt: Date;
+    area:Area,
     modality?: 'FULL_PROPERTY' | 'ROOM_SHARE' | 'RENT_TO_OWN' | 'AUCTION' | 'BANK_OWNED';
 }
 
@@ -60,12 +61,11 @@ const listingPt: { [key: string]: string } = {
   other: "edificios",
   Oficina: 'oficinas'
 };
-
 interface Params {
-  transaction?: string;        
-  propertyType?: string;       
-  city?: string;               
-  neighborhood?: string;       
+  transaction?: string;
+  propertyType?: string;
+  city?: string;
+  neighborhood?: string;
   page?: number;
   limit?: number;
   search?: string;
@@ -75,6 +75,86 @@ interface Params {
   maxPrice?: number;
   bedrooms?: number;
   bathrooms?: number;
+  order?: ListingOrder | string;
+}
+
+export type ListingOrder =
+  | "score"
+  | "recent"
+  | "price_asc"
+  | "price_desc"
+  | "area_desc"
+  | "area_asc"
+  | "ppm2_asc";
+
+  function toTime(d?: string | Date | null) {
+  if (!d) return 0;
+  if (d instanceof Date) return d.getTime();
+  const t = Date.parse(d);
+  return Number.isFinite(t) ? t : 0;
+}
+
+function num(v: unknown): number {
+  const n = typeof v === "number" ? v : typeof v === "string" ? Number(v) : NaN;
+  return Number.isFinite(n) ? n : 0;
+}
+
+// Si no tienes área real, intenta desde metadata.
+// Ajusta las keys a tu data real cuando la tengas.
+function getTotalArea(listing: Listing): number {
+  const meta = (listing.area ?? {}) as any;
+  return (
+    num(meta.total_area) ||
+    0
+  );
+}
+
+function getPricePerM2(listing: Listing): number {
+  const area = getTotalArea(listing);
+  if (!area) return Number.POSITIVE_INFINITY;
+  return listing.price / area;
+}
+
+function normalizeOrder(order?: string): ListingOrder {
+  const o = (order ?? "score").toString();
+  const allowed: ListingOrder[] = [
+    "score",
+    "recent",
+    "price_asc",
+    "price_desc",
+    "area_desc",
+    "area_asc",
+    "ppm2_asc",
+  ];
+  return (allowed as string[]).includes(o) ? (o as ListingOrder) : "score";
+}
+
+function sortListings(items: Listing[], order?: string): Listing[] {
+  const o = normalizeOrder(order);
+
+  switch (o) {
+    case "recent":
+      return items.sort((a, b) => toTime(b.updatedAt) - toTime(a.updatedAt));
+
+    case "price_asc":
+      return items.sort((a, b) => a.price - b.price);
+
+    case "price_desc":
+      return items.sort((a, b) => b.price - a.price);
+
+    case "area_desc":
+      return items.sort((a, b) => getTotalArea(b) - getTotalArea(a));
+
+    case "area_asc":
+      return items.sort((a, b) => getTotalArea(a) - getTotalArea(b));
+
+    case "ppm2_asc":
+      return items.sort((a, b) => getPricePerM2(a) - getPricePerM2(b));
+
+    case "score":
+    default:
+      return items;
+  }
 }
 
 export const getAllListings = async (params: Params): Promise<Result<Listing>> => {
@@ -97,8 +177,6 @@ const {
     bedrooms,
     bathrooms,
   } = params;
-  console.log({propertyType})
-
 
   let resultProperties = await getDbInstance()
     .select()
@@ -125,6 +203,10 @@ const {
        description: property.description,
        createdAt: property.createdAt,
        updatedAt: property.updatedAt,
+       area: property.area,
+       bedrooms: property.bedrooms,
+       bathrooms: property.bathrooms,
+       garage: property.garage
 
      })), ...resultDevelopments.map((development) => ({
        id: development._id,
@@ -143,9 +225,18 @@ const {
         description: development.description,
        createdAt: development.createdAt,
        updatedAt: development.updatedAt,
+              area: development.area,
+                   bedrooms: development.bedrooms,
+       bathrooms: development.bathrooms,
+              garage: development.garage
+
      }))];
-     listings = listings.filter((listing) => toSlug(listing.city) == city || toSlug(listing.state) == city || toSlug(listing.country) == city).filter((listing) => listingConver[listing.type] === transaction).filter((listing) => listingPt[listing.propertyType] === propertyType)
-     const total = listings.length;
+  listings = listings
+    .filter((listing) => toSlug(listing.city) == city || toSlug(listing.state) == city || toSlug(listing.country) == city)
+    .filter((listing) => listingConver[listing.type] === transaction)
+    .filter((listing) => listingPt[listing.propertyType] === propertyType);     
+    const total = listings.length;
+  listings = sortListings(listings, params.order);
 
    const paginatedItems = listings.slice(offset, offset + pageSize);
 
