@@ -1,28 +1,42 @@
-import Field from "@/components/Shared/Field";
-import styles from "./Signin.module.css";
-import Input from "@/components/Shared/Input";
-import { Lock, User } from "react-feather";
-const Signin = () => {
-  return (
-    <div className={styles.container}>
-      <form>
-        <h2>Welcome</h2>
-        <p>Login with your username and password</p>
+import { Button, Input } from '@/components';
+import styles from './Login.module.css';
+import { Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-        <Field label="Username">
-          <Input icon={<User size={30} />} placeholder="Username" />
-        </Field>
-        <Field label="Password">
-          <Input
-            icon={<Lock size={30} />}
-            type="password"
-            placeholder="Password"
-          />
-        </Field>
-        <button className={styles.login}>Log In</button>
-      </form>
-    </div>
-  );
-};
+const Login = () => {
+    return (
+        <>
+            <title>¡Hola! Bienvenido a Itaaj Realty Pro</title>
+            <div className={styles.container} >
 
-export default Signin;
+                <header className={styles.header} >
+                    <h2>Itaaj Realty Pro</h2>
+                    <Link to='/'>Ayuda</Link>
+                </header>
+                <h1 className={styles.mainTitle} >¡Hola! Bienvenido a Itaaj Realty Pro</h1>
+                <div className={styles.content} >
+                    <h2 className={styles.title}>Inicia sesión en tu cuenta</h2>
+                    <p className={styles.desc}>Panel de acceso clientes Itaaj Realty. Si aún no es cliente, contáctenos para solicitar su acceso</p>
+
+                    <form action="" className={styles.form} >
+                        <Input icon={<Mail strokeWidth='1px' size={20} />} placeholder='josealvarez@email.com' />
+                        <Button className={styles.btn} >Continuar</Button>
+                    </form>
+                    <p className={styles.information}><strong>¿Aún no eres cliente?</strong> <Link to='/'>Pedir más información</Link> y empieza a disfrutar de una gestión mucho más eficiente.</p>
+                </div>
+                <div className={styles.doubt} >
+                    <picture >
+                        <img src="/images/login/service-desk.svg" alt="Tienes dudas?" width={40} />
+                    </picture>
+                    <div>
+                        <h3>¿Tienes dudas?</h3>
+                        <p>
+                            Envíanos un email o llámanos al +52 1 999 547 1508.</p>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default Login

@@ -68,14 +68,14 @@ export function SidebarClient() {
             Ayuda y sugerencias
           </Link> */}
           <Link
-            href="/comprar/viviendas"
+            href="/comprar/viviendas/mexico/todas-las-zonas/l"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >
             Comprar
           </Link>
           <Link
-            href="/rentar/viviendas"
+            href="/rentar/viviendas/mexico/todas-las-zonas/l"
             className={styles.link}
             onClick={() => setSidebarOpen(false)}
           >

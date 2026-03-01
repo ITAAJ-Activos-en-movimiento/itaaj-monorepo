@@ -9,6 +9,7 @@ const { PORT, DATABASE_CONNECTION, HOST } = process.env;
 const corsOptions = {
   origin: [
     "http://localhost:3000",
+    "http://localhost:5173",
     "http://127.0.0.1:3000",
     "https://itaajrealty.com",
     "https://www.itaajrealty.com",
@@ -39,8 +40,8 @@ const main = async () => {
 
   server.register(fastifyCors, corsOptions);
   server.register(cookie, {
-  secret: process.env.COOKIE_SECRET || "change-me",
-});
+    secret: process.env.COOKIE_SECRET || "change-me",
+  });
 
   server.register(
     (instance, options, next) => {

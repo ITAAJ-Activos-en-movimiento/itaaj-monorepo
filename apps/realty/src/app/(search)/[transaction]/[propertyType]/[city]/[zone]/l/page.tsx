@@ -158,7 +158,7 @@ const Listings = async ({ searchParams, params }: PageProps) => {
             <option value="">Tipo de vivienda</option>
             <option value="Casa">Casa</option>
             <option value="Departamento">Departamento</option>
-            <option value="Loft">Departamento</option>
+            <option value="Loft">Loft</option>
             <option value="Estudio">Estudio</option>
             <option value="Condominio">Condominio</option>
           </select>
