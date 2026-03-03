@@ -12,10 +12,11 @@ export const login = async ({ email, password }: Partial<User>) => {
     .from(users)
     .where(and(eq(users!.email, email!)));
 
+  console.log(result)
   const user = result[0];
   if (!user) throw new Error("Credenciales Inválidas");
   if (user.locked) throw new Error("Admin is already locked");
-  
+
   const isValidPassword = await compare(password!, user.password);
   if (!isValidPassword) {
     user.login_attempts += 1;
@@ -37,9 +38,9 @@ export const login = async ({ email, password }: Partial<User>) => {
 
   const dataToken = {
     uuid: user.id ?? user.id,
-    id: user.id, 
-    email: user.email, 
-    name: user.name, 
+    id: user.id,
+    email: user.email,
+    name: user.name,
     lastname: user.lastname
   }
   //  await user.save();
@@ -53,6 +54,6 @@ export const verifyToken = async (token: string) => {
     const decoded = jwt.verify(token, JWT_SECRET!)
     return decoded;
   } catch (error) {
-    throw new Error("Token no valido"); 
+    throw new Error("Token no valido");
   }
 }

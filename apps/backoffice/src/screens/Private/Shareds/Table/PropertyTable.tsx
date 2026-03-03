@@ -1,21 +1,23 @@
 import { Property, User } from "@itaaj/entities";
 import { Table } from "@/containers";
-import { useProperties } from "@/hooks";
+import {  usePropertiesDevs } from "@/hooks";
 import PropertyRow from "./PropertyRow";
 import Menus from "@/components/Shared/Menus";
 
 const PropertyTable = () => {
-  const { properties } = useProperties() as {properties: Property[]};
-    let listDevelopments = properties;
-    // const [{ selectedRows, selectAll }, toggleRowSelect, toggleSelectAll] = useTableSelection({ data: products.items });
-  const user = localStorage.getItem('user') as User | null; 
+  const { properties } = usePropertiesDevs() as {properties: Property[]};
+  const user = localStorage.getItem("user") as User | null;
+  const propertiesMain = properties.filter((property) => {
+         const pasaDepositoYOwner =
+                  property.lowDeposit > 0 &&
+                  property.owner !== user?.id;
 
-    if(user){
-        if(!user.isAdmin){
-            listDevelopments = properties.filter((dev) => dev.owner !==null && dev.owner == user.id )
-        }
-    }
+                // const pasaEstado =
+                //   !estadoBuscado ||
+                //   removeAccents(property.city?.toLowerCase()) === estadoBuscado;
 
+                return pasaDepositoYOwner;
+  })
   return (
     <Menus>
       <Table columns="1fr 1fr 1fr 1fr 1fr 5rem">
@@ -27,7 +29,7 @@ const PropertyTable = () => {
           <div style={{ textAlign: "right" }}>Precio</div>
         </Table.Header>
         <Table.Body<Property>
-          data={listDevelopments}
+          data={propertiesMain}
           render={(property, index) => (
             <PropertyRow
               property={property}

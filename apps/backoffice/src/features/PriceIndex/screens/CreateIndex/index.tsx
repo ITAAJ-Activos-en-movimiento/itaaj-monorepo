@@ -40,7 +40,7 @@ const CreateIndex = () => {
   return (
     <div className={styles.container}>
       <Header>
-        <Button onClick={download} variant="third">Descargar Propiedades</Button>
+        <Button onClick={download}>Descargar Propiedades</Button>
         <Button loading={isGenerating} onClick={() => generate({ type, state, municipio: municipality, colonia: cologne, maxPrice: 900000000 })} >Generar</Button>
       </Header>
 

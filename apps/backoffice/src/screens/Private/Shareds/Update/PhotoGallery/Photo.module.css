@@ -1,0 +1,34 @@
+.property_image {
+  width: 20rem;
+  height: 15rem;
+  object-fit: contain;
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cnt_img {
+  position: relative;
+}
+
+.cnt_img img{
+    object-fit: cover;
+}
+
+.btn {
+  position: absolute;
+  background-color: red;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  top: -8px;
+  right: -10px;
+  border-radius: 50px;
+}

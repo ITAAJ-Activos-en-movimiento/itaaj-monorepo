@@ -55,3 +55,5 @@ export const propertiesBySlug = async (slug: string) => {
     throw error;
   }
 };
+
+

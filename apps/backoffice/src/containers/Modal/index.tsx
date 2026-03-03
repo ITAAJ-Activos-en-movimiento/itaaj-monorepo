@@ -76,7 +76,7 @@ const Window = ({children, name, title, element, options }: Props) => {
                     gap: 10
                 }}>
                     <div>{options}</div>
-                    <Button onClick={close} variant='third'><X size={15} /></Button>
+                    <Button onClick={close}><X size={15} /></Button>
                 </div>
             </div>
 

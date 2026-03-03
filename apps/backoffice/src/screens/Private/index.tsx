@@ -19,6 +19,7 @@ import NewBlog from "./Blogs/New";
 import EditBlog from "./Blogs/Edit";
 import Users from "./Users";
 import Generator from "./Generator";
+import PropertiesDevs from "./Shareds";
 
 const Private = () => {
   return (
@@ -34,6 +35,9 @@ const Private = () => {
         />
         <Route path="properties" element={<Properties />} />
         <Route path="properties-developments" element={<PropertiesModel />} />
+
+        <Route path="compartidos" element={<PropertiesDevs />} />
+
 
         <Route path="proposals" element={<Proposals />} />
 

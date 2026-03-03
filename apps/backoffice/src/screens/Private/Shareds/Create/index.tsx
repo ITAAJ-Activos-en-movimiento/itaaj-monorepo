@@ -8,7 +8,7 @@ import { useCreateProperties, useForm, useUploadImage } from "@/hooks";
 import { useNavigate } from "react-router-dom";
 import initialPropertyState from "./initial-state";
 import Floorplants from "./Floorplants";
-import { Category, User } from "@itaaj/entities";
+import { Category } from "@itaaj/entities";
 
 const CreateProperty = () => {
   const [options, setOptions] = useState("overview");
@@ -23,7 +23,7 @@ const CreateProperty = () => {
 
   const navigate = useNavigate();
   console.log({ property });
-  const user = localStorage.getItem('user') as User | null;
+
   const { isCreating, createProperty } = useCreateProperties();
 
   const onSubmit = () => {
@@ -34,7 +34,6 @@ const CreateProperty = () => {
         completedAddress:
           String(property.completedAddress) == "true" ? true : false,
         images: urls,
-        owner: user?.id,
         image: url,
         location: { longitude: longitud, latitude: latitud },
         description,
@@ -209,15 +208,6 @@ const CreateProperty = () => {
                 type="number"
                 value={property.price}
                 name="price"
-                onChange={handleChange}
-              />
-            </Field>
-
-               <Field label="Comision compartida">
-              <Input
-                type="number"
-                value={property.lowDeposit}
-                name="lowDeposit"
                 onChange={handleChange}
               />
             </Field>

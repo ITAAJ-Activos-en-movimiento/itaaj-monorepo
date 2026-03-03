@@ -10,7 +10,6 @@ const initialPropertyState = {
     city: '',
     state: '',
     country: '',
-    lowDeposit: 0,
     completedAddress: false,
     floor: '',
     street: '',
@@ -33,7 +32,7 @@ const initialPropertyState = {
     alsoSell: false
 
 
-
+ 
 }
 
 export default initialPropertyState;

@@ -1,44 +1,38 @@
-import { Button, Input } from '@/components';
 import styles from './Login.module.css';
-import { Mail } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   CredentialResponse,
   GoogleLogin,
   GoogleOAuthProvider,
 } from "@react-oauth/google";
-import { useState } from 'react';
 import { itaajApi } from '@/api';
 
 const Login = () => {
-  const [isAuthLoading, setIsAuthLoading] = useState(false);
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleGoogleSuccess = async (
     credentialsResponse: CredentialResponse
   ) => {
     if (!credentialsResponse.credential) return;
-  setIsAuthLoading(true);
     try {
-      const {data} = await itaajApi.post("/api/auth/google", {
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ credential: credentialsResponse.credential }),
-      });
+      console.log(credentialsResponse)
+      const {data} = await itaajApi.post("/auth/login-google",
+        credentialsResponse.credential,
+         { headers: { "Content-Type": "text/plain" } }
+      );
 
-      if (!data) {
-        console.error(data);
-        alert("No se pudo iniciar sesión con Google.");
-        return;
-      }
+      // if (!data) {
+      //   console.error(data);
+      //   alert("No se pudo iniciar sesión con Google.");
+      //   return;
+      // }
 
-      setIsAuthenticated(true);
-      navigate(`/user/mis-anuncios`);
+      // localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("user", JSON.stringify(data));
+      navigate(`/developments`);
     } catch (error) {
       console.error(error);
       alert("Error al iniciar sesión con Google.");
-    } finally {
-      setIsAuthLoading(false);
     }
   }
 

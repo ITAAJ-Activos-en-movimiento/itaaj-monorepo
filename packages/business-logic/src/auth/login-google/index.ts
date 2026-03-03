@@ -15,7 +15,7 @@ const verifyGoogle = async (token: string) => {
     });
 
     const payload = ticket.getPayload();
-    const userId = payload??['sub']
+    const userId = payload ?? ['sub']
     return {
         email: payload?.email,
         name: payload?.given_name,
@@ -25,14 +25,15 @@ const verifyGoogle = async (token: string) => {
 }
 
 export const loginGoogle = async (id: string) => {
-     const {email, photo, name, last_name} = await verifyGoogle(id);
+    console.log({ id })
+    const { email, photo, name, last_name } = await verifyGoogle(id);
 
-     const result = await getDbInstance().select().from(users!)
-     .where(and(eq(users!.email, email!)));
+    const result = await getDbInstance().select().from(users!)
+        .where(and(eq(users!.email, email!)));
 
-     const user = result[0]
-    
-     if(!user) {
+    const user = result[0]
+
+    if (!user) {
         const data = {
             name,
             email,
@@ -51,32 +52,32 @@ export const loginGoogle = async (id: string) => {
         newUser.trial_start_date = trialStartDate;
         const trialEndDate = new Date(
             trialStartDate.getTime() + 14 * 24 * 60 * 60 * 1000
-          );
-          newUser.trial_end_date = trialEndDate;
-        
-          const salt = genSaltSync(10);
-          newUser.password = hashSync(data.password, salt);
-        
-        //   await newUser.save();
-          const token = jwt.sign({id: newUser.id}, JWT_SECRET!, {expiresIn: '5d'});
-          return { token };
+        );
+        newUser.trial_end_date = trialEndDate;
 
-     };
-    
-     if(user.locked) throw new Error("User is already locked");
-    
-     user.last_login = new Date().toString();
-     user.login_attempts = 0;
+        const salt = genSaltSync(10);
+        newUser.password = hashSync(data.password, salt);
+
+        //   await newUser.save();
+        const token = jwt.sign({ id: newUser.id }, JWT_SECRET!, { expiresIn: '5d' });
+        return { token };
+
+    };
+
+    if (user.locked) throw new Error("User is already locked");
+
+    user.last_login = new Date().toString();
+    user.login_attempts = 0;
     //  await user.save();
-    
-     const token = jwt.sign({id: user.id}, JWT_SECRET!, {expiresIn: '5d'});
-    
-     return {token, user};
+
+    const token = jwt.sign({ id: user.id }, JWT_SECRET!, { expiresIn: '5d' });
+
+    return { token, user };
 }
 
 
-const generateUsername = (name: string, email: string): string  => {
+const generateUsername = (name: string, email: string): string => {
     const username = name.charAt(0) + email.split('@')[0];
     const randomNumber = Math.floor(Math.random() * 1000);
     return `${username}${randomNumber}`;
-   }
+}

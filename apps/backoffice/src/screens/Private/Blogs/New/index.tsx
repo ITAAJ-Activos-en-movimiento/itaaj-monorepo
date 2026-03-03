@@ -106,7 +106,7 @@ const NewBlog = () => {
             </Field>
           </div>
           <div className={styles.footer_form_post_der}>
-            <Button className={styles.btn_draft} variant="cancel">
+            <Button className={styles.btn_draft} >
               Guardar Borrador 
             </Button>
             <Button onClick={() => onSubmit()} loading={isCreating}>

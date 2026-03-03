@@ -3,15 +3,15 @@ import styles from "./Sidebar.module.css";
 import {
   Briefcase,
   ChevronRight,
-  Crosshair,
+  // Crosshair,
   Home,
   BookOpen,
-  Filter,
+  // Filter,
   Paperclip,
-  User,
+  // User,
 } from "react-feather";
 import Tooltip from "../Tooltip";
-import { TableOfContents } from "lucide-react";
+import { Share, TableOfContents } from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -39,31 +39,36 @@ const Sidebar = () => {
               <Home size={20} /> <p>Propiedades</p>{" "}
             </Link>
           </Tooltip>
-          <Tooltip text="Propuestas economicas">
+            <Tooltip text="Propiedades">
+            <Link to="/compartidos" title="Propiedades con comisión">
+              <Share size={20} /> <p>Propiedades con comisión</p>{" "}
+            </Link>
+          </Tooltip>
+          {/* <Tooltip text="Propuestas economicas">
             <Link to="/proposals" title="Proposals">
               <Crosshair size={20} /> <p>Propuestas</p>{" "}
             </Link>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip text="Análisis de Mercado">
             <Link to="/market" title="Analisis de Mercado">
               <BookOpen size={20} /> <p>Análisis de M.</p>{" "}
             </Link>
           </Tooltip>
-          <Tooltip text="Embudo de Ventas">
+          {/* <Tooltip text="Embudo de Ventas">
             <Link to="/crm/funnels" title="Embudo">
               <Filter size={20} /> <p>Embudo</p>{" "}
             </Link>
-          </Tooltip>
-          <Tooltip text="Blog">
+          </Tooltip> */}
+          {/* <Tooltip text="Blog">
             <Link to="/blogs" title="Blog">
               <BookOpen size={20} /> <p>Blog</p>{" "}
             </Link>
-          </Tooltip>
-          <Tooltip text="Usuarios">
+          </Tooltip> */}
+          {/* <Tooltip text="Usuarios">
             <Link to="/users" title="Usuarios">
               <User size={20} /> <p>Usuarios</p>{" "}
             </Link>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip text="Generador de contenido">
             <Link to="/generator" title="Generador de contenido">
               <TableOfContents size={20} /> <p>Generador de contenido</p>{" "}

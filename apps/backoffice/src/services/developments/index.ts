@@ -6,7 +6,7 @@ export const getDevelopmentsApi = async () => {
   return data;
 };
 
-export const generateMarketAnalysis = async ({type, state, municipio, colonia, maxPrice}: { type: string, state: string, municipio: string, colonia: string, maxPrice: number }) => {
+export const generateMarketAnalysis = async ({ type, state, municipio, colonia, maxPrice }: { type: string, state: string, municipio: string, colonia: string, maxPrice: number }) => {
   const { data } = await itaajApi.post(`/market-analysis`, { type, state: state, municipio, colonia, maxPrice });
   return data;
 };
@@ -32,3 +32,9 @@ export const deleteDevelopmentApi = async (id: string) => {
   const { data } = await itaajApi.patch(`/developments/${id}/delete`);
   return data;
 };
+
+
+export const propertiesDevelopmentsApi = async () => {
+  const { data } = await itaajApi.get(`/properties-developments?page=${1}&limit=${1000}&type=&state=`);
+  return data;
+}

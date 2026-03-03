@@ -100,14 +100,12 @@ const CreateAnalysis = () => {
         </h3>
         <div className={styles.buttons}>
           <Button
-            variant="third"
             loading={isGenerating}
             onClick={() => generate({type: "department", state, municipio, colonia, maxPrice })}
           >
             Generar
           </Button>
           <Button
-            variant="third"
             loading={isGenerating}
             onClick={() => download()}
           >
