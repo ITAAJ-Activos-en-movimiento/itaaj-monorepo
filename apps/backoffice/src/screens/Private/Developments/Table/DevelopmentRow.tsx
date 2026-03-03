@@ -14,7 +14,7 @@ interface Props {
 
 const DevelopmentRow = ({ development }: Props) => {
   const { deleteDevelopment } = useDeleteDevelopment();
-
+  
   // const {isDeleting, deleteContact  } = useDeleteContact();
 
   // const { id: contactId, name } = contact;
