@@ -1,78 +1,108 @@
 .container {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    background-color: #FAFAFA;
+    background-position: center;
+    background-size: 100%;
+    height: 100dvh;
+    width: 100%;
 }
 
-.form{
-    position: relative;
+.header {
+    background-color: #15459e;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+}
+
+.header h2 {
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.header a {
+    color: #fff;
+}
+
+.content {
     background-color: #fff;
-    box-shadow: 0 0 80px #0000000f;
-    border-radius: 1.2rem;
-    width: 40rem;
-    height: 38rem;
-    padding: 3rem;
-    margin-bottom: 10rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 4rem;
+    border-radius: 1rem;
+    max-height: 60rem;
+    max-width: 43rem;
+    margin-inline: auto;
+    margin-top: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.form img{
-    margin: 0rem auto;
-    display: block;
-    margin-bottom: 1.8rem;
-}
-
-.form h3{
-    text-align: left;
-    font-size: 2rem;
-    font-weight: 500;
-    margin-top: .2rem;
-    color: rgba(0, 0, 0, .8);
-    margin-bottom: 3rem;
-}
-
-.form h4{
-    font-weight: 500;
-}
-
-.welcome{
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 4rem;
 }
 
-.input {
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: .5rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    overflow: hidden;
-    padding-left: .5rem;
-}
-
-.input input{
-    width: 100%;
-    height: 100%;
-    border: none;
-    font-size: 1.4rem;
-    outline: none;
-}
-
-.input input::placeholder{
-    color: rgba(0, 0, 0, .3);
-}
-
-.form button{
-    background-color: #16A1B8;
-    border: none;
-    width: 100%;
-    height: 4rem;
-    border-radius: .5rem;
-    color: #fff;
-    font-size: 1.6rem;
+.title {
     font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
 }
 
-.btn{
+.desc {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.form {
     margin-top: 2rem;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.label {
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.information {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.doubt {
+    display: flex;
+    gap: 2rem;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    max-width: 43rem;
+    margin-inline: auto;
+    margin-top: 2rem;
+}
+
+.doubt h3 {
+    font-size: 1.4rem;
+}
+
+.doubt p {
+    font-size: 1.4rem;
+}
+
+.mainTitle {
+    margin-top: 5rem;
+    text-align: left;
+    font-size: 3.2rem;
+    max-width: 43rem;
+    color: #4d4d4d;
+    margin-inline: auto;
 }

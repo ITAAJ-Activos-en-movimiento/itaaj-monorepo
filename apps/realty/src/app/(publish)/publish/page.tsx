@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import styles from "./Publish.module.css";
 import { Stepper } from "@/modules/publish/components/listing-wizard/Stepper";
 import { StepBasicData } from "@/modules/publish/components/listing-wizard/steps/StepBasicData";
@@ -12,6 +12,10 @@ import { StepSelectType } from "@/modules/publish/components/listing-wizard/step
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+
+function generateRef() {
+  return Math.random().toString(36).substring(2, 8).toUpperCase(); // EJ: “A9X3ZB”
+}
 
 export type AdType =
   | "housing"
@@ -33,8 +37,9 @@ export interface PublishFormData {
   salePrice?: number;
   rentPrice?: number;
   communityFeesIncluded?: boolean;
-  lowDeposit?: boolean;
+  lowDeposit?: number;
   builtArea?: number;
+  totalArea?: number;
   bedrooms?: number;
   bathrooms?: number;
   age?: string | null;
@@ -46,6 +51,7 @@ export interface PublishFormData {
   // Paso 2 – dirección
   city?: string;
   street?: string;
+  country?: string;
   streetNumber?: string;
   hideExactAddress?: boolean;
   orientation?: string | null;
@@ -66,6 +72,8 @@ export interface PublishFormData {
   lat?: number;
   lng?: number;
   owner?: string;
+
+  shareCom: boolean;
 }
 
 const steps = [
@@ -80,13 +88,16 @@ const steps = [
 const INITIAL_DATA: PublishFormData = {
   adType: "housing",
   propertyType: null,
-  transactionType: null,
-  alsoRent: false,
+  transactionType: "rent",
+  alsoRent: true,
   alsoSell: false,
   photos: [],
   interiorExtras: [],
   exteriorExtras: [],
   owner: "",
+  shareCom: false,
+  lowDeposit: 10,
+  country: "Mexico",
 };
 
 export default function PublishPage() {
@@ -96,9 +107,9 @@ export default function PublishPage() {
 
   const router = useRouter();
 
-  const updateData = (partial: Partial<PublishFormData>) => {
+  const updateData = useCallback((partial: Partial<PublishFormData>) => {
     setData((prev) => ({ ...prev, ...partial }));
-  };
+  }, []);
 
   const next = () => {
     setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
@@ -111,17 +122,23 @@ export default function PublishPage() {
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      console.log("REPERTUI", data);
+
+      const ref = generateRef();
       const { data: res } = await axios.post(
         "https://itaaj-realty.onrender.com/api/v1/properties",
         {
           ...data,
-          name: data.adType + " " + data.city + " " + data.transactionType,
+          name: `${data.adType} - ${data.city} · Ref-${ref}`,
           price: data.salePrice || data.rentPrice,
           images: data.photos,
-          area: { total_area: data.builtArea },
+          area: { building_area: data.builtArea, land_area: data.totalArea },
           status: "active",
           category: "general",
+          antiquity: data.age,
+          location: {
+            latitude: data.lat,
+            longitude: data.lng,
+          },
         },
         {
           headers: {

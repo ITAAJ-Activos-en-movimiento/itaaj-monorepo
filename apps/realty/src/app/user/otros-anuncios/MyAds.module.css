@@ -1,0 +1,372 @@
+.page {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.subheading {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+/* LAYOUT */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.8fr) minmax(0, 1.6fr);
+  gap: 2.4rem;
+}
+
+/* MAIN COLUMN */
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* ALERTA TELÉFONO */
+
+.phoneAlert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.6rem 2rem;
+  background: #ffe7e4;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #f3b4a8;
+}
+
+.phoneAlertTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.phoneAlertText {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.phoneAlertButton {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #d23b1b;
+  background: #fff;
+  color: #d23b1b;
+  font-weight: 600;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* LISTING CARD */
+
+.listingSection {
+  background: transparent;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.sectionDescription {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.listingCard {
+  display: grid;
+  grid-template-columns: 2.2fr 3fr;
+  gap: 1.6rem;
+  background: #ffffff;
+  border-radius: 1.2rem;
+  border: 0.1rem solid #e6e6e6;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  padding: 1.6rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.listingImageWrapper {
+  position: relative;
+}
+
+.listingImageWrapper img{
+    border-radius: 1rem;
+}
+
+.badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  background: #ff4f4f;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999rem;
+  font-weight: 600;
+}
+
+.listingIllustration {
+  width: 100%;
+  height: 16rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(135deg, #ffe0ee, #e3effe);
+}
+
+.listingInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.listingHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+}
+
+.listingPrice {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.listingTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.4rem 0;
+}
+
+.listingLocation {
+  font-size: 1.3rem;
+  color: #666;
+  margin: 0 0 0.4rem;
+}
+
+.listingMeta {
+  font-size: 1.2rem;
+  color: #777;
+  margin: 0 0 1.2rem;
+}
+
+/* ACCIONES DEL ANUNCIO */
+
+.listingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.primaryButton {
+  padding: 0.9rem 1.6rem;
+  background: #2f3fe8;
+  color: #fff;
+  border-radius: 0.8rem;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: #2734c2;
+}
+
+.iconButton {
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #2f3fe8;
+  background: #fff;
+  color: #2f3fe8;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background: #f3f4ff;
+}
+
+/* VISIBILIDAD */
+
+.visibilitySection {
+  margin-top: 1.2rem;
+}
+
+.productCard {
+  margin-top: 1.2rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  border: 0.1rem solid #e6e6e6;
+  padding: 1.6rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.productTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.productDescription {
+  font-size: 1.3rem;
+  color: #444;
+  margin: 0 0 0.8rem;
+}
+
+.linkButton {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.2rem;
+  color: #2f3fe8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.productAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.productPrice {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* SIDE COLUMN */
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sideCard {
+  background: #f8f8fb;
+  border-radius: 1.2rem;
+  padding: 1.8rem 1.6rem;
+  border: 0.1rem solid #ececf5;
+}
+
+.sideTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.sideText {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 1.6rem;
+}
+
+.outlineButton {
+  width: 100%;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid #2f3fe8;
+  background: #fff;
+  color: #2f3fe8;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.outlineButton:hover {
+  background: #f3f4ff;
+}
+
+.spin{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .listingCard {
+    grid-template-columns: 1fr;
+  }
+
+  .productCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .productAside {
+    align-items: flex-start;
+  }
+}
+
+.percentage{
+  font-weight: 600;
+  position: absolute;
+  right: 20px;
+  font-size: 1.4rem;
+}
+
+.userInfo{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 10px;
+  top: 45px;
+}
+
+.userInfo span{
+  font-size: 1.4rem;
+}
+
+.searchBar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.searchButton {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}

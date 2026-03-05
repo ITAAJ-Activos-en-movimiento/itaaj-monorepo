@@ -5,6 +5,7 @@ import { loginGoogleRoute } from "./login-google";
 import { accessUserRoute } from "./access";
 import { loginEmailUserRoute } from "./login-email";
 import { sessionRoute } from "./session";
+import { logoutRoute } from "./logout";
 
 const authRoutes: RouteOptions[] = [
     registerUserRoute,
@@ -12,7 +13,8 @@ const authRoutes: RouteOptions[] = [
     loginUserRoute,
     loginGoogleRoute,
     loginEmailUserRoute,
-    sessionRoute
+    sessionRoute,
+    logoutRoute
 ];
 
 export default authRoutes;

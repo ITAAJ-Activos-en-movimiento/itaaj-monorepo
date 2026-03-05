@@ -1,13 +1,22 @@
-import { Development } from '@itaaj/entities';
+import { Development, User } from '@itaaj/entities';
 import { Table } from '@/containers'
 import { useDevelopments } from '@/hooks';
 import DevelopmentRow from './DevelopmentRow';
 import Menus from '@/components/Shared/Menus';
 
 const DevelopmentTable = () => {
-    const { developments } = useDevelopments();
+    const { developments } = useDevelopments() as { developments: Development[]};
+    let listDevelopments = developments;
     // const [{ selectedRows, selectAll }, toggleRowSelect, toggleSelectAll] = useTableSelection({ data: products.items });
+  const user = localStorage.getItem('user') as User | null; 
 
+    if(user){
+        if(!user.isAdmin){
+            listDevelopments = developments.filter((dev) => dev.owner !==null && dev.owner == user.id )
+        }
+    }
+
+    console.log(listDevelopments)
   return (
     <Menus>
 
@@ -25,7 +34,7 @@ const DevelopmentTable = () => {
                 <div >Estado</div>
                 <div style={{ textAlign: "right" }}>Precio</div>
             </Table.Header>
-            <Table.Body<Development> data={developments} render={(development, index) => <DevelopmentRow development={development} index={index} key={development.uuid}  />}/>
+            <Table.Body<Development> data={listDevelopments} render={(development, index) => <DevelopmentRow development={development} index={index} key={development.uuid}  />}/>
                  
         </Table>
     </Menus>

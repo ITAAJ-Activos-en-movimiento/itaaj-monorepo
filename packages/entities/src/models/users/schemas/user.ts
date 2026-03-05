@@ -6,6 +6,7 @@ export interface User extends Base {
   identification: string;
   method: string;
   email: string;
+  isAdmin: boolean;
   name: string;
   lastname: string;
   password: string;

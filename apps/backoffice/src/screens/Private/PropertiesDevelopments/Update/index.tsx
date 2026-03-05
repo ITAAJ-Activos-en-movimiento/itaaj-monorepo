@@ -184,7 +184,7 @@ const UpdateProperty = () => {
           <Info color="rgba(0, 0, 0, 0.65)" size={20} /> Editar Información
         </h3>
         <div className={styles.buttons}>
-          <Button variant="cancel">Vista</Button>
+          <Button >Vista</Button>
           <Button loading={isEditing} onClick={onSubmitUpdate}>
             Guardar
           </Button>

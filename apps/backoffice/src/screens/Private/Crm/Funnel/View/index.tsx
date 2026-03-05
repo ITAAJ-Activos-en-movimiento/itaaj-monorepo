@@ -98,7 +98,7 @@ const ViewOpportunityModal: React.FC<ViewOpportunityModalProps> = ({
           </div>
         </div>
         <div className={styles.footer_oportunity_vs}>
-          <Button variant="delete" onClick={() => handleDelete(lead.id!)}>
+          <Button onClick={() => handleDelete(lead.id!)}>
             Eliminar
           </Button>
           <OpportunityModal

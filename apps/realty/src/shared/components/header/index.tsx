@@ -19,68 +19,68 @@ const Header = async () => {
           <Link
             className={styles.link}
             title="Comprar casas en Mexico"
-            href="/comprar/vivienda"
+            href="/comprar/viviendas/mexico/todas-las-zonas/l"
           >
             Comprar
           </Link>
           <Link
             className={styles.link}
             title="Rentar casas en Mexico"
-            href="/rentar/vivienda"
+            href="/rentar/viviendas/mexico/todas-las-zonas/l"
           >
             Rentar
           </Link>
           <Link
             className={styles.link}
             title="Vender"
-            href="/vente-tu-vivienda"
+            href="/vende-tu-propiedad"
           >
             Vender
           </Link>
-          <Link className={styles.link} title="Itaaj Life" href="/actualidad">
+          <Link className={styles.link} title="Itaaj Life" href="/blog">
             Actualidad
           </Link>
-          <Link
+          {/* <Link
             className={styles.link}
             title="Guia de Colonias"
-            href="/vivir-en-mexico"
+            href="/guia-de-colonias"
           >
             Guia de Colonias
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             className={styles.link}
             title="Compara tu hipoteca"
             href="/hipotecas"
           >
             Hipotecas
-          </Link>
+          </Link> */}
         </nav>
       </div>
       <div className={styles.separator}>
-        <Link
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Bell strokeWidth="1.5px" size={16} />
           <span>Mis alertas</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Heart strokeWidth="1.5px" size={16} />
           <span>Mis listas</span>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           className={styles.link}
           href="/user/alerts"
           title="Publica o modifica tus alertas de busqueda"
         >
           <Megaphone strokeWidth="1.5px" size={16} />
           <span>Nuevos para ti</span>
-        </Link>
+        </Link> */}
         <div className={styles.buttons}>
           <Link
             className={`${styles.link} ${styles.publishBtn} `}

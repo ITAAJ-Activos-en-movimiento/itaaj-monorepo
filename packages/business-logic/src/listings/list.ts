@@ -1,0 +1,428 @@
+import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
+import { Base, Development, Result, StatusType, developments, properties, Property, Location, Area } from "@itaaj/entities";
+import { and, eq, gte, lte, or, sql } from "drizzle-orm";
+
+export type ListingType = 'SALE' | 'RENT_LONG' | 'RENT_SHORT' | 'RENT_TO_OWN' | 'AUCTION' | 'ROOM_RENT';
+export type ListingStatus = 'DRAFT' | 'REVIEW' | 'PUBLISHED' | 'PAUSED' | 'EXPIRED' | 'WITHDRAWN';
+export type ISODateString = string;
+
+export const toSlug = (value: string) => {
+  return value
+    ?.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+};
+export interface Listing  {
+    organizationId?: string;
+    propertyId?: string | null;
+    slug: string;
+    images: string[];
+    unitId?: string | null;
+    type: ListingType;
+    listingStatus: ListingStatus;
+    currency: string;
+    price: number;
+    expenses?: number | null;
+    deposit?: number | null;
+    availableFrom?: ISODateString | null;
+    publishedAt?: ISODateString | null;
+    expiresAt?: ISODateString | null;
+    metadata?: Record<string, unknown> | null;
+    location: Location;
+    city: string;
+    state: string;
+    country: string;
+propertyType: string;
+    createdAt: Date;
+    updatedAt: Date;
+    area:Area,
+    modality?: 'FULL_PROPERTY' | 'ROOM_SHARE' | 'RENT_TO_OWN' | 'AUCTION' | 'BANK_OWNED';
+}
+
+const listingConver: { [key: string]: string } = {
+  SALE: "comprar",
+  RENT_LONG: "rentar",
+};
+const listingPt: { [key: string]: string } = {
+  Casa: "viviendas",
+  house: "viviendas",
+  Departamento: "viviendas",
+  DEPARTAMENTO: "viviendas",
+  Condominio: "viviendas",
+  Estudio: "viviendas",
+  null: "viviendas",
+  Loft: "viviendas",
+  apartment: "viviendas",
+  landscape: "terrenos",
+  Terreno: "terrenos",
+  other: "edificios",
+  Oficina: 'oficinas'
+};
+interface Params {
+  transaction?: string;
+  propertyType?: string;
+  city?: string;
+  neighborhood?: string;
+  page?: number;
+  limit?: number;
+  search?: string;
+  state?: string;
+  constructionType?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  order?: ListingOrder | string;
+}
+
+export type ListingOrder =
+  | "score"
+  | "recent"
+  | "price_asc"
+  | "price_desc"
+  | "area_desc"
+  | "area_asc"
+  | "ppm2_asc";
+
+  function toTime(d?: string | Date | null) {
+  if (!d) return 0;
+  if (d instanceof Date) return d.getTime();
+  const t = Date.parse(d);
+  return Number.isFinite(t) ? t : 0;
+}
+
+function num(v: unknown): number {
+  const n = typeof v === "number" ? v : typeof v === "string" ? Number(v) : NaN;
+  return Number.isFinite(n) ? n : 0;
+}
+
+// Si no tienes área real, intenta desde metadata.
+// Ajusta las keys a tu data real cuando la tengas.
+function getTotalArea(listing: Listing): number {
+  const meta = (listing.area ?? {}) as any;
+  return (
+    num(meta.total_area) ||
+    0
+  );
+}
+
+function getPricePerM2(listing: Listing): number {
+  const area = getTotalArea(listing);
+  if (!area) return Number.POSITIVE_INFINITY;
+  return listing.price / area;
+}
+
+function normalizeOrder(order?: string): ListingOrder {
+  const o = (order ?? "score").toString();
+  const allowed: ListingOrder[] = [
+    "score",
+    "recent",
+    "price_asc",
+    "price_desc",
+    "area_desc",
+    "area_asc",
+    "ppm2_asc",
+  ];
+  return (allowed as string[]).includes(o) ? (o as ListingOrder) : "score";
+}
+
+function sortListings(items: Listing[], order?: string): Listing[] {
+  const o = normalizeOrder(order);
+
+  switch (o) {
+    case "recent":
+      return items.sort((a, b) => toTime(b.updatedAt) - toTime(a.updatedAt));
+
+    case "price_asc":
+      return items.sort((a, b) => a.price - b.price);
+
+    case "price_desc":
+      return items.sort((a, b) => b.price - a.price);
+
+    case "area_desc":
+      return items.sort((a, b) => getTotalArea(b) - getTotalArea(a));
+
+    case "area_asc":
+      return items.sort((a, b) => getTotalArea(a) - getTotalArea(b));
+
+    case "ppm2_asc":
+      return items.sort((a, b) => getPricePerM2(a) - getPricePerM2(b));
+
+    case "score":
+    default:
+      return items;
+  }
+}
+
+export const getAllListings = async (params: Params): Promise<Result<Listing>> => {
+  const db = getDbInstance();
+
+  const page = params.page && params.page > 0 ? params.page : 1;
+  const pageSize = params.limit && params.limit > 0 ? params.limit : 14;
+  const offset = (page - 1) * pageSize;
+
+const {
+    transaction,
+    propertyType,
+    city,
+    neighborhood,
+    search,
+    state,
+    constructionType,
+    minPrice,
+    maxPrice,
+    bedrooms,
+    bathrooms,
+  } = params;
+
+  let resultProperties = await getDbInstance()
+    .select()
+    .from(properties)
+    .where(eq(properties.status, "active")) as Property[];
+
+    let resultDevelopments = await getDbInstance()
+      .select()
+      .from(developments) as Development[];
+
+    let listings: Listing[] = [...resultProperties.map((property) => ({
+       id: property._id,
+       slug: property.slug,
+       type: property.alsoRent == true ? 'RENT_LONG' as ListingType : 'SALE'  as ListingType,
+       listingStatus: 'PUBLISHED' as ListingStatus,
+       images: property.images,
+       location: property.location,
+       price: property.rentPrice > 0 ? property.rentPrice : property.price,
+       currency: 'MXN',
+       city: property.city,
+       country: property.country,
+       state: property.state,
+       propertyType: property.type,
+       description: property.description,
+       createdAt: property.createdAt,
+       updatedAt: property.updatedAt,
+       area: property.area,
+       bedrooms: property.bedrooms,
+       bathrooms: property.bathrooms,
+       garage: property.garage
+
+     })), ...resultDevelopments.map((development) => ({
+       id: development._id,
+       slug: development.slug,
+       type: 'SALE'  as ListingType,
+       listingStatus: 'PUBLISHED' as ListingStatus,
+       images: development.images,
+       price: development.price,
+              propertyType: development.type,
+
+       location: development.location,
+              city: development.city,
+       country: development.country,
+       state: development.state,
+       currency: 'MXN',
+        description: development.description,
+       createdAt: development.createdAt,
+       updatedAt: development.updatedAt,
+              area: development.area,
+                   bedrooms: development.bedrooms,
+       bathrooms: development.bathrooms,
+              garage: development.garage
+
+     }))];
+  listings = listings
+    .filter((listing) => toSlug(listing.city) == city || toSlug(listing.state) == city || toSlug(listing.country) == city)
+    .filter((listing) => listingConver[listing.type] === transaction)
+    .filter((listing) => listingPt[listing.propertyType] === propertyType);     
+    const total = listings.length;
+  listings = sortListings(listings, params.order);
+
+   const paginatedItems = listings.slice(offset, offset + pageSize);
+
+   const pages = Math.ceil(total / pageSize);
+   const hasPreviousPage = page > 1;
+   const hasNextPage = page < pages;
+   const nextPage = hasNextPage ? page + 1 : page;
+   const previousPage = hasPreviousPage ? page - 1 : page;
+
+    return {
+        count: listings.length,
+        items: paginatedItems,
+        pageInfo: {
+            page: page,
+            pages: pages,
+            hasNextPage: hasNextPage,
+            hasPreviousPage: hasPreviousPage,
+            nextPage: nextPage,
+            previousPage: previousPage
+        }        
+    };
+}
+
+
+// interface Query {
+//   status: StatusType;
+//   name?: { $regex: string; $options: string };
+// }
+
+// interface PropertiesWithType {
+//   itemType: "proeprty" | "development";
+// }
+
+// export const getAllDevelopmentsAndProperties = async ({
+//   page = 1,
+//   limit = 14,
+//   house = "",
+//   search = "",
+//   state,
+//   propertyType,
+//   constructionType,
+//   minPrice,
+//   maxPrice,
+//   bedrooms,
+//   bathrooms,
+// }: Params) => {
+//   const db = getDbInstance();
+//   const pageSize = Number(limit);
+//   const skip = Number((page - 1) * pageSize);
+
+//   const query: Query = { status: StatusType.ACTIVE };
+
+//   let resultProperties = db
+//     .select()
+//     .from(properties)
+//     .where(eq(properties.status, "active"));
+
+//   let developmentsQuery = getDbInstance().select().from(developments);
+
+//   // if (state) {
+//   //   const stateCondition = eq(properties.state, state);
+//   //   resultProperties = resultProperties.where(stateCondition);
+//   //   developmentsQuery = developmentsQuery.where(stateCondition);
+//   // }
+
+//   if (propertyType !== "undefined" && propertyType.length > 0) {
+//     console.log("Enter here", { propertyType });
+//     resultProperties = resultProperties.where(
+//       and(eq(properties.type, propertyType), eq(properties.status, "active"))
+      
+//     );
+//     developmentsQuery = developmentsQuery.where(
+//       eq(developments.type, propertyType)
+//     );
+//   }
+
+//   if (constructionType) {
+//     // resultProperties = resultProperties.where(eq(properties.constructionType, constructionType));
+//   }
+
+//   if (minPrice) {
+//     resultProperties = resultProperties.where(gte(properties.price, minPrice));
+//   }
+
+//   if (maxPrice) {
+//     resultProperties = resultProperties.where(lte(properties.price, maxPrice));
+//   }
+
+//   if (bedrooms) {
+//     resultProperties = resultProperties.where(
+//       gte(properties.bedrooms, bedrooms)
+//     );
+//   }
+
+//   if (bathrooms) {
+//     resultProperties = resultProperties.where(
+//       gte(properties.bathrooms, bathrooms)
+//     );
+//   }
+
+//   resultProperties = await resultProperties;
+//   developmentsQuery = await developmentsQuery;
+
+//   const resultDevelopments = developmentsQuery.map((development) => ({
+//     ...development,
+//     properties: resultProperties.filter(
+//       (property) => property.development === development.id
+//     ),
+//   }));
+
+//   let allProperties: PropertiesWithType[] = [];
+
+//   console.log("ESTATE", state)
+  
+//   const informa = resultDevelopments.map((prop) => prop.state)
+
+
+
+//   if(state !== 'undefined'){
+
+//   allProperties = [
+//     ...resultDevelopments
+//     .filter((prop) => normalizeText(prop.state).includes(state.toLowerCase() ? state.toLowerCase() : ''))
+//     .map((property: PropertiesWithType) => ({
+//       ...property,
+//       itemType: "development",
+//     })),
+//     ...resultProperties
+//       .filter((prop) => prop.category == "general" && normalizeText(prop.state).includes(state.toLowerCase() ? state.toLowerCase() : ''))
+//       .map((property: PropertiesWithType) => ({
+//         ...property,
+//         itemType: "property",
+//       })),
+//   ];
+// }
+
+//   if(state == 'undefined'){
+//     console.log("Enmter NO state", state)
+
+//   allProperties = [
+//     ...resultDevelopments
+//     .map((property: PropertiesWithType) => ({
+//       ...property,
+//       itemType: "development",
+//     })),
+//     ...resultProperties
+//       .filter((prop) => prop.category == "general")
+//       .map((property: PropertiesWithType) => ({
+//         ...property,
+//         itemType: "property",
+//       })),
+//   ];
+// }
+
+// console.log(allProperties)
+
+//   const total = allProperties.length;
+
+//   const paginatedItems = allProperties.slice(skip, skip + pageSize);
+
+//   const pages = Math.ceil(total / pageSize);
+//   const hasPreviousPage = page > 1;
+//   const hasNextPage = page < pages;
+//   const nextPage = hasNextPage ? page + 1 : page;
+//   const previousPage = hasPreviousPage ? page - 1 : page;
+
+//   return {
+//     count: total,
+//     countNew: resultDevelopments.length,
+//     countOld: resultProperties.filter((prop) => prop.category == "general")
+//       .length,
+//     items: paginatedItems,
+//     pageInfo: {
+//       page,
+//       pages,
+//       hasPreviousPage,
+//       hasNextPage,
+//       nextPage,
+//       previousPage,
+//     },
+//   };
+// };
+
+// const normalizeText = (text: string) => {
+//   return text
+//     .toLowerCase() // Convierte todo a minúsculas
+//     .normalize("NFD") // Descompone caracteres con diacríticos
+//     .replace(/[\u0300-\u036f]/g, ""); // Remueve diacríticos
+// };

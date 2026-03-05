@@ -1,6 +1,6 @@
 .banner_NeighborhoodGuide {
   position: relative;
-  background-color: #15a0b8;
+  background-color: #15459e;
   height: 40rem;
 }
 
@@ -45,7 +45,7 @@
 .button_banner_search_NG {
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: #15a0b8;
+  background-color: #15459e;
   color: #fff;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@
 }
 
 .info_so span {
-  color: #15a0b8;
+  color: #15459e;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -96,7 +96,7 @@
 }
 
 .info_st span {
-  color: #15a0b8;
+  color: #15459e;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -112,7 +112,7 @@
 .icons_so {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 3px solid #15a0b8;
+  border-bottom: 3px solid #15459e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +132,7 @@
 .icons_str {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 3px solid #15a0b8;
+  border-bottom: 3px solid #15459e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,7 +141,7 @@
 }
 
 .icon_so {
-  color: #15a0b8;
+  color: #15459e;
 }
 
 .container_img_so {
@@ -169,7 +169,7 @@
 }
 
 .line {
-  background-color: #15a0b8;
+  background-color: #15459e;
   height: 0.4rem;
   width: 10rem;
   border-radius: 1rem;

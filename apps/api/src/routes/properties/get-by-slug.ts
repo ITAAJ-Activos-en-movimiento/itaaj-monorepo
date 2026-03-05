@@ -7,6 +7,7 @@ export const getPropertiesBySlugRoute: RouteOptions = {
   handler: async (req, reply) => {
     const { slug } = req.params as { slug: string };
     const property = await getPropertiesBySlug(slug);
+    console.log({property})
     reply.status(200).send(property);
   },
 };

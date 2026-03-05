@@ -33,23 +33,59 @@ export const StepContact: React.FC<StepContactProps> = ({
   const [isAuthLoading, setIsAuthLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(!!session);
 
-  // 👉 Si ya viene logeado desde el server, rellenamos datos de contacto
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!loading && session?.user) {
       const user = session.user;
-      onChange({
-        contactEmail: value.contactEmail || user.email,
-        owner: user.id,
-      });
-      setIsAuthenticated(true);
+
+      const nextEmail = value.contactEmail || user.email;
+      const nextOwner = user.id;
+
+      if (value.contactEmail !== nextEmail || value.owner !== nextOwner) {
+        onChange({
+          contactEmail: nextEmail,
+          owner: nextOwner,
+        });
+      }
+
+      if (!isAuthenticated) {
+        setIsAuthenticated(true);
+      }
     }
-  }, [loading, session]);
+  }, [
+    loading,
+    session,
+    value.contactEmail,
+    value.owner,
+    onChange,
+    isAuthenticated,
+  ]);
 
   const handleSubmit = async () => {
+    if (value.contactPhone && value.contactPhone?.length > 0) {
+      const res = await fetch(
+        `https://itaaj-realty.onrender.com/api/v1/users/${value.owner}`,
+        {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ phone: value.contactPhone }),
+        }
+      );
+
+      if (!res.ok) {
+        console.error(await res.text());
+        alert("No se pudo guardar el telefono.");
+        return;
+      }
+    }
+
     await onSubmit();
   };
 
-  console.log("SESSION", session);
   const handleGoogleSuccess = async (
     credentialsResponse: CredentialResponse
   ) => {
@@ -100,7 +136,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           : "Entra o regístrate para publicar tu anuncio en Itaaj."}
       </p>
 
-      {!isAuthenticated && (
+      {!isAuthenticated && isMounted && (
         <>
           <div className={styles.socialButtons}>
             <GoogleLogin
@@ -132,7 +168,7 @@ export const StepContact: React.FC<StepContactProps> = ({
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Teléfono (opcional)</label>
+        <label className={styles.label}>Teléfono</label>
         <input
           type="tel"
           className={styles.input}

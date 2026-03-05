@@ -1,34 +1,58 @@
 import React from "react";
 import styles from "./MyAds.module.css";
 import { getServerSession } from "@/core/session";
-import { Property } from "@itaaj/entities";
+import { Property, User } from "@itaaj/entities";
 import Image from "next/image";
 import { DivisaFormater } from "@/utils";
+import { redirect } from "next/navigation";
+import Delete from "./Delete";
+import Link from "next/link";
 
-type Listing = {
-  id: string;
-  price: number;
-  title: string;
-  location: string;
-  area: number;
-  phoneValidated: boolean;
-};
+export const dynamic = "force-dynamic";
 
 const MyAds = async () => {
   const session = await getServerSession();
-  const res = await fetch(
-    `${process.env.INTERNAL_API_BASE}/properties/user/${session?.user.id}`,
-    {
-      cache: "no-store",
-      redirect: "manual",
+
+  if (!session?.user?.id) {
+    redirect("/login");
+  }
+
+  let listings: Property[] = [];
+  let user: User;
+
+  try {
+    const res = await fetch(
+      `${process.env.INTERNAL_API_BASE}/properties/user/${session.user.id}`,
+      {
+        cache: "no-store",
+        redirect: "manual",
+      }
+    );
+
+    const res2 = await fetch(
+      `${process.env.INTERNAL_API_BASE}/users/${session.user.id}`,
+      {
+        cache: "no-store",
+        redirect: "manual",
+      }
+    );
+
+    if (res.ok) {
+      listings = (await res.json()) as Property[];
+    } else {
+      console.error("Error fetching user properties", res.status);
     }
-  );
+    if (res2.ok) {
+      user = (await res2.json()) as User;
+    } else {
+      console.error("Error fetching user properties", res.status);
+    }
+  } catch (err) {
+    console.error("Error fetching user properties", err);
+  }
 
-  const body = await res.json();
-  const totalAds = body.length;
-
-  const listings = body;
-
+  const totalAds = listings.length;
+  console.log(listings);
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -44,7 +68,7 @@ const MyAds = async () => {
             <h2 className={styles.sectionTitle}>Propiedades en venta</h2>
 
             {listings.map((listing: Property) => (
-              <article className={styles.listingCard}>
+              <article className={styles.listingCard} key={listing.id}>
                 <div className={styles.listingImageWrapper}>
                   {listing?.images?.[0] ? (
                     <Image
@@ -59,6 +83,11 @@ const MyAds = async () => {
                 </div>
 
                 <div className={styles.listingInfo}>
+                  <span className={styles.percentage}>
+                    Procentaje compartido{" "}
+                    {listing.lowDeposit ? listing.lowDeposit : 20}%
+                  </span>
+
                   <div className={styles.listingHeader}>
                     <span className={styles.listingPrice}>
                       {DivisaFormater({ value: listing.price })} MXN
@@ -73,8 +102,15 @@ const MyAds = async () => {
                     {/* <button className={styles.primaryButton}>
                       Validar teléfono
                     </button> */}
-                    <button className={styles.iconButton}>Eliminar</button>
-                    <button className={styles.iconButton}>Modificar</button>
+                    <Delete id={listing.id} />
+                    <Link
+                      href={`/${
+                        listing.alsoRent ? "rentar" : "comprar"
+                      }/viviendas/mexico/${listing.slug}/d`}
+                      className={styles.iconButton}
+                    >
+                      Ver
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -118,9 +154,9 @@ const MyAds = async () => {
               Publica gratis hasta 2 anuncios de cada tipo (vivienda, garaje,
               etc.)
             </p>
-            <button className={styles.outlineButton}>
+            <Link href="/publish" className={styles.outlineButton}>
               Publicar otro anuncio
-            </button>
+            </Link>
           </section>
 
           <section className={styles.sideCard}>

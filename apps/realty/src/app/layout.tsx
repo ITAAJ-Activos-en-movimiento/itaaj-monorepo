@@ -6,6 +6,7 @@ import { AuthContextProvider } from "@/shared/context/AuthContext";
 import MetaMask from "./MetaMask";
 import Header from "@/shared/components/header";
 import { Sidebar } from "@/shared/components";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 

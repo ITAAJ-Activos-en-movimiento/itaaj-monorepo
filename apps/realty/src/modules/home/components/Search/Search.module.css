@@ -1,0 +1,144 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.input {
+  flex: 1;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  outline: none;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #14e4df;
+  color: #0046af;
+  font-weight: 600;
+  padding: 0 24px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  border-left: 1px solid #ccc;
+}
+
+.searchBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Dropdown --- */
+.dropdown {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  padding: 10px 0;
+  z-index: 100;
+}
+
+/* Items principales */
+.item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #f5f7fa;
+}
+
+.itemImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.itemTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.itemSub {
+  font-size: 13px;
+  margin: 4px 0 0;
+  color: #555;
+}
+
+/* Sección título */
+.sectionTitle {
+  background: #eafeff;
+  font-size: 13px;
+  font-weight: bold;
+  color: #005a67;
+  padding: 10px 16px;
+  margin-top: 10px;
+}
+
+.recentItem {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.recentItem:hover {
+  background: #f5f7fa;
+}
+
+.clock {
+  width: 22px;
+  height: 22px;
+  color: #555;
+}
+
+.recentGroup span {
+  font-size: 15px;
+}
+
+.recentSub {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.itemTag {
+  font-size: 1.4rem;
+}
+@media screen and (max-width:768px) {
+  .inputContainer{
+    flex-direction: column;
+    gap: 1rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  .input{
+    border-radius: 1rem;
+  }
+  
+  .searchBtn{
+    border-radius: 1rem;
+    justify-content: center;
+    padding-block: 1rem;
+  }
+}

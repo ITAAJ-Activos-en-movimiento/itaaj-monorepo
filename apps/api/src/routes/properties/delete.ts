@@ -8,6 +8,7 @@ export const deletePropertyRoute: RouteOptions = {
     try {
       const { id } = request.params as { id: string };
 
+      console.log(id)
       if (!id) {
         reply.status(400).send({ error: "El ID de la propiedad es requerido" });
         return;

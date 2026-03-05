@@ -3,8 +3,13 @@ import React from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 import NavigationMenu from "@/components/UI/app/MyAds/NavigationMenu";
+import { getServerSession } from "@/core/session";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
-const MyAds: NextPage = () => {
+const MyAds: NextPage = async () => {
+  const session = await getServerSession();
+  if (!session?.user) redirect("/login");
   return (
     <>
       <div className={styles.container}>
@@ -31,16 +36,16 @@ const MyAds: NextPage = () => {
             <strong>mas completa la informacion</strong> mas facil es que{" "}
             <strong>alguien se interese por el</strong>
           </p>
-          <button className={styles.button_blue}>
+          <Link href="/publish" className={styles.button_blue}>
             Publicar un anuncio gratis
-          </button>
+          </Link>
           <button className={styles.button_white}>
             Quiero valorar un inmueble
           </button>
 
           <p>
-            Descargate la App de Itaaj Realty y recibe las novedades de tu anuncio
-            en tu movil
+            Descargate la App de Itaaj Realty y recibe las novedades de tu
+            anuncio en tu movil
           </p>
         </div>
       </div>

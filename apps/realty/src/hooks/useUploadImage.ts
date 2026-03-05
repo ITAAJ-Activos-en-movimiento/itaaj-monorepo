@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const rvApi = axios.create({
     baseURL:'https://real-vision-api.xyz/api/v1',
-    // baseURL:'http://localhost:8000/api/v1',
+    // baseURL:'https://itaaj-realty.onrender.com/api/v1',
     
     headers: {
         'api-key':

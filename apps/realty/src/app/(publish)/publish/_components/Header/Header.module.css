@@ -5,7 +5,7 @@
   padding-inline: 2rem;
   border-bottom: 1px solid #f1f1f1;
   padding: .5rem 16px .5rem 2rem;
-  background-color: #303ab2;
+  background-color: #15459e;
   color: #fff;
 }
 
@@ -93,7 +93,7 @@
 
 .accessBtn {
   background-color: #fff;
-  color: #303ab2;
+  color: #15459e;
   border-radius: 1rem;
   outline: 2px solid transparent;
   outline-offset: 2px;

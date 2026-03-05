@@ -1,0 +1,15 @@
+.btn_close{
+    top: 2rem;
+    right: 2rem;
+    position: absolute;
+    border: 1px solid var(--main-color);
+    padding-inline: 1rem;
+    background-color: #fff;
+    padding: .5rem;
+}
+
+@media screen and (max-with:768px) {
+    .container{
+        display: none !important;
+    }
+}

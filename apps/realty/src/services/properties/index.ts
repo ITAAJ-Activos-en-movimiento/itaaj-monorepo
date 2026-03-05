@@ -2,7 +2,6 @@ export const properties = async ({ page, limit }: { page: number, limit: number 
   try {
     const response = await fetch(
       `https://itaaj-realty.onrender.com/api/v1/properties?page=${page}&limit=${limit}`,
-      { cache: "no-store" }
     );
 
     if (!response.ok) {
@@ -22,7 +21,6 @@ export const propertiesByDevelopment = async (development: string) => {
   try {
     const response = await fetch(
       `https://itaaj-realty.onrender.com/api/v1/properties/${development}`,
-      { cache: "no-store" }
     );
 
     if (!response.ok) {
@@ -41,7 +39,7 @@ export const propertiesByDevelopment = async (development: string) => {
 export const propertiesBySlug = async (slug: string) => {
   try {
     const response = await fetch(
-      `https://itaaj-realty.onrender.com/api/v1/property/${slug}`,
+      `${process.env.INTERNAL_API_BASE}/property/${slug}`,
       { cache: "no-store" }
     );
 
@@ -57,3 +55,5 @@ export const propertiesBySlug = async (slug: string) => {
     throw error;
   }
 };
+
+

@@ -14,7 +14,7 @@ export type Session = { user: SessionUser } | null;
 
 export async function GET() {
   try {
-    const cookieHeader = headers().get("cookie") ?? "";
+    const cookieHeader = (await headers()).get("cookie") ?? "";
 
     const upstream = await fetch(`${process.env.INTERNAL_API_BASE}/auth/session`, {
       headers: { cookie: cookieHeader },
@@ -22,12 +22,15 @@ export async function GET() {
       redirect: "manual",
     });
       const text = await upstream.text();
-  const res = new NextResponse(text, { status: upstream.status });
+      const res = new NextResponse(text, { status: upstream.status });
 
 
     return res;
 
   } catch {
-    return null;
+    return NextResponse.json(
+      { user: null },
+      { status: 500 }
+    );
   }
 }

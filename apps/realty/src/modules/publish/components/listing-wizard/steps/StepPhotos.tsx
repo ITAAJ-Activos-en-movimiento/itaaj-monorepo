@@ -32,14 +32,12 @@ export const StepPhotos: React.FC<StepPhotosProps> = ({
   };
 
   const handleFiles = async (files: FileList | null) => {
-    if (!files || files.length === 0) return;
-
     setError(null);
 
     const uploadedUrls: string[] = [];
 
     try {
-      for (const file of Array.from(files)) {
+      for (const file of Array.from(files!)) {
         if (!file.type.startsWith("image/")) {
           setError("Algunos archivos no son imágenes.");
           continue;
