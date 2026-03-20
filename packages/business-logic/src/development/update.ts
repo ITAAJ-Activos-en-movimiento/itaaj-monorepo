@@ -15,9 +15,10 @@ export const updateDevelopment = async (
   //     .returning();
       
   // return result[0];
+  const { name, ...info } = data;
   const result = await getDbInstance()
     .update(developments)
-    .set({...data})
+    .set({...info})
     .where(eq(developments.slug, data.slug || ""))
     .returning();
 
