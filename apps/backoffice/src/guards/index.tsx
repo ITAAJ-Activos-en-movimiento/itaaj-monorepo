@@ -13,7 +13,6 @@ const PublicValidationFragment = (
 const GuardRoute = ({privateValidation}: Props) => {
   const user = localStorage.getItem('user');
 
-  console.log(user)
    return user ? (
     privateValidation ? (
         PrivateValidationFragment

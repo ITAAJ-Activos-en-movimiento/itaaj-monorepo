@@ -9,8 +9,6 @@ import PropertyTable from "./Table/PropertyTable";
 const PropertiesDevs = () => {
   const [, setSearch] = useState<string>("");
   const { properties, isLoading } = usePropertiesDevs();
-
-  console.log(properties)
   return (
     <div className={styles.container}>
       <HeaderPage title="Propiedades que comparten comisión">

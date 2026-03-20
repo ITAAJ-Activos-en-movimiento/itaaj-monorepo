@@ -31,6 +31,8 @@ const INITIAL_DATA = {
     images: [],
     bathrooms: '',
     bedrooms: '',
+    alsoRent: false,
+    alsoSell: false
 }
 
 const CreateDevelopment = () => {
@@ -41,12 +43,13 @@ const CreateDevelopment = () => {
     const [latitud, setLatitud] = useState(0);
     // const [description, setDescription] = useState('');
 
-    console.log(development)
     const navigate = useNavigate();
+  const user = localStorage.getItem('user') as string | null;
 
 
     const onSubmit = () => {
-        createDevelopment({ ...development, location: { longitude: longitud, latitude: latitud } }, {
+        createDevelopment({ ...development,         owner: JSON.parse(user || "{}")?.id,
+ location: { longitude: longitud, latitude: latitud } }, {
             onSuccess: () => {
                 navigate('/developments')
             }

@@ -4,6 +4,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Urbanist", sans-serif;
+
 }
 
 *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {

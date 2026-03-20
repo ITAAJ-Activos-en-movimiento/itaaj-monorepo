@@ -43,4 +43,7 @@ export interface Development extends Base {
   blockchainId: string;
   partner: string;
   properties: Property[];
+  alsoRent: boolean;
+  alsoSell: boolean;
+  lowDeposit: number;
 }

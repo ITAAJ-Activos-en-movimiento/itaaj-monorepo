@@ -7,6 +7,7 @@ import {
   uuid,
   varchar,
   text,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { properties } from "../../properties";
 
@@ -26,6 +27,10 @@ export const developments = pgTable("developments", {
   internal_number: varchar("internal_number", { length: 256 }),
   location: jsonb("location"),
   price: integer("price"),
+  rentPrice: integer("rentPrice"),
+  lowDeposit: integer("lowDeposit"),
+  alsoRent: boolean('alsoRent'),
+  alsoSell: boolean('alsoSell'),
   area: varchar("area", { length: 256 }),
   garage: integer("garage"),
   images: varchar("images", { length: 256 }).array(),

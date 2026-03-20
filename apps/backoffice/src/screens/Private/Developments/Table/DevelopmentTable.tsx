@@ -8,7 +8,7 @@ const DevelopmentTable = () => {
     const { developments } = useDevelopments() as { developments: Development[]};
     let listDevelopments = developments;
     // const [{ selectedRows, selectAll }, toggleRowSelect, toggleSelectAll] = useTableSelection({ data: products.items });
-  const user = localStorage.getItem('user') as User | null; 
+  const user = JSON.parse(localStorage.getItem('user') || "{}") as User; 
 
     if(user){
         if(!user.isAdmin){

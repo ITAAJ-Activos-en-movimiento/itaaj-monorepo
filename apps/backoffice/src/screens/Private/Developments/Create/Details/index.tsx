@@ -49,6 +49,32 @@ const Details = ({ development, handleChange }: Props) => {
       <div className={styles.content}>
         <h3>Detalles generales</h3>
         <p className={styles.subtitle}>Una breve descripción del inmueble.</p>
+
+         <div className={styles.col}>
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    checked={development.alsoSell}
+                    name="alsoSell"
+                    onChange={handleChange}
+                  />
+                  Venta
+                </label>
+              </div>
+
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    onChange={handleChange}
+                    checked={development.alsoRent}
+                    name="alsoRent"
+                  />
+                  Renta
+                </label>
+              </div>
+            </div>
         <div className={styles.col}>
           <Field label="Habitaciones">
             <Input
@@ -76,6 +102,8 @@ const Details = ({ development, handleChange }: Props) => {
             />
           </Field>
 
+          
+
           <Field label="N° de Viviendas">
             <Input
               value={development.households}
@@ -84,6 +112,16 @@ const Details = ({ development, handleChange }: Props) => {
             />
           </Field>
         </div>
+
+
+               <Field label="Comision compartida (%)">
+              <Input
+                type="number"
+                value={development.lowDeposit}
+                name="lowDeposit"
+                onChange={handleChange}
+              />
+            </Field>
 
         <h3>Development details</h3>
         <p className={styles.subtitle}>A brief description of these settings</p>

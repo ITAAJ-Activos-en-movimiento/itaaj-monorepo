@@ -48,6 +48,8 @@ const UpdateProperty = () => {
     development: propertyInfo?.development || "",
     zipcode: propertyInfo?.zipcode || 0,
     floorPlans: propertyInfo?.floorPlans || [],
+    alsoRent: propertyInfo?.alsoRent || false,
+    alsoSell: propertyInfo?.alsoSell || false,
   });
 
   const [images, setImages] = useState(propertyInfo?.images || []);
@@ -171,6 +173,8 @@ const UpdateProperty = () => {
         development: propertyInfo.development || '',
         zipcode: propertyInfo.zipcode || 0,
         floorPlans: propertyInfo.floorPlans || [],
+            alsoRent: propertyInfo?.alsoRent || false,
+    alsoSell: propertyInfo?.alsoSell || false,
       });
       setImages(propertyInfo?.images || []);
       setDescription(propertyInfo?.description)
@@ -229,6 +233,32 @@ const UpdateProperty = () => {
             <p className={styles.subtitle}>
               Una breve descripción de estas configuraciones.
             </p>
+
+               <div className={styles.col}>
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    checked={property.alsoSell}
+                    name="alsoSell"
+                    onChange={handleChange}
+                  />
+                  Venta
+                </label>
+              </div>
+
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    onChange={handleChange}
+                    checked={property.alsoRent}
+                    name="alsoRent"
+                  />
+                  Renta
+                </label>
+              </div>
+            </div>
             <div className={styles.col}>
               <Field label="Habitaciones">
                 <Input

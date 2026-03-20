@@ -2,7 +2,6 @@ import { Modal, Table } from "@/containers";
 import { Property } from "@itaaj/entities";
 import { DivisaFormater } from "@/utilities";
 import Menus from "@/components/Shared/Menus";
-import { useDeleteProperty } from "@/hooks";
 
 interface Props {
   property: Property;
@@ -12,8 +11,6 @@ interface Props {
 }
 
 const PropertyRow = ({ property }: Props) => {
-  const { deleteProperty } = useDeleteProperty();
-
   return (
     <Table.Row>
       <div
@@ -42,10 +39,10 @@ const PropertyRow = ({ property }: Props) => {
           {property.name}
         </h3>
       </div>
-      <div>{property.address}</div>
-      <div>{property.area.total_area}</div>
-      {property.propertyStatus ? (
-        <div>&#183; {property.propertyStatus}</div>
+      <div>{(property.owner as any)?.name}</div>
+      <div>{(property.owner as any)?.phone}</div>
+      {property.lowDeposit ? (
+        <div>{property.lowDeposit}%</div>
       ) : (
         <div
           style={{
@@ -54,13 +51,14 @@ const PropertyRow = ({ property }: Props) => {
             paddingBlock: 5,
             paddingInline: 15,
             borderRadius: 5,
-            color: "#00D900",
             fontWeight: "500",
           }}
         >
-          &#183; Publicada
+         No especificado
         </div>
       )}
+            <div>{property.alsoRent ? "Renta" : "Venta"}</div>
+
       <div style={{ textAlign: "right" }}>
         {DivisaFormater({ value: property.price })}
       </div>
@@ -71,13 +69,9 @@ const PropertyRow = ({ property }: Props) => {
             <Menus.Toggle id={property.id} />
 
             <Menus.List id={property.id}>
-              <Menus.LinkTo to={`/properties/${property.slug}`}>
-                Editar
+              <Menus.LinkTo target="_blank" to={`https://itaajrealty.com/${property.alsoRent? "rentar" : "comprar"}/viviendas/mexico/${property.slug}/d`}>
+                Ver
               </Menus.LinkTo>
-
-              <Menus.Button onClick={() => deleteProperty(property.id!)}>
-                Eliminar
-              </Menus.Button>
             </Menus.List>
           </Menus.Menu>
 

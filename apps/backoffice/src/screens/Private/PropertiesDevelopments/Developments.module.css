@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 4rem;
+  /* padding-inline: 4rem; */
   padding-block: 2rem;
 }
 
@@ -19,6 +19,6 @@
 }
 
 .content{
-  padding: 0 4rem;
+  /* padding: 0 4rem; */
   margin-bottom: 10rem;
 }

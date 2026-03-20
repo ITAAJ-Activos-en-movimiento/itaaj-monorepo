@@ -11,15 +11,14 @@ interface Props {
 const Layout = ({ children }: Props) => {
   return (
     <div className={styles.container}>
-      <Header />
+      <Sidebar />
       <div className={styles.content}>
-        <Sidebar />
+        <Header />
         <main>
           <Outlet />
           {children}
         </main>
       </div>
-
     </div>
   );
 };

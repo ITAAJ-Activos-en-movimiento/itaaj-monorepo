@@ -8,6 +8,13 @@
       "when": 1763996618631,
       "tag": "0000_oval_boomerang",
       "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1773706561534,
+      "tag": "0001_bent_mandrill",
+      "breakpoints": false
     }
   ]
 }

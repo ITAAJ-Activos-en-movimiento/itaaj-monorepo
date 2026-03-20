@@ -153,15 +153,17 @@ const Option = ({ children, onClick, ...rest }: ButtonProps) => {
 
 const LinkTo = ({
   to,
+  target,
   children,
   ...rest
 }: {
   to: string;
   children: ReactNode;
+  target?: string;
 }) => {
   return (
     <li>
-      <Link to={to} className={styles.button} {...rest}>
+      <Link to={to} target={target} className={styles.button} {...rest}>
         {children}
       </Link>
     </li>

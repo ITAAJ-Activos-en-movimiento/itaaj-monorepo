@@ -8,7 +8,7 @@ import { useCreateProperties, useForm, useUploadImage } from "@/hooks";
 import { useNavigate } from "react-router-dom";
 import initialPropertyState from "./initial-state";
 import Floorplants from "./Floorplants";
-import { Category, User } from "@itaaj/entities";
+import { Category } from "@itaaj/entities";
 
 const CreateProperty = () => {
   const [options, setOptions] = useState("overview");
@@ -23,7 +23,7 @@ const CreateProperty = () => {
 
   const navigate = useNavigate();
   console.log({ property });
-  const user = localStorage.getItem('user') as User | null;
+  const user = localStorage.getItem('user') as string | null;
   const { isCreating, createProperty } = useCreateProperties();
 
   const onSubmit = () => {
@@ -34,7 +34,7 @@ const CreateProperty = () => {
         completedAddress:
           String(property.completedAddress) == "true" ? true : false,
         images: urls,
-        owner: user?.id,
+        owner: JSON.parse(user || "{}")?.id,
         image: url,
         location: { longitude: longitud, latitude: latitud },
         description,
@@ -213,7 +213,7 @@ const CreateProperty = () => {
               />
             </Field>
 
-               <Field label="Comision compartida">
+               <Field label="Comision compartida (%)">
               <Input
                 type="number"
                 value={property.lowDeposit}
@@ -295,7 +295,35 @@ const CreateProperty = () => {
                   onChange={handleChange}
                 />
               </Field>
+
+
             </div>
+
+        <Field label="Video URL">
+          <Input
+            type="text"
+            value={property.video}
+            name="video"
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field label="360 Tour URL">
+          <Input
+            value={property.virtualTourUrl}
+            name="virtualTourUrl"
+            onChange={handleChange}
+          />
+        </Field>
+
+        <Field label="PDF URL">
+          <Input
+            value={property.partner}
+            name="owner"
+            onChange={handleChange}
+          />
+        </Field>
+            
 
             <div className={styles.divider}>
               <Field label="Descripción">

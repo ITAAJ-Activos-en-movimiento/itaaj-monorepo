@@ -42,6 +42,8 @@ const EditDevelopment: React.FC = () => {
     propertyStatus: developmentInfo?.propertyStatus,
     type: developmentInfo?.type,
     partner: developmentInfo?.partner,
+        alsoRent: developmentInfo?.alsoRent || false,
+    alsoSell: developmentInfo?.alsoSell || false,
   });
 
 
@@ -80,6 +82,8 @@ useEffect(() => {
     propertyStatus: developmentInfo?.propertyStatus,
     type: developmentInfo?.type,
     partner: developmentInfo?.partner,
+              alsoRent: developmentInfo?.alsoRent || false,
+    alsoSell: developmentInfo?.alsoSell || false,
   });
   setImages(developmentInfo?.images || []);
   setDescription(developmentInfo?.description);
@@ -125,6 +129,32 @@ const onSubmit = () => {
             <div className={styles.content}>
                 <h3>General details</h3>
                 <p className={styles.subtitle}>A brief description of these settings</p>
+
+                       <div className={styles.col}>
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    checked={development.alsoSell}
+                    name="alsoSell"
+                    onChange={handleChange}
+                  />
+                  Venta
+                </label>
+              </div>
+
+              <div className={styles.formFieldFull}>
+                <label className={styles.switchLabel}>
+                  <input
+                    type="checkbox"
+                    onChange={handleChange}
+                    checked={development.alsoRent}
+                    name="alsoRent"
+                  />
+                  Renta
+                </label>
+              </div>
+            </div>
                 <div className={styles.col}>
 
                     <Field label='Bedrooms'>
@@ -150,6 +180,16 @@ const onSubmit = () => {
 
 
                 </div>
+
+                          <Field label="Comision compartida (%)">
+              <Input
+                type="number"
+                value={development.lowDeposit}
+                name="lowDeposit"
+                onChange={handleChange}
+              />
+            </Field>
+
 
                 <h3>Development details</h3>
                 <p className={styles.subtitle}>A brief description of these settings</p>

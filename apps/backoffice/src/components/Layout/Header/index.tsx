@@ -1,10 +1,9 @@
-import { MoreVertical } from 'react-feather'
+// import { MoreVertical } from 'react-feather'
 import styles from './Header.module.css'
 
 const Header = () => {
   return (
     <div className={styles.header}>
-        <h3>Itaaj Realty</h3>
              <div className={styles.header_left}>
                 {/* <div className={styles.logo}>
                     <img src="/isotype.png" />
@@ -21,7 +20,6 @@ const Header = () => {
                     ))}
                     
                 </nav> */}
-                <MoreVertical />
             </div>
     </div>
   )

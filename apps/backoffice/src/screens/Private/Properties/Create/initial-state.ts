@@ -30,8 +30,10 @@ const initialPropertyState = {
     bedrooms: 0,
     categoty: "general",
     alsoRent: false,
-    alsoSell: false
-
+    alsoSell: false,
+    video: '',
+    virtualTourUrl: '',
+    partner: ''
 
 
 }
