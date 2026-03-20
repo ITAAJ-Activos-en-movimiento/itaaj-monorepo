@@ -1,0 +1,1 @@
+ALTER TABLE "developments" ADD COLUMN "zipcode" integer;

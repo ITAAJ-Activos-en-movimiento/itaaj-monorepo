@@ -1,24 +1,43 @@
 import { getDbInstance } from "@itaaj/data-sources/src/postgresql";
-import { Development, developments } from "@itaaj/entities";
+import { developments } from "@itaaj/entities";
 import { eq } from "drizzle-orm";
-import slugify from 'slugify';
 
-export const updateDevelopment = async (
-  data: Partial<Development>
-): Promise<Development | Error> => {
+export const updateDevelopment = async (data: any) => {
+  const updateData = {
+    name: data.name,
+    slug: data.slug,
+    description: data.description,
+    address: data.address,
+    city: data.city,
+    state: data.state,
+    country: data.country,
+    households: data.households,
+    location: data.location,
+    price: data.price,
+    alsoRent: data.alsoRent,
+    alsoSell: data.alsoSell,
+    area: data.area,
+    garage: data.garage,
+    images: data.images,
+    bedrooms: data.bedrooms,
+    bathrooms: data.bathrooms,
+    owner: data.owner,
+    virtualTourUrl: data.virtualTourUrl,
+    video: data.video,
+    antiquity: data.antiquity,
+    propertyStatus: data.propertyStatus,
+    type: data.type,
+    partner: data.partner,
+    zipcode: data.zipcode,
+  };
 
-  // const db = drizzle(infoInstance, { schema: { users } })
-  
-  // const result = await db.update(users)
-  //     .set(data)
-  //     .where(eq(users.id, data.id))
-  //     .returning();
-      
-  // return result[0];
-  const { name, ...info } = data;
+  const cleanUpdateData = Object.fromEntries(
+    Object.entries(updateData).filter(([, value]) => value !== undefined)
+  );
+
   const result = await getDbInstance()
     .update(developments)
-    .set({...info})
+    .set(cleanUpdateData)
     .where(eq(developments.slug, data.slug || ""))
     .returning();
 

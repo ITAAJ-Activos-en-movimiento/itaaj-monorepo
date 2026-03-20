@@ -15,6 +15,20 @@
       "when": 1773706561534,
       "tag": "0001_bent_mandrill",
       "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1774028218403,
+      "tag": "0002_tearful_titanium_man",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1774028346480,
+      "tag": "0003_complex_edwin_jarvis",
+      "breakpoints": false
     }
   ]
 }

@@ -1,0 +1,1 @@
+ALTER TABLE "developments" ALTER COLUMN "zipcode" SET DATA TYPE varchar;
